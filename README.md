@@ -1,14 +1,28 @@
-# Project
+# Shift Planner Power Platform Template
+Shift Planner is a complete Power Platform solution for managing shifts. It is provided as a template to provide customers with the flexibility to modify it for their organisation's needs.
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+![image](https://github.com/user-attachments/assets/b3eac519-1fbc-40e7-8813-af14ad56b889)
 
-As the maintainer of this project, please make a few updates:
+It provides the following capabilities:
+- Managing Facilities and Zones
+- Managing Teams (Shift Requirements)
+- Managing Staff (Capabilities, Availability)
+- Bookings (Booking staff, Time Off, swapping Shifts)
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+### Getting Started
+Installation instructions are available [here](https://github.com/scberr/shiftplanner/blob/main/docs/installation-guide.md). A usage guide is also available [here](https://github.com/scberr/shiftplanner/blob/main/docs/getting-started.md).
+
+### Why does it exist?
+Shift Management is a global challenge for organisations. 
+
+Rostering systems are inflexible or non-existent in many organisations forcing administrators to work with Excel or whiteboards. This is a waste of time and resources often leading to mistakes and rework.
+
+Power Platform provides a unique ability to add a flexible layer on top of rigid systems to enable effective and efficient shift planning with new capabilities to improve the quality of life of health care workers and administrators
+
+### How does Shift Planner fit into the Microsoft Ecosystem
+Microsoft provides multiple solutions within the booking space. For simple scenarios for small teams, consider [Shifts](https://support.microsoft.com/en-au/office/what-is-shifts-f8efe6e4-ddb3-4d23-b81b-bb812296b821) for complex enterprise scenarios please consider [Dynamics 365 Universal Resource Scheduler](https://learn.microsoft.com/en-us/dynamics365/common-scheduler/schedule-anything-with-universal-resource-scheduling), which is included in Dynamics 365 Field Service and Dynamics 365 for Customer Service. 
+
+Shift Planner aims to fill the niche where Shifts provides insufficient customisability, but the large number of capabilities and flexibility provided by Universal Resource Scheduler makes the barrier to entry too steep. 
 
 ## Contributing
 
