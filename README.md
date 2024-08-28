@@ -10,7 +10,7 @@ It provides the following capabilities:
 - Bookings (Booking staff, Time Off, swapping Shifts)
 
 ### Getting Started
-Installation instructions are available [here](https://github.com/scberr/shiftplanner/blob/main/docs/installation-guide.md). A usage guide is also available [here](https://github.com/scberr/shiftplanner/blob/main/docs/getting-started.md).
+Installation instructions are available [here](./docs/installation-guide.md). A usage guide is also available [here](https://github.com/scberr/shiftplanner/blob/main/docs/getting-started.md).
 
 ### Why does it exist?
 Shift Management is a global challenge for organisations. 
