@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{3d40a657-eb01-4d88-a6e9-4ef940487bb9}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_shiftbookingid">
+          <cell name="mpa_name" width="150" />
+          <cell name="mpa_resource" width="100" />
+          <cell name="mpa_teamposition" width="121" />
+          <cell name="a_016856221cf54f9b96faff2be08cc6be.mpa_shiftteam" width="195" />
+          <cell name="mpa_date" width="100" />
+          <cell name="statuscode" width="119" />
+          <cell name="mpa_zone" width="100" />
+          <cell name="mpa_workflowstatus" width="135" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_shiftbooking">
+          <attribute name="mpa_shiftplanner_shiftbookingid" />
+          <attribute name="mpa_name" />
+          <order attribute="mpa_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="statuscode" />
+          <attribute name="mpa_date" />
+          <attribute name="mpa_resource" />
+          <attribute name="mpa_teamposition" />
+          <attribute name="mpa_zone" />
+          <attribute name="mpa_workflowstatus" />
+          <link-entity alias="a_016856221cf54f9b96faff2be08cc6be" name="mpa_shiftplanner_teamposition" to="mpa_teamposition" from="mpa_shiftplanner_teampositionid" link-type="outer" visible="false">
+            <attribute name="mpa_shiftteam" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Shift Bookings" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

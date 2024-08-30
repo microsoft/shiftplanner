@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModuleSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SiteMapUniqueName>mpa_ShiftPlannerAdministrator</SiteMapUniqueName>
+  <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+  <ShowHome>True</ShowHome>
+  <ShowPinned>True</ShowPinned>
+  <ShowRecents>True</ShowRecents>
+  <SiteMap IntroducedVersion="7.0.0.0">
+    <Area Id="area_134da136" ResourceId="SitemapDesigner.NewTitle" DescriptionResourceId="SitemapDesigner.NewTitle" ShowGroups="true" IntroducedVersion="7.0.0.0">
+      <Titles>
+        <Title LCID="1033" Title="Area1" />
+      </Titles>
+      <Group Id="group_f1c2d276" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Reference" />
+        </Titles>
+        <SubArea Id="subarea_ff532d64" VectorIcon="/WebResources/mpa_facility_svg" Icon="/WebResources/mpa_facility_svg" Entity="mpa_shiftplanner_facility" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Facility" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_0d64a53b" VectorIcon="/WebResources/mpa_zone_svg" Icon="/WebResources/mpa_zone_svg" Entity="mpa_shiftplanner_zone" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Zone" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_c27daf85" VectorIcon="/WebResources/mpa_roles_svg" Icon="/WebResources/mpa_roles_svg" Entity="mpa_shiftplanner_role" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Roles" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_0854bfa8" VectorIcon="/WebResources/mpa_shifttype_svg" Icon="/WebResources/mpa_shifttype_svg" Entity="mpa_shiftplanner_shifttype" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Shift Type" />
+          </Titles>
+        </SubArea>
+      </Group>
+      <Group Id="group_57964b85" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Shift Planning" />
+        </Titles>
+        <SubArea Id="subarea_85911826" VectorIcon="/WebResources/mpa_shiftteam_svg" Icon="/WebResources/mpa_shiftteam_svg" Entity="mpa_shiftplanner_shiftteam" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Shift Team" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_7d378c7e" VectorIcon="/WebResources/mpa_teamposition_svg" Icon="/WebResources/mpa_teamposition_svg" Entity="mpa_shiftplanner_teamposition" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Team Position" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_a54a4d22" VectorIcon="/WebResources/mpa_shiftbooking_svg" Icon="/WebResources/mpa_shiftbooking_svg" Entity="mpa_shiftplanner_shiftbooking" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Shift Booking" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_9e64b67e" VectorIcon="/WebResources/mpa_changerequest_svg" Icon="/WebResources/mpa_changerequest_svg" Entity="mpa_shiftplanner_changerequest" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="Change Requests" />
+          </Titles>
+        </SubArea>
+      </Group>
+      <Group Id="group_27e4c524" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Staff Setting" />
+        </Titles>
+        <SubArea Id="subarea_4be397ec" VectorIcon="/WebResources/mpa_useraffiliation_svg" Icon="/WebResources/mpa_useraffiliation_svg" Entity="mpa_shiftplanner_useraffiliation" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="User Affiliation" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_ab67f5c1" VectorIcon="/WebResources/mpa_useravailability_svg" Icon="/WebResources/mpa_useravailability_svg" Entity="mpa_shiftplanner_useravailability" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="User Availability" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_402ee330" VectorIcon="/WebResources/mpa_userroles_svg" Icon="/WebResources/mpa_userroles_svg" Entity="mpa_shiftplanner_userrole" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="User Roles" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_7aed4b88" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="systemuser" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
+      </Group>
+      <Group Id="group_faf7a31a" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Setting" />
+        </Titles>
+        <SubArea Id="subarea_3916e386" VectorIcon="/WebResources/mpa_appsetting_svg" Icon="/WebResources/mpa_appsetting_svg" Entity="mpa_shiftplanner_appsetting" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="App Setting" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="subarea_5617c626" VectorIcon="/WebResources/mpa_emailtemplate_svg" Icon="/WebResources/mpa_emailtemplate_svg" Entity="mpa_shiftplanner_emailtemplate" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
+        <SubArea Id="subarea_d5a95950" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="knowledgearticle" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
+      </Group>
+    </Area>
+  </SiteMap>
+  <LocalizedNames>
+    <LocalizedName description="Shift Planner Administrator" languagecode="1033" />
+  </LocalizedNames>
+</AppModuleSiteMap>

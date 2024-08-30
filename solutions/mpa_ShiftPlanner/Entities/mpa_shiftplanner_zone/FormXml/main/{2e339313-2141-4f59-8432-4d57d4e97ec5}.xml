@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{2e339313-2141-4f59-8432-4d57d4e97ec5}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{13dc72dd-776b-470e-9a52-0fdfe9dccc5b}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{f6f4cd6e-16c8-4c17-823b-c35fb1d45fe9}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{33478b0e-5a0a-4c00-aac3-bb881e8e6f0f}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mpa_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bd4477d7-ac7c-4d66-8052-617f96e42c10}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6ae2b3d9-598f-4807-ba5f-73a049dc221d}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Facility" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_facility" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_facility" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{c4d72434-ca30-4644-840f-955d1f82da76}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Shift Team" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="SubGrid_Shiftteam" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>mpa_shiftplanner_shiftteam</TargetEntityType>
+                            <ViewId>{7036EF3E-6DCD-4539-AE5A-DC96C45E4797}</ViewId>
+                            <ViewIds>{7036EF3E-6DCD-4539-AE5A-DC96C45E4797}</ViewIds>
+                            <RelationshipName>mpa_shiftplanner_shiftteam_zone</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{3911c1ba-8652-4b14-b2e0-1b85f67d7810}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="User Affiliation" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="subgrid_useraffiliation" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>mpa_shiftplanner_useraffiliation</TargetEntityType>
+                            <ViewId>{5354FEE4-8CD1-432E-B991-535C7590C247}</ViewId>
+                            <ViewIds>{5354FEE4-8CD1-432E-B991-535C7590C247}</ViewIds>
+                            <RelationshipName>mpa_shiftplanner_useraffiliation_zone</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{4baa560a-9418-4117-bfb8-59edf5ba3128}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{8b7ed237-1eec-4717-8d41-28acb8b74953}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5d2861fb-7725-4bd3-9185-5bede4191b7d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{295973ae-0e61-4a57-8972-ba6e7b4ea329}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{6eb3fd83-a8c3-438a-afc2-85cdb8320903}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{ecda9976-8eb2-490e-9744-a61a6ffcb15d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e00d8046-3c02-4bbd-a78f-a0a5e1507947}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ee2f7500-2ff1-4a84-b816-fac2add90151}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{1CEB5A35-C71C-EF11-840A-000D3A9D8D48}" />
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

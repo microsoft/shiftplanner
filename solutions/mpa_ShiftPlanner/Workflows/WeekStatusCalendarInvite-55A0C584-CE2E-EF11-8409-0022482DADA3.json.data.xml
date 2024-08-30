@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{55a0c584-ce2e-ef11-8409-0022482dada3}" Name="Week Status Calendar Invite" Description="Flow that creates or removes calendar invites indicating staff shifts to the assigned resources for the selected week." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/WeekStatusCalendarInvite-55A0C584-CE2E-EF11-8409-0022482DADA3.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <BillingContext>[{"id":"mpa_shiftplanner_7f37a","type":"UnifiedApp","metadata":{"displayName":"Shift Planner"}}]</BillingContext>
+  <PrimaryEntity>none</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Week Status Calendar Invite" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Flow that creates or removes calendar invites indicating staff shifts to the assigned resources for the selected week." />
+  </Descriptions>
+</Workflow>

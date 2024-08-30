@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{de40d76e-6b19-46ff-a36d-4abddc96b5d1}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_useravailabilityid">
+          <cell name="mpa_name" width="100" />
+          <cell name="mpa_systemuser" width="100" />
+          <cell name="mpa_isavailable" width="107" />
+          <cell name="mpa_startdate" width="100" />
+          <cell name="mpa_enddate" width="100" />
+          <cell name="mpa_reason" width="300" />
+          <cell name="createdon" width="105" />
+          <cell name="createdby" width="104" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_useravailability">
+          <attribute name="mpa_name" />
+          <order attribute="mpa_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="mpa_isavailable" />
+          <attribute name="mpa_shiftplanner_useravailabilityid" />
+          <attribute name="mpa_startdate" />
+          <attribute name="mpa_enddate" />
+          <attribute name="mpa_reason" />
+          <attribute name="mpa_systemuser" />
+          <attribute name="createdon" />
+          <attribute name="createdby" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active User Availabilities" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

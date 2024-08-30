@@ -1,0 +1,132 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_Team_position_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "9ad60364-fb9b-4eaf-87c9-276db9c3f0ab"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "mpa_shiftplanner_teamposition",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Shift_Team_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "42c88ae2-afa5-4303-876b-f900f986f667"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftteams",
+              "recordId": "@triggerOutputs()?['body/_mpa_shiftteam_value']",
+              "$expand": "mpa_shifttype"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Shift Team name using lookup value"
+        },
+        "Add_a_Email_Log_record": {
+          "runAfter": {
+            "Get_Role": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6bf590ef-974a-49bb-99c8-ca0e1fcda0ab"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_emaillogs",
+              "item/mpa_Resource@odata.bind": "@if(equals(triggerOutputs()?['body/_mpa_resource_value'], null), triggerOutputs()?['body/_mpa_resource_value'], concat('/systemusers/',triggerOutputs()?['body/_mpa_resource_value']))",
+              "item/mpa_teamposition@odata.bind": "/mpa_shiftplanner_teampositions/@{triggerOutputs()?['body/mpa_shiftplanner_teampositionid']}",
+              "item/mpa_date": "@triggerOutputs()?['body/mpa_effectivefrom']",
+              "item/mpa_inviteaction": 1,
+              "item/mpa_role": "@outputs('Get_Role')?['body/mpa_name']",
+              "item/mpa_shiftendtime": "@ formatDateTime(outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_enddate'],'h:mm tt')",
+              "item/mpa_shiftstarttime": "@ formatDateTime(outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_startdate'],'h:mm tt')",
+              "item/mpa_shifttype": "@outputs('Get_Shift_Team_by_ID')?['body/_mpa_shifttype_value@OData.Community.Display.V1.FormattedValue']",
+              "item/mpa_team": "@outputs('Get_Shift_Team_by_ID')?['body/mpa_name']",
+              "item/mpa_zone": "@outputs('Get_Shift_Team_by_ID')?['body/_mpa_zone_value@OData.Community.Display.V1.FormattedValue']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Add item to email log following the new or modified team position"
+        },
+        "Get_Role": {
+          "runAfter": {
+            "Get_Shift_Team_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "648e1295-4fa7-440a-bbbc-e898d8fdde2e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_roles",
+              "recordId": "@triggerOutputs()?['body/_mpa_role_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Role name using lookup value"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

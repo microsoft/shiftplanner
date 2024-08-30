@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{33b524c3-e91c-45fa-90cc-2c06d44d7c65}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_userroleid">
+          <cell name="mpa_name" width="300" />
+          <cell name="mpa_resource" width="100" />
+          <cell name="mpa_role" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_userrole">
+          <attribute name="mpa_name" />
+          <order attribute="mpa_name" descending="false" />
+          <attribute name="mpa_resource" />
+          <attribute name="mpa_role" />
+          <attribute name="mpa_shiftplanner_userroleid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="User Role Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

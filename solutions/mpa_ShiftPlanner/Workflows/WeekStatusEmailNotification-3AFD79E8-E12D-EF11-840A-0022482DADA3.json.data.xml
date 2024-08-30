@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{3afd79e8-e12d-ef11-840a-0022482dada3}" Name="Week Status Email Notification" Description="Flow that sends an email notification that a week's set of shifts has been published or unpublished to the assigned resources." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/WeekStatusEmailNotification-3AFD79E8-E12D-EF11-840A-0022482DADA3.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <BillingContext>[{"id":"mpa_shiftplanner_7f37a","type":"UnifiedApp","metadata":{"displayName":"Shift Planner"}}]</BillingContext>
+  <PrimaryEntity>none</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Week Status Email Notification" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Flow that sends an email notification that a week's set of shifts has been published or unpublished to the assigned resources." />
+  </Descriptions>
+</Workflow>

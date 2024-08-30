@@ -1,0 +1,13 @@
+<environmentvariabledefinition schemaname="mpa_varmobileapplink">
+  <description default="To hold the link to the Shift Planner mobile app">
+    <label description="To hold the link to the Shift Planner mobile app" languagecode="1033" />
+  </description>
+  <displayname default="Mobile App Link">
+    <label description="Mobile App Link" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

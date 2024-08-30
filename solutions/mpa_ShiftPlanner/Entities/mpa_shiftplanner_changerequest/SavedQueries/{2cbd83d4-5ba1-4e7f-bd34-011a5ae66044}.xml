@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{2cbd83d4-5ba1-4e7f-bd34-011a5ae66044}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_changerequestid">
+          <cell name="mpa_name" width="100" />
+          <cell name="mpa_shiftbooking" width="119" />
+          <cell name="mpa_resource" width="100" />
+          <cell name="mpa_changetype" width="115" />
+          <cell name="mpa_reason" width="100" />
+          <cell name="mpa_newresource" width="123" />
+          <cell name="statuscode" width="119" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_changerequest">
+          <attribute name="mpa_name" />
+          <order attribute="mpa_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="mpa_shiftbooking" />
+          <attribute name="mpa_resource" />
+          <attribute name="mpa_changetype" />
+          <attribute name="mpa_reason" />
+          <attribute name="mpa_newresource" />
+          <attribute name="mpa_shiftplanner_changerequestid" />
+          <attribute name="statuscode" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Change Requests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
