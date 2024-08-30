@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{dddfd898-be4c-4e60-86cc-17f3b5b99e1f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_useraffiliationid">
+          <cell name="mpa_name" width="300" />
+          <cell name="mpa_resource" width="100" />
+          <cell name="mpa_facility" width="100" />
+          <cell name="mpa_zone" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_useraffiliation">
+          <attribute name="mpa_name" />
+          <order attribute="mpa_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="mpa_name" operator="like" value="{0}" />
+            <condition attribute="mpa_zone" operator="like" value="{0}" />
+            <condition attribute="mpa_resource" operator="like" value="{0}" />
+            <condition attribute="mpa_facility" operator="like" value="{0}" />
+          </filter>
+          <attribute name="mpa_resource" />
+          <attribute name="mpa_facility" />
+          <attribute name="mpa_zone" />
+          <attribute name="mpa_shiftplanner_useraffiliationid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active User Affiliations" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

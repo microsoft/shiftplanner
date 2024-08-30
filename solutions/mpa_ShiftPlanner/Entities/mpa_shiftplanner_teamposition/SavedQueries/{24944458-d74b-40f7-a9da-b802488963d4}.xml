@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{24944458-d74b-40f7-a9da-b802488963d4}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_teampositionid">
+          <cell name="mpa_name" width="100" />
+          <cell name="mpa_shiftteam" width="150" />
+          <cell name="mpa_role" width="150" />
+          <cell name="mpa_effectivefrom" width="125" />
+          <cell name="mpa_effectiveto" width="110" />
+          <cell name="mpa_resource" width="100" />
+          <cell name="createdon" width="105" />
+          <cell name="createdby" width="104" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_teamposition">
+          <attribute name="mpa_name" />
+          <order attribute="mpa_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="mpa_shiftteam" />
+          <attribute name="mpa_role" />
+          <attribute name="mpa_effectiveto" />
+          <attribute name="mpa_effectivefrom" />
+          <attribute name="mpa_shiftplanner_teampositionid" />
+          <attribute name="mpa_resource" />
+          <attribute name="createdon" />
+          <attribute name="createdby" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Team Positions" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{23adb90e-871c-ef11-840a-000d3a9d8d48}" Name="Enddate validation" Description="Check if startdate is always before enddate." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/Enddatevalidation-23ADB90E-871C-EF11-840A-000D3A9D8D48.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>2</Category>
+  <Mode>1</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ProcessTriggerScope>2</ProcessTriggerScope>
+  <PrimaryEntity>mpa_shiftplanner_shifttype</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Enddate validation" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Check if startdate is always before enddate." />
+  </Descriptions>
+  <labels>
+    <steplabels id="{1c73bdd1-3fc0-466d-9e59-5b477fec63b2}">
+      <label languagecode="1033" description="Please enter a valid start date. It should be before the end date" />
+    </steplabels>
+  </labels>
+</Workflow>

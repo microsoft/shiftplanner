@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{73d02a71-6319-ef11-9f89-000d3a9d8d48}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="F931FFE2-B873-473F-8F95-9502F0AA3F5E" name="tab_1" showlabel="false" labelid="{393b0563-b4b4-4721-8d52-9c60f72f9440}">
+          <labels>
+            <label description="New Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="34%">
+              <sections>
+                <section id="0C655D4E-C6E3-424E-9AF5-71E72D30D12E" name="tab_1_column_1_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{6809b4fe-7df4-483e-9d3d-eff193e3c16f}">
+                  <labels>
+                    <label description="Change Request" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="542FBFBE-0E4C-496C-8012-555DE6581923" labelid="{0317116c-cc8e-4683-89d5-2d590fbf5b8f}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c2ab651a-fa2f-437f-bf77-60e1b1fad301}" locklevel="0" colspan="1" rowspan="1" labelid="{23606d93-f6e0-4120-9979-804aca3f9570}">
+                        <labels>
+                          <label description="Shift Booking" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_shiftbooking" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_shiftbooking" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b8b2e8ba-361e-4ffe-9374-628b8bbf8b80}" locklevel="0" colspan="1" rowspan="1" labelid="{4fc1d0fe-9e7e-4f0a-86c9-cb8f3e4ffbcf}">
+                        <labels>
+                          <label description="Change Type" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_changetype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="mpa_changetype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7f0bdf67-f2c1-4c4d-98a5-f861f7529f9e}" locklevel="0" colspan="1" rowspan="1" labelid="{5746c5c7-c91e-4d31-a158-0b8d89e78676}">
+                        <labels>
+                          <label description="Reason" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_reason" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="mpa_reason" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{67621be5-eae3-460a-8c68-342772e5abb8}" locklevel="0" colspan="1" rowspan="1" labelid="{f39e8d47-8060-4456-b3f4-3ba7c6ee7490}">
+                        <labels>
+                          <label description="Resource" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_resource" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_resource" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4eba357c-7a82-4918-9af3-2157a04abc2b}" locklevel="0" colspan="1" rowspan="1" labelid="{7fc88262-17c1-460a-8e9b-a0fc6e15da80}">
+                        <labels>
+                          <label description="New Resource" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_newresource" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_newresource" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7a94b76c-929b-4640-aa6a-bb6f11425405}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Swap With" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_swapwith" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_swapwith" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="02DECBA0-3AE2-484D-A19F-C5353AF4F4F2" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{1396c157-4cc5-465b-b024-dbb7357f99d2}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="266FE48D-4D04-4E9A-8C5A-7DEF9A2F059B" labelid="{7a78e18d-d39a-4073-8cdd-68d9f1aca86c}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="46FD66EA-B686-41D9-AAE0-C565BD78EC1F" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{f799af66-dea8-48db-8baa-43ab266f9933}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="07C04A4E-A482-45CC-BAB7-7FCA3CD02938" labelid="{bb7135a8-18db-4206-ac09-a7ba1629075d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Shiftplanner_changerequest quick create form" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

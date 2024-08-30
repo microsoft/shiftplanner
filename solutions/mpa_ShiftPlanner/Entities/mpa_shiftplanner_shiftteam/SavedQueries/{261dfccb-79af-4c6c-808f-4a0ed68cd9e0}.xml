@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{261dfccb-79af-4c6c-808f-4a0ed68cd9e0}</savedqueryid>
+    <layoutxml>
+      <grid name="mpa_shiftplanner_shiftteams" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="mpa_shiftplanner_shiftteam" id="mpa_shiftplanner_shiftteamid">
+          <cell name="mpa_name" width="300" />
+          <cell name="mpa_description" width="106" />
+          <cell name="mpa_shifttype" width="100" />
+          <cell name="createdon" width="125" />
+          <cell name="mpa_zone" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_shiftteam">
+          <attribute name="mpa_name" />
+          <attribute name="createdon" />
+          <order attribute="mpa_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="mpa_description" />
+          <attribute name="mpa_shifttype" />
+          <attribute name="mpa_zone" />
+          <attribute name="mpa_shiftplanner_shiftteamid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

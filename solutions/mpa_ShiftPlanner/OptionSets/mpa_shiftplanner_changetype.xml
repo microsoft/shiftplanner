@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="mpa_shiftplanner_changetype" localizedName="Change type" description="Choice for Change Request table to indicate which change has been requested by a user" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <ExternalTypeName></ExternalTypeName>
+  <displaynames>
+    <displayname description="Change type" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="Choice for Change Request table to indicate which change has been requested by a user" languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="1" ExternalValue="">
+      <labels>
+        <label description="Time off" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="2" ExternalValue="">
+      <labels>
+        <label description="Swap" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+  </options>
+</optionset>

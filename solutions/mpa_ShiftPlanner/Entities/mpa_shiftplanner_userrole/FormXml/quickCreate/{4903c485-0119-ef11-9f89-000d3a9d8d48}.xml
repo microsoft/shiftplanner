@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{4903c485-0119-ef11-9f89-000d3a9d8d48}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="F931FFE2-B873-473F-8F95-9502F0AA3F5E" name="tab_1" showlabel="false" labelid="{1a1cc64e-014e-4daa-8f69-7db996cc7777}">
+          <labels>
+            <label description="New Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="34%">
+              <sections>
+                <section id="0C655D4E-C6E3-424E-9AF5-71E72D30D12E" name="tab_1_column_1_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{04f5ba0d-8f94-4b9e-b1c5-d392d5d4e617}">
+                  <labels>
+                    <label description="User Role" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="542FBFBE-0E4C-496C-8012-555DE6581923" labelid="{c904fe68-5095-4b01-9a5a-47e23ba1e452}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{62edae4a-238c-42e4-8b1e-18bf42f42ee6}" locklevel="0" colspan="1" rowspan="1" labelid="{175a3f4b-fdb2-4535-be10-8a3246d90455}">
+                        <labels>
+                          <label description="Resource" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_resource" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_resource" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a48abcb2-e065-4562-ad9f-28d1992f5913}" locklevel="0" colspan="1" rowspan="1" labelid="{9779ea2c-ae74-489d-80d2-861824c87628}">
+                        <labels>
+                          <label description="Role" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_role" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_role" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{74969085-359d-40b6-9d40-864d7e62a1f6}" locklevel="0" colspan="1" rowspan="1" labelid="{4ad4c8a7-7b4f-4d0c-92a4-f2fdd1cdd0f7}">
+                        <labels>
+                          <label description="Team Position" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_shiftplanner_teamposition" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_shiftplanner_teamposition" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="02DECBA0-3AE2-484D-A19F-C5353AF4F4F2" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{8bd1e342-625c-4acc-ac6e-eca44d8fa10f}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="266FE48D-4D04-4E9A-8C5A-7DEF9A2F059B" labelid="{17d26d30-90b0-4a2a-a8b1-4d8416e8290e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="46FD66EA-B686-41D9-AAE0-C565BD78EC1F" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{13a6204e-4a3f-467c-ad7a-e6e3bc9943d3}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="07C04A4E-A482-45CC-BAB7-7FCA3CD02938" labelid="{0a4a65f6-761f-4c8f-9e32-dc270bb4c97b}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Shiftplanner_userrole quick create form" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>
