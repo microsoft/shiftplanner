@@ -48,15 +48,6 @@ jobs:
       with:
         pac-version-override: 1.34.4
       
-    - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1
-      with:
-        environment-url: ${{env.ENVIRONMENT_URL}}
-        app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.PowerPlatformSPN }}
-        tenant-id: ${{env.TENANT_ID}}
-
-
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
