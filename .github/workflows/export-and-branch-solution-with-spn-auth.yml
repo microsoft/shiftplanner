@@ -42,6 +42,12 @@ jobs:
       with:
         lfs: true
 
+    - name: Install Power Platform Tools
+      id: install-power-platform-tools
+      uses: microsoft/powerplatform-actions/actions-install@v1
+      with:
+        pac-version-override: 1.34.4
+      
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
