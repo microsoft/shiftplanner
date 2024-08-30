@@ -1,4 +1,5 @@
 <environmentvariabledefinition schemaname="mpa_varcalendarname">
+  <defaultvalue>Calendar</defaultvalue>
   <description default="To hold the calendar name for creating calendar invites">
     <label description="To hold the calendar name for creating calendar invites" languagecode="1033" />
   </description>
