@@ -45,7 +45,7 @@
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Quick Find Active Shiftteams" languagecode="1033" />
+      <LocalizedName description="Quick Find Active Shift Teams" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

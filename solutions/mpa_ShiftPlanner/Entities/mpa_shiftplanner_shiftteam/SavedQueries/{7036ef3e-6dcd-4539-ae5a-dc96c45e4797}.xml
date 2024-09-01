@@ -39,7 +39,7 @@
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active Shiftteams" languagecode="1033" />
+      <LocalizedName description="Active Shift Teams" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

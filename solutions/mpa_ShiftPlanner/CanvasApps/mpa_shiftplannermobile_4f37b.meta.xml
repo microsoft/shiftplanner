@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>mpa_shiftplannermobile_4f37b</Name>
-  <AppVersion>2024-08-29T10:34:29Z</AppVersion>
+  <AppVersion>2024-08-31T06:51:54Z</AppVersion>
   <Status>Ready</Status>
-  <CreatedByClientVersion>3.24062.17.0</CreatedByClientVersion>
-  <MinClientVersion>3.24062.17.0</MinClientVersion>
-  <Tags>{"primaryDeviceWidth":"393","primaryDeviceHeight":"753","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24062.17","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20240627T055027Z-3.24062.17.0"}</Tags>
+  <CreatedByClientVersion>3.24082.13.0</CreatedByClientVersion>
+  <MinClientVersion>3.24082.13.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"759","primaryDeviceHeight":"52","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24082.13","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20240831T063845Z-3.24082.13.0"}</Tags>
   <IsCdsUpgraded>0</IsCdsUpgraded>
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
-  <DisplayName>Shift Planner - Mobile</DisplayName>
+  <DisplayName>Roster</DisplayName>
   <Description>Experience the power of efficient shift planning with our Shift Planner - Mobile app. Seamlessly manage your team's schedules and assignments with ease. Stay organized and ensure smooth operations with our intuitive interface.</Description>
-  <CommitMessage></CommitMessage>
+  <CommitMessage xsi:nil="true"></CommitMessage>
   <Publisher></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
   <ConnectionReferences>{"36392293-2796-440b-b8d7-53b7ed00b1d9":{"id":"/providers/microsoft.powerapps/apis/shared_office365users","displayName":"Office 365 Users","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1702/1.0.1702.3810/office365users/icon.png","dataSources":["Office365Users"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["UserPhotoMetadata","UserPhoto_V2","UserProfile_V2"]}}</ConnectionReferences>
@@ -21,9 +21,10 @@
   <CanConsumeAppPass>1</CanConsumeAppPass>
   <CanvasAppType>0</CanvasAppType>
   <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
   <EmbeddedApp xsi:nil="true"></EmbeddedApp>
   <IntroducedVersion>1.0</IntroducedVersion>
-  <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"mpa_shiftplanner_shiftteam"},{"componenttype":1,"logicalname":"mpa_shiftplanner_shifttype"},{"componenttype":1,"logicalname":"mpa_shiftplanner_userrole"},{"componenttype":1,"logicalname":"systemuser"},{"componenttype":1,"logicalname":"mpa_shiftplanner_role"},{"componenttype":1,"logicalname":"mpa_shiftplanner_teamposition"},{"componenttype":1,"logicalname":"mpa_shiftplanner_useraffiliation"},{"componenttype":1,"logicalname":"mpa_shiftplanner_facility"},{"componenttype":1,"logicalname":"mpa_shiftplanner_shiftbooking"},{"componenttype":1,"logicalname":"mpa_shiftplanner_changerequest"}]}</CdsDependencies>
+  <CdsDependencies>{"cdsdependencies":[{"logicalname":"mpa_shiftplanner_shiftteam","componenttype":1},{"logicalname":"mpa_shiftplanner_shifttype","componenttype":1},{"logicalname":"mpa_shiftplanner_userrole","componenttype":1},{"logicalname":"systemuser","componenttype":1},{"logicalname":"mpa_shiftplanner_role","componenttype":1},{"logicalname":"mpa_shiftplanner_teamposition","componenttype":1},{"logicalname":"mpa_shiftplanner_useraffiliation","componenttype":1},{"logicalname":"mpa_shiftplanner_facility","componenttype":1},{"logicalname":"mpa_shiftplanner_shiftbooking","componenttype":1},{"logicalname":"mpa_shiftplanner_changerequest","componenttype":1}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
   <BackgroundImageUri>/CanvasApps/mpa_shiftplannermobile_4f37b_BackgroundImageUri</BackgroundImageUri>
   <DocumentUri>/CanvasApps/mpa_shiftplannermobile_4f37b_DocumentUri.msapp</DocumentUri>

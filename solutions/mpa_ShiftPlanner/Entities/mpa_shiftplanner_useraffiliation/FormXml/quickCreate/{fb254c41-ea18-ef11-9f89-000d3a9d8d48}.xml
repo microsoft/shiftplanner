@@ -20,14 +20,6 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{76cf7c13-b5d4-4252-948a-c567c8778da3}" locklevel="0" colspan="1" rowspan="1" labelid="{7e9b8c53-f009-4486-a745-c19052a9e909}">
-                        <labels>
-                          <label description="Name" languagecode="1033" />
-                        </labels>
-                        <control id="mpa_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_name" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{9d9f29ec-8f41-4d27-9366-c46f79c8342f}" locklevel="0" colspan="1" rowspan="1" labelid="{4d047c06-5854-46b3-a73c-d72e1acd300a}">
                         <labels>
                           <label description="Facility" languagecode="1033" />

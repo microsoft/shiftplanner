@@ -101,6 +101,7 @@
       <RootComponent type="29" id="{23adb90e-871c-ef11-840a-000d3a9d8d48}" behavior="0" />
       <RootComponent type="29" id="{3afd79e8-e12d-ef11-840a-0022482dada3}" behavior="0" />
       <RootComponent type="29" id="{444cdf44-2129-ef11-840a-0022482dada3}" behavior="0" />
+      <RootComponent type="29" id="{4df234f5-5768-ef11-bfe2-000d3a4f087a}" behavior="0" />
       <RootComponent type="29" id="{50549b8d-de32-ef11-8409-00224830e634}" behavior="0" />
       <RootComponent type="29" id="{55a0c584-ce2e-ef11-8409-0022482dada3}" behavior="0" />
       <RootComponent type="29" id="{64ce6ddf-5b22-ef11-840b-7c1e5200e675}" behavior="0" />
@@ -131,9 +132,19 @@
       <RootComponent type="61" schemaName="mpa_userroles_svg" behavior="0" />
       <RootComponent type="61" schemaName="mpa_zone_svg" behavior="0" />
       <RootComponent type="62" schemaName="mpa_ShiftPlannerAdministrator" behavior="0" />
+      <RootComponent type="80" schemaName="mpa_ShiftPlannerAdministrator" behavior="0" />
       <RootComponent type="9" schemaName="mpa_shiftplanner_changetype" behavior="0" />
       <RootComponent type="9" schemaName="mpa_shiftplanner_inviteaction" behavior="0" />
     </RootComponents>
-    <MissingDependencies />
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="mpa_ShiftPlannerAdministrator" displayName="Shift Planner Administrator" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.11)" id.uniquename="AppChannel" />
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mpa_ShiftPlannerAdministrator,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="mpa_ShiftPlannerAdministrator" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>

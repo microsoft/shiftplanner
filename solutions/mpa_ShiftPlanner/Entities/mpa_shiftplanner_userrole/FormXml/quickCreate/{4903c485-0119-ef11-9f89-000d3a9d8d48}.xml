@@ -43,7 +43,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{74969085-359d-40b6-9d40-864d7e62a1f6}" locklevel="0" colspan="1" rowspan="1" labelid="{4ad4c8a7-7b4f-4d0c-92a4-f2fdd1cdd0f7}">
+                      <cell id="{74969085-359d-40b6-9d40-864d7e62a1f6}" locklevel="0" colspan="1" rowspan="1" labelid="{4ad4c8a7-7b4f-4d0c-92a4-f2fdd1cdd0f7}" visible="false">
                         <labels>
                           <label description="Team Position" languagecode="1033" />
                         </labels>

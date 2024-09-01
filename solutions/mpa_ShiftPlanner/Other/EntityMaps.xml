@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityMaps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityMap>
+    <EntitySource>mpa_shiftplanner_zone</EntitySource>
+    <EntityTarget>mpa_shiftplanner_useraffiliation</EntityTarget>
+    <AttributeMaps>
+      <AttributeMap>
+        <AttributeSource>mpa_facility</AttributeSource>
+        <AttributeTarget>mpa_facility</AttributeTarget>
+      </AttributeMap>
+    </AttributeMaps>
+  </EntityMap>
+</EntityMaps>
