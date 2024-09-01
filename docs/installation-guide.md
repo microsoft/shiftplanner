@@ -75,7 +75,6 @@ Roles can be assigned from the admin portal using the following steps:
 ![image](https://github.com/user-attachments/assets/75b46aa8-c24f-4451-ad91-21069b39eb81)
 
 5. Click Save
-6. Publish the canvas application.
 
 ### To publish the canvas application:
 1. Go to the power apps portal https://make.powerapps.com/
