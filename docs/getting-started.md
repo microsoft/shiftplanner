@@ -2,8 +2,9 @@
 This document describes the process of configuring and using the Shift Planner Power Platform Template for your team or organisation.
 
 This involves the following Parts:
-1. Loading Email Templates
-2. Setting up Facilities
+1. Loading **Email Templates** for communications the system will perform
+2. Setting up **Facilities** for which you will roster
+3. Establishing the unique **Roles** that users will perform
 
 ## Load Reference Data
 The first step is to load reference data into the system. 
@@ -26,6 +27,8 @@ The first step is to load reference data into the system.
 11. You can navigate back to the **Email Templates** menu option and edit any email templates to suit your organisation.
 
 ### Part 2: Setting up Facilities
+Facilities are the the primary grouping for locations to which will plan shifts for. Each facility is divided into Zones. Shifts occur at the Zone level. To setup the facilities, perform the following steps.
+
 1. From the **Shift Planner Administrator** App, navigate to **Facility**
 2. Click **New** to create a new Facility, populate the Name and Description, then press **Save**
 3. Click on the **Zone** tab of the newly created facility
@@ -33,3 +36,6 @@ The first step is to load reference data into the system.
 ![image](https://github.com/user-attachments/assets/65376b2a-426d-4793-a0be-477a712b9a39)
 
 5. Repeat this process for each facility you wish to create
+
+### Part 3: Setup Roles
+
