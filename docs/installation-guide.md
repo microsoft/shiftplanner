@@ -51,6 +51,8 @@ then click on **New connection.**
 
 ![image](https://github.com/user-attachments/assets/6c808ec0-f717-4066-9545-a07443ec1faf)
 
+10. Press the **Publish all Customisations** button to ensure the model-driven app is fully published.
+
 ### Assign Security Roles to the Users
 The solution includes three (3) new security roles described in the **Security Role Descriptions** section above.
 
@@ -92,7 +94,7 @@ Planner.**
 
 ![image](https://github.com/user-attachments/assets/47e9845b-25a3-4e7c-883a-3d9acb628bec)
 
-5. When you’re done, click Save.
+5. When you’re done, click **Save**.
 6. Publish the App.
 
 ## Initial Configuration
@@ -103,12 +105,13 @@ The solution includes two (2) environment variables that must be filled in first
 - Shared Calendar Name – Name of user’s regular calendar (the default name is **Calendar**)
 
 To get the Shift Planner mobile app link environment variable:
--  On the left navigation, go to Apps. Look for the Shift Planner Mobile app, click on the 3 dots next to the name, and select Details.
+-  On the left navigation, go to **Apps**. Look for the **Shift Planner Mobile app**, click on the 3 dots next to the name, and select Details.
 
 ![image](https://github.com/user-attachments/assets/ef4d0ed4-4121-4f2e-b35b-a1eeac875ad8)
  
 - You can find the Shift Planner Mobile app link under Web Link and copy it.
-- Go to Environment variables and click on Mobile App Link to open it.
+- Go to the **Solutions** screen and select the **Default Solution**
+- Go to **Environment variables** section and click on **Mobile App Link** to open it.
 
 ![image](https://github.com/user-attachments/assets/5c08eefd-fc6d-4bfb-b2ee-3f6eef80f66d)
  
@@ -117,7 +120,6 @@ To get the Shift Planner mobile app link environment variable:
 ![image](https://github.com/user-attachments/assets/4f345ac8-c416-4fc7-8feb-51081ecddf35)
 
 ![image](https://github.com/user-attachments/assets/db8176c2-d99c-45bd-87d8-d25f9b20c451)
-
 
 ### Populate the reference data:
 To configure the application and populate the necessary reference data, open your environment and go to your model-driven app labeled **Shift Planner Administrator**. As populating the reference data is done in the Model Driven App, please refer to the [Getting Started Guide](getting-started.md) for comprehensive guide on navigating the **Shift Planner Administrator** App and populating the needed reference data.
