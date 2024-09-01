@@ -7,7 +7,7 @@ This involves the following Parts:
 3. Setting up the **Shift Types** that you will staff E.g. Morning Shift, Afternoon Shift, Night Shift
 4. Setting up **Facilities** for which you will roster E.g. Main site
 5. Setting up **Shift Teams** which organise staff into teams for better management, allowing for team-based shift assignments.
-6. Setting up **User Affiliations** to associate staff to zones, making them available for scheduling in that zone. 
+6. Setting up **Users** ready for scheduling
 
 ## Load Reference Data
 The first step is to load reference data into the system. 
@@ -57,8 +57,7 @@ Facilities are the the primary grouping for locations to which will plan shifts 
 3. Click on the **Zone** tab of the newly created facility
 4. For each zone you plan to roster for, click the  **+New Zone** button, populate the name and click **Save**
 ![image](https://github.com/user-attachments/assets/65376b2a-426d-4793-a0be-477a712b9a39)
-
-5. Repeat this process for each facility you wish to create
+5. Repeat steps 2-4 for each facility you wish to create
 
 ### Part 5: Setup Shift Teams
 Shift Teams are how staff are grouped together. They are associated to a particular Zone and Shift Type. To setup the roles, perform the following steps.
@@ -66,9 +65,22 @@ Shift Teams are how staff are grouped together. They are associated to a particu
 1. From the **Shift Planner Administrator** App, navigate to **Shift Team**
 2. Click **New** to create a new Shift Team, populate the Name and Description, specify a Shift Type and Zone, then press **Save**
 ![image](https://github.com/user-attachments/assets/befc55b4-62db-4a44-80ed-b7b9c8a95b6e)
-
-3. Repeat step 2 for each Shift Team
+3. For each position within the team, click **+New Position** to add a position
+![image](https://github.com/user-attachments/assets/2d80ed18-dc30-4f4a-bef3-e4fc71595079)
+4. Populate the quick create form by specifying the Role, Effective From and Effective To dates. You can optionally specify a standard Resource for the role. Then press **Save and Close**
+![image](https://github.com/user-attachments/assets/3b5b9542-a6ca-4bf6-a5ff-e1b929fe7c43)
+5. Repeat steps 2-4 for each Shift Team
 > [!NOTE]
 > You can also create a Shift Team from the details screen for a **Zone**
 > ![image](https://github.com/user-attachments/assets/c4f1cd84-457c-45fa-af9e-5a41adbb4244)
 
+### Part 7: Setting up Users
+1. From the **Shift Planner Administrator** App, select the **Users** menu option
+2. Select the User record to setup
+3. Click the **Shift Planner** tab on the User form
+![image](https://github.com/user-attachments/assets/233499f5-ec4a-4bf5-8619-4085615c1c56)
+4. Setup the Zones to which this User is affiliated (i.e. available for scheduling) by clicking the ![image](https://github.com/user-attachments/assets/1bd6325b-922d-48ed-bc54-60ff1e2f098a) button and populating the Facility and Zone to associate them with. Then click the **Save and Close** button.
+5. Repeat step 4 for each zone 
+6. Setup the Roles to which this User is authorised to perform by clicking the ![image](https://github.com/user-attachments/assets/b412275e-0dec-4d86-9c99-62cf52c86ac9)
+ button to display the Quick Create form. Populate the Resource and Role fields. Then click the **Save and Close** button.
+5. Repeat step 6 for each Role the user can perform.
