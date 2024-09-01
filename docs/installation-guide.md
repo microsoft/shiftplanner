@@ -47,7 +47,6 @@ Roles can be assigned from the admin portal using the following steps:
 3. Click on Users > See all
 4. Select the user(s), click **Manage security roles,** and select the appropriate role.
 5. Click Save
-6. Publish the canvas application.
 
 ### To publish the canvas application:
 1. Go to the power apps portal https://make.powerapps.com/
