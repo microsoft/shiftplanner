@@ -5,7 +5,8 @@ This involves the following Parts:
 1. Loading **Email Templates** for communications the system will perform
 2. Setting up **Facilities** for which you will roster E.g. Main site
 3. Establishing the unique **Roles** that users will perform E.g. 
-4. Setting up the **Shift types** that you will staff E.g. Morning Shift, Afternoon Shift, Night Shift
+4. Setting up the **Shift Types** that you will staff E.g. Morning Shift, Afternoon Shift, Night Shift
+5. Setting up **Shift Teams** which organise staff into teams for better management, allowing for team-based shift assignments.
 
 ## Load Reference Data
 The first step is to load reference data into the system. 
@@ -58,3 +59,12 @@ Shift types classify the various types of shifts, such as morning, evening, and 
 > ![image](https://github.com/user-attachments/assets/2f292777-1e7f-4985-8bbe-7f305d00b795)
 
 
+
+### Part 5: Setup Shift Teams
+Shift Teams are how staff are grouped together. They are associated to a particular Zone and Shift Type. To setup the roles, perform the following steps.
+
+1. From the **Shift Planner Administrator** App, navigate to **Shift Team**
+2. Click **New** to create a new Shift Team, populate the Name and Description, specify a Shift Type and Zone, then press **Save**
+![image](https://github.com/user-attachments/assets/befc55b4-62db-4a44-80ed-b7b9c8a95b6e)
+
+3. Repeat step 2 for each Shift Team
