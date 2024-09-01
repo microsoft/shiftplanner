@@ -3,9 +3,9 @@ This document describes the process of configuring and using the Shift Planner P
 
 This involves the following Parts:
 1. Loading **Email Templates** for communications the system will perform
-2. Setting up **Facilities** for which you will roster E.g. Main site
-3. Establishing the unique **Roles** that users will perform E.g. 
-4. Setting up the **Shift Types** that you will staff E.g. Morning Shift, Afternoon Shift, Night Shift
+2. Establishing the unique **Roles** that users will perform E.g. 
+3. Setting up the **Shift Types** that you will staff E.g. Morning Shift, Afternoon Shift, Night Shift
+4. Setting up **Facilities** for which you will roster E.g. Main site
 5. Setting up **Shift Teams** which organise staff into teams for better management, allowing for team-based shift assignments.
 
 ## Load Reference Data
@@ -28,25 +28,14 @@ The first step is to load reference data into the system.
 10. Click **Track Progress** and monitor the import using the Refresh button on the toolbar. When 15 records are successfully loaded, the import is complete
 11. You can navigate back to the **Email Templates** menu option and edit any email templates to suit your organisation.
 
-### Part 2: Setting up Facilities
-Facilities are the the primary grouping for locations to which will plan shifts for. Each facility is divided into Zones. Shifts occur at the Zone level. To setup the facilities, perform the following steps.
-
-1. From the **Shift Planner Administrator** App, navigate to **Facility**
-2. Click **New** to create a new Facility, populate the Name and Description, then press **Save**
-3. Click on the **Zone** tab of the newly created facility
-4. For each zone you plan to roster for, click the  **+New Zone** button, populate the name and click **Save**
-![image](https://github.com/user-attachments/assets/65376b2a-426d-4793-a0be-477a712b9a39)
-
-5. Repeat this process for each facility you wish to create
-
-### Part 3: Setup Roles
+### Part 2: Setup Roles
 Roles are the distinct functions users are qualified and/or authorised to perform (e.g. a triage nurse or receptionist). To setup the roles, perform the following steps.
 
 1. From the **Shift Planner Administrator** App, navigate to **Roles**
 2. Click **New** to create a new Role, populate the Name and Description, then press **Save**
 3. Repeat step 2 for each new Role
    
-### Part 4: Setup Shift Types
+### Part 3: Setup Shift Types
 Shift types classify the various types of shifts, such as morning, evening, and night shifts. These classifications aid in the organization and assignment of shifts based on specific time slots and requirements.
 
 1. From the **Shift Planner Administrator** App, navigate to **Shift Types**
@@ -59,6 +48,16 @@ Shift types classify the various types of shifts, such as morning, evening, and 
 > ![image](https://github.com/user-attachments/assets/2f292777-1e7f-4985-8bbe-7f305d00b795)
 
 
+### Part 4: Setting up Facilities
+Facilities are the the primary grouping for locations to which will plan shifts for. Each facility is divided into Zones. Shifts occur at the Zone level. To setup the facilities, perform the following steps.
+
+1. From the **Shift Planner Administrator** App, navigate to **Facility**
+2. Click **New** to create a new Facility, populate the Name and Description, then press **Save**
+3. Click on the **Zone** tab of the newly created facility
+4. For each zone you plan to roster for, click the  **+New Zone** button, populate the name and click **Save**
+![image](https://github.com/user-attachments/assets/65376b2a-426d-4793-a0be-477a712b9a39)
+
+5. Repeat this process for each facility you wish to create
 
 ### Part 5: Setup Shift Teams
 Shift Teams are how staff are grouped together. They are associated to a particular Zone and Shift Type. To setup the roles, perform the following steps.
@@ -68,3 +67,7 @@ Shift Teams are how staff are grouped together. They are associated to a particu
 ![image](https://github.com/user-attachments/assets/befc55b4-62db-4a44-80ed-b7b9c8a95b6e)
 
 3. Repeat step 2 for each Shift Team
+> [!NOTE]
+> You can also create a Shift Team from the details screen for a **Zone**
+> ![image](https://github.com/user-attachments/assets/c4f1cd84-457c-45fa-af9e-5a41adbb4244)
+
