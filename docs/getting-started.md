@@ -54,3 +54,7 @@ Shift types classify the various types of shifts, such as morning, evening, and 
 > Start Date consists of a Date component and a Time component. The date component is the first date from which the shift will become available for scheduling. The Time component is the time of day that the shift will start.
 > End Date consists of a Date component and a Time component. The date component is the last date on which the shift will be available for scheduling. The Time component is the time of day that the shift will end.
 4. Repeat step 2 for each new Role
+> Here is an example of shifts covering a 24 hour period
+> ![image](https://github.com/user-attachments/assets/2f292777-1e7f-4985-8bbe-7f305d00b795)
+
+
