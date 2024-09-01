@@ -44,3 +44,13 @@ Roles are the distinct functions users are qualified and/or authorised to perfor
 1. From the **Shift Planner Administrator** App, navigate to **Roles**
 2. Click **New** to create a new Role, populate the Name and Description, then press **Save**
 3. Repeat step 2 for each new Role
+   
+### Part 4: Setup Shift Types
+Shift types classify the various types of shifts, such as morning, evening, and night shifts. These classifications aid in the organization and assignment of shifts based on specific time slots and requirements.
+
+1. From the **Shift Planner Administrator** App, navigate to **Shift Types**
+2. Click **New** to create a new Shift Type, populate the Name, Start Date, and End Date then click **Save**
+> [!NOTE]
+> Start Date consists of a Date component and a Time component. The date component is the first date from which the shift will become available for scheduling. The Time component is the time of day that the shift will start.
+> End Date consists of a Date component and a Time component. The date component is the last date on which the shift will be available for scheduling. The Time component is the time of day that the shift will end.
+4. Repeat step 2 for each new Role
