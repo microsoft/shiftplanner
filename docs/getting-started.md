@@ -1,8 +1,13 @@
 # Shift Planner Getting Started Guide
 This document describes the process of configuring and using the Shift Planner Power Platform Template for your team or organisation.
 
+This involves the following Parts:
+1. Loading Email Templates
+2. Setting up Facilities
+
 ## Load Reference Data
 The first step is to load reference data into the system. 
+
 ### Part 1: Email Templates
 1. Download the email templates from [here](Default-Email-Templates.xlsx)
 2. Navigate to [make.powerapps.com](https://make.powerapps.com/)
@@ -11,3 +16,11 @@ The first step is to load reference data into the system.
 > [!NOTE]
 > If the play button is disabled or not visible, you need to publish all customisations. Navigate to **Solution** in the left navigation and press the **Publish all customisations** button. Once this is complete, the playu button should be visible
 5. Click on the **Email Templates** left menu option
+> ![image](https://github.com/user-attachments/assets/4a32de37-8a8d-47a3-bca8-ecf7a37fc1c6)
+6. From the toolbar, click on the Import From Excel button
+> ![image](https://github.com/user-attachments/assets/71df4b4e-e22e-4f2e-8a70-1a6f8baabab2)
+7. Select the file you downloaded from [here](Default-Email-Templates.xlsx)
+8. Click **Next**
+9. Click **Finish Import**
+10. Click **Track Progress** and monitor the import using the Refresh button on the toolbar. When 15 records are successfully loaded, the import is complete
+11. You can navigate back to the **Email Templates** menu option and edit any email templates to suit your organisation.
