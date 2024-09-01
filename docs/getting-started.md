@@ -38,4 +38,8 @@ Facilities are the the primary grouping for locations to which will plan shifts 
 5. Repeat this process for each facility you wish to create
 
 ### Part 3: Setup Roles
+Roles are the distinct functions users are qualified and/or authorised to perform (e.g. a triage nurse or receptionist). To setup the roles, perform the following steps.
 
+1. From the **Shift Planner Administrator** App, navigate to **Roles**
+2. Click **New** to create a new Role, populate the Name and Description, then press **Save**
+3. Repeat step 2 for each new Role
