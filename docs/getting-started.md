@@ -24,3 +24,12 @@ The first step is to load reference data into the system.
 9. Click **Finish Import**
 10. Click **Track Progress** and monitor the import using the Refresh button on the toolbar. When 15 records are successfully loaded, the import is complete
 11. You can navigate back to the **Email Templates** menu option and edit any email templates to suit your organisation.
+
+### Part 2: Setting up Facilities
+1. From the **Shift Planner Administrator** App, navigate to **Facility**
+2. Click **New** to create a new Facility, populate the Name and Description, then press **Save**
+3. Click on the **Zone** tab of the newly created facility
+4. For each zone you plan to roster for, click the  **+New Zone** button, populate the name and click **Save**
+![image](https://github.com/user-attachments/assets/65376b2a-426d-4793-a0be-477a712b9a39)
+
+5. Repeat this process for each facility you wish to create
