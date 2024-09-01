@@ -7,6 +7,7 @@ This involves the following Parts:
 3. Setting up the **Shift Types** that you will staff E.g. Morning Shift, Afternoon Shift, Night Shift
 4. Setting up **Facilities** for which you will roster E.g. Main site
 5. Setting up **Shift Teams** which organise staff into teams for better management, allowing for team-based shift assignments.
+6. Setting up **User Affiliations** to associate staff to zones, making them available for scheduling in that zone. 
 
 ## Load Reference Data
 The first step is to load reference data into the system. 
