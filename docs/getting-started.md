@@ -3,8 +3,9 @@ This document describes the process of configuring and using the Shift Planner P
 
 This involves the following Parts:
 1. Loading **Email Templates** for communications the system will perform
-2. Setting up **Facilities** for which you will roster
-3. Establishing the unique **Roles** that users will perform
+2. Setting up **Facilities** for which you will roster E.g. Main site
+3. Establishing the unique **Roles** that users will perform E.g. 
+4. Setting up the **Shift types** that you will staff E.g. Morning Shift, Afternoon Shift, Night Shift
 
 ## Load Reference Data
 The first step is to load reference data into the system. 
