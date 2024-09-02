@@ -99,7 +99,8 @@ Planner.**
 
 ## Initial Configuration
 The canvas applications feed the data on Dataverse and need the environment variables set up to work. There are also flows that run as part of the applications’ functionalities and capabilities. Please ensure these flows are turned on before using the applications.
-### Fill in the environment variables:
+
+### Set the environment variables
 The solution includes two (2) environment variables that must be filled in first:
 - Mobile App Link – The link to the Shift Planner mobile app when played
 - Shared Calendar Name – Name of user’s regular calendar (the default name is **Calendar**)
@@ -121,6 +122,33 @@ To get the Shift Planner mobile app link environment variable:
 
 ![image](https://github.com/user-attachments/assets/db8176c2-d99c-45bd-87d8-d25f9b20c451)
 
-### Populate the reference data:
-To configure the application and populate the necessary reference data, open your environment and go to your model-driven app labeled **Shift Planner Administrator**. As populating the reference data is done in the Model Driven App, please refer to the [Getting Started Guide](getting-started.md) for comprehensive guide on navigating the **Shift Planner Administrator** App and populating the needed reference data.
+### Validate the Cloud Flows are turned on
+Now that environment variables are setup, you need to make sure all the cloud flows are turned on by following the below steps:
+
+1. Navigate to make.powerapps.com
+2. Navigate to Solutions --> Shift Planner --> Cloud flows
+3. See if any cloud flows are turned off by looking at the values in the Status column
+> ![image](https://github.com/user-attachments/assets/a8d30ef7-3c8a-4e94-bde0-58fcca41be64)
+4. For any flow in status off, click triple dots --> details --> details in new tab
+![image](https://github.com/user-attachments/assets/2cff89de-8df2-46ab-813c-e06539f29bd3)
+5. In the newly opened browser window, click the Turn On button from the toolbar
+![image](https://github.com/user-attachments/assets/b959720f-bfb4-4acc-b728-93d11f631f6a)
+
+> [!NOTE]
+> If you receive an error such as "Workflow cannot be used as a child workflow because child workflows only support embedded connections", it is caused by the child workflow not having a run only connection set.
+>
+> To Fix this error:
+> 
+> a. Navigate to the detail screen of the **child** workflow.
+> 
+> b. Click on the edit button in the Run Only users box
+> ![image](https://github.com/user-attachments/assets/78e61761-1053-44f0-b852-706f275df113)
+> 
+> c. Ensure each box has a "use this connection" set
+> 
+> d. Click Save, and attempt to turn the parent workflow on. 
+
+
+### Populate the reference data
+To configure the application and populate the necessary reference data, open your environment and go to your model-driven app labeled **Shift Planner Administrator**, refer to the [Getting Started Guide](getting-started.md) for details
 
