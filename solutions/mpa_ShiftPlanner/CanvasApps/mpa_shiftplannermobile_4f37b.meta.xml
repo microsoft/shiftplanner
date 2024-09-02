@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>mpa_shiftplannermobile_4f37b</Name>
-  <AppVersion>2024-08-31T06:51:54Z</AppVersion>
+  <AppVersion>2024-09-02T06:59:00Z</AppVersion>
   <Status>Ready</Status>
   <CreatedByClientVersion>3.24082.13.0</CreatedByClientVersion>
   <MinClientVersion>3.24082.13.0</MinClientVersion>
-  <Tags>{"primaryDeviceWidth":"759","primaryDeviceHeight":"52","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24082.13","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20240831T063845Z-3.24082.13.0"}</Tags>
+  <Tags>{"primaryDeviceWidth":"759","primaryDeviceHeight":"753","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24082.13","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20240831T065154Z-3.24082.13.0"}</Tags>
   <IsCdsUpgraded>0</IsCdsUpgraded>
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>

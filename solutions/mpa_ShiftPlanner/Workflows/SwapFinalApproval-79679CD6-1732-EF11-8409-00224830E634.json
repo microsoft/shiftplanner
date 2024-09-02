@@ -2,6 +2,7 @@
   "properties": {
     "connectionReferences": {
       "shared_commondataserviceforapps": {
+        "impersonation": {},
         "runtimeSource": "embedded",
         "connection": {
           "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
@@ -11,7 +12,7 @@
         }
       },
       "shared_conversionservice_1": {
-        "runtimeSource": "invoker",
+        "runtimeSource": "embedded",
         "connection": {
           "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorContentConversion"
         },
