@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24073.202" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24091.198" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24091.198" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.24091.00198">
   <SolutionManifest>
     <UniqueName>mpa_ShiftPlanner</UniqueName>
     <LocalizedNames>
@@ -142,7 +142,15 @@
         <Dependent type="80" schemaName="mpa_ShiftPlannerAdministrator" displayName="Shift Planner Administrator" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.11)" id.uniquename="AppChannel" />
+        <Required type="66" schemaName="MscrmControls.NumberInput.NumberInputControl" displayName="MscrmControls.NumberInput.NumberInputControl" solution="BaseCustomControlsCore (9.0.2409.1008)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Shift Type" id="{5035bd88-5289-4a5f-b732-c7b612a80f3e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="mss_sharedcommondataserviceforapps_31651" solution="Active" id.connectionreferencelogicalname="mss_sharedcommondataserviceforapps_31651" />
+        <Dependent type="29" displayName="Send Calendar Invite" id="{f21a5ff0-202a-ef11-840a-0022482dada3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel" />
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mpa_ShiftPlannerAdministrator,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="mpa_ShiftPlannerAdministrator" id.settingdefinitionid.uniquename="AppChannel" />
       </MissingDependency>
     </MissingDependencies>

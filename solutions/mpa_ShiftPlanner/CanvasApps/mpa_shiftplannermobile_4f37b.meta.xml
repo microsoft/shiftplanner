@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>mpa_shiftplannermobile_4f37b</Name>
-  <AppVersion>2024-09-02T06:59:00Z</AppVersion>
+  <AppVersion>2024-10-07T05:56:08Z</AppVersion>
   <Status>Ready</Status>
-  <CreatedByClientVersion>3.24082.13.0</CreatedByClientVersion>
-  <MinClientVersion>3.24082.13.0</MinClientVersion>
-  <Tags>{"primaryDeviceWidth":"759","primaryDeviceHeight":"753","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24082.13","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20240831T065154Z-3.24082.13.0"}</Tags>
+  <CreatedByClientVersion>3.24092.19.0</CreatedByClientVersion>
+  <MinClientVersion>3.24092.19.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"759","primaryDeviceHeight":"640","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24092.19","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20240906T074336Z-3.24083.14.0"}</Tags>
   <IsCdsUpgraded>0</IsCdsUpgraded>
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
@@ -14,7 +14,7 @@
   <CommitMessage xsi:nil="true"></CommitMessage>
   <Publisher></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
-  <ConnectionReferences>{"36392293-2796-440b-b8d7-53b7ed00b1d9":{"id":"/providers/microsoft.powerapps/apis/shared_office365users","displayName":"Office 365 Users","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1702/1.0.1702.3810/office365users/icon.png","dataSources":["Office365Users"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["UserPhotoMetadata","UserPhoto_V2","UserProfile_V2"]}}</ConnectionReferences>
+  <ConnectionReferences>{"36392293-2796-440b-b8d7-53b7ed00b1d9":{"id":"/providers/microsoft.powerapps/apis/shared_office365users","displayName":"Office 365 Users","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1715/1.0.1715.3906/office365users/icon.png","dataSources":["Office365Users"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["UserPhotoMetadata","UserPhoto_V2","UserProfile_V2"]}}</ConnectionReferences>
   <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified","environmentVariableName":""}},"dataSources":{"shiftplanner_shiftteams":{"entitySetName":"mpa_shiftplanner_shiftteams","logicalName":"mpa_shiftplanner_shiftteam"},"shiftplanner_shifttypes":{"entitySetName":"mpa_shiftplanner_shifttypes","logicalName":"mpa_shiftplanner_shifttype"},"User Roles":{"entitySetName":"mpa_shiftplanner_userroles","logicalName":"mpa_shiftplanner_userrole"},"Users":{"entitySetName":"systemusers","logicalName":"systemuser"},"Roles":{"entitySetName":"mpa_shiftplanner_roles","logicalName":"mpa_shiftplanner_role"},"Team Positions":{"entitySetName":"mpa_shiftplanner_teampositions","logicalName":"mpa_shiftplanner_teamposition"},"User Affiliations":{"entitySetName":"mpa_shiftplanner_useraffiliations","logicalName":"mpa_shiftplanner_useraffiliation"},"Facilities":{"entitySetName":"mpa_shiftplanner_facilities","logicalName":"mpa_shiftplanner_facility"},"Shift Bookings":{"entitySetName":"mpa_shiftplanner_shiftbookings","logicalName":"mpa_shiftplanner_shiftbooking"},"Change Requests":{"entitySetName":"mpa_shiftplanner_changerequests","logicalName":"mpa_shiftplanner_changerequest"}}}}</DatabaseReferences>
   <AppComponents>[]</AppComponents>
   <AppComponentDependencies>[]</AppComponentDependencies>

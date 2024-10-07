@@ -1,36 +1,45 @@
 {
   "properties": {
     "connectionReferences": {
-      "shared_office365_1": {
-        "runtimeSource": "embedded",
-        "connection": {
-          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorsOutlook"
-        },
-        "api": {
-          "name": "shared_office365"
-        }
-      },
       "shared_commondataserviceforapps_1": {
-        "runtimeSource": "embedded",
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
         "connection": {
           "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
         },
+        "runtimeSource": "embedded"
+      },
+      "shared_office365_1": {
+        "api": {
+          "name": "shared_office365"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorsOutlook"
+        },
+        "runtimeSource": "embedded"
+      },
+      "shared_commondataserviceforapps": {
         "api": {
           "name": "shared_commondataserviceforapps"
-        }
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "mss_sharedcommondataserviceforapps_31651"
+        },
+        "runtimeSource": "embedded"
       }
     },
     "definition": {
       "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
-        "$connections": {
-          "defaultValue": {},
-          "type": "Object"
-        },
         "$authentication": {
           "defaultValue": {},
           "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
         },
         "Shared Calendar Name (mpa_varcalendarname)": {
           "defaultValue": "Calendar",
@@ -41,7 +50,7 @@
           }
         },
         "Mobile App Link (mpa_varmobileapplink)": {
-          "defaultValue": "https://apps.powerapps.com/play/e/028b3a63-7645-ee3d-8ade-b5d058c29617/a/9bc194bd-7b8f-4d5b-a1d9-200bedcc7273?tenantId=fe2dcd3b-6648-414a-8c8e-8761944769ce&sourcetime=1718776648314",
+          "defaultValue": "https://apps.powerapps.com/play/e/cffba770-6a8d-ee17-8457-22c900204611/a/e94d9d65-ad3e-4830-86ae-3f52571d0be1?tenantId=8a176326-6484-44a3-bc03-1efc217fd5aa&hint=08e57a06-f167-4159-99f0-e2df4e4400b6&sourcetime=1725175526083",
           "type": "String",
           "metadata": {
             "schemaName": "mpa_varmobileapplink",
@@ -51,33 +60,29 @@
       },
       "triggers": {
         "When_a_row_is_added": {
-          "metadata": {
-            "operationMetadataId": "45649c69-0f6f-4a0f-9402-b7555bebb82c"
-          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "SubscribeWebhookTrigger",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
             "parameters": {
               "subscriptionRequest/message": 1,
               "subscriptionRequest/entityname": "mpa_shiftplanner_emaillog",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/runas": 3
             },
-            "authentication": "@parameters('$authentication')"
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "45649c69-0f6f-4a0f-9402-b7555bebb82c"
           }
         }
       },
       "actions": {
         "Initialize_Calendar_ID": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "56e7da45-24b7-4895-b75e-e408d5f9e44e"
-          },
           "type": "InitializeVariable",
+          "description": "Variable Calendar ID",
           "inputs": {
             "variables": [
               {
@@ -86,18 +91,14 @@
               }
             ]
           },
-          "description": "Variable Calendar ID"
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "56e7da45-24b7-4895-b75e-e408d5f9e44e"
+          }
         },
         "Initialize_InviteID": {
-          "runAfter": {
-            "Initialize_Calendar_ID": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "953c50a0-f3f3-4e60-9450-92c0b2409a36"
-          },
           "type": "InitializeVariable",
+          "description": "Variable that holds Invite ID.",
           "inputs": {
             "variables": [
               {
@@ -106,9 +107,25 @@
               }
             ]
           },
-          "description": "Variable that holds Invite ID."
+          "runAfter": {
+            "Initialize_Calendar_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "953c50a0-f3f3-4e60-9450-92c0b2409a36"
+          }
         },
         "List_of_Calendars": {
+          "type": "OpenApiConnection",
+          "description": "Getting List of Available Calendars",
+          "inputs": {
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "CalendarGetTables_V2",
+              "connectionName": "shared_office365_1"
+            }
+          },
           "runAfter": {
             "Calculate_EventEndDateTime": [
               "Succeeded"
@@ -116,59 +133,51 @@
           },
           "metadata": {
             "operationMetadataId": "44022528-c4ca-4fe1-a48a-4d005e17a697"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_office365_1",
-              "operationId": "CalendarGetTables_V2",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
-            },
-            "parameters": {},
-            "authentication": "@parameters('$authentication')"
-          },
-          "description": "Getting List of Available Calendars"
+          }
         },
         "Loop_of_Name": {
+          "type": "Foreach",
+          "description": "Looping of Available Name",
           "foreach": "@outputs('List_of_Calendars')?['body/value']",
           "actions": {
             "Compose": {
-              "runAfter": {},
+              "type": "Compose",
+              "inputs": "\n@{items('Loop_of_Name')?['name']}\n\n\n\n",
               "metadata": {
                 "operationMetadataId": "c7d0c9b9-827b-42e7-a0d4-56822e72f2f1"
-              },
-              "type": "Compose",
-              "inputs": "\n@{items('Loop_of_Name')?['name']}\n\n\n\n"
+              }
             },
             "Condition": {
-              "actions": {
-                "Set_Calendar_ID": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "ac5867fe-8d03-4e6b-874b-ec5f94e32cdc"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "Calendar ID",
-                    "value": "@items('Loop_of_Name')?['id']"
-                  }
-                }
-              },
-              "runAfter": {
-                "Compose": [
-                  "Succeeded"
-                ]
-              },
+              "type": "If",
               "expression": {
                 "equals": [
                   "@items('Loop_of_Name')?['name']",
                   "@parameters('Shared Calendar Name (mpa_varcalendarname)')"
                 ]
               },
+              "actions": {
+                "Set_Calendar_ID": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Calendar ID",
+                    "value": "@items('Loop_of_Name')?['id']"
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ac5867fe-8d03-4e6b-874b-ec5f94e32cdc"
+                  }
+                }
+              },
+              "else": {
+                "actions": {}
+              },
+              "runAfter": {
+                "Compose": [
+                  "Succeeded"
+                ]
+              },
               "metadata": {
                 "operationMetadataId": "39938ad1-e6d4-45bc-9d2a-0bd0d376773e"
-              },
-              "type": "If"
+              }
             }
           },
           "runAfter": {
@@ -178,23 +187,33 @@
           },
           "metadata": {
             "operationMetadataId": "549e1d1d-e74f-4ab1-b6e1-69bc78b4b2d0"
-          },
-          "type": "Foreach",
-          "description": "Looping of Available Name"
+          }
         },
         "Compose_EventStartDateTime": {
+          "type": "Compose",
+          "inputs": "@concat(triggerOutputs()?['body/mpa_date'],'T',formatDateTime(outputs('Get_Shift_Type')?['body/mpa_startdate'], 'HH:mm:ss'))",
           "runAfter": {
-            "Get_Shift_Type": [
-              "Succeeded"
+            "Get_Timezone_Definition": [
+              "SUCCEEDED"
             ]
           },
           "metadata": {
             "operationMetadataId": "6e87edac-e55c-48a3-8bab-1769b696a6dd"
-          },
-          "type": "Compose",
-          "inputs": "@concat(triggerOutputs()?['body/mpa_date'],'T',formatDateTime(outputs('Get_Shift_Type')?['body/mpa_startdate'], 'HH:mm:ss'))"
+          }
         },
         "Get_Team_Position": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_teampositions",
+              "recordId": "@triggerOutputs()?['body/_mpa_teamposition_value']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
+          },
           "runAfter": {
             "Get_Assigned_Resource": [
               "Succeeded"
@@ -202,22 +221,22 @@
           },
           "metadata": {
             "operationMetadataId": "e3eebbcb-b529-43ab-a22c-846f5fc929d5"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "mpa_shiftplanner_teampositions",
-              "recordId": "@triggerOutputs()?['body/_mpa_teamposition_value']"
-            },
-            "authentication": "@parameters('$authentication')"
           }
         },
         "Get_Shift_Team": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftteams",
+              "recordId": "@outputs('Get_Team_Position')?['body/_mpa_shiftteam_value']",
+              "$expand": "mpa_zone($select=_mpa_facility_value)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
+          },
           "runAfter": {
             "Get_Team_Position": [
               "Succeeded"
@@ -225,22 +244,21 @@
           },
           "metadata": {
             "operationMetadataId": "98c48f8c-d1af-4c8c-8db9-460a06dbdb14"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "mpa_shiftplanner_shiftteams",
-              "recordId": "@outputs('Get_Team_Position')?['body/_mpa_shiftteam_value']"
-            },
-            "authentication": "@parameters('$authentication')"
           }
         },
         "Get_Shift_Type": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shifttypes",
+              "recordId": "@outputs('Get_Shift_Team')?['body/_mpa_shifttype_value']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
+          },
           "runAfter": {
             "Get_Shift_Team": [
               "Succeeded"
@@ -248,39 +266,38 @@
           },
           "metadata": {
             "operationMetadataId": "dab37dd9-a69a-4fd5-b5d4-d69b493f840f"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "mpa_shiftplanner_shifttypes",
-              "recordId": "@outputs('Get_Shift_Team')?['body/_mpa_shifttype_value']"
-            },
-            "authentication": "@parameters('$authentication')"
           }
         },
         "Calculate_EventEndDateTime": {
+          "type": "Expression",
+          "kind": "AddToTime",
+          "inputs": {
+            "baseTime": "@body('Apply_Start_Offset_to_EventStartDateTime')",
+            "interval": "@body('Get_Shift_Type')?['mpa_duration']",
+            "timeUnit": "Hour"
+          },
           "runAfter": {
-            "Compose_-_Get_Hour_value": [
+            "Apply_Start_Offset_to_EventStartDateTime": [
               "Succeeded"
             ]
           },
           "metadata": {
             "operationMetadataId": "b93f7216-6b0d-4dcb-8782-0417d3e11882"
-          },
-          "type": "Expression",
-          "kind": "AddToTime",
-          "inputs": {
-            "baseTime": "@{outputs('Compose_EventStartDateTime')}",
-            "interval": "@Int(outputs('Compose_-_Get_Hour_value')[0])",
-            "timeUnit": "Hour"
           }
         },
         "Get_Assigned_Resource": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_mpa_resource_value']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
+          },
           "runAfter": {
             "Initialize_InviteID": [
               "Succeeded"
@@ -288,81 +305,70 @@
           },
           "metadata": {
             "operationMetadataId": "fe6e3406-17f8-4977-b0b6-6c8ac88f344f"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "systemusers",
-              "recordId": "@triggerOutputs()?['body/_mpa_resource_value']"
-            },
-            "authentication": "@parameters('$authentication')"
           }
         },
         "Switch": {
-          "runAfter": {
-            "Loop_of_Name": [
-              "Succeeded"
-            ]
+          "type": "Switch",
+          "expression": "@triggerOutputs()?['body/mpa_inviteaction']",
+          "default": {
+            "actions": {}
           },
           "cases": {
             "Invite_Action_Add": {
-              "case": 1,
               "actions": {
                 "Email_Template_for_new_Staff": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "06468255-740e-473d-8a3a-3e15f2f7cad4"
-                  },
                   "type": "OpenApiConnection",
+                  "description": "Select email template for new staff",
                   "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "ListRecords",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
                     "parameters": {
                       "entityName": "mpa_shiftplanner_emailtemplates",
                       "$filter": "mpa_name eq 'When Staffed'",
                       "$top": 1
                     },
-                    "authentication": "@parameters('$authentication')"
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
                   },
-                  "description": "Select email template for new staff"
+                  "metadata": {
+                    "operationMetadataId": "06468255-740e-473d-8a3a-3e15f2f7cad4"
+                  }
                 },
                 "Apply_to_each_New_Staff_Template": {
+                  "type": "Foreach",
                   "foreach": "@outputs('Email_Template_for_new_Staff')?['body/value']",
                   "actions": {
                     "Create_and_Send_Add_Staff_Calendar_Invite": {
-                      "runAfter": {},
-                      "metadata": {
-                        "operationMetadataId": "d5ef934f-617c-4dfe-85fc-ec858811e4ee"
-                      },
                       "type": "OpenApiConnection",
+                      "description": "Create and Send Add Staff Calendar Invite",
                       "inputs": {
-                        "host": {
-                          "connectionName": "shared_office365_1",
-                          "operationId": "V4CalendarPostItem",
-                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
-                        },
                         "parameters": {
-                          "table": "AQMkAGY3ZGVjODA4LTBmNDgtNDA3NS04YmIANi03OGJhMWM0OWIxNjUARgAAAw4uWjwVmnRLgEaNOe9V1N0HAJKzjC-KboBDqk5svl6r0SkAAAIBBgAAAJKzjC-KboBDqk5svl6r0SkAAALqegAAAA==",
+                          "table": "@variables('Calendar ID')",
                           "item/subject": "@items('Apply_to_each_New_Staff_Template')?['mpa_subject']",
-                          "item/start": "@outputs('Compose_EventStartDateTime')",
+                          "item/start": "@body('Apply_Start_Offset_to_EventStartDateTime')",
                           "item/end": "@body('Calculate_EventEndDateTime')",
-                          "item/timeZone": "(UTC) Coordinated Universal Time",
+                          "item/timeZone": "@replace(first(outputs('Get_Timezone_Definition')?['body/value'])['userinterfacename'], 'GMT', 'UTC')",
                           "item/requiredAttendees": "@outputs('Get_Assigned_Resource')?['body/internalemailaddress']",
                           "item/body": "<p>@{replace(\r\n    replace(\r\n        replace(\r\n            replace(\r\n                replace(\r\n                    replace(\r\n                        replace(items('Apply_to_each_New_Staff_Template')?['mpa_body'],\r\n                        '[Shift Type]',\r\n                        triggerOutputs()?['body/mpa_shifttype']),\r\n                    '[Date]',\r\n                    triggerOutputs()?['body/mpa_date']),\r\n                '[Zone]',\r\n                triggerOutputs()?['body/mpa_zone']),\r\n            '[Team]',\r\n            triggerOutputs()?['body/mpa_team']),\r\n        '[Position]',\r\n        triggerOutputs()?['body/mpa_role']),\r\n    '[Start Time]',\r\n    formatDateTime(outputs('Compose_EventStartDateTime'),'h:mm tt')),\r\n'[End Time]',\r\nformatDateTime(body('Calculate_EventEndDateTime'),'h:mm tt'))} <a href=\"@{parameters('Mobile App Link (mpa_varmobileapplink)')}\"> Shift Planner Mobile Application</a>.</p>"
                         },
-                        "authentication": "@parameters('$authentication')"
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                          "operationId": "V4CalendarPostItem",
+                          "connectionName": "shared_office365_1"
+                        }
                       },
-                      "description": "Create and Send Add Staff Calendar Invite"
+                      "metadata": {
+                        "operationMetadataId": "d5ef934f-617c-4dfe-85fc-ec858811e4ee"
+                      }
                     },
                     "Set_created_add_staff_event_id_to_InviteID": {
+                      "type": "SetVariable",
+                      "description": "Set variable created add staff event id to InviteID",
+                      "inputs": {
+                        "name": "InviteID",
+                        "value": "@outputs('Create_and_Send_Add_Staff_Calendar_Invite')?['body/id']"
+                      },
                       "runAfter": {
                         "Create_and_Send_Add_Staff_Calendar_Invite": [
                           "Succeeded"
@@ -370,15 +376,24 @@
                       },
                       "metadata": {
                         "operationMetadataId": "92446328-c8ae-4c89-9a13-1e2e09c39bc0"
-                      },
-                      "type": "SetVariable",
-                      "inputs": {
-                        "name": "InviteID",
-                        "value": "@outputs('Create_and_Send_Add_Staff_Calendar_Invite')?['body/id']"
-                      },
-                      "description": "Set variable created add staff event id to InviteID"
+                      }
                     },
                     "Update_row_in_Email_Logs_Add_Staff": {
+                      "type": "OpenApiConnection",
+                      "description": "Update row in Email Logs Add Staff",
+                      "inputs": {
+                        "parameters": {
+                          "entityName": "mpa_shiftplanner_emaillogs",
+                          "recordId": "@triggerOutputs()?['body/mpa_shiftplanner_emaillogid']",
+                          "item/mpa_calendarid": "@variables('Calendar ID')",
+                          "item/mpa_calendarinviteid": "@variables('InviteID')"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "connectionName": "shared_commondataserviceforapps_1"
+                        }
+                      },
                       "runAfter": {
                         "Set_created_add_staff_event_id_to_InviteID": [
                           "Succeeded"
@@ -386,23 +401,7 @@
                       },
                       "metadata": {
                         "operationMetadataId": "2d0fd801-35c7-4b66-b583-22afc19dad89"
-                      },
-                      "type": "OpenApiConnection",
-                      "inputs": {
-                        "host": {
-                          "connectionName": "shared_commondataserviceforapps_1",
-                          "operationId": "UpdateRecord",
-                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                        },
-                        "parameters": {
-                          "entityName": "mpa_shiftplanner_emaillogs",
-                          "recordId": "@triggerOutputs()?['body/mpa_shiftplanner_emaillogid']",
-                          "item/mpa_calendarid": "@variables('Calendar ID')",
-                          "item/mpa_calendarinviteid": "@variables('InviteID')"
-                        },
-                        "authentication": "@parameters('$authentication')"
-                      },
-                      "description": "Update row in Email Logs Add Staff"
+                      }
                     }
                   },
                   "runAfter": {
@@ -412,26 +411,16 @@
                   },
                   "metadata": {
                     "operationMetadataId": "ada74b99-7ce4-44e4-ba57-e4655a2f8489"
-                  },
-                  "type": "Foreach"
+                  }
                 }
-              }
+              },
+              "case": 1
             },
             "Invite_Action_Unpublished": {
-              "case": 2,
               "actions": {
                 "Get_Calendar_and_Invite_IDs": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "eea7bc16-57ed-44be-b699-8d8c87cfdfe6"
-                  },
                   "type": "OpenApiConnection",
                   "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "ListRecords",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
                     "parameters": {
                       "entityName": "mpa_shiftplanner_emaillogs",
                       "$select": "mpa_calendarid, mpa_calendarinviteid",
@@ -439,10 +428,22 @@
                       "$orderby": "modifiedon desc",
                       "$top": 1
                     },
-                    "authentication": "@parameters('$authentication')"
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
+                  "metadata": {
+                    "operationMetadataId": "eea7bc16-57ed-44be-b699-8d8c87cfdfe6"
                   }
                 },
                 "Set_Calendar_ID_to_Remove": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Calendar ID",
+                    "value": "@{first(body('Get_Calendar_and_Invite_IDs')?['value'])?['mpa_calendarid']}"
+                  },
                   "runAfter": {
                     "Get_Calendar_and_Invite_IDs": [
                       "Succeeded"
@@ -450,14 +451,14 @@
                   },
                   "metadata": {
                     "operationMetadataId": "2d4dac4c-7adc-4306-9d3b-068f2d9e128a"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "Calendar ID",
-                    "value": "@{first(body('Get_Calendar_and_Invite_IDs')?['value'])?['mpa_calendarid']}"
                   }
                 },
                 "Set_Invite_ID_to_Remove": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "InviteID",
+                    "value": "@{first(body('Get_Calendar_and_Invite_IDs')?['value'])?['mpa_calendarinviteid']}"
+                  },
                   "runAfter": {
                     "Set_Calendar_ID_to_Remove": [
                       "Succeeded"
@@ -465,14 +466,21 @@
                   },
                   "metadata": {
                     "operationMetadataId": "b119ff7c-0951-4f72-b79b-ea7683b6c192"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "InviteID",
-                    "value": "@{first(body('Get_Calendar_and_Invite_IDs')?['value'])?['mpa_calendarinviteid']}"
                   }
                 },
                 "Delete_Calendar_Invite_for_Published": {
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "calendar": "@variables('Calendar ID')",
+                      "event": "@variables('InviteID')"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                      "operationId": "CalendarDeleteItem_V2",
+                      "connectionName": "shared_office365_1"
+                    }
+                  },
                   "runAfter": {
                     "Set_Invite_ID_to_Remove": [
                       "Succeeded"
@@ -480,38 +488,16 @@
                   },
                   "metadata": {
                     "operationMetadataId": "829f7922-1927-475c-864e-46d0aebd64ea"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_office365_1",
-                      "operationId": "CalendarDeleteItem_V2",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
-                    },
-                    "parameters": {
-                      "calendar": "@variables('Calendar ID')",
-                      "event": "@variables('InviteID')"
-                    },
-                    "authentication": "@parameters('$authentication')"
                   }
                 }
-              }
+              },
+              "case": 2
             },
             "Invite_Action_Remove": {
-              "case": 3,
               "actions": {
                 "Get_Calendar_and_Invite_IDs_to_be_Removed": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "0bb6bae4-3b2e-4222-a18f-be4e791d16a6"
-                  },
                   "type": "OpenApiConnection",
                   "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "ListRecords",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
                     "parameters": {
                       "entityName": "mpa_shiftplanner_emaillogs",
                       "$select": "mpa_calendarid, mpa_calendarinviteid",
@@ -519,10 +505,22 @@
                       "$orderby": "modifiedon desc",
                       "$top": 1
                     },
-                    "authentication": "@parameters('$authentication')"
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
+                  "metadata": {
+                    "operationMetadataId": "0bb6bae4-3b2e-4222-a18f-be4e791d16a6"
                   }
                 },
                 "Set_Calendar_ID_to_be_Removed": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Calendar ID",
+                    "value": "@{first(body('Get_Calendar_and_Invite_IDs_to_be_Removed')?['value'])?['mpa_calendarid']}"
+                  },
                   "runAfter": {
                     "Apply_to_each_Remove_Staff_Template": [
                       "Succeeded"
@@ -530,14 +528,14 @@
                   },
                   "metadata": {
                     "operationMetadataId": "e0862ff2-244d-45b2-9217-0b1b3ae2c595"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "Calendar ID",
-                    "value": "@{first(body('Get_Calendar_and_Invite_IDs_to_be_Removed')?['value'])?['mpa_calendarid']}"
                   }
                 },
                 "Set_Invite_ID_to_be_Removed": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "InviteID",
+                    "value": "@{first(body('Get_Calendar_and_Invite_IDs_to_be_Removed')?['value'])?['mpa_calendarinviteid']}"
+                  },
                   "runAfter": {
                     "Set_Calendar_ID_to_be_Removed": [
                       "Succeeded"
@@ -545,14 +543,21 @@
                   },
                   "metadata": {
                     "operationMetadataId": "e8a587a9-5f14-4cb9-a6d5-fbb58dd789d7"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "InviteID",
-                    "value": "@{first(body('Get_Calendar_and_Invite_IDs_to_be_Removed')?['value'])?['mpa_calendarinviteid']}"
                   }
                 },
                 "Delete_Calendar_Invite_for_Remove_Staff": {
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "calendar": "@variables('Calendar ID')",
+                      "event": "@variables('InviteID')"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                      "operationId": "CalendarDeleteItem_V2",
+                      "connectionName": "shared_office365_1"
+                    }
+                  },
                   "runAfter": {
                     "Set_Invite_ID_to_be_Removed": [
                       "Succeeded"
@@ -560,22 +565,23 @@
                   },
                   "metadata": {
                     "operationMetadataId": "b02a1c53-d0b9-47c9-8000-e2a4391c4a2f"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_office365_1",
-                      "operationId": "CalendarDeleteItem_V2",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
-                    },
-                    "parameters": {
-                      "calendar": "@variables('Calendar ID')",
-                      "event": "@variables('InviteID')"
-                    },
-                    "authentication": "@parameters('$authentication')"
                   }
                 },
                 "Email_Template_for_remove_Staff": {
+                  "type": "OpenApiConnection",
+                  "description": "Select email template for remove staff",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "mpa_shiftplanner_emailtemplates",
+                      "$filter": "mpa_name eq 'When Removed from Position'",
+                      "$top": 1
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
                   "runAfter": {
                     "Get_Calendar_and_Invite_IDs_to_be_Removed": [
                       "Succeeded"
@@ -583,47 +589,31 @@
                   },
                   "metadata": {
                     "operationMetadataId": "b4e7660c-bc97-4ca3-8e07-13fdf406d31f"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "ListRecords",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "mpa_shiftplanner_emailtemplates",
-                      "$filter": "mpa_name eq 'When Removed from Position'",
-                      "$top": 1
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  },
-                  "description": "Select email template for remove staff"
+                  }
                 },
                 "Apply_to_each_Remove_Staff_Template": {
+                  "type": "Foreach",
                   "foreach": "@outputs('Email_Template_for_remove_Staff')?['body/value']",
                   "actions": {
                     "Send_an_email_to_remove_Staff": {
-                      "runAfter": {},
-                      "metadata": {
-                        "operationMetadataId": "242f8400-9374-4312-a44e-a1ddc1b556f7"
-                      },
                       "type": "OpenApiConnection",
+                      "description": "Send email notification for newly added Staff",
                       "inputs": {
-                        "host": {
-                          "connectionName": "shared_office365_1",
-                          "operationId": "SendEmailV2",
-                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
-                        },
                         "parameters": {
                           "emailMessage/To": "@outputs('Get_Assigned_Resource')?['body/internalemailaddress']",
                           "emailMessage/Subject": "@items('Apply_to_each_Remove_Staff_Template')?['mpa_subject']",
                           "emailMessage/Body": "<p>@{replace(\r\n    replace(\r\n        replace(\r\n            replace(\r\n                replace(items('Apply_to_each_Remove_Staff_Template')?['mpa_body'],\r\n                '[shift type]',\r\n                triggerOutputs()?['body/mpa_shifttype']),\r\n            '[position]',\r\n            triggerOutputs()?['body/mpa_role']),\r\n        '[team]',\r\n        triggerOutputs()?['body/mpa_team']),\r\n    '[zone]',\r\n    triggerOutputs()?['body/mpa_zone']),\r\n'[date]',\r\ntriggerOutputs()?['body/mpa_date'])}</p>",
                           "emailMessage/Importance": "Normal"
                         },
-                        "authentication": "@parameters('$authentication')"
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                          "operationId": "SendEmailV2",
+                          "connectionName": "shared_office365_1"
+                        }
                       },
-                      "description": "Send email notification for newly added Staff"
+                      "metadata": {
+                        "operationMetadataId": "242f8400-9374-4312-a44e-a1ddc1b556f7"
+                      }
                     }
                   },
                   "runAfter": {
@@ -633,36 +623,77 @@
                   },
                   "metadata": {
                     "operationMetadataId": "670a97eb-c32d-46a5-88d1-b1e43164076c"
-                  },
-                  "type": "Foreach"
+                  }
                 }
-              }
+              },
+              "case": 3
             }
           },
-          "default": {
-            "actions": {}
-          },
-          "expression": "@triggerOutputs()?['body/mpa_inviteaction']",
-          "metadata": {
-            "operationMetadataId": "4de1dfd7-c241-4bf8-9fab-b32b77809b83"
-          },
-          "type": "Switch"
-        },
-        "Compose_-_Get_Hour_value": {
           "runAfter": {
-            "Compose_EventStartDateTime": [
+            "Loop_of_Name": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "acb6ebf3-e76b-438e-abbb-e669f6501cff"
+            "operationMetadataId": "4de1dfd7-c241-4bf8-9fab-b32b77809b83"
+          }
+        },
+        "Apply_Start_Offset_to_EventStartDateTime": {
+          "type": "Expression",
+          "kind": "AddToTime",
+          "inputs": {
+            "baseTime": "@outputs('Compose_EventStartDateTime')",
+            "interval": "@if(equals(body('Get_Team_Position')?['mpa_starttimeoffset'], null), 0, body('Get_Team_Position')?['mpa_starttimeoffset'])",
+            "timeUnit": "Minute"
           },
-          "type": "Compose",
-          "inputs": "@split(split(dateDifference(outputs('Get_Shift_Type')?['body/mpa_startdate'],outputs('Get_Shift_Type')?['body/mpa_enddate']),':')[0],'.')"
+          "runAfter": {
+            "Compose_EventStartDateTime": [
+              "SUCCEEDED"
+            ]
+          }
+        },
+        "Get_Facility": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_facilities",
+              "recordId": "@body('Get_Shift_Team')?['mpa_zone']?['_mpa_facility_value']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Get_Shift_Type": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Get_Timezone_Definition": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "timezonedefinitions",
+              "$filter": "timezonecode eq @{body('Get_Facility')?['mpa_timezone']}"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Get_Facility": [
+              "Succeeded"
+            ]
+          }
         }
-      }
+      },
+      "description": "Flow that sends or removes calendar invite for the assigned user's shift. It is triggered every time a shift has been added to the Email Logs table."
     },
-    "templateName": ""
+    "templateName": null
   },
   "schemaVersion": "1.0.0.0"
 }

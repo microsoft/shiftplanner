@@ -28,11 +28,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{4313e552-24f6-49cc-95d0-07707bcd9add}">
+                      <cell id="{1f274e54-b100-4acd-815f-1c550626518f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="Timezone" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                        <control id="mpa_timezone" classid="{7C624A0B-F59E-493D-9583-638D34759266}" datafieldname="mpa_timezone" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -114,6 +114,12 @@
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
+            </cell>
+            <cell id="{4313e552-24f6-49cc-95d0-07707bcd9add}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
             </cell>
           </row>
         </rows>

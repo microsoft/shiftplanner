@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Role id="{935f3572-cc22-ef11-840a-0022482dada3}" name="Shift Planner - Shift Administrator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <IsCustomizable>1</IsCustomizable>
+  <IsAutoAssigned>0</IsAutoAssigned>
   <RolePrivileges>
     <RolePrivilege name="prvActivateSynchronousWorkflow" level="Basic" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_changerequest" level="Basic" />

@@ -44,6 +44,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell locklevel="0" id="{004f2d1f-d655-42a3-8642-856529d17ec1}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Duration (hours)" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_duration" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="mpa_duration" uniqueid="{d2ef4188-fede-49ef-aa43-9ea3807f322a}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{c545c4d3-3108-48b6-8493-d133bdd1bb01}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Enddate" languagecode="1033" />
@@ -137,6 +145,38 @@
         <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
         <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
       </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{d2ef4188-fede-49ef-aa43-9ea3807f322a}">
+          <customControl id="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}">
+            <parameters>
+              <datafieldname>mpa_duration</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}">
+            <parameters>
+              <datafieldname>mpa_duration</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.NumberInput.NumberInputControl">
+            <parameters>
+              <value type="Currency">mpa_duration</value>
+              <step type="Decimal" static="true">0.5000000</step>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.NumberInput.NumberInputControl">
+            <parameters>
+              <value type="Currency">mpa_duration</value>
+              <step type="Decimal" static="true">0.5000000</step>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.NumberInput.NumberInputControl">
+            <parameters>
+              <value type="Currency">mpa_duration</value>
+              <step type="Decimal" static="true">0.5000000</step>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

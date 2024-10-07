@@ -60,6 +60,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{9331941e-9b37-4421-957b-4ed9def0b214}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Start Time Offset (minutes)" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_starttimeoffset" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="mpa_starttimeoffset" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{002aa314-e053-4292-99c3-35c4e2412c39}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Resource" languagecode="1033" />
