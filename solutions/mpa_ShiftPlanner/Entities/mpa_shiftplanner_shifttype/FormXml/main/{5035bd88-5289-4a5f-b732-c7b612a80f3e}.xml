@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{5035bd88-5289-4a5f-b732-c7b612a80f3e}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{a452f003-6f08-4398-bb84-308d95f64b03}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{a3bd12bc-0b26-42b1-86ac-9ea28b3aa6cd}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2950b752-01e4-497f-a3bd-c85802e0b201}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mpa_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2deb0020-bfba-427b-83b5-cba7f5c0ab8a}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b58bf8ae-7a72-43b2-9774-9f522cbc4add}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Startdate" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_startdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_startdate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{004f2d1f-d655-42a3-8642-856529d17ec1}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Duration (hours)" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_duration" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="mpa_duration" uniqueid="{d2ef4188-fede-49ef-aa43-9ea3807f322a}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c545c4d3-3108-48b6-8493-d133bdd1bb01}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Enddate" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_enddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_enddate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0be9b4b8-55d7-4b2c-b16e-383f8b671c72}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Shift Type Icon" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_shifttypeicon" classid="{7E548B0D-209C-477B-9DCD-F0F44472381D}" datafieldname="mpa_shifttypeicon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{6d725c75-9245-4112-993b-02585c3b5d75}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Shift Team" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_ShiftTeam" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>mpa_shiftplanner_shiftteam</TargetEntityType>
+                            <ViewId>{7036EF3E-6DCD-4539-AE5A-DC96C45E4797}</ViewId>
+                            <ViewIds>{7036EF3E-6DCD-4539-AE5A-DC96C45E4797}</ViewIds>
+                            <RelationshipName>mpa_shiftplanner_shiftteam_shifttype</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{897e4f34-75d7-499a-8488-d46ebb39a6e9}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{57db2be4-a3d8-4800-9113-cbda0bc61dbf}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1628cae2-45b1-4b56-bac6-0cc751675a22}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{bb7a027c-17bf-4974-ae25-b8055555fb6c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{a5c27d5a-ff9e-479f-b15a-0a5209706d86}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{f10d22c3-3a94-44ab-9e66-95a079f83a3c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e1a831e5-828c-49a2-9b78-76734be51909}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{aa02204a-c496-4a0f-96c3-e1b14aa4dd15}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{1CEB5A35-C71C-EF11-840A-000D3A9D8D48}" />
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{d2ef4188-fede-49ef-aa43-9ea3807f322a}">
+          <customControl id="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}">
+            <parameters>
+              <datafieldname>mpa_duration</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}">
+            <parameters>
+              <datafieldname>mpa_duration</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.NumberInput.NumberInputControl">
+            <parameters>
+              <value type="Currency">mpa_duration</value>
+              <step type="Decimal" static="true">0.5000000</step>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.NumberInput.NumberInputControl">
+            <parameters>
+              <value type="Currency">mpa_duration</value>
+              <step type="Decimal" static="true">0.5000000</step>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.NumberInput.NumberInputControl">
+            <parameters>
+              <value type="Currency">mpa_duration</value>
+              <step type="Decimal" static="true">0.5000000</step>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

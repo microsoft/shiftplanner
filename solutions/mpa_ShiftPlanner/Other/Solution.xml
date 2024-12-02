@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.24103.228" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24103.228" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.24103.00228">
+  <SolutionManifest>
+    <UniqueName>mpa_ShiftPlanner</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="Shift Planner" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.2</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>PowerAccelerator</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Microsoft Power Accelerator" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Publisher for the Microsoft Power Accelerator team." languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>mpa</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>86542</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="mpa_shiftplanner_appsetting" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_changerequest" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_emaillog" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_emailtemplate" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_facility" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_role" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_shiftbooking" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_shiftteam" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_shifttype" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_teamposition" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_useraffiliation" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_useravailability" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_userrole" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_zone" behavior="0" />
+      <RootComponent type="1" schemaName="systemuser" behavior="1" />
+      <RootComponent type="20" id="{1ceb5a35-c71c-ef11-840a-000d3a9d8d48}" behavior="0" />
+      <RootComponent type="20" id="{935f3572-cc22-ef11-840a-0022482dada3}" behavior="0" />
+      <RootComponent type="20" id="{a5ef5b7a-cf22-ef11-840a-0022482dada3}" behavior="0" />
+      <RootComponent type="29" id="{23adb90e-871c-ef11-840a-000d3a9d8d48}" behavior="0" />
+      <RootComponent type="29" id="{3afd79e8-e12d-ef11-840a-0022482dada3}" behavior="0" />
+      <RootComponent type="29" id="{444cdf44-2129-ef11-840a-0022482dada3}" behavior="0" />
+      <RootComponent type="29" id="{4df234f5-5768-ef11-bfe2-000d3a4f087a}" behavior="0" />
+      <RootComponent type="29" id="{50549b8d-de32-ef11-8409-00224830e634}" behavior="0" />
+      <RootComponent type="29" id="{55a0c584-ce2e-ef11-8409-0022482dada3}" behavior="0" />
+      <RootComponent type="29" id="{64ce6ddf-5b22-ef11-840b-7c1e5200e675}" behavior="0" />
+      <RootComponent type="29" id="{75d09886-0d24-ef11-840a-0022482dada3}" behavior="0" />
+      <RootComponent type="29" id="{79679cd6-1732-ef11-8409-00224830e634}" behavior="0" />
+      <RootComponent type="29" id="{943ecd9b-881c-ef11-840a-000d3a9d8d48}" behavior="0" />
+      <RootComponent type="29" id="{c38693a8-f531-ef11-8409-00224830e634}" behavior="0" />
+      <RootComponent type="29" id="{c5e1912c-2832-ef11-8409-00224830e634}" behavior="0" />
+      <RootComponent type="29" id="{d64f96fe-981d-ef11-9f89-000d3a9d8d48}" behavior="0" />
+      <RootComponent type="29" id="{f21a5ff0-202a-ef11-840a-0022482dada3}" behavior="0" />
+      <RootComponent type="29" id="{fa711a33-5d1d-ef11-840a-000d3a9d8d48}" behavior="0" />
+      <RootComponent type="300" schemaName="mpa_shiftplanner_7f37a" behavior="0" />
+      <RootComponent type="300" schemaName="mpa_shiftplannermobile_4f37b" behavior="0" />
+      <RootComponent type="431" schemaName="mpa_shiftplanner_shifttype mpa_shifttypeicon" behavior="0" />
+      <RootComponent type="432" schemaName="mpa_shiftplanner_shifttype" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_appsetting_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_changerequest_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_emailtemplate_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_facility_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_roles_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_shiftbooking_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_shiftteam_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_shifttype_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_teamposition_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_useraffiliation_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_useravailability_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_userroles_svg" behavior="0" />
+      <RootComponent type="61" schemaName="mpa_zone_svg" behavior="0" />
+      <RootComponent type="62" schemaName="mpa_ShiftPlannerAdministrator" behavior="0" />
+      <RootComponent type="80" schemaName="mpa_ShiftPlannerAdministrator" behavior="0" />
+      <RootComponent type="9" schemaName="mpa_shiftplanner_changetype" behavior="0" />
+      <RootComponent type="9" schemaName="mpa_shiftplanner_inviteaction" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="mpa_ShiftPlannerAdministrator" displayName="Shift Planner Administrator" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.NumberInput.NumberInputControl" displayName="MscrmControls.NumberInput.NumberInputControl" solution="BaseCustomControlsCore (9.0.2410.3010)">
+          <package>BaseCustomControlsCore (9.0.2410.3010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Shift Type" id="{5035bd88-5289-4a5f-b732-c7b612a80f3e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel">
+          <package>PowerAppsAppFramework_Anchor (1.0.0.16)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mpa_ShiftPlannerAdministrator,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="mpa_ShiftPlannerAdministrator" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{f907f71d-c5ca-42ae-8776-937b345bfde2}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{39800356-f686-4d5e-9ce4-c5e369f12d40}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{717ed7d1-3562-4ade-838e-6ef2bd9dde35}" columns="11">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8c1fa31a-6f6d-42a4-9884-bc9300614ecb}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mpa_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{c731eb4f-1e23-43b6-933a-88e3f1fc61f2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{e86303a5-1d83-49e1-b826-3e34b92f399c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Shift Type" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_shifttype" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_shifttype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{53d33b17-cb1b-446b-b6e8-8256fba4dcba}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Date" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_date" disabled="false" />
+                      </cell>
+                      <cell id="{3c7cca2b-92de-4e4f-a8fe-bbad48d3cd68}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Shift Start Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_shiftstarttime" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_shiftstarttime" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c99cbdd3-a0b0-48ed-8e99-0decec9b0eaa}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Invite Action" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_inviteaction" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="mpa_inviteaction" disabled="false" />
+                      </cell>
+                      <cell id="{2987d6cc-b1ab-47b9-a737-b9237c7c2c19}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Shift End Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_shiftendtime" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_shiftendtime" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="8662c3fd-25d2-43a5-a19d-6bbfcf739313" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Resource Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{6f4f7185-5163-449c-90af-b3bafd095633}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Resource" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_resource" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_resource" disabled="false" />
+                      </cell>
+                      <cell id="{b8b5fb10-ac39-48d4-bdda-f7da21a760a1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Zone" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_zone" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_zone" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{18563753-6c7f-4c1b-b01a-038ded170965}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Role" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_role" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_role" disabled="false" />
+                      </cell>
+                      <cell id="{9136f2d3-33a5-4cde-a381-9d4663e4b862}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Team" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_team" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_team" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e5a0806a-e27b-43c9-8c67-ff9f2b013a17}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Calendar ID" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_calendarid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_calendarid" disabled="false" />
+                      </cell>
+                      <cell id="{95b60d7c-f721-434f-b7dd-ed804c69abf9}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Team Position" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_teamposition" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_teamposition" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2fd0d662-93af-4ecc-a81c-8c22352352a2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Calendar Invite ID" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_calendarinviteid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_calendarinviteid" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{a89566cd-20b3-42f8-afce-9089e08c6b38}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions FallbackForm="true" Order="0">
+        <Role Id="{1CEB5A35-C71C-EF11-840A-000D3A9D8D48}" />
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <header id="{8abf3cc0-1c53-4be2-8807-347550d12d89}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9dd5ddf9-3bc8-46f1-8908-0fb909359c91}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{471d439c-ce15-4d1f-af28-501d4bc57ab9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c706e476-3048-4732-8e0c-9372ff3d78d1}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0027e0de-bbb7-4378-9b82-5dfa023247b5}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{95d82ae1-4a0d-43a4-a1b7-14cd9d9dc826}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{c96f7c0a-bfa8-49ca-9f20-ff6f892ad3eb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1af7fac7-8f5a-4ff2-8760-408de4050162}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2b63b8d1-368d-4b55-9d80-86af5111af45}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

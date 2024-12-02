@@ -1,0 +1,1079 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_conversionservice_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorContentConversion"
+        },
+        "api": {
+          "name": "shared_conversionservice"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorApprovals"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorsOutlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "Mobile App Link (mpa_varmobileapplink)": {
+          "defaultValue": "https://apps.powerapps.com/play/e/028b3a63-7645-ee3d-8ade-b5d058c29617/a/9bc194bd-7b8f-4d5b-a1d9-200bedcc7273?tenantId=fe2dcd3b-6648-414a-8c8e-8761944769ce&sourcetime=1718776648314",
+          "type": "String",
+          "metadata": {
+            "schemaName": "mpa_varmobileapplink",
+            "description": "To hold the link to the Shift Planner mobile app"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "e856bbd0-4922-4a9e-959e-22abc400d622"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "mpa_shiftplanner_changerequest",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "mpa_changetype eq 1"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "When a row is added in Change Request for Time-Off"
+        }
+      },
+      "actions": {
+        "Get_Assigned_Resource": {
+          "runAfter": {
+            "Get_Zone": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0a11df9e-a57a-4b7f-a5bb-ff72e9664666"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_mpa_resource_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Assigned Resource"
+        },
+        "Select_Email_Template_for_Time_of_Approval": {
+          "runAfter": {
+            "Get_Assigned_Resource": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f58c3810-e56f-4ae5-b445-f62c54d2c4dc"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_emailtemplates",
+              "$filter": "mpa_name eq 'Time off Request'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Email Template for Time of Approval"
+        },
+        "Select_related_shift_booking_record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0062ad11-5c97-4b7e-ae13-7b78bbe95283"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftbookings",
+              "recordId": "@triggerOutputs()?['body/_mpa_shiftbooking_value']",
+              "$expand": "mpa_resource($select=internalemailaddress)"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get related shift booking record"
+        },
+        "Select_from_Team_Position": {
+          "runAfter": {
+            "Select_related_shift_booking_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5cae4c6e-df24-4107-8a8f-d34026a5ce2c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_teampositions",
+              "recordId": "@outputs('Select_related_shift_booking_record')?['body/_mpa_teamposition_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Team Position"
+        },
+        "Initialize_variable_for_Admin_Email": {
+          "runAfter": {
+            "Initialize_Invite_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7204af4b-b1e7-4278-a18c-84e898e9995b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varShiftAdminEmail",
+                "type": "string"
+              }
+            ]
+          },
+          "description": "Initialize variable for Admin Email variable"
+        },
+        "List_Shift_Administrator_Members": {
+          "runAfter": {
+            "Initialize_variable_for_Admin_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "65ea203b-b0c7-4433-9c8e-d1b810c26f09"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "fetchXml": "<fetch mapping=\"logical\" count=\"50\" version=\"1.0\">\n  <entity name=\"systemuser\">\n    <attribute name=\"fullname\" />\n    <attribute name=\"domainname\" />\n    <attribute name=\"internalemailaddress\" />\n    <attribute name=\"title\" />\n    <link-entity name=\"systemuserroles\" from=\"systemuserid\" to=\"systemuserid\">\n      <link-entity name=\"role\" from=\"roleid\" to=\"roleid\">\n        <filter>\n          <condition attribute=\"name\" operator=\"eq\" value='Shift Planner - Shift Administrator' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>",
+              "$top": 50
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get List of Shift Administrator"
+        },
+        "Apply_to_each_Shift_Administrator": {
+          "foreach": "@outputs('List_Shift_Administrator_Members')?['body/value']",
+          "actions": {
+            "Get_Shift_Administrator_email": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "5c47941e-3900-4f69-8924-c1832ffd8003"
+              },
+              "type": "Compose",
+              "inputs": "@items('Apply_to_each_Shift_Administrator')?['internalemailaddress']",
+              "description": "Get Shift Administrator email"
+            },
+            "Append_to_Shift_Admin_email": {
+              "runAfter": {
+                "Get_Shift_Administrator_email": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "281bc811-1bf4-48fb-9332-4ced8f163217"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "varShiftAdminEmail",
+                "value": "@concat(outputs('Get_Shift_Administrator_email'),';')"
+              },
+              "description": "Append to Shift Admin email variable"
+            }
+          },
+          "runAfter": {
+            "List_Shift_Administrator_Members": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7fe2bd7d-d55d-4846-a131-f6544e98f472"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_Calendar_ID": {
+          "runAfter": {
+            "Select_Email_Template_for_Time_of_Approval": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1f491993-c03e-4179-a15b-45485e39ca8c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Calendar ID",
+                "type": "string"
+              }
+            ]
+          },
+          "description": "Initialize Calendar ID variable"
+        },
+        "Initialize_Invite_ID": {
+          "runAfter": {
+            "Initialize_Calendar_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "199fd329-297a-4117-a58f-627586b5607b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "InviteID",
+                "type": "string"
+              }
+            ]
+          },
+          "description": "Initialize Invite ID variable"
+        },
+        "Get_Role": {
+          "runAfter": {
+            "Get_Shift_Type": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c794c59e-1da0-4060-880c-353bb170daaf"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_roles",
+              "recordId": "@outputs('Select_from_Team_Position')?['body/_mpa_role_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Role"
+        },
+        "Get_Shift_Team": {
+          "runAfter": {
+            "Select_from_Team_Position": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e4a9ac85-6011-4ecf-bc38-b8ae2822c5e3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftteams",
+              "recordId": "@outputs('Select_from_Team_Position')?['body/_mpa_shiftteam_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Shift Team"
+        },
+        "Get_Shift_Type": {
+          "runAfter": {
+            "Get_Shift_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f29b240e-9e85-46f8-b8c4-8b0c91d567dc"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shifttypes",
+              "recordId": "@outputs('Get_Shift_Team')?['body/_mpa_shifttype_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Shift Type"
+        },
+        "Get_Zone": {
+          "runAfter": {
+            "Get_Role": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "868ada1d-b593-4826-8403-70f00553820f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_zones",
+              "recordId": "@outputs('Select_related_shift_booking_record')?['body/_mpa_zone_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get Zone"
+        },
+        "Compose_Get_First_Template": {
+          "runAfter": {
+            "Apply_to_each_Shift_Administrator": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f9ad3529-2ee6-4c1c-9d6e-658ecfab0876"
+          },
+          "type": "Compose",
+          "inputs": "@first(outputs('Select_Email_Template_for_Time_of_Approval')?['body/value'])"
+        },
+        "Parse_JSON_-_Parse_Template": {
+          "runAfter": {
+            "Compose_Get_First_Template": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1a34f40b-24cd-4f57-93d3-559496a55f15"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Compose_Get_First_Template')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@@odata.type": {
+                  "type": "string"
+                },
+                "@@odata.id": {
+                  "type": "string"
+                },
+                "@@odata.etag": {
+                  "type": "string"
+                },
+                "@@odata.editLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplateid@odata.type": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplateid": {
+                  "type": "string"
+                },
+                "versionnumber@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "versionnumber@odata.type": {
+                  "type": "string"
+                },
+                "versionnumber": {
+                  "type": "integer"
+                },
+                "mpa_subject": {
+                  "type": "string"
+                },
+                "_owningbusinessunit_value@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "_owningbusinessunit_value@Microsoft.Dynamics.CRM.associatednavigationproperty": {
+                  "type": "string"
+                },
+                "_owningbusinessunit_value@Microsoft.Dynamics.CRM.lookuplogicalname": {
+                  "type": "string"
+                },
+                "_owningbusinessunit_value@odata.type": {
+                  "type": "string"
+                },
+                "_owningbusinessunit_value": {
+                  "type": "string"
+                },
+                "statecode@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "statecode": {
+                  "type": "integer"
+                },
+                "statuscode@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "statuscode": {
+                  "type": "integer"
+                },
+                "_createdby_value@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "_createdby_value@Microsoft.Dynamics.CRM.lookuplogicalname": {
+                  "type": "string"
+                },
+                "_createdby_value@odata.type": {
+                  "type": "string"
+                },
+                "_createdby_value": {
+                  "type": "string"
+                },
+                "mpa_name": {
+                  "type": "string"
+                },
+                "_ownerid_value@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "_ownerid_value@Microsoft.Dynamics.CRM.associatednavigationproperty": {
+                  "type": "string"
+                },
+                "_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname": {
+                  "type": "string"
+                },
+                "_ownerid_value@odata.type": {
+                  "type": "string"
+                },
+                "_ownerid_value": {
+                  "type": "string"
+                },
+                "modifiedon@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "modifiedon@odata.type": {
+                  "type": "string"
+                },
+                "modifiedon": {
+                  "type": "string"
+                },
+                "_owninguser_value@Microsoft.Dynamics.CRM.lookuplogicalname": {
+                  "type": "string"
+                },
+                "_owninguser_value@odata.type": {
+                  "type": "string"
+                },
+                "_owninguser_value": {
+                  "type": "string"
+                },
+                "_modifiedby_value@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "_modifiedby_value@Microsoft.Dynamics.CRM.lookuplogicalname": {
+                  "type": "string"
+                },
+                "_modifiedby_value@odata.type": {
+                  "type": "string"
+                },
+                "_modifiedby_value": {
+                  "type": "string"
+                },
+                "mpa_body": {
+                  "type": "string"
+                },
+                "createdon@OData.Community.Display.V1.FormattedValue": {
+                  "type": "string"
+                },
+                "createdon@odata.type": {
+                  "type": "string"
+                },
+                "createdon": {
+                  "type": "string"
+                },
+                "owningbusinessunit@odata.associationLink": {
+                  "type": "string"
+                },
+                "owningbusinessunit@odata.navigationLink": {
+                  "type": "string"
+                },
+                "ownerid@odata.associationLink": {
+                  "type": "string"
+                },
+                "ownerid@odata.navigationLink": {
+                  "type": "string"
+                },
+                "createdby@odata.associationLink": {
+                  "type": "string"
+                },
+                "createdby@odata.navigationLink": {
+                  "type": "string"
+                },
+                "createdonbehalfby@odata.associationLink": {
+                  "type": "string"
+                },
+                "createdonbehalfby@odata.navigationLink": {
+                  "type": "string"
+                },
+                "modifiedby@odata.associationLink": {
+                  "type": "string"
+                },
+                "modifiedby@odata.navigationLink": {
+                  "type": "string"
+                },
+                "modifiedonbehalfby@odata.associationLink": {
+                  "type": "string"
+                },
+                "modifiedonbehalfby@odata.navigationLink": {
+                  "type": "string"
+                },
+                "owninguser@odata.associationLink": {
+                  "type": "string"
+                },
+                "owninguser@odata.navigationLink": {
+                  "type": "string"
+                },
+                "owningteam@odata.associationLink": {
+                  "type": "string"
+                },
+                "owningteam@odata.navigationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_SyncErrors@odata.associationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_SyncErrors@odata.navigationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_AsyncOperations@odata.associationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_AsyncOperations@odata.navigationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_MailboxTrackingFolders@odata.associationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_MailboxTrackingFolders@odata.navigationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_UserEntityInstanceDatas@odata.associationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_UserEntityInstanceDatas@odata.navigationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_ProcessSession@odata.associationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_ProcessSession@odata.navigationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_BulkDeleteFailures@odata.associationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_BulkDeleteFailures@odata.navigationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_PrincipalObjectAttributeAccesses@odata.associationLink": {
+                  "type": "string"
+                },
+                "mpa_shiftplanner_emailtemplate_PrincipalObjectAttributeAccesses@odata.navigationLink": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Email_Template_Html_to_text": {
+          "runAfter": {
+            "Parse_JSON_-_Parse_Template": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a15e3b4d-dc77-4d9a-9ee4-df6a85cc32fe"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_conversionservice_1",
+              "operationId": "HtmlToText",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
+            },
+            "parameters": {
+              "Content": "<p>@{body('Parse_JSON_-_Parse_Template')?['mpa_body']}</p>"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Convert Email Template Html to text"
+        },
+        "Parse_email_body": {
+          "runAfter": {
+            "Email_Template_Html_to_text": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "06c2ff27-5c0b-4b7f-baa7-606f4d6732fe"
+          },
+          "type": "Compose",
+          "inputs": "@replace(replace(replace(replace(outputs('Email_Template_Html_to_text')?['body'],\r\n'[Resource]',outputs('Get_Assigned_Resource')?['body/fullname']),\r\n'[Position]',outputs('Select_from_Team_Position')?['body/_mpa_role_value@OData.Community.Display.V1.FormattedValue']),\r\n'[Date]',outputs('Select_related_shift_booking_record')?['body/mpa_date@OData.Community.Display.V1.FormattedValue']),\r\n'[Reason]',triggerOutputs()?['body/mpa_reason'])",
+          "description": "Replace value in the email template"
+        },
+        "Start_and_wait_for_an_approval_Time-Off": {
+          "runAfter": {
+            "Parse_email_body": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a44628c4-ea77-490b-b4dd-498891dd64ce"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_approvals",
+              "operationId": "StartAndWaitForAnApproval",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+            },
+            "parameters": {
+              "approvalType": "Basic",
+              "WebhookApprovalCreationInput/title": "@body('Parse_JSON_-_Parse_Template')?['mpa_subject']",
+              "WebhookApprovalCreationInput/assignedTo": "@{variables('varShiftAdminEmail')};",
+              "WebhookApprovalCreationInput/details": "@outputs('Parse_email_body')",
+              "WebhookApprovalCreationInput/requestor": "@{outputs('Get_Assigned_Resource')?['body/internalemailaddress']};",
+              "WebhookApprovalCreationInput/enableNotifications": true,
+              "WebhookApprovalCreationInput/enableReassignment": true
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Send an approval for Time-Off"
+        },
+        "Condition_if_Approval_is_Approve": {
+          "actions": {
+            "Get_Request_Status": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "40c952d5-24db-4e88-b0ed-fcb011f4def3"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "mpa_shiftplanner_changerequests",
+                  "recordId": "@triggerOutputs()?['body/mpa_shiftplanner_changerequestid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "description": "Get Request Status"
+            },
+            "Condition_to_check_if_the_request_is_cancel": {
+              "actions": {},
+              "runAfter": {
+                "Get_Request_Status": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Update_Change_Request_Approved": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "c1530d65-9f5d-4a2b-97c7-e6cf40bd6a76"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "mpa_shiftplanner_changerequests",
+                        "recordId": "@triggerOutputs()?['body/mpa_shiftplanner_changerequestid']",
+                        "item/mpa_isapproved": true,
+                        "item/statuscode": 865420004
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    },
+                    "description": " Update Change Request Status to Approve"
+                  },
+                  "Select_Email_Template_for_Approve_Time-Off": {
+                    "runAfter": {
+                      "Update_Change_Request_Approved": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "06e48642-614a-4e7c-8640-7c39c3bcf8d1"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "mpa_shiftplanner_emailtemplates",
+                        "$filter": "mpa_name eq 'When Request for Time Off was approved'"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    },
+                    "description": " Get Email Template for Approve Time-Off"
+                  },
+                  "Apply_to_each_Approve_Time-Off_Request": {
+                    "foreach": "@outputs('Select_Email_Template_for_Approve_Time-Off')?['body/value']",
+                    "actions": {
+                      "Send_an_email_for_Approve_Time-Off_Request": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "3780f4b9-6a02-4d32-91c6-7a0828529c2d"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_office365_1",
+                            "operationId": "SendEmailV2",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                          },
+                          "parameters": {
+                            "emailMessage/To": "@outputs('Get_Assigned_Resource')?['body/internalemailaddress']",
+                            "emailMessage/Subject": "@items('Apply_to_each_Approve_Time-Off_Request')?['mpa_subject']",
+                            "emailMessage/Body": "<p>@{replace(items('Apply_to_each_Approve_Time-Off_Request')?['mpa_body'],'[Date]',outputs('Select_related_shift_booking_record')?['body/mpa_date@OData.Community.Display.V1.FormattedValue'])} <a href=\"@{parameters('Mobile App Link (mpa_varmobileapplink)')}\"> Shift Planner Mobile Application</a>.</p>",
+                            "emailMessage/Importance": "Normal"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        },
+                        "description": "Send an email for ApproveTime-Off Request to the requestor"
+                      }
+                    },
+                    "runAfter": {
+                      "Select_Email_Template_for_Approve_Time-Off": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "67c13508-f606-4518-92f4-111db855de10"
+                    },
+                    "type": "Foreach"
+                  },
+                  "Add_Staff_to_User_Availability": {
+                    "runAfter": {
+                      "Apply_to_each_Approve_Time-Off_Request": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "061946fa-0807-4909-8295-a2322eaecc74"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "CreateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "mpa_shiftplanner_useravailabilities",
+                        "item/mpa_enddate": "@outputs('Select_related_shift_booking_record')?['body/mpa_date']",
+                        "item/mpa_startdate": "@outputs('Select_related_shift_booking_record')?['body/mpa_date']",
+                        "item/mpa_reason": "@triggerOutputs()?['body/mpa_reason']",
+                        "item/mpa_SystemUser@odata.bind": "systemusers(@{triggerOutputs()?['body/_mpa_resource_value']})",
+                        "item/mpa_isavailable": false
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    },
+                    "description": "Add staff to the User Availability Table"
+                  },
+                  "Add_a_new_row_to_Email_Logs": {
+                    "runAfter": {
+                      "Update_ShiftBooking": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "50e23d5d-ad3b-4472-a490-13ea5bb64ac5"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "CreateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "mpa_shiftplanner_emaillogs",
+                        "item/mpa_Resource@odata.bind": "systemusers(@{outputs('Select_related_shift_booking_record')?['body/_mpa_resource_value']})",
+                        "item/mpa_teamposition@odata.bind": "mpa_shiftplanner_teampositions(@{outputs('Select_related_shift_booking_record')?['body/_mpa_teamposition_value']})",
+                        "item/mpa_date": "@outputs('Select_related_shift_booking_record')?['body/mpa_date']",
+                        "item/mpa_inviteaction": 3,
+                        "item/mpa_role": "@outputs('Get_Role')?['body/mpa_name']",
+                        "item/mpa_shifttype": "@outputs('Get_Shift_Type')?['body/mpa_name']",
+                        "item/mpa_team": "@outputs('Get_Shift_Team')?['body/mpa_name']",
+                        "item/mpa_zone": "@outputs('Get_Zone')?['body/mpa_name']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    },
+                    "description": "Add new entry to email logs to remove Calendar invite"
+                  },
+                  "Update_ShiftBooking": {
+                    "runAfter": {
+                      "Add_Staff_to_User_Availability": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1e5c942e-a604-410e-8a6f-27da703ead55"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "mpa_shiftplanner_shiftbookings",
+                        "recordId": "@triggerOutputs()?['body/_mpa_shiftbooking_value']",
+                        "item/statuscode": 2,
+                        "item/statecode": 1
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    },
+                    "description": "Update ShiftBooking to Inactive"
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@outputs('Get_Request_Status')?['body/statuscode']",
+                  865420005
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ee1e3de2-8b02-436e-815d-07c73808e144"
+              },
+              "type": "If",
+              "description": "Check if the status is Cancel"
+            }
+          },
+          "runAfter": {
+            "Start_and_wait_for_an_approval_Time-Off": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_Request_Status_for_Cancel": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "8821b231-d0fe-4630-9363-23ea30074a15"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "mpa_shiftplanner_changerequests",
+                    "recordId": "@triggerOutputs()?['body/mpa_shiftplanner_changerequestid']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                },
+                "description": "Get Request Status"
+              },
+              "Condition_to_check_if_the_request_is_canceled": {
+                "actions": {},
+                "runAfter": {
+                  "Get_Request_Status_for_Cancel": [
+                    "Succeeded"
+                  ]
+                },
+                "else": {
+                  "actions": {
+                    "Update_Change_Request_Denied": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "908046ad-08df-4633-9240-7039b09e5023"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "mpa_shiftplanner_changerequests",
+                          "recordId": "@triggerOutputs()?['body/mpa_shiftplanner_changerequestid']",
+                          "item/mpa_isapproved": false,
+                          "item/statuscode": 865420003
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "description": "Update Change Request Status to Denied"
+                    },
+                    "Select_Email_Template_for_Denied_Time-Off": {
+                      "runAfter": {
+                        "Update_Change_Request_Denied": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "192d49a0-7056-4b25-ad11-2896008eecf9"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "ListRecords",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "mpa_shiftplanner_emailtemplates",
+                          "$filter": "mpa_name eq 'When Request for Time Off was denied'"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "description": "Get Email Template for Denied Time-Off"
+                    },
+                    "Apply_to_each_Denied_Time-Off_Request": {
+                      "foreach": "@outputs('Select_Email_Template_for_Denied_Time-Off')?['body/value']",
+                      "actions": {
+                        "Send_an_email_for_Denied_Time-Off_Request": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "ff65857f-fc2f-4c6b-afa9-4842f606fdda"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_office365_1",
+                              "operationId": "SendEmailV2",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                            },
+                            "parameters": {
+                              "emailMessage/To": "@outputs('Get_Assigned_Resource')?['body/internalemailaddress']",
+                              "emailMessage/Subject": "@items('Apply_to_each_Denied_Time-Off_Request')?['mpa_subject']",
+                              "emailMessage/Body": "<p>@{replace(items('Apply_to_each_Denied_Time-Off_Request')?['mpa_body'],'[Date]',outputs('Select_related_shift_booking_record')?['body/mpa_date@OData.Community.Display.V1.FormattedValue'])} <a href=\"@{parameters('Mobile App Link (mpa_varmobileapplink)')}\">Shift Planner Mobile Application</a>.</p>",
+                              "emailMessage/Importance": "Normal"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          },
+                          "description": "Send an email for Denied Time-Off Request to the requestor"
+                        }
+                      },
+                      "runAfter": {
+                        "Select_Email_Template_for_Denied_Time-Off": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "4a2612ba-43c1-4ee7-b5a8-c188452b1a84"
+                      },
+                      "type": "Foreach"
+                    }
+                  }
+                },
+                "expression": {
+                  "equals": [
+                    "@outputs('Get_Request_Status_for_Cancel')?['body/statuscode']",
+                    865420005
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "f0cad4f5-53a1-427a-834d-0e68046cd6aa"
+                },
+                "type": "If",
+                "description": "Check if the status is Cancel"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Start_and_wait_for_an_approval_Time-Off')?['body/outcome']",
+              "Approve"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "841dcbc3-d9b2-4a5c-b79c-930e0f34c417"
+          },
+          "type": "If",
+          "description": "Check if the Approval is approve"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

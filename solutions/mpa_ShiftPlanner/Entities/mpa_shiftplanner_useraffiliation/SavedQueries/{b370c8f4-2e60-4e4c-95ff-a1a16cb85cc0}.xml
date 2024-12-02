@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{b370c8f4-2e60-4e4c-95ff-a1a16cb85cc0}</savedqueryid>
+    <layoutxml>
+      <grid name="mpa_shiftplanner_useraffiliations" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="mpa_shiftplanner_useraffiliation" id="mpa_shiftplanner_useraffiliationid">
+          <cell name="mpa_name" width="300" />
+          <cell name="mpa_resource" width="100" />
+          <cell name="mpa_facility" width="100" />
+          <cell name="mpa_zone" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_useraffiliation">
+          <attribute name="mpa_name" />
+          <order attribute="mpa_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="mpa_resource" />
+          <attribute name="mpa_facility" />
+          <attribute name="mpa_zone" />
+          <attribute name="mpa_shiftplanner_useraffiliationid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="User Affiliation Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

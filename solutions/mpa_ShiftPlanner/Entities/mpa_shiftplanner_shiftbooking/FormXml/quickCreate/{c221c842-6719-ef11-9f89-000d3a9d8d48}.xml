@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{c221c842-6719-ef11-9f89-000d3a9d8d48}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="F931FFE2-B873-473F-8F95-9502F0AA3F5E" name="tab_1" showlabel="false" labelid="{6d4fc293-4e10-40de-8798-9b783990dee6}">
+          <labels>
+            <label description="New Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="34%">
+              <sections>
+                <section id="0C655D4E-C6E3-424E-9AF5-71E72D30D12E" name="tab_1_column_1_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{66a082d4-1f8a-41da-b8f2-52b3922c7feb}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="542FBFBE-0E4C-496C-8012-555DE6581923" labelid="{2da5e38b-581b-417e-b814-379a0561bb0d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{04ab06d8-6dd8-471c-bab9-0a28e82f45b4}" locklevel="0" colspan="1" rowspan="1" labelid="{6fe6be08-229b-4a96-abd1-916cfff9d53c}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mpa_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f53e2f3f-9624-4aa5-aea9-1b209831b78e}" locklevel="0" colspan="1" rowspan="1" labelid="{5308d491-ebf1-4fb4-aa42-a775ce6bb26a}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d520f922-331f-4ecc-ae5d-1f98b2751b31}" locklevel="0" colspan="1" rowspan="1" labelid="{9bb7062e-75c1-4da9-9648-388a6320fdde}">
+                        <labels>
+                          <label description="Date" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_date" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f0d3b1e1-2d3b-4fb1-b9a5-96095ab7d1dc}" locklevel="0" colspan="1" rowspan="1" labelid="{69a820d2-5777-402f-a579-a9710cd2004d}">
+                        <labels>
+                          <label description="Resource" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_resource" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_resource" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{745a997f-43bb-4ac3-9be8-386d8acc977a}" locklevel="0" colspan="1" rowspan="1" labelid="{d26eda5e-fdd1-4a46-b403-184e886a4c44}">
+                        <labels>
+                          <label description="Team Position" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_teamposition" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_teamposition" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{109301e5-0305-494f-b887-ce0a15e28830}" locklevel="0" colspan="1" rowspan="1" labelid="{1c5324fb-cb87-4a2f-a9c1-1fdf84f9a768}">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="02DECBA0-3AE2-484D-A19F-C5353AF4F4F2" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{0f17990e-336a-4185-a138-2d5daedb807c}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="266FE48D-4D04-4E9A-8C5A-7DEF9A2F059B" labelid="{d1252563-2417-42de-9e91-58fecd389f23}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="46FD66EA-B686-41D9-AAE0-C565BD78EC1F" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{cd122880-1651-4cb8-a02e-e85ddb0ba0bf}">
+                  <labels>
+                    <label description="Shift booking" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="07C04A4E-A482-45CC-BAB7-7FCA3CD02938" labelid="{dcb048e2-e3dd-4108-8344-91a535464581}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Shift Booking" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

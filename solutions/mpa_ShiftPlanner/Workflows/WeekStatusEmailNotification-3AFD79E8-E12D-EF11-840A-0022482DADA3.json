@@ -1,0 +1,380 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorsOutlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "Mobile App Link (mpa_varmobileapplink)": {
+          "defaultValue": "https://apps.powerapps.com/play/e/028b3a63-7645-ee3d-8ade-b5d058c29617/a/9bc194bd-7b8f-4d5b-a1d9-200bedcc7273?tenantId=fe2dcd3b-6648-414a-8c8e-8761944769ce&sourcetime=1718776648314",
+          "type": "String",
+          "metadata": {
+            "schemaName": "mpa_varmobileapplink",
+            "description": "To hold the link to the Shift Planner mobile app"
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "bf99ed77-b473-4541-853b-eb9ddeb0cb74"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "title": "Week Start Date",
+                  "type": "string",
+                  "format": "date",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter or select a date (YYYY-MM-DD)",
+                  "x-ms-content-hint": "DATE"
+                },
+                "date_1": {
+                  "title": "Week End Date",
+                  "type": "string",
+                  "format": "date",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter or select a date (YYYY-MM-DD)",
+                  "x-ms-content-hint": "DATE"
+                },
+                "text": {
+                  "title": "Zone",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your zone id",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Action",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Publish/Unpublish",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "date",
+                "date_1",
+                "text",
+                "text_1"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_Assigned_Users": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "8ed72658-9ceb-43cb-abfa-99e9df019083"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftbookings",
+              "$select": "mpa_resource",
+              "$filter": "_mpa_zone_value eq '@{triggerBody()['text']}' and mpa_date ge @{triggerBody()['date']} and mpa_date le @{triggerBody()['date_1']} and statecode eq 0",
+              "$orderby": "mpa_date",
+              "$expand": "mpa_resource"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get all users assigned for the specified week"
+        },
+        "Select_Resource_Email": {
+          "runAfter": {
+            "Initialize_EmailBody": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f0920fab-243f-4a61-829d-a981e887bf19"
+          },
+          "type": "Select",
+          "inputs": {
+            "from": "@outputs('Get_Assigned_Users')?['body/value']",
+            "select": {
+              "Resource Email": "@item()?['mpa_resource/internalemailaddress']"
+            }
+          },
+          "description": "Select only the resources' emails"
+        },
+        "Get_Unique_Resources": {
+          "runAfter": {
+            "Select_Resource_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "06cb642a-7649-4ddf-a834-cca3fca24fc8"
+          },
+          "type": "Compose",
+          "inputs": "@union(body('Select_Resource_Email'),body('Select_Resource_Email'))",
+          "description": "Get unique users"
+        },
+        "For_Each_User": {
+          "foreach": "@outputs('Get_Unique_Resources')",
+          "actions": {
+            "Send_published_notification": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "bacf023d-7727-4cae-82aa-70c13985439f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@items('For_Each_User')?['Resource Email']",
+                  "emailMessage/Subject": "@replace(\r\n    replace(variables('EmailSubject'), \r\n    '[First Day of Week]', \r\n    outputs('Format_Start_Date')),\r\n'[Last Day of Week]', \r\noutputs('Format_End_Date'))",
+                  "emailMessage/Body": "<p>@{replace(\r\n    replace(variables('EmailBody'), \r\n    '[First Day of Week]', \r\n    outputs('Format_Start_Date')),\r\n'[Last Day of Week]', \r\noutputs('Format_End_Date'))} <a href=\"@{parameters('Mobile App Link (mpa_varmobileapplink)')}\">Shift Planner Mobile Application</a>.</p>",
+                  "emailMessage/Importance": "Normal"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "description": "Send each user an email notification about published/unpublished week status"
+            }
+          },
+          "runAfter": {
+            "Set_EmailBody": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "958d2c8b-3b50-4f6a-9049-050d7cf6a1c1"
+          },
+          "type": "Foreach"
+        },
+        "Format_Start_Date": {
+          "runAfter": {
+            "Get_Unique_Resources": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2fe12296-ea30-49a0-a133-97dbaedd8dbf"
+          },
+          "type": "Compose",
+          "inputs": "@formatDateTime(triggerBody()['date'],'MMMM dd')",
+          "description": "Format the start to MMMM dd"
+        },
+        "Format_End_Date": {
+          "runAfter": {
+            "Format_Start_Date": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3d6ff7ff-c6f3-4288-b62e-b4765f275ec1"
+          },
+          "type": "Compose",
+          "inputs": "@formatDateTime(triggerBody()['date_1'],'MMMM dd, yyyy')",
+          "description": "Format the end date to MMMM dd, yyyy"
+        },
+        "Check_if_Publish_or_Unpublish": {
+          "actions": {
+            "Set_Publish_EmailTemplateName": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e0d64c7e-a7f1-487e-8010-4618012695a1"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "EmailTemplateName",
+                "value": "Published Schedule (Weekly)"
+              },
+              "description": "If publish, set Email Template name to the Published email template"
+            }
+          },
+          "runAfter": {
+            "Format_End_Date": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_Unpublish_EmailTemplateName": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "9f21c46a-cfcc-4703-9a70-2f7e3038b7bd"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "EmailTemplateName",
+                  "value": "Unpublished Schedule (Weekly)"
+                },
+                "description": "If unpublish, set Email Template name to Unpublished email template"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerBody()['text_1']",
+              "Publish"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c0c77336-c091-4087-8adc-fa5643c0148d"
+          },
+          "type": "If"
+        },
+        "Initialize_EmailSubject": {
+          "runAfter": {
+            "Initialize_EmailTemplateName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1751551d-3b06-4741-8153-eace8a61de98"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "EmailSubject",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_EmailBody": {
+          "runAfter": {
+            "Initialize_EmailSubject": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "86e0b14c-d1b9-4a7b-a2b6-82d160feab5a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "EmailBody",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_EmailTemplateName": {
+          "runAfter": {
+            "Get_Assigned_Users": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1d7529d1-a58d-4ab3-b764-a4cb9098b090"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "EmailTemplateName",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Get_Email_Template": {
+          "runAfter": {
+            "Check_if_Publish_or_Unpublish": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0acbf7f4-a5a7-4b03-9ed1-bef8e1baf293"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "mpa_shiftplanner_emailtemplates",
+              "$select": "mpa_subject, mpa_body",
+              "$filter": "mpa_name eq '@{variables('EmailTemplateName')}'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get email template based on whether action is publish or unpublish"
+        },
+        "Set_EmailSubject": {
+          "runAfter": {
+            "Get_Email_Template": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ef958dab-cde3-432f-8f31-55f4b6d72ea7"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "EmailSubject",
+            "value": "@{first(body('Get_Email_Template')?['value'])?['mpa_subject']}"
+          },
+          "description": "Set Subject Template to email subject"
+        },
+        "Set_EmailBody": {
+          "runAfter": {
+            "Set_EmailSubject": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "be4b1503-c0d0-44b3-b415-99beaffff512"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "EmailBody",
+            "value": "@{first(body('Get_Email_Template')?['value'])?['mpa_body']}"
+          },
+          "description": "Set Email Template to email body"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
