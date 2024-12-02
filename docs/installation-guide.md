@@ -106,7 +106,7 @@ The solution includes two (2) environment variables that must be filled in first
 - Shared Calendar Name – Name of user’s regular calendar (the default name is **Calendar**)
 
 To get the Shift Planner mobile app link environment variable:
--  On the left navigation, go to **Apps**. Look for the **Shift Planner Mobile app**, click on the 3 dots next to the name, and select Details.
+-  On the left navigation, go to **Apps**. Look for the **Roster** or **Shift Planner Mobile app**, click on the 3 dots next to the name, and select Details.
 
 ![image](https://github.com/user-attachments/assets/ef4d0ed4-4121-4f2e-b35b-a1eeac875ad8)
  
