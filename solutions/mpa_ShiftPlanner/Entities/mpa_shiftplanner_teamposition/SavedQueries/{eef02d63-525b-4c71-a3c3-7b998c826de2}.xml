@@ -13,8 +13,9 @@
           <cell name="mpa_name" width="100" />
           <cell name="mpa_shiftteam" width="150" />
           <cell name="mpa_role" width="150" />
-          <cell name="mpa_effectivefrom" width="125" />
+          <cell name="mpa_effectivefrom" width="146" />
           <cell name="mpa_effectiveto" width="110" />
+          <cell name="mpa_starttimeoffset" width="195" />
           <cell name="mpa_resource" width="100" />
           <cell name="createdon" width="105" />
           <cell name="createdby" width="104" />
@@ -38,6 +39,7 @@
           <attribute name="mpa_effectivefrom" />
           <attribute name="createdon" />
           <attribute name="createdby" />
+          <attribute name="mpa_starttimeoffset" />
         </entity>
       </fetch>
     </fetchxml>

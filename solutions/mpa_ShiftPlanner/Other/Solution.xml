@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24091.198" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24091.198" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.24091.00198">
+<ImportExportXml version="9.2.24103.228" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24103.228" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.24103.00228">
   <SolutionManifest>
     <UniqueName>mpa_ShiftPlanner</UniqueName>
     <LocalizedNames>
       <LocalizedName description="Shift Planner" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.1</Version>
+    <Version>1.0.0.2</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>PowerAccelerator</UniqueName>
@@ -107,7 +107,6 @@
       <RootComponent type="29" id="{64ce6ddf-5b22-ef11-840b-7c1e5200e675}" behavior="0" />
       <RootComponent type="29" id="{75d09886-0d24-ef11-840a-0022482dada3}" behavior="0" />
       <RootComponent type="29" id="{79679cd6-1732-ef11-8409-00224830e634}" behavior="0" />
-      <RootComponent type="29" id="{8a16b3e8-dd31-ef11-8409-00224830e634}" behavior="0" />
       <RootComponent type="29" id="{943ecd9b-881c-ef11-840a-000d3a9d8d48}" behavior="0" />
       <RootComponent type="29" id="{c38693a8-f531-ef11-8409-00224830e634}" behavior="0" />
       <RootComponent type="29" id="{c5e1912c-2832-ef11-8409-00224830e634}" behavior="0" />
@@ -142,15 +141,15 @@
         <Dependent type="80" schemaName="mpa_ShiftPlannerAdministrator" displayName="Shift Planner Administrator" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.NumberInput.NumberInputControl" displayName="MscrmControls.NumberInput.NumberInputControl" solution="BaseCustomControlsCore (9.0.2409.1008)" />
+        <Required type="66" schemaName="MscrmControls.NumberInput.NumberInputControl" displayName="MscrmControls.NumberInput.NumberInputControl" solution="BaseCustomControlsCore (9.0.2410.3010)">
+          <package>BaseCustomControlsCore (9.0.2410.3010)</package>
+        </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Shift Type" id="{5035bd88-5289-4a5f-b732-c7b612a80f3e}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="mss_sharedcommondataserviceforapps_31651" solution="Active" id.connectionreferencelogicalname="mss_sharedcommondataserviceforapps_31651" />
-        <Dependent type="29" displayName="Send Calendar Invite" id="{f21a5ff0-202a-ef11-840a-0022482dada3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel" />
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel">
+          <package>PowerAppsAppFramework_Anchor (1.0.0.16)</package>
+        </Required>
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mpa_ShiftPlannerAdministrator,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="mpa_ShiftPlannerAdministrator" id.settingdefinitionid.uniquename="AppChannel" />
       </MissingDependency>
     </MissingDependencies>
