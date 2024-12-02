@@ -40,8 +40,8 @@ then click on **New connection.**
 ![image](https://github.com/user-attachments/assets/67c1893f-a2f1-4dca-875e-22c9e4840e64)
 
 
-6. Click browse and open **mpa_ShiftPlanner_1_0_0_1.zip** (unmanaged) or
-**mpa_ShiftPlanner_1_0_0_1_managed.zip** for managed solution.
+6. Click browse and open **mpa_ShiftPlanner_X_X_X_X.zip** (unmanaged) or
+**mpa_ShiftPlanner_X_X_X_X_managed.zip** for managed solution. The latest version is available from https://github.com/microsoft/shiftplanner/releases
 7. Click Next.
 8. Validate the detail and click on Import Button
 
