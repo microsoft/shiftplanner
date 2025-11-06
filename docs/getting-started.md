@@ -20,9 +20,9 @@ The first step is to load reference data into the system.
 > [!NOTE]
 > If the play button is disabled or not visible, you need to publish all customisations. Navigate to **Solution** in the left navigation and press the **Publish all customisations** button. Once this is complete, the playu button should be visible
 5. Click on the **Email Templates** left menu option
-> ![image](https://github.com/user-attachments/assets/4a32de37-8a8d-47a3-bca8-ecf7a37fc1c6)
+> ![image](./media/screenshot-20.png)
 6. From the toolbar, click on the Import From Excel button
-> ![image](https://github.com/user-attachments/assets/71df4b4e-e22e-4f2e-8a70-1a6f8baabab2)
+> ![image](./media/screenshot-21.png)
 7. Select the file you downloaded from [here](Default-Email-Templates.xlsx)
 8. Click **Next**
 9. Click **Finish Import**
@@ -46,7 +46,7 @@ Shift types classify the various types of shifts, such as morning, evening, and 
 > End Date consists of a Date component and a Time component. The date component is the last date on which the shift will be available for scheduling. The Time component is the time of day that the shift will end.
 4. Repeat step 2 for each new Role
 > Here is an example of shifts covering a 24 hour period
-> ![image](https://github.com/user-attachments/assets/2f292777-1e7f-4985-8bbe-7f305d00b795)
+> ![image](./media/screenshot-22.png)
 
 
 ### Part 4: Setting up Facilities
@@ -56,7 +56,7 @@ Facilities are the the primary grouping for locations to which will plan shifts 
 2. Click **New** to create a new Facility, populate the Name and Description, then press **Save**
 3. Click on the **Zone** tab of the newly created facility
 4. For each zone you plan to roster for, click the  **+New Zone** button, populate the name and click **Save**
-![image](https://github.com/user-attachments/assets/65376b2a-426d-4793-a0be-477a712b9a39)
+![image](./media/screenshot-23.png)
 5. Repeat steps 2-4 for each facility you wish to create
 
 ### Part 5: Setup Shift Teams
@@ -64,23 +64,23 @@ Shift Teams are how staff are grouped together. They are associated to a particu
 
 1. From the **Shift Planner Administrator** App, navigate to **Shift Team**
 2. Click **New** to create a new Shift Team, populate the Name and Description, specify a Shift Type and Zone, then press **Save**
-![image](https://github.com/user-attachments/assets/befc55b4-62db-4a44-80ed-b7b9c8a95b6e)
+![image](./media/screenshot-24.png)
 3. For each position within the team, click **+New Position** to add a position
-![image](https://github.com/user-attachments/assets/2d80ed18-dc30-4f4a-bef3-e4fc71595079)
+![image](./media/screenshot-25.png)
 4. Populate the quick create form by specifying the Role, Effective From and Effective To dates. You can optionally specify a standard Resource for the role. Then press **Save and Close**
-![image](https://github.com/user-attachments/assets/3b5b9542-a6ca-4bf6-a5ff-e1b929fe7c43)
+![image](./media/screenshot-26.png)
 5. Repeat steps 2-4 for each Shift Team
 > [!NOTE]
 > You can also create a Shift Team from the details screen for a **Zone**
-> ![image](https://github.com/user-attachments/assets/c4f1cd84-457c-45fa-af9e-5a41adbb4244)
+> ![image](./media/screenshot-27.png)
 
 ### Part 7: Setting up Users
 1. From the **Shift Planner Administrator** App, select the **Users** menu option
 2. Select the User record to setup
 3. Click the **Shift Planner** tab on the User form
-![image](https://github.com/user-attachments/assets/233499f5-ec4a-4bf5-8619-4085615c1c56)
-4. Setup the Zones to which this User is affiliated (i.e. available for scheduling) by clicking the ![image](https://github.com/user-attachments/assets/1bd6325b-922d-48ed-bc54-60ff1e2f098a) button and populating the Facility and Zone to associate them with. Then click the **Save and Close** button.
+![image](./media/screenshot-28.png)
+4. Setup the Zones to which this User is affiliated (i.e. available for scheduling) by clicking the ![image](./media/screenshot-29.png) button and populating the Facility and Zone to associate them with. Then click the **Save and Close** button.
 5. Repeat step 4 for each zone 
-6. Setup the Roles to which this User is authorised to perform by clicking the ![image](https://github.com/user-attachments/assets/b412275e-0dec-4d86-9c99-62cf52c86ac9)
+6. Setup the Roles to which this User is authorised to perform by clicking the ![image](./media/screenshot-30.png)
  button to display the Quick Create form. Populate the Resource and Role fields. Then click the **Save and Close** button.
 5. Repeat step 6 for each Role the user can perform.

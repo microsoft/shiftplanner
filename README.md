@@ -1,7 +1,7 @@
 # Shift Planner Power Platform Template
 Shift Planner is a complete Power Platform solution for managing shifts. It is provided as a template to provide customers with the flexibility to modify it for their organisation's needs.
 
-![image](https://github.com/user-attachments/assets/b3eac519-1fbc-40e7-8813-af14ad56b889)
+![image](./docs/media/screenshot-01.png)
 
 It provides the following capabilities:
 - Managing Facilities and Zones
@@ -10,7 +10,7 @@ It provides the following capabilities:
 - Bookings (Booking staff, Time Off, swapping Shifts)
 
 ### Getting Started
-Installation instructions are available [here](./docs/installation-guide.md). A usage guide is also available [here](./docs/getting-started.md).
+Installation instructions are available [here](docs/installation-guide.md). A usage guide is also available [here](docs/getting-started.md).
 
 ### Why does it exist?
 Shift Management is a global challenge for organisations. 
