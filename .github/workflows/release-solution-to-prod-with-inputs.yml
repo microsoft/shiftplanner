@@ -85,6 +85,7 @@ jobs:
         force-overwrite: true
         publish-changes: true
         async: true
+        AsyncOperation: true
 
     - name: Export solution as managed
       uses: microsoft/powerplatform-actions/export-solution@v2
@@ -137,3 +138,4 @@ jobs:
         force-overwrite: true
         publish-changes: true
         async: true
+        AsyncOperation: true
