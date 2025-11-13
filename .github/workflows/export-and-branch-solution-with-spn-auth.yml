@@ -41,7 +41,7 @@ jobs:
       id: install-power-platform-tools
       uses: microsoft/powerplatform-actions/actions-install@v1
       with:
-        pac-version-override: 1.34.4
+        pac-version-override: 1.43.6
       
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v1
