@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24103.228" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24103.228" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.24103.00228">
+<ImportExportXml version="9.2.25111.138" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25111.138" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25111.00142">
   <SolutionManifest>
     <UniqueName>mpa_ShiftPlanner</UniqueName>
     <LocalizedNames>
@@ -137,18 +137,20 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)">
+          <package appName="AppModule Web Resources Package" version="2.5">AppModuleWebResources (2.5)</package>
+        </Required>
         <Dependent type="80" schemaName="mpa_ShiftPlannerAdministrator" displayName="Shift Planner Administrator" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.NumberInput.NumberInputControl" displayName="MscrmControls.NumberInput.NumberInputControl" solution="BaseCustomControlsCore (9.0.2410.3010)">
-          <package>BaseCustomControlsCore (9.0.2410.3010)</package>
+        <Required type="66" schemaName="MscrmControls.NumberInput.NumberInputControl" displayName="MscrmControls.NumberInput.NumberInputControl" solution="BaseCustomControlsCore (9.0.2511.1006)">
+          <package appName="Base Custom Controls" version="9.0.2511.1006">BaseCustomControlsCore (9.0.2511.1006)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Shift Type" id="{5035bd88-5289-4a5f-b732-c7b612a80f3e}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel">
-          <package>PowerAppsAppFramework_Anchor (1.0.0.16)</package>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.15)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.23">PowerAppsAppFramework_Anchor (1.0.0.23)</package>
         </Required>
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mpa_ShiftPlannerAdministrator,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="mpa_ShiftPlannerAdministrator" id.settingdefinitionid.uniquename="AppChannel" />
       </MissingDependency>

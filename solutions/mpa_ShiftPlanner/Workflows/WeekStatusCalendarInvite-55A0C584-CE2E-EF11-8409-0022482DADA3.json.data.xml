@@ -19,6 +19,7 @@
   <IsCustomizable>1</IsCustomizable>
   <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
   <BillingContext>[{"id":"mpa_shiftplanner_7f37a","type":"UnifiedApp","metadata":{"displayName":"Shift Planner"}}]</BillingContext>
+  <ModernFlowType>0</ModernFlowType>
   <PrimaryEntity>none</PrimaryEntity>
   <LocalizedNames>
     <LocalizedName languagecode="1033" description="Week Status Calendar Invite" />
