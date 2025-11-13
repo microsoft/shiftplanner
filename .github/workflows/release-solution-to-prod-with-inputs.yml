@@ -88,7 +88,7 @@ jobs:
         AsyncOperation: true
 
     - name: Export solution as managed
-      uses: microsoft/powerplatform-actions/export-solution@v2
+      uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
@@ -128,7 +128,7 @@ jobs:
         path: ${{ inputs.solution_release_folder}}
 
     - name: Import solution to prod env
-      uses: microsoft/powerplatform-actions/import-solution@v2
+      uses: microsoft/powerplatform-actions/import-solution@v1
       with:
         environment-url: ${{inputs.PRODUCTION_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
