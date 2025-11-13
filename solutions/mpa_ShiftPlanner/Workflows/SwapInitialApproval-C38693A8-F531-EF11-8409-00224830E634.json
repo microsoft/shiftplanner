@@ -51,7 +51,7 @@
           "type": "SecureObject"
         },
         "Mobile App Link (mpa_varmobileapplink)": {
-          "defaultValue": "https://apps.powerapps.com/play/e/028b3a63-7645-ee3d-8ade-b5d058c29617/a/9bc194bd-7b8f-4d5b-a1d9-200bedcc7273?tenantId=fe2dcd3b-6648-414a-8c8e-8761944769ce&sourcetime=1718776648314",
+          "defaultValue": "https://apps.powerapps.com/play/e/6c086a94-f4d8-e980-a0a6-97486898031c/a/e89d7cd5-b535-43c3-b699-6d8a0739acf2",
           "type": "String",
           "metadata": {
             "schemaName": "mpa_varmobileapplink",
@@ -122,7 +122,7 @@
                 "parameters": {
                   "approvalType": "Basic",
                   "WebhookApprovalCreationInput/title": "@items('Apply_to_Template_(1_result)')?['mpa_subject']",
-                  "WebhookApprovalCreationInput/assignedTo": "@{outputs('Get_new_resource_information')?['body/internalemailaddress']};ralph.dixel.garro@roomsofthehouse.com",
+                  "WebhookApprovalCreationInput/assignedTo": "@outputs('Get_new_resource_information')?['body/internalemailaddress']",
                   "WebhookApprovalCreationInput/details": "@outputs('Parse_email_body_part_2')",
                   "WebhookApprovalCreationInput/requestor": "@outputs('Select_related_shift_booking_record')?['body/mpa_resource/internalemailaddress']",
                   "WebhookApprovalCreationInput/enableNotifications": true,

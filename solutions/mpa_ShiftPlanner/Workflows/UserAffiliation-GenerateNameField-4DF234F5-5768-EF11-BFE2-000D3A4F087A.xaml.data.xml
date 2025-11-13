@@ -20,8 +20,8 @@
   <IsTransacted>1</IsTransacted>
   <IntroducedVersion>1.0.0.1</IntroducedVersion>
   <IsCustomizable>1</IsCustomizable>
-  <BusinessProcessType>0</BusinessProcessType>
   <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ModernFlowType>0</ModernFlowType>
   <PrimaryEntity>mpa_shiftplanner_useraffiliation</PrimaryEntity>
   <LocalizedNames>
     <LocalizedName languagecode="1033" description="User Affiliation - Generate Name Field" />
