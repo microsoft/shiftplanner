@@ -14,9 +14,9 @@ jobs:
       #You can specify the solution name here
       solution_name: mpa_ShiftPlanner
       #Update your values here
-      BUILD_ENVIRONMENT_URL: https://org096639bc.crm.dynamics.com
-      PRODUCTION_ENVIRONMENT_URL: https://org00df5917.crm.dynamics.com
-      CLIENT_ID: 483bcb39-2dc5-4aa3-8bac-66e53f6dfd06
-      TENANT_ID: 8a176326-6484-44a3-bc03-1efc217fd5aa
+      BUILD_ENVIRONMENT_URL: ${{vars.BUILD_ENVIRONMENT_URL}}
+      PRODUCTION_ENVIRONMENT_URL: ${{vars.TARGET_ENVIRONMENT_URL}}`
+      CLIENT_ID: ${{vars.CLIENT_ID}}
+      TENANT_ID: ${{vars.TENANT_ID}}
     secrets:
       envSecret: ${{ secrets.PowerPlatformSPN }}
