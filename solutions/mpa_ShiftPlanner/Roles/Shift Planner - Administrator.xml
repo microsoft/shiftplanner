@@ -10,6 +10,7 @@
     <RolePrivilege name="prvAppendmpa_shiftplanner_shiftteam" level="Global" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_teamposition" level="Global" />
+    <RolePrivilege name="prvAppendmpa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_useraffiliation" level="Global" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvAppendNewProcess" level="Global" />
@@ -22,6 +23,7 @@
     <RolePrivilege name="prvAppendTompa_shiftplanner_shiftteam" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_teamposition" level="Global" />
+    <RolePrivilege name="prvAppendTompa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_useraffiliation" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_userrole" level="Global" />
@@ -45,6 +47,7 @@
     <RolePrivilege name="prvCreatempa_shiftplanner_shiftteam" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_teamposition" level="Global" />
+    <RolePrivilege name="prvCreatempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvCreatempa_shiftplanner_useraffiliation" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_userrole" level="Global" />
@@ -58,6 +61,7 @@
     <RolePrivilege name="prvCreateWorkflowSession" level="Basic" />
     <RolePrivilege name="prvDeletempa_shiftplanner_emaillog" level="Global" />
     <RolePrivilege name="prvDeletempa_shiftplanner_emailtemplate" level="Global" />
+    <RolePrivilege name="prvDeletempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvDeleteNewProcess" level="Global" />
     <RolePrivilege name="prvDeleteTranslationProcess" level="Global" />
     <RolePrivilege name="prvDeleteUserApplicationMetadata" level="Basic" />
@@ -87,6 +91,7 @@
     <RolePrivilege name="prvReadmpa_shiftplanner_shiftteam" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_teamposition" level="Global" />
+    <RolePrivilege name="prvReadmpa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_useraffiliation" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_userrole" level="Global" />
@@ -147,6 +152,7 @@
     <RolePrivilege name="prvWritempa_shiftplanner_shiftteam" level="Global" />
     <RolePrivilege name="prvWritempa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvWritempa_shiftplanner_teamposition" level="Global" />
+    <RolePrivilege name="prvWritempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvWritempa_shiftplanner_useraffiliation" level="Global" />
     <RolePrivilege name="prvWritempa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvWritempa_shiftplanner_userrole" level="Global" />

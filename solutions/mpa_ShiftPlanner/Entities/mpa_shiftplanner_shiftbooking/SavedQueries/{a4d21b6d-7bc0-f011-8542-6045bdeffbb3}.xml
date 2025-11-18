@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{a4d21b6d-7bc0-f011-8542-6045bdeffbb3}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_shiftbookingid">
+          <cell name="mpa_name" width="200" />
+          <cell name="a_3ca0feda91c24535860ae6e5a08d9336.fullname" width="165" />
+          <cell name="a_42db242dc0494665ad24edfcfe30641c.mpa_facility" width="125" />
+          <cell name="a_42db242dc0494665ad24edfcfe30641c.mpa_name" width="116" />
+          <cell name="a_73bc40a92f32494caa665d33a571c7af.mpa_role" width="160" />
+        </row>
+        <controlDescriptions>
+          <controlDescription>
+            <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+              <parameters />
+            </customControl>
+            <customControl formFactor="0" name="MscrmControls.ActivityCalendarControl.ActivityCalendarControl">
+              <parameters>
+                <data-set name="Calendar">
+                  <ViewId>00000000-0000-0000-0000-000000000000</ViewId>
+                  <StartDate>mpa_plannedstarttime</StartDate>
+                  <Description>mpa_resource</Description>
+                  <EndDate>mpa_plannedendtime</EndDate>
+                  <Color>statuscode</Color>
+                </data-set>
+              </parameters>
+            </customControl>
+            <customControl formFactor="1" name="MscrmControls.ActivityCalendarControl.ActivityCalendarControl">
+              <parameters>
+                <data-set name="Calendar">
+                  <ViewId>00000000-0000-0000-0000-000000000000</ViewId>
+                  <StartDate>mpa_plannedstarttime</StartDate>
+                  <Description>mpa_resource</Description>
+                  <EndDate>mpa_plannedendtime</EndDate>
+                  <Color>statuscode</Color>
+                </data-set>
+              </parameters>
+            </customControl>
+            <customControl formFactor="2" name="MscrmControls.ActivityCalendarControl.ActivityCalendarControl">
+              <parameters>
+                <data-set name="Calendar">
+                  <ViewId>00000000-0000-0000-0000-000000000000</ViewId>
+                  <StartDate>mpa_plannedstarttime</StartDate>
+                  <Description>mpa_resource</Description>
+                  <EndDate>mpa_plannedendtime</EndDate>
+                  <Color>statuscode</Color>
+                </data-set>
+              </parameters>
+            </customControl>
+          </controlDescription>
+        </controlDescriptions>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="mpa_shiftplanner_shiftbooking">
+          <attribute name="mpa_name" />
+          <attribute name="mpa_shiftplanner_shiftbookingid" />
+          <link-entity alias="a_3ca0feda91c24535860ae6e5a08d9336" name="systemuser" to="mpa_resource" from="systemuserid" link-type="outer" visible="false">
+            <attribute name="fullname" />
+          </link-entity>
+          <link-entity alias="a_42db242dc0494665ad24edfcfe30641c" name="mpa_shiftplanner_zone" to="mpa_zone" from="mpa_shiftplanner_zoneid" link-type="outer" visible="false">
+            <attribute name="mpa_name" />
+            <attribute name="mpa_facility" />
+          </link-entity>
+          <link-entity alias="a_73bc40a92f32494caa665d33a571c7af" name="mpa_shiftplanner_teamposition" to="mpa_teamposition" from="mpa_shiftplanner_teampositionid" link-type="outer" visible="false">
+            <attribute name="mpa_role" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.2</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Calendar View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

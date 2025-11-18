@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{ce467c99-6fc3-f011-8543-7c1e5200c456}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_timesheetentryid">
+          <cell name="mpa_name" width="148" />
+          <cell name="mpa_starttime" width="100" />
+          <cell name="mpa_endtime" width="100" />
+          <cell name="mpa_durationminutes" width="140" />
+          <cell name="mpa_timeentrytype" width="135" />
+          <cell name="statuscode" width="119" />
+          <cell name="mpa_notes" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="mpa_shiftplanner_timesheetentry">
+          <attribute name="mpa_name" />
+          <attribute name="mpa_shiftplanner_timesheetentryid" />
+          <attribute name="mpa_starttime" />
+          <attribute name="mpa_endtime" />
+          <attribute name="mpa_timeentrytype" />
+          <attribute name="mpa_notes" />
+          <attribute name="statuscode" />
+          <order attribute="mpa_starttime" descending="false" />
+          <attribute name="mpa_durationminutes" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.2</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Shift Booking Related View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

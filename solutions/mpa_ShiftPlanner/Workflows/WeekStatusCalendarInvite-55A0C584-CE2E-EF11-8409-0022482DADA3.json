@@ -2,34 +2,32 @@
   "properties": {
     "connectionReferences": {
       "shared_commondataserviceforapps_1": {
-        "runtimeSource": "embedded",
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
         "connection": {
           "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
         },
-        "api": {
-          "name": "shared_commondataserviceforapps"
-        }
+        "runtimeSource": "embedded"
       }
     },
     "definition": {
       "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
-        "$connections": {
-          "defaultValue": {},
-          "type": "Object"
-        },
         "$authentication": {
           "defaultValue": {},
           "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
         }
       },
       "triggers": {
         "manual": {
-          "metadata": {
-            "operationMetadataId": "cd4a2e13-65f0-4df0-aa9a-5bdf0bd27cd9"
-          },
           "type": "Request",
+          "description": "Parameters in publishing/unpublishing a week's bookings in Shift Planner",
           "kind": "PowerAppV2",
           "inputs": {
             "schema": {
@@ -55,7 +53,7 @@
                   "title": "ZoneId",
                   "type": "string",
                   "x-ms-dynamically-added": true,
-                  "description": "bb92d3c3-da17-ef11-9f89-000d3a9d8d48",
+                  "description": "The Zone Id to update, use zone or user mode",
                   "x-ms-content-hint": "TEXT"
                 },
                 "text_1": {
@@ -64,63 +62,45 @@
                   "x-ms-dynamically-added": true,
                   "description": "Publish/Unpublish",
                   "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "description": "Please enter the User Id to update records, use zone or user mode",
+                  "title": "UserId",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
                 }
               },
               "required": [
                 "date",
                 "date_1",
                 "text",
-                "text_1"
+                "text_1",
+                "text_2"
               ]
             }
           },
-          "description": "Parameters in publishing/unpublishing a week's bookings in Shift Planner"
+          "metadata": {
+            "operationMetadataId": "cd4a2e13-65f0-4df0-aa9a-5bdf0bd27cd9"
+          }
         }
       },
       "actions": {
         "Check_if_Action_is_Publish_or_Unpublish": {
+          "type": "If",
+          "expression": {
+            "equals": [
+              "@triggerBody()['text_1']",
+              "Publish"
+            ]
+          },
           "actions": {
             "Apply_to_Each_Published_Shift_Booking": {
+              "type": "Foreach",
               "foreach": "@outputs('Get_Shift_Bookings')?['body/value']",
               "actions": {
                 "Check_if_booking_has_a_sent_invite": {
-                  "actions": {},
-                  "runAfter": {
-                    "Get_item_in_Email_Logs": [
-                      "Succeeded"
-                    ]
-                  },
-                  "else": {
-                    "actions": {
-                      "Add_a_new_row_to_Email_Logs": {
-                        "runAfter": {},
-                        "metadata": {
-                          "operationMetadataId": "83453796-fb35-4d3e-8130-4256465dc9b1"
-                        },
-                        "type": "OpenApiConnection",
-                        "inputs": {
-                          "host": {
-                            "connectionName": "shared_commondataserviceforapps_1",
-                            "operationId": "CreateRecord",
-                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                          },
-                          "parameters": {
-                            "entityName": "mpa_shiftplanner_emaillogs",
-                            "item/mpa_Resource@odata.bind": "systemusers(@{items('Apply_to_Each_Published_Shift_Booking')?['_mpa_resource_value']})",
-                            "item/mpa_teamposition@odata.bind": "mpa_shiftplanner_teampositions(@{items('Apply_to_Each_Published_Shift_Booking')?['_mpa_teamposition_value']})",
-                            "item/mpa_date": "@items('Apply_to_Each_Published_Shift_Booking')?['mpa_date']",
-                            "item/mpa_inviteaction": 1,
-                            "item/mpa_role": "@outputs('Get_Role')?['body/mpa_name']",
-                            "item/mpa_shifttype": "@outputs('Get_Shift_Type')?['body/mpa_name']",
-                            "item/mpa_team": "@outputs('Get_Shift_Team')?['body/mpa_name']",
-                            "item/mpa_zone": "@outputs('Get_Zone_for_Published')?['body/mpa_name']"
-                          },
-                          "authentication": "@parameters('$authentication')"
-                        },
-                        "description": "If there is no existing item for the booking in Email Logs, create one."
-                      }
-                    }
-                  },
+                  "type": "If",
                   "expression": {
                     "or": [
                       {
@@ -137,47 +117,67 @@
                       }
                     ]
                   },
-                  "metadata": {
-                    "operationMetadataId": "ac998bd3-c823-42ec-ad1f-f9f99feb38bd"
+                  "actions": {},
+                  "else": {
+                    "actions": {
+                      "Add_a_new_row_to_Email_Logs": {
+                        "type": "OpenApiConnection",
+                        "description": "If there is no existing item for the booking in Email Logs, create one.",
+                        "inputs": {
+                          "parameters": {
+                            "entityName": "mpa_shiftplanner_emaillogs",
+                            "item/mpa_Resource@odata.bind": "systemusers(@{items('Apply_to_Each_Published_Shift_Booking')?['_mpa_resource_value']})",
+                            "item/mpa_teamposition@odata.bind": "mpa_shiftplanner_teampositions(@{items('Apply_to_Each_Published_Shift_Booking')?['_mpa_teamposition_value']})",
+                            "item/mpa_date": "@items('Apply_to_Each_Published_Shift_Booking')?['mpa_date']",
+                            "item/mpa_inviteaction": 1,
+                            "item/mpa_role": "@outputs('Get_Role')?['body/mpa_name']",
+                            "item/mpa_shifttype": "@outputs('Get_Shift_Type')?['body/mpa_name']",
+                            "item/mpa_team": "@outputs('Get_Shift_Team')?['body/mpa_name']",
+                            "item/mpa_zone": "@outputs('Get_Zone_for_Published')?['body/mpa_name']"
+                          },
+                          "host": {
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                            "operationId": "CreateRecord",
+                            "connectionName": "shared_commondataserviceforapps_1"
+                          }
+                        },
+                        "metadata": {
+                          "operationMetadataId": "83453796-fb35-4d3e-8130-4256465dc9b1"
+                        }
+                      }
+                    }
                   },
-                  "type": "If"
-                },
-                "Get_Zone_for_Published": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "7c1ee9b5-6112-4201-8add-1d6622bd89cb"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "mpa_shiftplanner_zones",
-                      "recordId": "@items('Apply_to_Each_Published_Shift_Booking')?['_mpa_zone_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  },
-                  "description": "Get the Zone name from the lookup value"
-                },
-                "Get_item_in_Email_Logs": {
                   "runAfter": {
-                    "Get_Role": [
+                    "Get_item_in_Email_Logs": [
                       "Succeeded"
                     ]
                   },
                   "metadata": {
-                    "operationMetadataId": "d5452d32-c2b5-4650-8316-d844115d8a60"
-                  },
+                    "operationMetadataId": "ac998bd3-c823-42ec-ad1f-f9f99feb38bd"
+                  }
+                },
+                "Get_Zone_for_Published": {
                   "type": "OpenApiConnection",
+                  "description": "Get the Zone name from the lookup value",
                   "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "ListRecords",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    "parameters": {
+                      "entityName": "mpa_shiftplanner_zones",
+                      "recordId": "@items('Apply_to_Each_Published_Shift_Booking')?['_mpa_zone_value']"
                     },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7c1ee9b5-6112-4201-8add-1d6622bd89cb"
+                  }
+                },
+                "Get_item_in_Email_Logs": {
+                  "type": "OpenApiConnection",
+                  "description": "Checking if there are any existing active calendar invite for this booking in Email Logs",
+                  "inputs": {
                     "parameters": {
                       "entityName": "mpa_shiftplanner_emaillogs",
                       "$select": "mpa_inviteaction",
@@ -185,11 +185,35 @@
                       "$orderby": "modifiedon desc",
                       "$top": 1
                     },
-                    "authentication": "@parameters('$authentication')"
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
                   },
-                  "description": "Checking if there are any existing active calendar invite for this booking in Email Logs"
+                  "runAfter": {
+                    "Get_Role": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "d5452d32-c2b5-4650-8316-d844115d8a60"
+                  }
                 },
                 "Get_Team_Position": {
+                  "type": "OpenApiConnection",
+                  "description": "Get the Team Position item from the lookup value",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "mpa_shiftplanner_teampositions",
+                      "recordId": "@items('Apply_to_Each_Published_Shift_Booking')?['_mpa_teamposition_value']"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
                   "runAfter": {
                     "Get_Zone_for_Published": [
                       "Succeeded"
@@ -197,23 +221,22 @@
                   },
                   "metadata": {
                     "operationMetadataId": "ada421de-7602-49c3-92bd-802e152f0bee"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "mpa_shiftplanner_teampositions",
-                      "recordId": "@items('Apply_to_Each_Published_Shift_Booking')?['_mpa_teamposition_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  },
-                  "description": "Get the Team Position item from the lookup value"
+                  }
                 },
                 "Get_Shift_Team": {
+                  "type": "OpenApiConnection",
+                  "description": "Get the Shift Team name from the lookup value",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "mpa_shiftplanner_shiftteams",
+                      "recordId": "@outputs('Get_Team_Position')?['body/_mpa_shiftteam_value']"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
                   "runAfter": {
                     "Get_Team_Position": [
                       "Succeeded"
@@ -221,23 +244,22 @@
                   },
                   "metadata": {
                     "operationMetadataId": "bcd195eb-3707-4d6a-94dd-ebd14db5549e"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "mpa_shiftplanner_shiftteams",
-                      "recordId": "@outputs('Get_Team_Position')?['body/_mpa_shiftteam_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  },
-                  "description": "Get the Shift Team name from the lookup value"
+                  }
                 },
                 "Get_Shift_Type": {
+                  "type": "OpenApiConnection",
+                  "description": "Get the Shift Type name from the lookup value",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "mpa_shiftplanner_shifttypes",
+                      "recordId": "@outputs('Get_Shift_Team')?['body/_mpa_shifttype_value']"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
                   "runAfter": {
                     "Get_Shift_Team": [
                       "Succeeded"
@@ -245,23 +267,22 @@
                   },
                   "metadata": {
                     "operationMetadataId": "54c181c9-631f-4dbd-a35c-0609ec473eff"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "mpa_shiftplanner_shifttypes",
-                      "recordId": "@outputs('Get_Shift_Team')?['body/_mpa_shifttype_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  },
-                  "description": "Get the Shift Type name from the lookup value"
+                  }
                 },
                 "Get_Role": {
+                  "type": "OpenApiConnection",
+                  "description": "Get the Role name from the lookup value",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "mpa_shiftplanner_roles",
+                      "recordId": "@outputs('Get_Team_Position')?['body/_mpa_role_value']"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  },
                   "runAfter": {
                     "Get_Shift_Type": [
                       "Succeeded"
@@ -269,56 +290,24 @@
                   },
                   "metadata": {
                     "operationMetadataId": "488edad7-5e30-402d-92eb-8cbc9ccca555"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "mpa_shiftplanner_roles",
-                      "recordId": "@outputs('Get_Team_Position')?['body/_mpa_role_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  },
-                  "description": "Get the Role name from the lookup value"
+                  }
                 }
               },
-              "runAfter": {},
               "metadata": {
                 "operationMetadataId": "79583d64-f03e-4f87-a82d-7bedee3713a6"
-              },
-              "type": "Foreach"
+              }
             }
-          },
-          "runAfter": {
-            "Get_Shift_Bookings": [
-              "Succeeded"
-            ]
           },
           "else": {
             "actions": {
               "Apply_to_Each_Unpublished_Booking": {
+                "type": "Foreach",
                 "foreach": "@outputs('Get_Shift_Bookings')?['body/value']",
                 "actions": {
                   "Add_Remove_Row_to_Email_Logs": {
-                    "runAfter": {
-                      "Get_Zone_for_Unpublished": [
-                        "Succeeded"
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "a2c3ecf8-e330-4128-bc9b-ba5178502723"
-                    },
                     "type": "OpenApiConnection",
+                    "description": "Create an item in Email Logs with Remove action",
                     "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps_1",
-                        "operationId": "CreateRecord",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
                       "parameters": {
                         "entityName": "mpa_shiftplanner_emaillogs",
                         "item/mpa_Resource@odata.bind": "systemusers(@{items('Apply_to_Each_Unpublished_Booking')?['_mpa_resource_value']})",
@@ -327,75 +316,89 @@
                         "item/mpa_inviteaction": 2,
                         "item/mpa_zone": "@outputs('Get_Zone_for_Unpublished')?['body/mpa_name']"
                       },
-                      "authentication": "@parameters('$authentication')"
+                      "host": {
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                        "operationId": "CreateRecord",
+                        "connectionName": "shared_commondataserviceforapps_1"
+                      }
                     },
-                    "description": "Create an item in Email Logs with Remove action"
+                    "runAfter": {
+                      "Get_Zone_for_Unpublished": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "a2c3ecf8-e330-4128-bc9b-ba5178502723"
+                    }
                   },
                   "Get_Zone_for_Unpublished": {
-                    "runAfter": {},
-                    "metadata": {
-                      "operationMetadataId": "464d0bcf-6f0d-4cee-9eeb-2b3fd185f849"
-                    },
                     "type": "OpenApiConnection",
+                    "description": "Get the Zone name with the lookup value",
                     "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps_1",
-                        "operationId": "GetItem",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
                       "parameters": {
                         "entityName": "mpa_shiftplanner_zones",
                         "recordId": "@items('Apply_to_Each_Unpublished_Booking')?['_mpa_zone_value']"
                       },
-                      "authentication": "@parameters('$authentication')"
+                      "host": {
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                        "operationId": "GetItem",
+                        "connectionName": "shared_commondataserviceforapps_1"
+                      }
                     },
-                    "description": "Get the Zone name with the lookup value"
+                    "metadata": {
+                      "operationMetadataId": "464d0bcf-6f0d-4cee-9eeb-2b3fd185f849"
+                    }
                   }
                 },
-                "runAfter": {},
                 "metadata": {
                   "operationMetadataId": "ee70bf9b-8704-402b-9889-1e6089a69bc7"
-                },
-                "type": "Foreach"
+                }
               }
             }
           },
-          "expression": {
-            "equals": [
-              "@triggerBody()['text_1']",
-              "Publish"
+          "runAfter": {
+            "Get_Shift_Bookings": [
+              "Succeeded"
             ]
           },
           "metadata": {
             "operationMetadataId": "37322dbe-42ad-4708-b18f-13b083ebf676"
-          },
-          "type": "If"
+          }
         },
         "Get_Shift_Bookings": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "8ed72658-9ceb-43cb-abfa-99e9df019083"
-          },
           "type": "OpenApiConnection",
+          "description": "Get all active shift bookings for the specified zone booked from the entered Week Start Date until Week End Date",
           "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "ListRecords",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
             "parameters": {
               "entityName": "mpa_shiftplanner_shiftbookings",
-              "$filter": "_mpa_zone_value eq '@{triggerBody()['text']}' and mpa_date ge @{triggerBody()['date']} and mpa_date le @{triggerBody()['date_1']} and statecode eq 0",
+              "$filter": "@{outputs('Generate_Filter_Prefix')} and mpa_date ge @{triggerBody()['date']} and mpa_date le @{triggerBody()['date_1']} and statecode eq 0",
               "$orderby": "mpa_date",
               "$expand": "mpa_teamposition, mpa_resource"
             },
-            "authentication": "@parameters('$authentication')"
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
           },
-          "description": "Get all active shift bookings for the specified zone booked from the entered Week Start Date until Week End Date"
+          "runAfter": {
+            "Generate_Filter_Prefix": [
+              "SUCCEEDED"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8ed72658-9ceb-43cb-abfa-99e9df019083"
+          }
+        },
+        "Generate_Filter_Prefix": {
+          "type": "Compose",
+          "inputs": "@if(\r\n  empty(triggerBody()?['text_2']), \r\n  concat('_mpa_zone_value eq ''', triggerBody()['text'], ''''), concat('_mpa_resource_value eq ''', triggerBody()['text_2'], ''''))",
+          "runAfter": {}
         }
-      }
+      },
+      "description": "Flow that creates or removes calendar invites indicating staff shifts to the assigned resources for the selected week."
     },
-    "templateName": ""
+    "templateName": null
   },
   "schemaVersion": "1.0.0.0"
 }

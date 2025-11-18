@@ -1,0 +1,1 @@
+mpa_durationminutes: =DateDiff(mpa_starttime, mpa_endtime, TimeUnit.Minutes)

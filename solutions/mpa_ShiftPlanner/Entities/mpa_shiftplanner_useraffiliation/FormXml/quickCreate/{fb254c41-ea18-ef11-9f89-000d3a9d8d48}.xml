@@ -35,14 +35,14 @@
                         <control id="mpa_zone" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_zone" disabled="false" uniqueid="{ca13950e-263d-519e-8e4c-67957220216d}">
                           <parameters>
                             <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
+                            <DisableMru>true</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
                             <DisableViewPicker>false</DisableViewPicker>
                             <DefaultViewId>{679870EA-AB03-4B5B-8AB8-E7417BF5B33A}</DefaultViewId>
                             <FilterRelationshipName>mpa_shiftplanner_zone_facility</FilterRelationshipName>
                             <DependentAttributeName>mpa_shiftplanner_useraffiliation.mpa_facility</DependentAttributeName>
                             <DependentAttributeType>mpa_shiftplanner_facility</DependentAttributeType>
-                            <AllowFilterOff>true</AllowFilterOff>
+                            <AllowFilterOff>false</AllowFilterOff>
                           </parameters>
                         </control>
                       </cell>
