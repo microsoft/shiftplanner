@@ -6,6 +6,7 @@
     <RolePrivilege name="prvActivateSynchronousWorkflow" level="Basic" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_changerequest" level="Basic" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_shiftbooking" level="Global" />
+    <RolePrivilege name="prvAppendmpa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_useravailability" level="Basic" />
     <RolePrivilege name="prvAppendNewProcess" level="Global" />
     <RolePrivilege name="prvAppendToAsyncOperation" level="Basic" />
@@ -16,6 +17,7 @@
     <RolePrivilege name="prvAppendTompa_shiftplanner_role" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_shiftbooking" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_shifttype" level="Global" />
+    <RolePrivilege name="prvAppendTompa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_useravailability" level="Basic" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_zone" level="Global" />
     <RolePrivilege name="prvAppendToNewProcess" level="Global" />
@@ -29,6 +31,7 @@
     <RolePrivilege name="prvAssignWorkflow" level="Basic" />
     <RolePrivilege name="prvAssignWorkflowSession" level="Basic" />
     <RolePrivilege name="prvCreatempa_shiftplanner_changerequest" level="Basic" />
+    <RolePrivilege name="prvCreatempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvCreatempa_shiftplanner_useravailability" level="Basic" />
     <RolePrivilege name="prvCreateNewProcess" level="Global" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
@@ -37,6 +40,7 @@
     <RolePrivilege name="prvCreateUserEntityUISettings" level="Basic" />
     <RolePrivilege name="prvCreateWorkflow" level="Basic" />
     <RolePrivilege name="prvCreateWorkflowSession" level="Basic" />
+    <RolePrivilege name="prvDeletempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvDeleteNewProcess" level="Global" />
     <RolePrivilege name="prvDeleteTranslationProcess" level="Global" />
     <RolePrivilege name="prvDeleteUserApplicationMetadata" level="Basic" />
@@ -66,6 +70,7 @@
     <RolePrivilege name="prvReadmpa_shiftplanner_shiftteam" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_teamposition" level="Global" />
+    <RolePrivilege name="prvReadmpa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvReadmpa_shiftplanner_useraffiliation" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_useravailability" level="Basic" />
     <RolePrivilege name="prvReadmpa_shiftplanner_userrole" level="Global" />
@@ -105,6 +110,7 @@
     <RolePrivilege name="prvShareWorkflowSession" level="Basic" />
     <RolePrivilege name="prvWorkflowExecution" level="Global" />
     <RolePrivilege name="prvWriteAsyncOperation" level="Basic" />
+    <RolePrivilege name="prvWritempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvWriteNewProcess" level="Global" />
     <RolePrivilege name="prvWriteSharePointData" level="Global" />
     <RolePrivilege name="prvWriteTranslationProcess" level="Global" />

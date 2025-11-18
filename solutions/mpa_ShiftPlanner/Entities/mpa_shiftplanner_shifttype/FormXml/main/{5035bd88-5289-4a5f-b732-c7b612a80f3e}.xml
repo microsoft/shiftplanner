@@ -38,25 +38,33 @@
                     <row>
                       <cell id="{b58bf8ae-7a72-43b2-9774-9f522cbc4add}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Startdate" languagecode="1033" />
+                          <label description="Start Date Time" languagecode="1033" />
                         </labels>
                         <control id="mpa_startdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_startdate" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{004f2d1f-d655-42a3-8642-856529d17ec1}" colspan="1" rowspan="1">
+                      <cell id="{2bb41d27-c82a-4294-8e34-286145e98773}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Duration (hours)" languagecode="1033" />
+                          <label description="Shift Duration" languagecode="1033" />
                         </labels>
-                        <control id="mpa_duration" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="mpa_duration" uniqueid="{d2ef4188-fede-49ef-aa43-9ea3807f322a}" />
+                        <control id="mpa_duration" classid="{AA987274-CE4E-4271-A803-66164311A958}" datafieldname="mpa_duration" disabled="false" />
                       </cell>
                     </row>
                     <row>
                       <cell id="{c545c4d3-3108-48b6-8493-d133bdd1bb01}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Enddate" languagecode="1033" />
+                          <label description="End Date" languagecode="1033" />
                         </labels>
                         <control id="mpa_enddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_enddate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e20e9af5-7812-439a-90e0-915f10479f8f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Days Included" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_daysincluded" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="mpa_daysincluded" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -145,38 +153,7 @@
         <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
         <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
       </DisplayConditions>
-      <controlDescriptions>
-        <controlDescription forControl="{d2ef4188-fede-49ef-aa43-9ea3807f322a}">
-          <customControl id="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}">
-            <parameters>
-              <datafieldname>mpa_duration</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl id="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}">
-            <parameters>
-              <datafieldname>mpa_duration</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.NumberInput.NumberInputControl">
-            <parameters>
-              <value type="Currency">mpa_duration</value>
-              <step type="Decimal" static="true">0.5000000</step>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.NumberInput.NumberInputControl">
-            <parameters>
-              <value type="Currency">mpa_duration</value>
-              <step type="Decimal" static="true">0.5000000</step>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.NumberInput.NumberInputControl">
-            <parameters>
-              <value type="Currency">mpa_duration</value>
-              <step type="Decimal" static="true">0.5000000</step>
-            </parameters>
-          </customControl>
-        </controlDescription>
-      </controlDescriptions>
+      <controlDescriptions />
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
