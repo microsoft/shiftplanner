@@ -15,7 +15,7 @@ jobs:
       solution_name: mpa_ShiftPlanner
       #Update your values here
       BUILD_ENVIRONMENT_URL: ${{vars.BUILD_ENVIRONMENT_URL}}
-      PRODUCTION_ENVIRONMENT_URL: ${{vars.TARGET_ENVIRONMENT_URL}}`
+      PRODUCTION_ENVIRONMENT_URL: ${{vars.TARGET_ENVIRONMENT_URL}}
       CLIENT_ID: ${{vars.CLIENT_ID}}
       TENANT_ID: ${{vars.TENANT_ID}}
     secrets:

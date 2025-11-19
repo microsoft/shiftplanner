@@ -84,6 +84,7 @@ jobs:
         solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}.zip
         force-overwrite: true
         publish-changes: true
+        run-asynchronously: true
 
     - name: Export solution as managed
       uses: microsoft/powerplatform-actions/export-solution@v1
@@ -117,7 +118,7 @@ jobs:
       id: install-power-platform-tools
       uses: microsoft/powerplatform-actions/actions-install@v1
       with:
-        pac-version-override: 1.34.4
+        pac-version-override: 1.43.6
 
     - name: Fetch the ready to ship solution from GH artifact store
       uses: actions/download-artifact@v4
@@ -135,3 +136,4 @@ jobs:
         solution-file: ${{ inputs.solution_release_folder}}/${{ inputs.solution_name }}_managed.zip
         force-overwrite: true
         publish-changes: true
+        run-asynchronously: true

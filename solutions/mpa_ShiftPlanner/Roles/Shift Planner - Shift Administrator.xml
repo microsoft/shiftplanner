@@ -9,6 +9,7 @@
     <RolePrivilege name="prvAppendmpa_shiftplanner_shiftbooking" level="Global" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_shiftteam" level="Basic" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_teamposition" level="Basic" />
+    <RolePrivilege name="prvAppendmpa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvAppendmpa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvAppendNewProcess" level="Global" />
     <RolePrivilege name="prvAppendToAsyncOperation" level="Basic" />
@@ -21,6 +22,7 @@
     <RolePrivilege name="prvAppendTompa_shiftplanner_shiftteam" level="Basic" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_teamposition" level="Basic" />
+    <RolePrivilege name="prvAppendTompa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_userrole" level="Global" />
     <RolePrivilege name="prvAppendTompa_shiftplanner_zone" level="Global" />
@@ -40,6 +42,7 @@
     <RolePrivilege name="prvCreatempa_shiftplanner_shiftbooking" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_shiftteam" level="Basic" />
     <RolePrivilege name="prvCreatempa_shiftplanner_teamposition" level="Basic" />
+    <RolePrivilege name="prvCreatempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvCreatempa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvCreateNewProcess" level="Global" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
@@ -77,6 +80,7 @@
     <RolePrivilege name="prvReadmpa_shiftplanner_shiftteam" level="Basic" />
     <RolePrivilege name="prvReadmpa_shiftplanner_shifttype" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_teamposition" level="Basic" />
+    <RolePrivilege name="prvReadmpa_shiftplanner_timesheetentry" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_useraffiliation" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_userrole" level="Global" />
@@ -127,6 +131,7 @@
     <RolePrivilege name="prvWritempa_shiftplanner_shiftbooking" level="Global" />
     <RolePrivilege name="prvWritempa_shiftplanner_shiftteam" level="Basic" />
     <RolePrivilege name="prvWritempa_shiftplanner_teamposition" level="Basic" />
+    <RolePrivilege name="prvWritempa_shiftplanner_timesheetentry" level="Basic" />
     <RolePrivilege name="prvWritempa_shiftplanner_useravailability" level="Global" />
     <RolePrivilege name="prvWriteNewProcess" level="Global" />
     <RolePrivilege name="prvWriteSharePointData" level="Global" />

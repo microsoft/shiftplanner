@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{87a5cab2-75c6-4b2c-ad97-c2ce942da3a4}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mpa_name" select="1" icon="1" preview="1">
+        <row name="result" id="mpa_shiftplanner_timesheetentryid">
+          <cell name="mpa_name" width="116" />
+          <cell name="mpa_shiftbooking" width="168" />
+          <cell name="mpa_starttime" width="100" />
+          <cell name="mpa_endtime" width="100" />
+          <cell name="statuscode" width="119" />
+          <cell name="mpa_notes" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mpa_shiftplanner_timesheetentry">
+          <attribute name="mpa_shiftplanner_timesheetentryid" />
+          <attribute name="mpa_name" />
+          <attribute name="mpa_endtime" />
+          <attribute name="mpa_starttime" />
+          <attribute name="statuscode" />
+          <attribute name="mpa_notes" />
+          <attribute name="mpa_shiftbooking" />
+          <order attribute="mpa_shiftbooking" descending="false" />
+          <order attribute="mpa_starttime" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All Time Sheet Entries" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

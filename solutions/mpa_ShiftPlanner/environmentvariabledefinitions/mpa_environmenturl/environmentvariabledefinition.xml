@@ -1,0 +1,13 @@
+<environmentvariabledefinition schemaname="mpa_environmenturl">
+  <description default="The Environment Url of this environment, in https://xxx.dynamics.com/">
+    <label description="The Environment Url of this environment, in https://xxx.dynamics.com/" languagecode="1033" />
+  </description>
+  <displayname default="Environment Url">
+    <label description="Environment Url" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.2</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

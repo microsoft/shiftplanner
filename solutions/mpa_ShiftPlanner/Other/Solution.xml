@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25111.138" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25111.138" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25111.00142">
+<ImportExportXml version="9.2.25112.144" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25112.144" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25112.00146">
   <SolutionManifest>
     <UniqueName>mpa_ShiftPlanner</UniqueName>
     <LocalizedNames>
       <LocalizedName description="Shift Planner" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.2</Version>
+    <Version>1.0.0.3</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>PowerAccelerator</UniqueName>
@@ -90,6 +90,7 @@
       <RootComponent type="1" schemaName="mpa_shiftplanner_shiftteam" behavior="0" />
       <RootComponent type="1" schemaName="mpa_shiftplanner_shifttype" behavior="0" />
       <RootComponent type="1" schemaName="mpa_shiftplanner_teamposition" behavior="0" />
+      <RootComponent type="1" schemaName="mpa_shiftplanner_timesheetentry" behavior="0" />
       <RootComponent type="1" schemaName="mpa_shiftplanner_useraffiliation" behavior="0" />
       <RootComponent type="1" schemaName="mpa_shiftplanner_useravailability" behavior="0" />
       <RootComponent type="1" schemaName="mpa_shiftplanner_userrole" behavior="0" />
@@ -107,7 +108,10 @@
       <RootComponent type="29" id="{64ce6ddf-5b22-ef11-840b-7c1e5200e675}" behavior="0" />
       <RootComponent type="29" id="{75d09886-0d24-ef11-840a-0022482dada3}" behavior="0" />
       <RootComponent type="29" id="{79679cd6-1732-ef11-8409-00224830e634}" behavior="0" />
+      <RootComponent type="29" id="{7e84b83d-fac3-f011-8543-7c1e5200c456}" behavior="0" />
+      <RootComponent type="29" id="{8ad352e2-f8c3-f011-8543-7c1e5200c456}" behavior="0" />
       <RootComponent type="29" id="{943ecd9b-881c-ef11-840a-000d3a9d8d48}" behavior="0" />
+      <RootComponent type="29" id="{abe461f7-c7c2-f011-8543-7c1e5200c456}" behavior="0" />
       <RootComponent type="29" id="{c38693a8-f531-ef11-8409-00224830e634}" behavior="0" />
       <RootComponent type="29" id="{c5e1912c-2832-ef11-8409-00224830e634}" behavior="0" />
       <RootComponent type="29" id="{d64f96fe-981d-ef11-9f89-000d3a9d8d48}" behavior="0" />
@@ -137,16 +141,28 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="300" schemaName="mpa_shiftplanner_7f37a" displayName="Shift Planner" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="systemmanagedusertype" displayName="System Managed User Type" parentSchemaName="systemuser" parentDisplayName="User" solution="AuthorizationCore (1.127.0.0)">
+          <package appName="Authorization Package" version="1.7.0.0">msft_PrivilegeChecker (1.7.0.0)</package>
+        </Required>
+        <Dependent type="26" schemaName="Staff Plan - All Available Staff" displayName="Staff Plan - All Available Staff" parentSchemaName="systemuser" parentDisplayName="User" id="{76e050b8-a3c2-f011-8543-7c1e5200c456}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)">
           <package appName="AppModule Web Resources Package" version="2.5">AppModuleWebResources (2.5)</package>
         </Required>
         <Dependent type="80" schemaName="mpa_ShiftPlannerAdministrator" displayName="Shift Planner Administrator" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.NumberInput.NumberInputControl" displayName="MscrmControls.NumberInput.NumberInputControl" solution="BaseCustomControlsCore (9.0.2511.1006)">
-          <package appName="Base Custom Controls" version="9.0.2511.1006">BaseCustomControlsCore (9.0.2511.1006)</package>
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.8687)">
+          <package appName="msdyn_CustomControlsExtended" version="1.25112.3.5808">msdyn_TimelineExtended (1.25112.3.5808)</package>
         </Required>
-        <Dependent type="60" displayName="Information" parentDisplayName="Shift Type" id="{5035bd88-5289-4a5f-b732-c7b612a80f3e}" />
+        <Dependent type="26" schemaName="Calendar View" displayName="Calendar View" parentSchemaName="mpa_shiftplanner_shiftbooking" parentDisplayName="Shift Booking" id="{a4d21b6d-7bc0-f011-8542-6045bdeffbb3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.15)" id.uniquename="AppChannel">

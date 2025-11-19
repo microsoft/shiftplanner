@@ -14,7 +14,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{45085507-41df-400b-b930-c20b6da2c703}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{45085507-41df-400b-b930-c20b6da2c703}" columns="11">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -34,6 +34,12 @@
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>
+                      <cell id="{1ed1109d-baf5-42e7-a641-3522bb8f5d5d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planned Start Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_plannedstarttime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_plannedstarttime" disabled="false" />
+                      </cell>
                     </row>
                     <row>
                       <cell id="{a53a42c9-3dba-4460-81ad-2aec96cd427f}" locklevel="0" colspan="1" rowspan="1">
@@ -41,6 +47,12 @@
                           <label description="Zone" languagecode="1033" />
                         </labels>
                         <control id="mpa_zone" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_zone" disabled="false" />
+                      </cell>
+                      <cell id="{96cf12c1-4cb2-4eea-acb9-dba72e3ebdfa}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planned End Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_plannedendtime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_plannedendtime" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -78,11 +90,24 @@
                     <row>
                       <cell id="{c59fa325-7018-4a7b-a25f-a0e055459e3b}" locklevel="0" rowspan="1" colspan="1">
                         <labels>
-                          <label description="Status Reason" languagecode="1033" />
+                          <label description="Status" languagecode="1033" />
                         </labels>
                         <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
                       </cell>
+                      <cell locklevel="0" id="{e9291f6a-f44b-4f26-94ab-9a0bb4d223df}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
                     </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="361e6917-bccd-474e-92da-b0498b4bdb6c" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
                     <row>
                       <cell locklevel="0" id="{640b9bfd-b276-4d65-b89c-a8f6f2bdfacf}" rowspan="4" colspan="1" auto="false">
                         <labels>
@@ -113,6 +138,128 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_2" id="51bbc5cf-b5ea-476f-a03c-59eaaf9c8a7b" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Time Sheet" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" id="69d1adf3-3177-4f92-bea8-8efd66d310fb" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{daad018f-951e-4c3a-a20a-641787c13f4a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{39d77311-fd4a-42c8-905d-30a41790be0b}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{261b3676-e5b7-41eb-83a0-73c76c4ba45d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planned Start Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_plannedstarttime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_plannedstarttime" disabled="false" />
+                      </cell>
+                      <cell id="{ea431189-fd7f-4fac-b998-bec114e24d46}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planned End Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_plannedendtime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_plannedendtime" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{140d77e8-2526-44be-ba4a-89785f08769f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Actual Start Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_actualstarttime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_actualstarttime" disabled="false" />
+                      </cell>
+                      <cell id="{8cc43cf0-662e-49a6-8476-19dd32bf895a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Actual End Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_actualendtime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_actualendtime" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{83478432-b1d6-4456-a685-4f400499b1d1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Actual Work Duration" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_actualworkedduration" classid="{AA987274-CE4E-4271-A803-66164311A958}" datafieldname="mpa_actualworkedduration" disabled="false" />
+                      </cell>
+                      <cell id="{5885fc47-1e3e-46a3-b53b-1979f1bdfc9d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Total Break Duration" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_breakduration" classid="{AA987274-CE4E-4271-A803-66164311A958}" datafieldname="mpa_breakduration" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab_2_section_4" id="bd3f0383-a03b-4e64-8cad-c22ae8df05be" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{157a1308-a636-47c7-9128-cbecf3040095}" rowspan="4" colspan="1" auto="false" showlabel="true">
+                        <labels>
+                          <label description="Breaks" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <RelationshipName>mpa_shiftplanner_timesheetentry_shiftbooking_mpa_shiftplanner_shiftbooking</RelationshipName>
+                            <TargetEntityType>mpa_shiftplanner_timesheetentry</TargetEntityType>
+                            <ViewId>{CE467C99-6FC3-F011-8543-7C1E5200C456}</ViewId>
+                            <ViewIds>{87A5CAB2-75C6-4B2C-AD97-C2CE942DA3A4},{CE467C99-6FC3-F011-8543-7C1E5200C456}</ViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="tab_2_section_3" id="c0c916cf-3527-40b3-8c8c-b4cb6767d194" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Timesheet Notes" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{d7146898-05e7-4346-b49c-e3f0a0a1ef93}" locklevel="0" colspan="1" rowspan="3" auto="true" showlabel="false">
+                        <labels>
+                          <label description="Timesheet Notes" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_timesheetnotes" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="mpa_timesheetnotes" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
       <header id="{b4d48e98-f066-4e86-b184-5b54192e613d}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -131,6 +278,12 @@
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
+            </cell>
+            <cell id="{ed685fa8-b09d-42b5-ab45-805666dfd793}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Status" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
             </cell>
           </row>
         </rows>
