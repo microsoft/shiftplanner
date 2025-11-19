@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25112.144" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25112.144" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25112.00144">
+<ImportExportXml version="9.2.25112.144" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25112.144" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25112.00146">
   <SolutionManifest>
     <UniqueName>mpa_ShiftPlanner</UniqueName>
     <LocalizedNames>
@@ -140,12 +140,6 @@
       <RootComponent type="9" schemaName="mpa_shiftplanner_inviteaction" behavior="0" />
     </RootComponents>
     <MissingDependencies>
-      <MissingDependency>
-        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
-          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
-        </Required>
-        <Dependent type="300" schemaName="mpa_shiftplanner_7f37a" displayName="Shift Planner" />
-      </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
           <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
