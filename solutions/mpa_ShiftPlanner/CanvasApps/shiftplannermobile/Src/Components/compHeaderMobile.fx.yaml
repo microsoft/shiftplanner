@@ -10,6 +10,7 @@ compHeaderMobile As CanvasComponent:
     ProfileImage: =varCurrentUser.Image
     ProfileScreen: ='Profile Screen'
     TeamsEmbeddedMode: =true
+    TimeTrackScreen: =App.ActiveScreen
     Width: =App.Width
     X: =0
     Y: =0
@@ -146,7 +147,10 @@ compHeaderMobile As CanvasComponent:
 
                 btnHeaderHome As Button:
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    BorderColor: =
                     DisplayMode: =DisplayMode.Edit
+                    FontColor: =
                     Height: =Parent.Height
                     OnSelect: =Navigate(compHeaderMobile.HomeScreen)
                     Text: =""
@@ -197,7 +201,10 @@ compHeaderMobile As CanvasComponent:
 
                 btnHeaderAllShifts As Button:
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    BorderColor: =
                     DisplayMode: =DisplayMode.Edit
+                    FontColor: =
                     Height: =Parent.Height
                     OnSelect: =Navigate(compHeaderMobile.AllShiftsScreen)
                     Text: =""
@@ -248,7 +255,10 @@ compHeaderMobile As CanvasComponent:
 
                 btnHeaderAllMyRequests As Button:
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    BorderColor: =
                     DisplayMode: =DisplayMode.Edit
+                    FontColor: =
                     Height: =Parent.Height
                     OnSelect: =Navigate(compHeaderMobile.MyRequestsScreen)
                     Text: =""
@@ -257,11 +267,86 @@ compHeaderMobile As CanvasComponent:
                     Y: =0
                     ZIndex: =5
 
+            conTimeTrackTab As groupContainer.manualLayoutContainer:
+                FillPortions: =0
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =10
+                LayoutMinWidth: =10
+                Width: =40
+                ZIndex: =4
+
+                icoHeaderHighlightTimeTrack As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    BorderStyle: =BorderStyle.None
+                    Fill: =RGBA(245, 245, 245,1)
+                    Height: =rectHeaderUnderlineTimeTrack.Y + rectHeaderUnderlineTimeTrack.Height
+                    Visible: =rectHeaderUnderlineTimeTrack.Visible
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                imgHeaderTimeTrack As image:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Height: =26
+                    Image: =stopwatch
+                    Width: =32
+                    X: =4
+                    Y: =7
+                    ZIndex: =2
+
+                rectHeaderUnderlineTimeTrack As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    BorderStyle: =BorderStyle.None
+                    Fill: =RGBA(36, 36, 36, 1)
+                    Height: =3
+                    Visible: =App.ActiveScreen = compHeaderMobile.TimeTrackScreen
+                    Width: =Parent.Width-(Self.X*2)
+                    X: =10
+                    Y: =Parent.Height-Self.Height-4
+                    ZIndex: =3
+
+                btnHeaderTimeTrack As Button:
+                    AcceptsFocus: =true
+                    AccessibleLabel: =""
+                    Align: =""
+                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontSize: =0
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    FontWeight: =""
+                    Height: =Parent.Height
+                    Icon: =""
+                    IconRotation: =0
+                    IconStyle: ="Outline"
+                    Layout: ="Icon before"
+                    OnSelect: =Navigate(compHeaderMobile.TimeTrackScreen)
+                    TabIndex: =0
+                    Text: =""
+                    Tooltip: =""
+                    VerticalAlign: =""
+                    Visible: =true
+                    Width: =Parent.Width
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
             txtTitleBarTitleText As Text:
                 Align: ='TextCanvas.Align'.Start
                 AutoHeight: =true
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
+                Fill: =
                 FillPortions: =1
                 FontColor: =RGBA(36, 36, 36, 1)
                 Height: =26
@@ -277,7 +362,7 @@ compHeaderMobile As CanvasComponent:
                 Wrap: =true
                 X: =0
                 Y: =0
-                ZIndex: =5
+                ZIndex: =6
 
             conProfileTab As groupContainer.manualLayoutContainer:
                 FillPortions: =0
@@ -286,7 +371,7 @@ compHeaderMobile As CanvasComponent:
                 LayoutMinHeight: =10
                 LayoutMinWidth: =10
                 Width: =40
-                ZIndex: =11
+                ZIndex: =7
 
                 imgProfile As image:
                     BorderColor: =App.Theme.Colors.Darker40
@@ -305,7 +390,10 @@ compHeaderMobile As CanvasComponent:
 
                 btnProfile As Button:
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    BorderColor: =
                     DisplayMode: =DisplayMode.Edit
+                    FontColor: =
                     Height: =Parent.Height
                     OnSelect: =Navigate(compHeaderMobile.ProfileScreen)
                     Text: =""
@@ -322,18 +410,16 @@ compHeaderMobile As CanvasComponent:
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             PaddingLeft: =10
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
             ZIndex: =3
 
             txtTitleBarTitleText_1 As Text:
                 Align: ='TextCanvas.Align'.Start
                 AlignInContainer: =AlignInContainer.Center
                 AutoHeight: =true
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
+                Fill: =
                 FillPortions: =1
                 FontColor: =RGBA(36, 36, 36, 1)
                 Height: =26

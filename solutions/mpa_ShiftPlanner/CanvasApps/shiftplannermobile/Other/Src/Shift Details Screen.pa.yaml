@@ -115,7 +115,7 @@ Screens:
                             Control: Text@0.0.51
                             Properties:
                               AutoHeight: =true
-                              Text: =Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Startdate , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Enddate, DateTimeFormat.ShortTime))
+                              Text: =Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time' , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'End Date', DateTimeFormat.ShortTime))
                               Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
                         - conShiftPosition_ShiftDetails:
                             Control: GroupContainer@1.3.0
@@ -168,7 +168,7 @@ Screens:
                         - txtTeamName_ShiftDetails:
                             Control: Text@0.0.51
                             Properties:
-                              FontColor: =ColorValue(varTheme.primary)
+                              FontColor: =App.Theme.Colors.Primary
                               Size: =varThemeFont.H2.size
                               Text: =varSelectedShift.'Team Position'.'Shift Team'.Name
                               VerticalAlign: =VerticalAlign.Middle
@@ -181,9 +181,17 @@ Screens:
                             Properties:
                               AccessibleLabel: ="Shift Details"
                               BorderStyle: =BorderStyle.None
+                              FocusedBorderThickness: =0
                               Height: =Parent.Height - txtTeamName_ShiftDetails.Height - Parent.LayoutGap
                               Items: |-
-                                =AddColumns(
+                                =Filter(
+                                    'Shift Bookings', 
+                                    Date = varSelectedShift.Date And 'Team Position'.'Shift Team'.shiftplanner_shiftteam = varSelectedShift.'Team Position'.'Shift Team'.shiftplanner_shiftteam And Status = 'Status (Shift Bookings)'.Active
+                                )
+                                /*
+                                Old Model
+
+                                AddColumns(
                                     Filter(
                                         'Team Positions',
                                         ('Effective From' <= varSelectedShift.Date And 'Effective To' >= varSelectedShift.Date) And 'Shift Team'.shiftplanner_shiftteam = varSelectedShift.'Team Position'.'Shift Team'.shiftplanner_shiftteam And Status = 'Status (Team Positions)'.Active
@@ -201,6 +209,7 @@ Screens:
                                             Resource
                                         )
                                 )
+                                */
                               TabIndex: =0
                               TemplateSize: =40
                               Width: =Parent.Width
@@ -270,10 +279,10 @@ Screens:
                                                 Text: |-
                                                   =If(
                                                       IsBlank(
-                                                          ThisItem.ShiftBookingResource.'Primary Email'
+                                                          ThisItem.Resource.'Primary Email'
                                                       ),
                                                       "(Not filled)",
-                                                      ThisItem.ShiftBookingResource.'Full Name' 
+                                                      ThisItem.Resource.'Full Name' 
                                                   )
                                                 VerticalAlign: =VerticalAlign.Top
                                                 Weight: =varThemeFont.H3.weightBold
@@ -284,7 +293,7 @@ Screens:
                                                 Align: ='TextCanvas.Align'.Start
                                                 FontColor: =ColorValue(varTheme.neutralForeground3)
                                                 Height: =20
-                                                Text: =ThisItem.Role.Name
+                                                Text: =ThisItem.'Team Position'.Role.Name
                                                 VerticalAlign: =VerticalAlign.Top
                                                 Weight: =
                                                 Width: '=Parent.Width - Parent.PaddingLeft - Parent.PaddingRight '
@@ -344,6 +353,15 @@ Screens:
                               Text: ="Back"
                               Visible: =If(varSelectedShift.Date < Today(), true, false)
                               Width: =172
+                  - TextCanvas1:
+                      Control: Text@0.0.51
+                      Properties:
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Size: =varThemeFont.H2.size
+                        Weight: =varThemeFont.H2.weightBold
       - compHeaderMobile_ShiftDetails:
           Control: CanvasComponent
           ComponentName: compHeaderMobile
@@ -358,4 +376,5 @@ Screens:
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
             TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

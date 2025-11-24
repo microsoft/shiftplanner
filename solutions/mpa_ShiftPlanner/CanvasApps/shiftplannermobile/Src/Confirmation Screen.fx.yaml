@@ -72,8 +72,10 @@
 
                 txtCancel_Confirmation As Text:
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground1)
                     Height: =Self.Size * 1.5
                     LayoutMaxHeight: =
@@ -91,8 +93,10 @@
 
                 txtCancelDetails_Confirmation As Text:
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground1)
                     Height: =32
                     LayoutMaxHeight: =
@@ -124,6 +128,7 @@
                     Align: =""
                     Appearance: ='ButtonCanvas.Appearance'.Secondary
                     BasePaletteColor: =
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
                     Font: =""
@@ -152,6 +157,7 @@
                     AccessibleLabel: ="Primary"
                     Align: =""
                     BasePaletteColor: =
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
                     Font: =""
@@ -198,5 +204,6 @@
         HomeScreen: ='Home Screen'
         NavigationScreen: ='Navigation Screen'
         TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
         ZIndex: =2
 

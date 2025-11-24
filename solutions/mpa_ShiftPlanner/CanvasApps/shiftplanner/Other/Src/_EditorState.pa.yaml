@@ -15,6 +15,10 @@ EditorState:
     - Add Staff Screen
     - Add Position Screen
     - Validation Screen
+    - Staff Planning Screen
+    - Staff Planning - Show Open Bookings
+    - Staff Planning - Add Leave
+    - Staff Planning - Reassign
   ComponentDefinitionsOrder:
     - compHeaderCompound
     - compConfirmation

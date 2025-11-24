@@ -173,6 +173,7 @@ Screens:
                         AlignInContainer: =AlignInContainer.Start
                         BorderStyle: =BorderStyle.None
                         FillPortions: =0
+                        FocusedBorderThickness: =0
                         Height: =Parent.Height
                         Items: |-
                           =Filter(
@@ -341,4 +342,5 @@ Screens:
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
             TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

@@ -16,7 +16,7 @@ Screens:
           Variant: AutoLayout
           Properties:
             DropShadow: =DropShadow.None
-            Fill: =ColorValue(varTheme.neutralBackground2)
+            Fill: =varTheme.popupBackground
             Height: =Parent.Height - compHeaderCompound_Validation.Height
             LayoutAlignItems: =LayoutAlignItems.Center
             LayoutDirection: =LayoutDirection.Vertical

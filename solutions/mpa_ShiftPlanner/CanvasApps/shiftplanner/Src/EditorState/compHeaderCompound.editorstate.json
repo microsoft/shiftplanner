@@ -117,7 +117,9 @@
         "Align",
         "BorderStyle",
         "UserImageAltText",
-        "TitleRole"
+        "TitleRole",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -288,6 +290,16 @@
         {
           "Category": "Data",
           "PropertyName": "TitleRole",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
           "RuleProviderType": "Unknown"
         },
         {

@@ -20,6 +20,7 @@
         conPageContent_LandingScreen As groupContainer.verticalAutoLayoutContainer:
             Height: =Parent.Height
             LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
             LayoutMaxHeight: =
             LayoutMaxWidth: =
             LayoutMinHeight: =100
@@ -39,12 +40,130 @@
                 LayoutMode: =LayoutMode.Auto
                 ZIndex: =1
 
+                conPlanningMode_LandingScreen As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =22
+                    Width: =250
+                    ZIndex: =1
+
+                    btnPlanningModeFacility_LandingScreen As button:
+                        BorderColor: =App.Theme.Colors.Primary
+                        BorderStyle: =BorderStyle.None
+                        Color: =App.Theme.Colors.PrimaryForeground
+                        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                        DisabledColor: =App.Theme.Colors.PrimaryForeground
+                        DisabledFill: =App.Theme.Colors.Primary
+                        DisplayMode: =DisplayMode.Disabled
+                        Fill: =App.Theme.Colors.Primary
+                        Font: =App.Theme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Height: =32
+                        HoverBorderColor: =App.Theme.Colors.Darker10
+                        HoverColor: =App.Theme.Colors.PrimaryForeground
+                        HoverFill: =App.Theme.Colors.Darker10
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        PressedBorderColor: =App.Theme.Colors.Darker40
+                        PressedColor: =Self.Color
+                        PressedFill: =App.Theme.Colors.Darker40
+                        RadiusBottomLeft: =15
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =15
+                        RadiusTopRight: =0
+                        Size: =11
+                        Text: ="Facility Plan"
+                        Width: =100
+                        ZIndex: =1
+
+                    btnPlanningModeStaff_LandingScreen As button:
+                        BorderColor: =App.Theme.Colors.Primary
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =0
+                        Color: =ColorValue(varTheme.neutralForegroundDisabled)
+                        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(244, 244, 244, 1)
+                        Fill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                        Font: =App.Theme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Height: =32
+                        HoverBorderColor: =ColorValue(varTheme.neutralBackground2)
+                        HoverColor: =App.Theme.Colors.Primary
+                        HoverFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Navigate('Staff Planning Screen')
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        PressedBorderColor: =App.Theme.Colors.Darker40
+                        PressedColor: =App.Theme.Colors.PrimaryForeground
+                        PressedFill: =Self.HoverFill
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =15
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =15
+                        Size: =11
+                        Text: ="Staff Plan"
+                        Width: =100
+                        ZIndex: =2
+
+                txtHeaderSpacer_LandingScreen As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    AlignInContainer: =AlignInContainer.Center
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FillPortions: =1
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =10
+                    Size: =14
+                    TabIndex: =0
+                    Text: =
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =true
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =20
+                    Wrap: =false
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
                 txtFilter_LandingScreen As Text:
                     Align: ='TextCanvas.Align'.End
                     AlignInContainer: =AlignInContainer.Center
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =Self.Size * 1.5
                     LayoutMaxHeight: =
@@ -56,11 +175,11 @@
                         ="Filter:"
                     VerticalAlign: =VerticalAlign.Middle
                     Weight: =varThemeFont.H3.weightBold
-                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight - cmbFilter_LandingScreen.Width - conFilter_landingScreen.LayoutGap
+                    Width: =80  
                     Wrap: =true
                     X: =0
                     Y: =0
-                    ZIndex: =1
+                    ZIndex: =3
 
                 cmbFilter_LandingScreen As Combobox.pcfdataset:
                     AccessibleLabel: ="Select Hospital"
@@ -85,7 +204,7 @@
                     Width: =280
                     X: =0
                     Y: =0
-                    ZIndex: =2
+                    ZIndex: =4
 
                     Name1 As PowerApps_CoreControls_ComboboxCanvasTemplate_dataField.textualColumn:
                         FieldDisplayName: ="Name"
@@ -139,7 +258,7 @@
                             With(
                                 {
                                     Rows: RoundUp(
-                                        galZone_LandingScreen.AllItemsCount / varZoneWrapCount,
+                                        galZone_LandingScreen.AllItemsCount / If(varZoneWrapCount=0 Or galZone_LandingScreen.AllItemsCount=0,1,varZoneWrapCount),
                                         0
                                     )
                                 },
@@ -180,8 +299,10 @@
 
                             txtZone_LandingScreen As Text:
                                 AutoHeight: =true
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =App.Theme.Colors.Primary
                                 Height: =44
                                 LayoutMaxHeight: =
@@ -200,8 +321,10 @@
                             txtNoOfStaff_LandingScreen As Text:
                                 Align: ='TextCanvas.Align'.Start
                                 AutoHeight: =false
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue(varTheme.neutralForeground1)
                                 Height: =20
                                 LayoutMaxHeight: =
@@ -226,6 +349,7 @@
                             Align: =""
                             Appearance: ='ButtonCanvas.Appearance'.Transparent
                             BasePaletteColor: =
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Font: =""
@@ -239,6 +363,8 @@
                             Layout: ="Icon before"
                             OnSelect: |-
                                 =Set(varSelectedZone, ThisItem);
+                                
+                                // ToDo: Add a date range
                                 ClearCollect(colFilteredBookings, 
                                     Filter(
                                         shiftplanner_shiftbookings, 
@@ -301,8 +427,10 @@
 
                     txtFacility_LandingScreen As Text:
                         AutoHeight: =false
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =Self.Size * 1.5
                         LayoutMaxHeight: =

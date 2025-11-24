@@ -13,6 +13,20 @@
     "OverridableProperties": {},
     "Version": "1.0"
   },
+  "button": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/button",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": true,
+    "LastModifiedTimestamp": "0",
+    "Name": "button",
+    "OverridableProperties": {},
+    "Version": "2.2.0"
+  },
   "Button": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -56,6 +70,35 @@
     "OverridableProperties": {},
     "TemplateDisplayName": "Combobox",
     "Version": "0.0.51"
+  },
+  "Date picker": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_DatePickerCanvas",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": true,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "PowerApps_CoreControls_DatePickerCanvas",
+    "OverridableProperties": {},
+    "TemplateDisplayName": "Date picker",
+    "Version": "0.0.46"
+  },
+  "form": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/form",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": true,
+    "LastModifiedTimestamp": "0",
+    "Name": "form",
+    "OverridableProperties": {},
+    "Version": "2.4.4"
   },
   "gallery": {
     "CustomGroupControlTemplateName": "",
@@ -143,6 +186,21 @@
     "OverridableProperties": {},
     "Version": "2.5.0"
   },
+  "Icon": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_Icon",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": true,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "PowerApps_CoreControls_Icon",
+    "OverridableProperties": {},
+    "TemplateDisplayName": "Icon",
+    "Version": "0.0.7"
+  },
   "image": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -157,19 +215,20 @@
     "OverridableProperties": {},
     "Version": "2.2.3"
   },
-  "label": {
+  "Link": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
-    "Id": "http://microsoft.com/appmagic/label",
+    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_LinkCanvas",
     "IsComponentTemplate": false,
     "IsCustomGroupControlTemplate": false,
-    "IsPcfControl": false,
+    "IsPcfControl": true,
     "IsPremiumPcfControl": false,
-    "IsWidgetTemplate": true,
+    "IsWidgetTemplate": false,
     "LastModifiedTimestamp": "0",
-    "Name": "label",
+    "Name": "PowerApps_CoreControls_LinkCanvas",
     "OverridableProperties": {},
-    "Version": "2.5.1"
+    "TemplateDisplayName": "Link",
+    "Version": "0.0.45"
   },
   "PowerApps_CoreControls_ComboboxCanvasTemplate_dataField": {
     "CustomGroupControlTemplateName": "",
@@ -213,6 +272,21 @@
     "OverridableProperties": {},
     "Version": "1.0"
   },
+  "Spinner": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_Spinner",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": true,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "PowerApps_CoreControls_Spinner",
+    "OverridableProperties": {},
+    "TemplateDisplayName": "Spinner",
+    "Version": "1.4.6"
+  },
   "Text": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -242,5 +316,33 @@
     "OverridableProperties": {},
     "TemplateDisplayName": "Text input",
     "Version": "0.0.54"
+  },
+  "timer": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/timer",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": true,
+    "LastModifiedTimestamp": "0",
+    "Name": "timer",
+    "OverridableProperties": {},
+    "Version": "2.1.0"
+  },
+  "typedDataCard": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/card",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "typedDataCard",
+    "OverridableProperties": {},
+    "Version": "1.0.7"
   }
 }

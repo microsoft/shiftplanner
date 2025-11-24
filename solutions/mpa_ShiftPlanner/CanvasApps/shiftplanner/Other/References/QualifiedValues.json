@@ -97,6 +97,28 @@
       }
     },
     {
+      "Kind": "default.cds_environmentvariablevalue_forms",
+      "Namespace": "Environment Variable Values (Forms)",
+      "Values": {
+        "Information": "f574a3ab-1060-43ee-a95f-9aa922b497db"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_changerequest_forms",
+      "Namespace": "Change Requests (Forms)",
+      "Values": {
+        "Information": "ccd6a42e-a098-4820-a0cf-9dd78c7c6dd9",
+        "Shiftplanner_changerequest quick create form": "73d02a71-6319-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_environmentvariabledefinition_forms",
+      "Namespace": "Environment Variable Definitions (Forms)",
+      "Values": {
+        "Information": "3853733b-a351-455d-b686-d2d05027ba4d"
+      }
+    },
+    {
       "Kind": "default.cds_mpa_shiftplanner_shift_forms",
       "Namespace": "shiftplanner_shifts (Forms)",
       "Values": {

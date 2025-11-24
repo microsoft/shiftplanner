@@ -56,7 +56,9 @@
                 avaUserProfile_Profile As Avatar:
                     AccessibleLabel: ="Current user profile picture"
                     Badge: ='Avatar.Badge'.None
+                    BasePaletteColor: =
                     DisplayMode: =DisplayMode.Edit
+                    FontColor: =
                     Height: =Parent.Height
                     Image: |-
                         =//User().Image
@@ -92,8 +94,10 @@
 
                 txtFullname_Profile As Text:
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =22
                     LayoutMaxHeight: =
@@ -111,8 +115,10 @@
 
                 txtRoles_Profile As Text:
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue( varTheme.neutralForeground3)
                     Height: =32
                     LayoutMaxHeight: =
@@ -162,8 +168,10 @@
 
                 txtPersonalDetails_Profile As Text:
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =Self.Size * 1.5
                     LayoutMaxHeight: =
@@ -193,8 +201,10 @@
 
                     txtEmailAdd_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -211,8 +221,10 @@
 
                     txtEmailAddValue_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -249,8 +261,10 @@
 
                     txtContact_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -267,8 +281,10 @@
 
                     txtContactValue_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -311,8 +327,10 @@
 
                 txtWorkDetails_Profile As Text:
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =Self.Size * 1.5
                     LayoutMaxHeight: =
@@ -342,8 +360,10 @@
 
                     txtTeamAffilliation_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -360,8 +380,10 @@
 
                     txtTeamAffiliationValue_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -407,8 +429,10 @@
 
                     txtFacility_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -425,8 +449,10 @@
 
                     txtFacilityValue_Profile As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =32
                         LayoutMaxHeight: =
@@ -460,5 +486,6 @@
         HomeScreen: ='Home Screen'
         NavigationScreen: ='Navigation Screen'
         TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
         ZIndex: =2
 

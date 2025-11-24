@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25112.144" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25112.144" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25112.00146">
+<ImportExportXml version="9.2.25113.131" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25113.131" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25113.00131">
   <SolutionManifest>
     <UniqueName>mpa_ShiftPlanner</UniqueName>
     <LocalizedNames>
@@ -160,7 +160,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.8687)">
-          <package appName="msdyn_CustomControlsExtended" version="1.25112.3.5808">msdyn_TimelineExtended (1.25112.3.5808)</package>
+          <package appName="msdyn_CustomControlsExtended" version="1.25112.1.5753">msdyn_TimelineExtended (1.25112.1.5753)</package>
         </Required>
         <Dependent type="26" schemaName="Calendar View" displayName="Calendar View" parentSchemaName="mpa_shiftplanner_shiftbooking" parentDisplayName="Shift Booking" id="{a4d21b6d-7bc0-f011-8542-6045bdeffbb3}" />
       </MissingDependency>

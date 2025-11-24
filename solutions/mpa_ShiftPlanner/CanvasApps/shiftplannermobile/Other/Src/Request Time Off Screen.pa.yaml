@@ -126,7 +126,7 @@ Screens:
                                   Properties:
                                     AutoHeight: =true
                                     FontColor: =ColorValue(varTheme.neutralForeground1)
-                                    Text: =Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Startdate , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Enddate, DateTimeFormat.ShortTime))
+                                    Text: =Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time' , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'End Date', DateTimeFormat.ShortTime))
                                     Weight: ='TextCanvas.Weight'.Regular
                                     Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
                         - conReason_RequestTimeOff:
@@ -255,4 +255,5 @@ Screens:
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
             TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

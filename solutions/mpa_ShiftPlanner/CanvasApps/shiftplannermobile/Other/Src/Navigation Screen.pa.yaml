@@ -51,6 +51,7 @@ Screens:
                   AccessibleLabel: ="Menu"
                   AlignInContainer: =AlignInContainer.End
                   Color: =App.Theme.Colors.Darker70
+                  FocusedBorderThickness: =0
                   Height: =19.5
                   Icon: =Icon.Cancel
                   OnSelect: =Back()
@@ -62,6 +63,7 @@ Screens:
                 Properties:
                   AccessibleLabel: ="Navigation Menu"
                   AlignInContainer: =AlignInContainer.SetByContainer
+                  FocusedBorderThickness: =0
                   Height: =Parent.Height - icoCancel_Navigation.Height
                   Items: =leftNavItems
                   TabIndex: =0
@@ -105,6 +107,7 @@ Screens:
                                           varSelectedScreen = ThisItem.Screen,
                                           ColorValue(varTheme.primary)
                                       )
+                                    FocusedBorderThickness: =0
                                     Height: =Self.Width
                                     Icon: =ThisItem.Icon
                                     Width: =28
@@ -135,3 +138,10 @@ Screens:
                         Text: =""
                         Width: =galMenu_Navigation.TemplateWidth
                         Y: =(galMenu_Navigation.TemplateHeight - Self.Height) / 2
+      - Image2:
+          Control: Image@2.2.3
+          Properties:
+            FocusedBorderThickness: =0
+            Image: =
+            X: =40
+            Y: =40

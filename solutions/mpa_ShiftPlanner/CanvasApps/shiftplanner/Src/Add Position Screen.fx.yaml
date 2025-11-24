@@ -34,8 +34,10 @@
 
             txtBreadCrumbs_AddPosition As Text:
                 AutoHeight: =true
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
+                Fill: =
                 FontColor: =ColorValue(varTheme.neutralForeground3)
                 Height: =32
                 LayoutMaxHeight: =
@@ -51,8 +53,10 @@
 
             txtTitle_AddPosition As Text:
                 AutoHeight: =false
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
+                Fill: =
                 FontColor: =
                 Height: =Self.Size * 1.5
                 LayoutMaxHeight: =
@@ -96,8 +100,10 @@
 
                 txtAddPositionTo_AddPosition As Text:
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =Self.Size * 1.5
                     LayoutMaxHeight: =
@@ -118,6 +124,8 @@
                     BorderColor: =App.Theme.Colors.Darker40
                     DelayItemLoading: =true
                     FillPortions: =0
+                    FocusedBorderColor: =ColorValue(varTheme.focusBorder)
+                    FocusedBorderThickness: =2
                     Height: =90
                     Items: =Sort( Filter(shiftplanner_shiftteams, Zone.Name = varSelectedZone.Name And 'Shift Type'.shiftplanner_shifttype = varAddPosition.shiftplanner_shifttype), Name)
                     LayoutMaxHeight: =
@@ -146,8 +154,10 @@
 
                         txtTeam_AddPosition As Text:
                             AutoHeight: =true
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FontColor: =App.Theme.Colors.Primary
                             Height: =
                             LayoutMaxHeight: =
@@ -226,8 +236,10 @@
 
                     txtSelectPosition_AddPosition As Text:
                         AutoHeight: =false
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =
                         Height: =Self.Size * 1.5
                         LayoutMaxHeight: =
@@ -247,8 +259,10 @@
                         AccessibleLabel: ="Search"
                         Appearance: ="FilledDarker"
                         BasePaletteColor: =
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         Font: =""
                         FontColor: =
                         FontItalic: =
@@ -272,6 +286,8 @@
                     AccessibleLabel: ="Position Gallery"
                     BorderColor: =App.Theme.Colors.Darker40
                     DelayItemLoading: =true
+                    FocusedBorderColor: =ColorValue(varTheme.focusBorder)
+                    FocusedBorderThickness: =2
                     Items: =Search(Sort(shiftplanner_roles, Name),Text(txiSearh_AddPosition.Value),Name)
                     Layout: =Layout.Vertical
                     LayoutMaxHeight: =
@@ -301,8 +317,10 @@
 
                         txtPosition_AddPosition As Text:
                             AutoHeight: =true
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FontColor: =App.Theme.Colors.Primary
                             Height: =
                             LayoutMaxHeight: =
@@ -351,6 +369,7 @@
                 Align: =""
                 Appearance: ='ButtonCanvas.Appearance'.Secondary
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
                 Font: =""
@@ -379,6 +398,7 @@
                 AccessibleLabel: ="Primary"
                 Align: =""
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: |-
                     =If(
@@ -405,14 +425,20 @@
                         colModify,
                         Defaults(colModify),
                         {
-                            ShiftNum: GUID(),
+                            BookingId: GUID(),
+                            TeamPositionId: GUID(),
                             ShiftType: varAddPosition.Name,
+                            ShiftTypeId: varAddPosition.shiftplanner_shifttype,
                             Team: galTeam_AddPosition.Selected.txtTeam_AddPosition.Text,
+                            TeamId: galTeam_AddPosition.Selected.shiftplanner_shiftteam,
                             Position: galPosition_AddPositon.Selected.txtPosition_AddPosition.Text,
+                            PositionId: galPosition_AddPositon.Selected.shiftplanner_role,
                             Resource: "",
+                            ResourceId: Blank(),
                             Status: "Added",
                             NewPositon: "Yes"
                         }
+                    
                     );
                     
                     Set(
@@ -423,7 +449,8 @@
                     Navigate('Modify Screen');
                     Notify(
                         "Position has been added.",
-                        NotificationType.Success
+                        NotificationType.Success,
+                        varTheme.toastTimeout
                     )
                 Text: ="Finish"
                 VerticalAlign: =""

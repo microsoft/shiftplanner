@@ -1,0 +1,454 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Time Sheet View Screen:
+    Properties:
+      OnVisible: |-
+        =// Refresh the data
+        Select(btnRefresh_TimeSheetView);
+    Children:
+      - conMainContent_TimeSheetView:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Height: =Parent.Height - compHeaderMobile_TimeSheetView.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =16
+            PaddingLeft: |+
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 0
+              )
+
+            PaddingRight: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 0
+              )
+            PaddingTop: =24
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: '=compHeaderMobile_TimeSheetView.Height '
+          Children:
+            - btnRefresh_TimeSheetView:
+                Control: Button@0.0.45
+                Properties:
+                  LayoutMaxHeight: =0
+                  LayoutMaxWidth: =0
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  OnSelect: |+
+                    =// Load in all the timesheets
+                    ClearCollect(colTimesheetRows, Filter('Time Sheet Entries', 'Shift Booking'.Resource.'Primary Email' = varCurrentUser.Email && 'Shift Booking'.Date <= Today()));
+
+                    ClearCollect(colShiftBookings, Filter('Shift Bookings', Resource.'Primary Email' = varCurrentUser.Email  && Date <= Today()));
+
+                    // append dummy timesheets for those without
+
+                    UpdateContext({
+                        colTempBookings : Filter(
+                            colShiftBookings As srcShiftBooking,
+                            IsEmpty( Filter(colTimesheetRows,'Shift Booking'.shiftplanner_shiftbooking = srcShiftBooking.shiftplanner_shiftbooking) )
+                        )
+                    });
+
+                    // Cache Placeholder values from the Shift Booking
+                    ForAll(
+                        colTempBookings, 
+                        Collect(colTimesheetRows, {Name:"placeholder", 'Start Time': ThisRecord.'Actual Start Time', 'Shift Booking': ThisRecord}));
+
+                    // sort the rows ready for binding to the gallery
+                    UpdateContext({
+                        colSortedRows : SortByColumns(
+                            AddColumns(colTimesheetRows, BookingDate, 'Shift Booking'.Date, BookingIdString, Text('Shift Booking'.shiftplanner_shiftbooking)),
+                            "BookingDate", SortOrder.Descending,
+                            "BookingIdString", SortOrder.Ascending,        
+                            "mpa_starttime", SortOrder.Ascending
+                        )
+                    });
+
+                  Text: ="Refresh"
+                  Visible: =false
+            - galTimeSheets_TimeSheetView:
+                Control: Gallery@2.15.0
+                Variant: VariableHeight
+                Properties:
+                  FocusedBorderThickness: =0
+                  Items: =colSortedRows
+                  TemplatePadding: =4
+                  TemplateSize: =100
+                Children:
+                  - rectSpacer_TimeSheetView:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        Fill: =ColorValue(varTheme.neutralStroke1)
+                        FocusedBorderThickness: =0
+                        Height: =1
+                        Visible: =conTimeSheetActions_TimeSheetView.Visible
+                        Width: =Parent.Width-20
+                        Y: =conTimeSheetActions_TimeSheetView.Height + conTimeSheetActions_TimeSheetView.Y
+                  - conTimeSheetActions_TimeSheetView:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =10
+                        PaddingBottom: =8
+                        PaddingTop: =8
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Visible: =Last(Filter(colSortedRows, BookingIdString=ThisItem.BookingIdString)).'Time Sheet Entry' = ThisItem.'Time Sheet Entry'
+                        Width: =Parent.Width-20
+                        Y: =If(txtBreakDuration_TimeSheetView.Visible, txtBreakDuration_TimeSheetView.Height + txtBreakDuration_TimeSheetView.Y, txtShiftDuration_TimeSheetView.Height + txtShiftDuration_TimeSheetView.Y)
+                      Children:
+                        - btnEditTimeSheet_TimeSheetView:
+                            Control: Button@0.0.45
+                            Properties:
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              FontColor: =App.Theme.Colors.Primary
+                              Height: =28
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              OnSelect: |-
+                                =Set(varTimeSheetToEdit, ThisItem.'Shift Booking');
+                                Navigate('Time Sheet Edit Screen');
+                              Text: ="Edit"
+                              Visible: =Not(lblTimeSheetConfirmed_TimeSheetView.Visible)
+                        - btnConfirmTimeSheet_TimeSheetView:
+                            Control: Button@0.0.45
+                            Properties:
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              FontColor: =App.Theme.Colors.Primary
+                              Height: =28
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              OnSelect: |-
+                                =UpdateContext({ varConfirmInProgress : false });
+                                UpdateContext({varShowConfirmTimesheetPopup : true, varBookingToConfirm: ThisItem.'Shift Booking'});
+                              Text: ="Confirm"
+                              Visible: "=// Only show if it's not confirmed and it has an end time set\r\nNot(lblTimeSheetConfirmed_TimeSheetView.Visible) && Not(IsBlank(ThisItem.'Shift Booking'.'Actual End Time')) "
+                        - lblTimeSheetConfirmed_TimeSheetView:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              FillPortions: =1
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: ="Time Sheet Confirmed"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Visible: =ThisItem.'Status Reason' = 'Status Reason (Time Sheet Entries)'.Completed
+                              Weight: ='TextCanvas.Weight'.Semibold
+                  - icoBreak_TimeSheetView:
+                      Control: Icon@0.0.7
+                      Properties:
+                        Height: =20
+                        Icon: ="ServiceBell"
+                        IconColor: =RGBA(0, 0, 0, 1)
+                        Visible: =txtBreakStartEnd_TimeSheetView.Visible
+                        Width: =20
+                        Y: =txtBreakStartEnd_TimeSheetView.Y +2
+                  - txtBreakDuration_TimeSheetView:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.End
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Size: =16
+                        Text: =nf_SimpleHourMinTimeFormat( ThisItem.'Duration Minutes' * 60 )
+                        Visible: =txtBreakStartEnd_TimeSheetView.Visible
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =txtShiftDate_TimeSheetView.Width
+                        Y: =txtBreakStartEnd_TimeSheetView.Y
+                  - txtBreakStartEnd_TimeSheetView:
+                      Control: Text@0.0.51
+                      Properties:
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =36
+                        Size: =16
+                        Text: =Text(ThisItem.'Start Time', "HH:mm AM/PM") & " - " & Text(ThisItem.'End Time', "HH:mm AM/PM")
+                        Visible: =Not(ThisItem.Name="placeholder")
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =txtShiftDate_TimeSheetView.Width- Self.X
+                        X: =24
+                        Y: =If(txtShiftDate_TimeSheetView.Visible, txtShiftDuration_TimeSheetView.Y + Self.Height,0)
+                  - txtShiftDuration_TimeSheetView:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.End
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Size: =16
+                        Text: |-
+                          =If(
+                              Self.Visible,
+
+                              // Only calc if this row is visible
+                              nf_SimpleHourMinTimeFormat(
+                                  ThisItem.'Shift Booking'.'Actual Worked Duration' * 60 - (
+                                      (
+                                          60 * Sum(
+                                              Filter(colSortedRows,'Shift Booking'.shiftplanner_shiftbooking = ThisItem.'Shift Booking'.shiftplanner_shiftbooking), 
+                                              'Duration Minutes'
+                                          )
+                                      )
+                                  )
+                              )
+                          )
+                        Visible: =First(Filter(colSortedRows, BookingIdString=ThisItem.BookingIdString)).'Time Sheet Entry' = ThisItem.'Time Sheet Entry'
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =txtShiftDate_TimeSheetView.Width
+                        Y: =txtShiftDate_TimeSheetView.Height
+                  - txtShiftStartEnd_TimeSheetView:
+                      Control: Text@0.0.51
+                      Properties:
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Size: =16
+                        Text: =Text(ThisItem.'Shift Booking'.'Actual Start Time', "HH:mm AM/PM") & " - " & Text(ThisItem.'Shift Booking'.'Actual End Time', "HH:mm AM/PM")
+                        Visible: =First(Filter(colSortedRows, BookingIdString=ThisItem.BookingIdString)).'Time Sheet Entry' = ThisItem.'Time Sheet Entry'
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =txtShiftDate_TimeSheetView.Width - Self.X
+                        X: =24
+                        Y: =txtShiftDate_TimeSheetView.Height
+                  - icoShiftDuration_TimeSheetView:
+                      Control: Icon@0.0.7
+                      Properties:
+                        Height: =20
+                        Icon: ="Clock"
+                        IconColor: =RGBA(0, 0, 0, 1)
+                        Visible: =txtShiftDate_TimeSheetView.Visible
+                        Width: =20
+                        Y: =txtShiftDate_TimeSheetView.Height+2
+                  - txtShiftTotalDuration_TimeSheetView:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.End
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Size: =18
+                        Text: =nf_SimpleHourMinTimeFormat(ThisItem.'Shift Booking'.'Actual Worked Duration' * 60)
+                        Visible: =txtShiftDate_TimeSheetView.Visible
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =txtShiftDate_TimeSheetView.Width
+                  - txtShiftDate_TimeSheetView:
+                      Control: Text@0.0.51
+                      Properties:
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Size: =18
+                        Text: =ThisItem.'Shift Booking'.Date
+                        Visible: =First(Filter(colSortedRows, BookingIdString=ThisItem.BookingIdString)).'Time Sheet Entry' = ThisItem.'Time Sheet Entry'
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width-20
+      - conConfirmPopup_TimeSheetView:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =RGBA(0,0,0,0.6)
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingRight: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingTop: =20
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Visible: =varShowConfirmTimesheetPopup
+            Width: =Parent.Width
+          Children:
+            - conConfirmPopupContent_TimeSheetView:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  Fill: =ColorValue(varTheme.neutralBackground1)
+                  FillPortions: =0
+                  Height: =180
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =24
+                  LayoutOverflowY: =LayoutOverflow.Scroll
+                  PaddingBottom: =24
+                  PaddingLeft: =24
+                  PaddingRight: =24
+                  PaddingTop: =24
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conCancel_TimeSheetView:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        Height: =txtCancel_TimeSheetView.Height + txtCancelDetails_TimeSheetView.Height + Self.LayoutGap
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =8
+                        LayoutMinHeight: =80
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - txtCancel_TimeSheetView:
+                            Control: Text@0.0.51
+                            Properties:
+                              FontColor: =ColorValue(varTheme.neutralForeground1)
+                              Height: =Self.Size * 1.5
+                              Size: =varThemeFont.H3.size
+                              Text: ="Confirm Timesheet?"
+                              VerticalAlign: =VerticalAlign.Top
+                              Visible: =Not(varConfirmInProgress)
+                              Weight: =varThemeFont.H3.weightBold
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        - txtCancelDetails_TimeSheetView:
+                            Control: Text@0.0.51
+                            Properties:
+                              AutoHeight: =true
+                              FillPortions: =1
+                              FontColor: =ColorValue(varTheme.neutralForeground1)
+                              LayoutMinHeight: =60
+                              Text: ="If you proceed, you will no longer be able to edit this timesheet."
+                              VerticalAlign: =VerticalAlign.Middle
+                              Visible: =Not(varConfirmInProgress)
+                              Weight: ='TextCanvas.Weight'.Regular
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        - ctlConfirmInProgress:
+                            Control: Spinner@1.4.6
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              FillPortions: =1
+                              Height: =80
+                              Label: ="Confirming Timesheet ..."
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Visible: =varConfirmInProgress
+                              Width: =100
+                  - conConfirmButtons_TimeSheetView:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        FillPortions: =0
+                        Height: =32
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =12
+                        LayoutJustifyContent: =LayoutJustifyContent.End
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Visible: =Not(varConfirmInProgress)
+                      Children:
+                        - btnBack_TimeSheetView:
+                            Control: Button@0.0.45
+                            Properties:
+                              AccessibleLabel: ="Secondary"
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              FontItalic: =
+                              OnSelect: |-
+                                =UpdateContext({varShowConfirmTimesheetPopup: false});
+                              Text: ="Back"
+                              Width: =54
+                        - btnProceed_TimeSheetView:
+                            Control: Button@0.0.45
+                            Properties:
+                              AccessibleLabel: ="Primary"
+                              FontItalic: =
+                              OnSelect: |-
+                                =UpdateContext({ varConfirmInProgress : true });
+
+                                // Commit all the entries
+                                UpdateIf('Time Sheet Entries', 'Shift Booking'.shiftplanner_shiftbooking = varBookingToConfirm.shiftplanner_shiftbooking, {'Status Reason': 'Status Reason (Time Sheet Entries)'.Completed});
+
+                                // Commit the booking
+                                Patch('Shift Bookings',varBookingToConfirm, {'Status Reason': 'Status Reason (Shift Bookings)'.Completed});
+
+                                // Refresh the data
+                                Select(btnRefresh_TimeSheetView);
+
+                                // End the confirm
+                                UpdateContext({ varConfirmInProgress : false });
+
+                                // hide the pop up
+                                UpdateContext({varShowConfirmTimesheetPopup: false});
+
+                                /*
+                                IfError(
+
+                                    // Save In Dataverse
+                                    Patch('Shift Bookings', varSelectedShift,{
+                                        'Actual End Time': Now(),
+                                        'Actual Worked Duration': Round(varOnClockDuration / 60, 0),
+                                        'Break Duration': Round(varOffClockDuration / 60,0) 
+                                    }),
+
+                                    // Handle Errors
+                                    Notify("Server update failed: " & FirstError.Message, NotificationType.Error),
+
+                                    UpdateContext({varShowCloseTimeTrackDialog : false});
+
+                                    Navigate('Time Sheet View Screen');
+                                );
+                                */
+                              Text: ="Proceed"
+                              Width: =76
+      - compHeaderMobile_TimeSheetView:
+          Control: CanvasComponent
+          ComponentName: compHeaderMobile
+          Properties:
+            AllShiftsScreen: ='All Shifts Screen'
+            BackScreen: ='Home Screen'
+            HeaderTitle: ="Time Sheet"
+            Height: =104
+            HomeScreen: ='Home Screen'
+            MyRequestsScreen: ='Request Screen'
+            NavigationScreen: ='Navigation Screen'
+            ProfileImage: =varCurrentUser.Image
+            ProfileScreen: ='Profile Screen'
+            TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
+            Width: =App.Width

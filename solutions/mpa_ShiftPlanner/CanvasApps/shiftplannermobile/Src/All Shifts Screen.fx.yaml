@@ -32,7 +32,7 @@
                 ),
                 !IsBlank(WithShiftTeamPosition)
             ),
-            'Shift Type'.Startdate
+            'Shift Type'.'Start Date Time'
         ));
         
         
@@ -143,8 +143,10 @@
 
                     txtDate_AllShifts As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -162,8 +164,10 @@
                         AccessibleLabel: ="All Shift date"
                         Appearance: ="FilledDarker"
                         BasePaletteColor: =
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         Font: =""
                         FontColor: =
                         FontItalic: =
@@ -255,8 +259,10 @@
 
                     txtTeam_AllShifts As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -425,7 +431,9 @@
                             avaResource_AllShifts As Avatar:
                                 AccessibleLabel: ="Resource profile picture"
                                 Badge: ='Avatar.Badge'.None
+                                BasePaletteColor: =
                                 DisplayMode: =DisplayMode.Edit
+                                FontColor: =
                                 Height: =40
                                 Image: |-
                                     =If(
@@ -456,8 +464,10 @@
 
                             txtFullname_AllShifts As Text:
                                 AutoHeight: =false
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue(varTheme.neutralForeground1)
                                 Height: =22
                                 LayoutMaxHeight: =
@@ -476,8 +486,10 @@
 
                             txtRoles_AllShifts As Text:
                                 AutoHeight: =false
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue( varTheme.neutralForeground3)
                                 Height: =22
                                 LayoutMaxHeight: =
@@ -500,8 +512,10 @@
 
                     txtTeamName_AllShifts As Text:
                         AutoHeight: =false
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.primary)
                         Height: =Self.Size * 1.5
                         LayoutMaxHeight: =
@@ -519,8 +533,10 @@
 
                     txtShiftName_AllShifts As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -536,8 +552,10 @@
 
                     txtShiftTime_AllShifts As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue( varTheme.neutralForeground3)
                         Height: =32
                         LayoutMaxHeight: =
@@ -545,7 +563,7 @@
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         Text: |-
-                            = Text(ThisItem.'Shift Type'.Startdate, "H:mm AM/PM") & " - " & Text(DateAdd(ThisItem.'Shift Type'.Startdate, ThisItem.'Shift Type'.'Duration (hours)',TimeUnit.Hours), "H:mm AM/PM") 
+                            = Text(ThisItem.'Shift Type'.'Start Date Time', "H:mm AM/PM") & " - " & Text(DateAdd(ThisItem.'Shift Type'.'Start Date Time', ThisItem.'Shift Type'.Duration,TimeUnit.Minutes), "H:mm AM/PM") 
                         Weight: ='TextCanvas.Weight'.Regular
                         Width: =351
                         X: =0
@@ -558,5 +576,6 @@
         HomeScreen: ='Home Screen'
         NavigationScreen: ='Navigation Screen'
         TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
         ZIndex: =2
 
