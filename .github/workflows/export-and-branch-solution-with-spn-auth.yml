@@ -44,7 +44,7 @@ jobs:
         pac-version-override: 1.43.6
 
     - name: Verify pac installation
-      run: ${{env:POWERPLATFORMTOOLS_PACPATH}} --version
+      run: ${{vars.POWERPLATFORMTOOLS_PACPATH}} --version
 
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v1
