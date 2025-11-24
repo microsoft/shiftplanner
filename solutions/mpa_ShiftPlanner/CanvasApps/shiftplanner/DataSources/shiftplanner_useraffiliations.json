@@ -1,0 +1,100 @@
+[
+  {
+    "DisplayName": "shiftplanner_useraffiliations (Views)",
+    "Name": "_mpa_shiftplanner_useraffiliation_views",
+    "RelatedEntityName": "shiftplanner_useraffiliations",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3c10dc70-eb37-48e1-968a-3c725960acbf": "Inactive User Affiliations",
+      "3d19b432-644f-4afa-b5b8-9b237ba48694": "User Affiliation Advanced Find View",
+      "5354fee4-8cd1-432e-b991-535c7590c247": "Active User Affiliations",
+      "9696565f-59b9-48d3-8e70-7db92740e810": "User Affiliation Lookup View",
+      "b370c8f4-2e60-4e4c-95ff-a1a16cb85cc0": "User Affiliation Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (shiftplanner_useraffiliations)",
+    "Name": "mpa_shiftplanner_useraffiliation_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "shiftplanner_useraffiliations"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "shiftplanner_useraffiliations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (shiftplanner_useraffiliations)",
+    "Name": "mpa_shiftplanner_useraffiliation_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "shiftplanner_useraffiliations"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "shiftplanner_useraffiliations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_useraffiliations",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_useraffiliation",
+    "MaxGetRowsCount": 1500,
+    "Name": "shiftplanner_useraffiliations",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_Facility": "Facility",
+      "mpa_name": "Name",
+      "mpa_resource": "Resource",
+      "mpa_shiftplanner_useraffiliation_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_useraffiliation_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_useraffiliation_DuplicateBaseRecord": "Duplicate Records (mpa_shiftplanner_useraffiliation_DuplicateBaseRecord)",
+      "mpa_shiftplanner_useraffiliation_DuplicateMatchingRecord": "Duplicate Records (mpa_shiftplanner_useraffiliation_DuplicateMatchingRecord)",
+      "mpa_shiftplanner_useraffiliation_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_useraffiliation_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_useraffiliation_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_useraffiliation_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_useraffiliationid": "shiftplanner_useraffiliation",
+      "mpa_zone": "Zone",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "shiftplanner_useraffiliations",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

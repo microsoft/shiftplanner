@@ -1,0 +1,172 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+ComponentDefinitions:
+  compConfirmation:
+    DefinitionType: CanvasComponent
+    AccessAppScope: true
+    CustomProperties:
+      BackButtonMessage:
+        PropertyKind: Input
+        DisplayName: Back Button Message
+        Description: A custom property
+        DataType: Text
+        Default: ="Cancel"
+      BackTarget:
+        PropertyKind: Input
+        DisplayName: Back Target
+        Description: A custom property
+        DataType: Screen
+        Default: =
+      ExternalLinkButtonMessage:
+        PropertyKind: Input
+        DisplayName: External Link Button Message
+        Description: A custom property
+        DataType: Text
+        Default: ="Proceed"
+      ExternalLinkTarget:
+        PropertyKind: Input
+        DisplayName: External Link Target
+        Description: A custom property
+        DataType: Text
+        Default: ="URL"
+      Headline:
+        PropertyKind: Input
+        DisplayName: Headline
+        Description: A custom property
+        DataType: Text
+        Default: ="Headline"
+      MaxHeight:
+        PropertyKind: Input
+        DisplayName: Max Height
+        Description: A custom property
+        DataType: Number
+        Default: |-
+          =If(App.ActiveScreen.Size = 1,
+              220,
+              180
+          )
+      MaxWidth:
+        PropertyKind: Input
+        DisplayName: Max Width
+        Description: A custom property
+        DataType: Number
+        Default: |-
+          =If(App.ActiveScreen.Size = 1,
+              552,
+              600
+          )
+      Message:
+        PropertyKind: Input
+        DisplayName: Message
+        Description: A custom property
+        DataType: Text
+        Default: ="Message"
+    Properties:
+      Height: =compConfirmation.MaxHeight
+      Width: =compConfirmation.MaxWidth
+    Children:
+      - conBody_ConfirmationComp:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =5
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+          Children:
+            - lblHeader_ConfirmationComp:
+                Control: Text@0.0.51
+                Properties:
+                  Align: ='TextCanvas.Align'.Start
+                  Height: =Self.Size * 1.5
+                  Size: =varThemeFont.H3.size
+                  Text: =compConfirmation.Headline
+                  VerticalAlign: =VerticalAlign.Top
+                  Weight: =varThemeFont.H3.weightBold
+                  Width: =Parent.Width - 40
+                  Y: =20
+            - lblSubtitle_ConfirmationComp:
+                Control: Text@0.0.51
+                Properties:
+                  AutoHeight: =true
+                  Text: =compConfirmation.Message
+                  Width: =Parent.Width - 40
+            - conButtons_ConfirmationComp:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: |-
+                    =If(App.ActiveScreen.Size = 1,
+                        71,
+                        44
+                    )
+                  LayoutAlignItems: |-
+                    =If(App.ActiveScreen.Size = 1,
+                        LayoutAlignItems.Center,
+                        LayoutAlignItems.End
+                    )
+                  LayoutDirection: |-
+                    =If(App.ActiveScreen.Size = 1,
+                        LayoutDirection.Vertical,
+                        LayoutDirection.Horizontal
+                    )
+                  LayoutGap: |-
+                    =If(App.ActiveScreen.Size = 1,
+                        5,
+                        8
+                    )
+                  LayoutJustifyContent: |-
+                    =If(App.ActiveScreen.Size = 1,
+                        LayoutJustifyContent.Center,
+                        LayoutJustifyContent.End
+                    )
+                  PaddingLeft: =1
+                  PaddingRight: =1
+                  Width: =Parent.Width - 40
+                Children:
+                  - btnBackButton_ConfirmationComp:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: =Self.Text
+                        Appearance: ="Secondary"
+                        OnSelect: =Navigate(compConfirmation.BackTarget)
+                        Text: =compConfirmation.BackButtonMessage
+                        Width: |-
+                          =If(App.ActiveScreen.Size = 1,
+                              Parent.Width - Parent.PaddingLeft - Parent.PaddingRight,
+                              75
+                          )
+                        X: =(Parent.Width - Self.Width) / 2
+                        Y: =Parent.Height - Self.Height - 1
+                  - btnActionButton_ConfirmationComp:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: =Self.Text
+                        DisplayMode: |-
+                          =//DisplayMode.Edit
+                          varPublishButtonDisplayMode
+                        OnSelect: "=Set(\r\n    varPublishButtonDisplayMode,\r\n    DisplayMode.Disabled\r\n);\r\n\r\n//Collect affected Records\r\nClearCollect(\r\n    colforpatching,\r\n    Filter(\r\n        colFilteredBookings,\r\n        DateValue(Date) > (varSelectedWeek - Weekday(varSelectedWeek)) && DateValue(Date) <= ((varSelectedWeek - Weekday(varSelectedWeek)) + 7)\r\n    )\r\n);\r\n// store the start time\r\nSet(\r\n    varStartTime_Patch,\r\n    Now()\r\n);\r\n\r\n//Update Collection\r\nIf(\r\n    Self.Text = \"Publish\",\r\n    UpdateIf(\r\n        colforpatching,\r\n        'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished,\r\n        {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Published}\r\n    );\r\n    ,\r\n    UpdateIf(\r\n        colforpatching,\r\n        'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Published,\r\n        {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Unpublished}\r\n    );\r\n    \r\n);\r\n//Patch Dataverse\r\nPatch(\r\n    shiftplanner_shiftbookings,\r\n    ShowColumns(\r\n        colforpatching,\r\n        shiftplanner_shiftbooking,\r\n        'Status Reason'\r\n    )\r\n);\r\n\r\n//Run both Week Status Email Notification and Week Status Calendar Invite flow with parameters: First Day of Selected Week, Last Day of Selected Week, Zone, Action (Publish/Unpublish)\r\n\r\n\r\nWeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, \"yyyy-mm-dd\"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, \"yyyy-mm-dd\"), varSelectedZone.shiftplanner_zone, Self.Text);\r\nWeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, \"yyyy-mm-dd\"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, \"yyyy-mm-dd\"), varSelectedZone.shiftplanner_zone, Self.Text);\r\n\r\n\r\n// calculate the difference between start time and end time\r\nSet(\r\n    varDuration_Patch,\r\n    DateDiff(\r\n        varStartTime_Patch,\r\n        Now(),\r\n        TimeUnit.Milliseconds\r\n    )\r\n);\r\nClearCollect(\r\n    colFilteredBookings,\r\n    Filter(\r\n        shiftplanner_shiftbookings,\r\n        Zone.Name = varSelectedZone.Name && Status = 'Status (shiftplanner_shiftbookings)'.Active\r\n    )\r\n);\r\n//Clear(colforpatching);\r\nNavigate(compConfirmation.BackTarget);\r\nWith(\r\n    {\r\n        PublishNotification: \"Selected week has been published.\",\r\n        UnpublishNotification: \"Selected week has been unpublished.\"\r\n    },\r\n    If(\r\n        Self.Text = \"Publish\",\r\n        Notify(\r\n            PublishNotification,\r\n            NotificationType.Success,\r\n            varTheme.toastTimeout\r\n        ),\r\n        Notify(\r\n            UnpublishNotification,\r\n            NotificationType.Success,\r\n            varTheme.toastTimeout\r\n        )\r\n    )\r\n);\r\n\r\nSet(\r\n    varPublishButtonDisplayMode,\r\n    DisplayMode.Edit\r\n);"
+                        Text: =compConfirmation.ExternalLinkButtonMessage
+                        Width: |-
+                          =If(App.ActiveScreen.Size = 1,
+                              Parent.Width - Parent.PaddingLeft - Parent.PaddingRight,
+                              75
+                          )
+                        X: =(Parent.Width - Self.Width) / 2
+                        Y: =Parent.Height - Self.Height - 1

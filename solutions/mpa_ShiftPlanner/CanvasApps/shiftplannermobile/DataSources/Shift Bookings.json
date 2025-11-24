@@ -1,0 +1,125 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_shiftbookings",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_shiftbooking",
+    "MaxGetRowsCount": 500,
+    "Name": "Shift Bookings",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_calendarid": "Calendar ID",
+      "mpa_calendaritemid": "Calendar Item ID",
+      "mpa_date": "Date",
+      "mpa_name": "Name",
+      "mpa_resource": "Resource",
+      "mpa_shiftplanner_changerequest_shiftbooking": "Change Requests (mpa_shiftplanner_changerequest_shiftbooking)",
+      "mpa_shiftplanner_changerequest_swapwith_shiftbooking": "Change Requests (mpa_shiftplanner_changerequest_swapwith_shiftbooking)",
+      "mpa_shiftplanner_shiftbooking_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_shiftbooking_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_shiftbooking_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_shiftbooking_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_shiftbooking_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_shiftbooking_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_shiftbookingid": "shiftplanner_shiftbooking",
+      "mpa_teamposition": "Team Position",
+      "mpa_workflowstatus": "Workflow Status",
+      "mpa_zone": "Zone",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Shift Bookings",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Shift Bookings (Views)",
+    "Name": "_mpa_shiftplanner_shiftbooking_views",
+    "RelatedEntityName": "Shift Bookings",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3d40a657-eb01-4d88-a6e9-4ef940487bb9": "Active Shift Bookings",
+      "7fbf0860-cd4b-40f3-9700-3300a7348a6f": "Associated View",
+      "85caf546-7af1-4b4b-b766-003640355491": "Advanced Find View",
+      "914018a4-e224-4420-b043-ade2b154a16d": "Lookup View",
+      "dade23a4-73fe-4cb5-a0dc-b740c53f29b6": "Inactive Shift Bookings"
+    }
+  },
+  {
+    "DisplayName": "Workflow Status (Shift Bookings)",
+    "Name": "mpa_shiftplanner_shiftbooking_mpa_workflowstatus",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_workflowstatus",
+        "OptionSetReferenceEntityName": "Shift Bookings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "mpa_workflowstatus",
+    "RelatedEntityName": "Shift Bookings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Shift Bookings)",
+    "Name": "mpa_shiftplanner_shiftbooking_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Shift Bookings"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Shift Bookings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Shift Bookings)",
+    "Name": "mpa_shiftplanner_shiftbooking_statuscode",
+    "OptionSetInfoNameMapping": {
+      "2": "Inactive",
+      "865420001": "Unpublished",
+      "865420002": "Published"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Shift Bookings"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Shift Bookings",
+    "Type": "OptionSetInfo"
+  }
+]

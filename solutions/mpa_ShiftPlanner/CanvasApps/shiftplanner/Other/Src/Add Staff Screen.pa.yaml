@@ -1,0 +1,302 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Add Staff Screen:
+    Children:
+      - conMainContent_AddStaff:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =Parent.Height - compHeaderCompound_AddStaff.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =20
+            PaddingBottom: =20
+            PaddingLeft: =119
+            PaddingRight: =119
+            PaddingTop: =12
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =compHeaderCompound_AddStaff.Height
+          Children:
+            - conTitlesButtons_AddStaff:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  Fill: =ColorValue(varTheme.neutralBackground2)
+                  FillPortions: =0
+                  Height: =conTitles_AddStaff.Height
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conTitles_AddStaff:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        FillPortions: =0
+                        Height: =txtBreadCrumbs_AddStaff.Height + txtDepartment_AddStaff.Height + Self.LayoutGap
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =4
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =Parent.Width - conSeacrh_AddStaff.Width
+                      Children:
+                        - txtBreadCrumbs_AddStaff:
+                            Control: Text@0.0.51
+                            Properties:
+                              AutoHeight: =true
+                              FontColor: |-
+                                =//RGBA(122, 138, 143, 1)
+                                ColorValue(varTheme.neutralForeground3)
+                              Size: =
+                              Text: =varSelectedZone.Facility.Name & " / " & varSelectedZone.Name
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        - txtDepartment_AddStaff:
+                            Control: Text@0.0.51
+                            Properties:
+                              Height: =Self.Size * 1.5
+                              Size: =varThemeFont.H2.size
+                              Text: ="Add Staff to " & varAddStaff.Position &  " Position"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: =varThemeFont.H2.weightBold
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                  - conSeacrh_AddStaff:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        FillPortions: =0
+                        Height: =Parent.Height
+                        LayoutAlignItems: =LayoutAlignItems.End
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.End
+                        PaddingRight: =20
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =Parent.Width / 2
+                      Children:
+                        - txiSearh_AddStaff:
+                            Control: TextInput@0.0.54
+                            Properties:
+                              AccessibleLabel: ="Search"
+                              FontItalic: =
+                              Mode: ='TextInputCanvas.Mode'.SingleLine
+                              Placeholder: ="Search"
+                              Type: ='TextInputCanvas.Type'.Search
+                              Width: =300
+            - galStaff_AddStaff:
+                Control: Gallery@2.15.0
+                Variant: Vertical
+                Properties:
+                  AccessibleLabel: ="Staff Gallery"
+                  FocusedBorderThickness: =0
+                  Items: |-
+                    =Search(
+                        Filter(
+                            AddColumns(
+                                shiftplanner_userroles As Staff,
+                                StaffName,
+                                Staff.Resource.'Full Name',
+                                StaffRole,
+                                Staff.Role.Name,
+                                StaffFacility,
+                                LookUp(
+                                    shiftplanner_useraffiliations,
+                                    Resource.'Primary Email' = Staff.Resource.'Primary Email' And Facility.Name = varSelectedZone.Facility.Name And Zone.Name = varSelectedZone.Name
+                                ),
+                                StaffAvailability,
+                                LookUp(
+                                    shiftplanner_useravailabilities,
+                                    User.'Primary Email' = Staff.Resource.'Primary Email' And (StartDate <= varDateSelected && Enddate >= varDateSelected)
+                                )
+                            ),
+                            StaffRole = varAddStaff.Position And StaffFacility.Facility.Name = varSelectedZone.Facility.Name And StaffFacility.Zone.Name = varSelectedZone.Name And !(StaffAvailability.StartDate <= varDateSelected && StaffAvailability.Enddate >= varDateSelected)
+                        ),
+                        Text(txiSearh_AddStaff.Value),
+                        StaffName
+                    )
+                  TabIndex: =0
+                  TemplateSize: =100
+                  WrapCount: =4
+                Children:
+                  - conStaff_AddStaff:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        Height: =86
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        PaddingBottom: =5
+                        PaddingLeft: =15
+                        PaddingRight: =10
+                        PaddingTop: =10
+                        Width: =267
+                      Children:
+                        - conNamePosition_AddStaff:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              DropShadow: =DropShadow.None
+                              Fill: =ColorValue(varTheme.neutralBackground1)
+                              FillPortions: =0
+                              Height: =Parent.Height - Parent.PaddingTop - Parent.PaddingBottom
+                              LayoutDirection: =LayoutDirection.Vertical
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =Parent.Width - Parent.PaddingLeft - shpSelected_AddStaff.Width - Parent.PaddingRight
+                            Children:
+                              - txtName_AddStaff:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    AutoHeight: =true
+                                    FontColor: =App.Theme.Colors.Primary
+                                    Height: =
+                                    Size: =
+                                    Text: =ThisItem.Resource.'Full Name'
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Parent.Width
+                              - txtPostion_AddStaff:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Start
+                                    AutoHeight: =true
+                                    FontColor: =RGBA(122, 138, 143, 1)
+                                    Size: =
+                                    Text: =ThisItem.Role.Name
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Weight: ='TextCanvas.Weight'.Regular
+                                    Width: =Parent.Width
+                                    X: =40
+                                    Y: =40
+                        - conSelected_AddStaff:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              DropShadow: =DropShadow.None
+                              Fill: =ColorValue(varTheme.neutralBackground1)
+                              FillPortions: =0
+                              Height: =shpSelected_AddStaff.Height + 10
+                              LayoutDirection: =LayoutDirection.Vertical
+                              PaddingLeft: =5
+                              PaddingTop: =5
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =shpSelected_AddStaff.Width + 10
+                            Children:
+                              - shpSelected_AddStaff:
+                                  Control: Circle@2.3.0
+                                  Properties:
+                                    BorderThickness: =1
+                                    DisabledFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                                    Fill: =If(ThisItem.IsSelected, App.Theme.Colors.Primary, Color.Transparent)
+                                    Height: =15
+                                    HoverFill: =App.Theme.Colors.Darker20
+                                    PressedFill: =App.Theme.Colors.Primary
+                                    Width: =15
+            - conButtons_AddStaff:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  DropShadow: =DropShadow.None
+                  Fill: =ColorValue(varTheme.neutralBackground2)
+                  FillPortions: =0
+                  Height: =32
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.End
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - btnCancel_AddStaff:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: ="Secondary"
+                        Appearance: ='ButtonCanvas.Appearance'.Secondary
+                        FontItalic: =
+                        OnSelect: =Navigate('Modify Screen')
+                        Text: ="Cancel"
+                        Width: =200
+                  - btnFinish_AddStaff:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: ="Primary"
+                        DisplayMode: |-
+                          =If(
+                              CountRows(galStaff_AddStaff.AllItems) = 0,
+                              DisplayMode.Disabled,
+                              DisplayMode.Edit
+                          )
+                        FontItalic: =
+                        OnSelect: |-
+                          =Patch(
+                              colModify,
+                              LookUp(
+                                  colModify,
+                                  ShiftNum = varAddStaff.ShiftNum
+                              ),
+                              {
+                                  Resource: galStaff_AddStaff.Selected.txtName_AddStaff.Text,
+                                  Status: "New"
+                              }
+                          );
+
+                          Set(
+                              varFilledPositions,
+                              varFilledPositions + 1
+                          );
+
+                          Navigate('Modify Screen');
+                        Text: ="Finish"
+                        Width: =200
+      - compHeaderCompound_AddStaff:
+          Control: CanvasComponent
+          ComponentName: compHeaderCompound
+          Properties:
+            Fill: =App.Theme.Colors.Primary
+            HeaderHeight: =51
+            HeaderWidth: =1366
+            Height: |-
+              =compHeaderCompound_AddStaff.HeaderHeight
+              //varHeaderHeight
+            IsMenuScreen: =false
+            NavigateMenu: =
+            NavigateScreen: ='Modify Screen'
+            Width: =compHeaderCompound_AddStaff.HeaderWidth

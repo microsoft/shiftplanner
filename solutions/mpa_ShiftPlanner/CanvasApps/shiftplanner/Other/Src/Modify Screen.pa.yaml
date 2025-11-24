@@ -1,0 +1,725 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Modify Screen:
+    Properties:
+      Height: |+
+        =Max(App.Height, App.MinScreenHeight)
+      OnVisible: |-
+        =// Work out if this date has already been published or not
+        Set(varDateSelectedPublishStatus,
+            If(
+                First(
+                    Filter(
+                        AddColumns(
+                            colFilteredBookings As Booking,
+                            BookingDate,
+                            Booking.Date
+                        ),
+                        Zone.Name = varSelectedZone.Name 
+                            && DateValue(BookingDate) >= DateAdd(varDateSelected, -Weekday(varDateSelected) + 1, TimeUnit.Days) 
+                            && DateValue(BookingDate) <= DateAdd(varDateSelected, 7 - Weekday(varDateSelected), TimeUnit.Days) 
+                            && Status = 'Status (shiftplanner_shiftbookings)'.Active
+                    )
+                ).'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Published,
+                'Status Reason (shiftplanner_shiftbookings)'.Published, 
+                'Status Reason (shiftplanner_shiftbookings)'.Unpublished
+            )
+        );
+
+        UpdateContext(
+            {
+                SaveAndClose: false,
+                SaveInProgress: false
+            }
+        )
+    Children:
+      - conMainContent_Modify:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =Parent.Height - compHeaderCompound_Modify.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =10
+            PaddingLeft: =109
+            PaddingRight: =119
+            PaddingTop: =12
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =compHeaderCompound_Modify.Height
+          Children:
+            - conHeader_Modify:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  DropShadow: =DropShadow.None
+                  Fill: =ColorValue(varTheme.neutralBackground2)
+                  FillPortions: =0
+                  Height: =conTitlesButtons_Modify.Height + Self.LayoutGap + txtPositionsAndDates_Modify.Height + 20
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =20
+                  PaddingLeft: =15
+                  PaddingRight: =5
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conTitlesButtons_Modify:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        FillPortions: =0
+                        Height: =conTitles_Modify.Height
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                      Children:
+                        - conTitles_Modify:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              DropShadow: =DropShadow.None
+                              Fill: =ColorValue(varTheme.neutralBackground2)
+                              Height: =txtBreadCrumbs_Modify.Height + txtDepartment_Modify.Height + Self.LayoutGap
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =4
+                              LayoutMinWidth: =200
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =Parent.Width - conButtons_Modify.Width
+                            Children:
+                              - txtBreadCrumbs_Modify:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    AutoHeight: =true
+                                    FontColor: =ColorValue(varTheme.neutralForeground3)
+                                    Size: =
+                                    Text: =varSelectedZone.Facility.Name & " / " & varSelectedZone.Name
+                                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                              - txtDepartment_Modify:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Height: =Self.Size * 1.5
+                                    Size: =varThemeFont.H2.size
+                                    Text: ="Modify " & varSelectedZone.Name
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: =varThemeFont.H2.weightBold
+                                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        - conButtons_Modify:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              DropShadow: =DropShadow.None
+                              Fill: =ColorValue(varTheme.neutralBackground2)
+                              FillPortions: =0
+                              Height: =Parent.Height
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =16
+                              LayoutJustifyContent: =LayoutJustifyContent.End
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Visible: =Not(SaveInProgress)
+                              Width: =560
+                            Children:
+                              - btnBack_Modify:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    AccessibleLabel: ="Secondary"
+                                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                                    FontItalic: =
+                                    OnSelect: =Navigate('Main Calendar Screen')
+                                    Text: ="Back"
+                                    Width: =120
+                              - btnClear_Modify:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    AccessibleLabel: ="Secondary"
+                                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                                    DisplayMode: |-
+                                      =If(
+                                          IsBlank(
+                                              LookUp(
+                                                  colModify,
+                                                  Status = "New" Or Status = "Remove" Or Status ="Added"
+                                              )
+                                          ),
+                                          DisplayMode.Disabled,
+                                          DisplayMode.Edit
+                                      )
+                                    FontItalic: =
+                                    OnSelect: |-
+                                      =Set(
+                                          varFilledPositions,
+                                          CountRows(
+                                              Filter(
+                                                  AddColumns(
+                                                      shiftplanner_shiftbookings As Booking,
+                                                      ResourceName,
+                                                      Booking.Resource
+                                                  ),
+                                                  DateValue(Date) = varDateSelected && Zone.Name = varSelectedZone.Name && !IsBlank(ResourceName) && Text(Status) = "Active"
+                                              )
+                                          )
+                                      );
+
+                                      Set(
+                                          varTotalPositions,
+                                          CountRows(
+                                              Filter(
+                                                  shiftplanner_teampositions,
+                                                  ('Effective From' < varDateSelected && 'Effective To' > varDateSelected) && 'Shift Team'.Zone.Name = varSelectedZone.Name
+                                              )
+                                          )
+                                      );
+
+                                      //Resfresh colTeamPositions
+                                      ClearCollect(
+                                          colTeamPositions,
+                                          ForAll(
+                                              Filter(
+                                                  shiftplanner_teampositions,
+                                                  ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) && 'Shift Team'.Zone.Name = varSelectedZone.Name
+                                              ),
+                                              {
+                                                  ShiftNum: shiftplanner_teamposition,
+                                                  ShiftType: 'Shift Team'.'Shift Type'.Name,
+                                                  Team: 'Shift Team'.Name,
+                                                  Position: Role.Name,
+                                                  Resource: Resource.'Full Name',
+                                                  Status: "",
+                                                  NewPositon: "No"
+                                              }
+                                          )
+                                      );
+
+                                      //Refresh colModify
+                                      ClearCollect(
+                                          colModify,
+                                          AddColumns(
+                                              colTeamPositions As Positions,
+                                              ShiftBookingID,
+                                              LookUp(
+                                                  shiftplanner_shiftbookings,
+                                                  'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
+                                                  shiftplanner_shiftbooking
+                                              ),
+                                              ShiftBookingResource,
+                                              LookUp(
+                                                  shiftplanner_shiftbookings,
+                                                  'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
+                                                  Resource.'Full Name'
+                                              )
+                                          )
+                                      );
+                                    Text: ="Clear changes"
+                                    Width: =130
+                              - btnSave_Modify:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    AccessibleLabel: ="Primary"
+                                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                                    DisplayMode: |-
+                                      =If(
+                                          IsBlank(
+                                              LookUp(
+                                                  colModify,
+                                                  Status = "New" Or Status = "Remove" Or Status ="Added"
+                                              )
+                                          ),
+                                          DisplayMode.Disabled,
+                                          DisplayMode.Edit
+                                      )
+                                    FontItalic: =
+                                    OnSelect: "=UpdateContext({SaveInProgress: true});\n\nIfError(\n    //Insert newly added positions\n    ForAll(\n        Filter(\n            colModify,\n            NewPositon = \"Yes\"\n        ) As colMod,\n        Patch(\n            shiftplanner_teampositions,\n            Defaults(shiftplanner_teampositions),\n            {\n                Resource: If(\n                    IsBlank(colMod.Resource),\n                    Blank(),\n                    LookUp(\n                        Users,\n                        'Full Name' = colMod.Resource// Will update once GUID is available in colModify\n                    )\n                ),\n                Role: LookUp(\n                    shiftplanner_roles,\n                    Name = colMod.Position//Will update once GUID is available in colModify\n                ),\n                'Shift Team': LookUp(\n                    shiftplanner_shiftteams,\n                    Name = colMod.Team//Will update once GUID is available in colModify\n                ),\n                'Effective From': varDateSelected,\n                'Effective To': varDateSelected\n            }\n        );\n    );\n    \n    //Remove Resource \n    ClearCollect(\n        colRemoveResource,\n        Filter(\n            shiftplanner_shiftbookings,\n            shiftplanner_shiftbooking in (ShowColumns(\n                Filter(\n                    colModify,\n                    NewPositon = \"No\" And Status = \"Remove\"\n                ),\n                ShiftBookingID\n            ))\n        )\n    );\n\n    UpdateIf(\n        colRemoveResource,\n        Status = 'Status (shiftplanner_shiftbookings)'.Active,\n        {Status: 'Status (shiftplanner_shiftbookings)'.Inactive}\n    );\n    Patch(\n        shiftplanner_shiftbookings,\n        ShowColumns(\n            colRemoveResource,\n            shiftplanner_shiftbooking,\n            Status\n        )\n    );\n    \n    //Replace Resource\n    ClearCollect(\n        colReplaceResource,\n        Filter(\n            shiftplanner_shiftbookings,\n            shiftplanner_shiftbooking in (ShowColumns(\n                Filter(\n                    colModify,\n                    NewPositon = \"No\" And Status = \"New\" And !IsBlank(ShiftBookingResource)\n                ),\n                ShiftBookingID\n            ))\n        )\n    );\n    UpdateIf(\n        colReplaceResource,\n        Status = 'Status (shiftplanner_shiftbookings)'.Active,\n        {Status: 'Status (shiftplanner_shiftbookings)'.Inactive}\n    );\n    Patch(\n        shiftplanner_shiftbookings,\n        ShowColumns(\n            colReplaceResource,\n            shiftplanner_shiftbooking,\n            Status\n        )\n    );\n    \n    //New Resource\n    ForAll(\n        Filter(\n            colModify,\n            NewPositon = \"No\" And Status = \"New\"\n        ) As colMod,\n        Patch(\n            shiftplanner_shiftbookings,\n            Defaults(shiftplanner_shiftbookings),\n            {\n                Name: LookUp(\n                    shiftplanner_teampositions,\n                    shiftplanner_teamposition = colMod.ShiftNum,\n                    Name\n                ) & \" - \" & Text(\n                    varDateSelected,\n                    \"yyyy-mm-dd\"\n                ),\n                Resource: LookUp(\n                    Users,\n                    'Full Name' = colMod.Resource\n                ),\n                'Team Position': LookUp(\n                    shiftplanner_teampositions,\n                    shiftplanner_teamposition = colMod.ShiftNum\n                ),\n                Zone: LookUp(\n                    shiftplanner_zones,\n                    shiftplanner_zone = varSelectedZone.shiftplanner_zone\n                ),\n                Date: varDateSelected,\n                'Status Reason': varDateSelectedPublishStatus\n            }\n        )\n    );\n    \n    /////////////////////////////////////////////////////////////////////////////////////\n    // If this week is published then send out emails and calendar invites for changes\n    /////////////////////////////////////////////////////////////////////////////////////\n\n    If(\n        varDateSelectedPublishStatus = 'Status Reason (shiftplanner_shiftbookings)'.Published,\n\n        //Email for added Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"New\"\n            ) As colMod,\n            If(\n                !IsBlank(colMod.Resource),\n                Patch(\n                    'Email Logs',\n                    Defaults('Email Logs'),\n                    {\n                        Resource: LookUp(\n                            Users,\n                            'Full Name' = colMod.Resource\n                        ),\n                        'Team Position': LookUp(\n                            shiftplanner_teampositions,\n                            shiftplanner_teamposition = colMod.ShiftNum\n                        ),\n                        Zone: varSelectedZone.Name,\n                        Role: colMod.Position,\n                        'Shift Type': colMod.ShiftType,\n                        Team: colMod.Team,\n                        Date: varDateSelected,\n                        'Invite Action': 'Invite Action'.Add\n                    }\n                )\n            )\n        );\n            \n        //Email for remove Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"Remove\"\n            ) As colMod,\n            Patch(\n                'Email Logs',\n                Defaults('Email Logs'),\n                {\n                    Resource: LookUp(\n                        Users,\n                        'Full Name' = colMod.ShiftBookingResource\n                    ),\n                    'Team Position': LookUp(\n                        shiftplanner_teampositions,\n                        shiftplanner_teamposition = colMod.ShiftNum\n                    ),\n                    Zone: varSelectedZone.Name,\n                    Role: colMod.Position,\n                    'Shift Type': colMod.ShiftType,\n                    Team: colMod.Team,\n                    Date: varDateSelected,\n                    'Invite Action': 'Invite Action'.Remove\n                }\n            )\n        );\n            \n        //Email for replace Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"New\" And !IsBlank(ShiftBookingResource)\n            ) As colMod,\n            Patch(\n                'Email Logs',\n                Defaults('Email Logs'),\n                {\n                    Resource: LookUp(\n                        Users,\n                        'Full Name' = colMod.ShiftBookingResource\n                    ),\n                    'Team Position': LookUp(\n                        shiftplanner_teampositions,\n                        shiftplanner_teamposition = colMod.ShiftNum\n                    ),\n                    Zone: varSelectedZone.Name,\n                    Role: colMod.Position,\n                    'Shift Type': colMod.ShiftType,\n                    Team: colMod.Team,\n                    Date: varDateSelected,\n                    'Invite Action': 'Invite Action'.Remove\n                }\n            )\n        );\n    ),\n\n    // Handle the end of the IfError\n    //Notify message\n        Notify(\n            \"Error inserting record.\",\n            NotificationType.Error, \n            varTheme.toastTimeout\n        ),\n        Notify(\n            \"Record inserted successfully.\",\n            NotificationType.Success,\n            varTheme.toastTimeout\n        )\n    );\n\n\n//Refresh Team positions\nRefresh(shiftplanner_teampositions);\n\n//Refresh colTeamPositions\nClearCollect(\n    colTeamPositions,\n    ForAll(\n        Filter(\n            shiftplanner_teampositions,\n            ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) && 'Shift Team'.Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone\n        ),\n        {\n            ShiftNum: shiftplanner_teamposition,\n            ShiftType: 'Shift Team'.'Shift Type'.Name,\n            Team: 'Shift Team'.Name,\n            Position: Role.Name,\n            Resource: Resource.'Full Name',\n            Status: \"\",\n            NewPositon: \"No\"\n        }\n    )\n);\n\n//Refresh colModify\nClearCollect(\n    colModify,\n    AddColumns(\n        colTeamPositions As Positions,\n        ShiftBookingID,\n        LookUp(\n            shiftplanner_shiftbookings,\n            'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,\n            shiftplanner_shiftbooking\n        ),\n        ShiftBookingResource,\n        LookUp(\n            shiftplanner_shiftbookings,\n            'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,\n            Resource.'Full Name'\n        )\n    )\n);\n\nClearCollect(\n    colFilteredBookings,\n    Filter(\n        shiftplanner_shiftbookings,\n        Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone\n    )\n);\nIf(\n    SaveAndClose,\n    Select(btnBack_Modify);\n);\n\nUpdateContext({SaveInProgress: false});"
+                                    Text: ="Save"
+                                    Width: =130
+                              - btnSaveAndClose_Modify:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    AccessibleLabel: ="Primary"
+                                    DisplayMode: |-
+                                      =If(
+                                          IsBlank(
+                                              LookUp(
+                                                  colModify,
+                                                  Status = "New" Or Status = "Remove" Or Status ="Added"
+                                              )
+                                          ),
+                                          DisplayMode.Disabled,
+                                          DisplayMode.Edit
+                                      )
+                                    FontItalic: =
+                                    OnSelect: |
+                                      =UpdateContext({SaveAndClose:true});
+                                      Select(btnSave_Modify);
+                                    Text: ="Save and Close"
+                                    Width: =130
+                  - txtPositionsAndDates_Modify:
+                      Control: Text@0.0.51
+                      Properties:
+                        AutoHeight: =true
+                        Height: =Self.Size * 1.5
+                        Size: =
+                        Text: |-
+                          =Concatenate(
+                              varFilledPositions & " of " & varTotalPositions & " positions filled for " & Text(
+                                  varDateSelected,
+                                  DateTimeFormat.LongDate
+                              )
+                          )
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: =varThemeFont.H3.weight
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            - galShiftType_Modify:
+                Control: Gallery@2.15.0
+                Variant: VariableHeight
+                Properties:
+                  AccessibleLabel: ="Shift Gallery"
+                  AlignInContainer: =AlignInContainer.Start
+                  FillPortions: =0
+                  FocusedBorderThickness: =0
+                  Height: =Parent.Height - Parent.PaddingTop - conHeader_Modify.Height - Parent.PaddingBottom
+                  Items: |-
+                    =Filter(
+                        AddColumns(
+                            shiftplanner_shifttypes As ShiftType,
+                            ShiftZone,
+                            LookUp(
+                                shiftplanner_shiftteams,
+                                'Shift Type'.shiftplanner_shifttype = ShiftType.shiftplanner_shifttype And Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone,
+                                Zone
+                            )
+                        ),
+                        ShiftZone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                    )
+                  TabIndex: =0
+                  TemplatePadding: =4
+                  TemplateSize: =btnAddPosition_Modify.Height + txtPositionCount_Modify.Height + conTeam_Modify.Height + conButtonSeparator_Modify.Height + 16
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conButtonSeparator_Modify:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        Height: =btnAddPosition_Modify.Height + icoShiftSeparator_Modify.Height + (Self.LayoutGap *2)
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =40
+                        PaddingLeft: =10
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =Parent.TemplateWidth
+                        X: =
+                        Y: =conTeam_Modify.Y + conTeam_Modify.Height + 16
+                      Children:
+                        - btnAddPosition_Modify:
+                            Control: Button@0.0.45
+                            Properties:
+                              AccessibleLabel: ="Secondary"
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              DisplayMode: |-
+                                =If(
+                                    varTotalPositions = 15,
+                                    DisplayMode.Disabled,
+                                    DisplayMode.Edit
+                                )
+                              FontItalic: =
+                              OnSelect: |-
+                                =Set(varAddPosition, ThisItem);
+                                Navigate('Add Position Screen')
+                              Text: ="Add position"
+                              Width: =267
+                              X: =5
+                              Y: =275
+                        - icoShiftSeparator_Modify:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              AccessibleLabel: =//customize the accesible label based in the icon
+                              BorderColor: =ColorValue(varTheme.neutralBackground3)
+                              Color: =ColorValue(varTheme.neutralStroke2)
+                              DisabledBorderColor: =ColorValue(varTheme.neutralBackground3)
+                              DisabledColor: =ColorValue(varTheme.neutralBackgroundDisabled)
+                              DisabledFill: =RGBA(0,0,0,0)
+                              DisplayMode: =DisplayMode.View
+                              Fill: =ColorValue(varTheme.neutralStroke2)
+                              FocusedBorderColor: =ColorValue(varTheme.neutralBackground3)
+                              Height: =2
+                              HoverBorderColor: =ColorValue(varTheme.neutralBackground3)
+                              HoverColor: =ColorValue(varTheme.neutralBackground3)
+                              HoverFill: =RGBA(0,0,0,0)
+                              Icon: =Icon.HorizontalLine
+                              PressedBorderColor: =App.Theme.Colors.Primary
+                              PressedColor: =App.Theme.Colors.Primary
+                              PressedFill: =RGBA(0,0,0,0)
+                              Width: =Parent.Width - (Parent.PaddingLeft*2)
+                              Y: =40
+                  - conTeam_Modify:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        Height: =galTeam_Modify.Height
+                        LayoutDirection: =LayoutDirection.Vertical
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =Parent.TemplateWidth
+                        X: =
+                        Y: =conShiftType_Modify.Y + conShiftType_Modify.Height + 10
+                      Children:
+                        - galTeam_Modify:
+                            Control: Gallery@2.15.0
+                            Variant: Vertical
+                            Properties:
+                              AccessibleLabel: ="Staff team gallery"
+                              AlignInContainer: =AlignInContainer.Start
+                              BorderStyle: =BorderStyle.None
+                              FillPortions: =0
+                              Height: |-
+                                =With(
+                                    {
+                                        Rows: RoundUp(
+                                            Self.AllItemsCount/4,
+                                            0
+                                        )
+                                    },
+                                    ((Rows * conGalTeam_Modify.Height) + (Rows * Self.TemplatePadding)) + 10
+                                )
+                              Items: |-
+                                =Sort(
+                                    Filter(
+                                        colModify, 
+                                        ShiftType = txtShiftType_Modify.Text
+                                    ),
+                                    Team
+                                )
+                              TabIndex: =0
+                              TemplatePadding: =10
+                              TemplateSize: =conGalTeam_Modify.Height
+                              Width: =Parent.Width
+                              WrapCount: =4
+                              Y: =conShiftType_Modify.Height
+                            Children:
+                              - conGalTeam_Modify:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Fill: =ColorValue(varTheme.neutralBackground1)
+                                    Height: =104
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    PaddingBottom: =8
+                                    PaddingLeft: =12
+                                    PaddingRight: =8
+                                    PaddingTop: =8
+                                    Width: =267
+                                  Children:
+                                    - txtTeam_Modify:
+                                        Control: Text@0.0.51
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.Start
+                                          AutoHeight: =true
+                                          Size: =
+                                          Text: =ThisItem.Team
+                                          Weight: ='TextCanvas.Weight'.Semibold
+                                          Width: =Parent.Width
+                                          X: =40
+                                          Y: =40
+                                    - txtPosition_Modify:
+                                        Control: Text@0.0.51
+                                        Properties:
+                                          AutoHeight: =true
+                                          FontColor: =App.Theme.Colors.Primary
+                                          Height: =
+                                          Size: =
+                                          Text: =ThisItem.Position
+                                          VerticalAlign: =VerticalAlign.Middle
+                                          Weight: ='TextCanvas.Weight'.Regular
+                                          Width: =Parent.Width
+                                    - txtStaff_Modify:
+                                        Control: Text@0.0.51
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.Start
+                                          AutoHeight: =true
+                                          FontColor: =RGBA(0, 0, 0, 1)
+                                          Size: =
+                                          Text: |-
+                                            =If(
+                                                ThisItem.Status = "",
+                                                If(
+                                                    !IsBlank(ThisItem.ShiftBookingResource),
+                                                    "Booking: " & ThisItem.ShiftBookingResource,
+                                                    Not(IsBlank(ThisItem.Resource)),
+                                                    ThisItem.Resource,
+                                                    "(Not Filled)"
+                                                ),
+                                                ThisItem.Status = "New",
+                                                ThisItem.Resource,
+                                                ThisItem.Status = "Remove" Or ThisItem.Status = "Added",
+                                                "(Not Filled)"
+                                            )
+                                          Weight: ='TextCanvas.Weight'.Regular
+                                          Width: =Parent.Width
+                                          X: =40
+                                          Y: =40
+                                    - conButtonStaff_Modify:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.SetByContainer
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =30
+                                          LayoutAlignItems: =LayoutAlignItems.End
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutJustifyContent: =LayoutJustifyContent.End
+                                          PaddingRight: =20
+                                          RadiusBottomLeft: =0
+                                          RadiusBottomRight: =0
+                                          RadiusTopLeft: =0
+                                          RadiusTopRight: =0
+                                          Width: =Parent.Width
+                                        Children:
+                                          - btnPosition_Modify:
+                                              Control: Button@0.0.45
+                                              Properties:
+                                                AccessibleLabel: ="Secondary"
+                                                Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                                FontColor: =App.Theme.Colors.Primary
+                                                FontItalic: =
+                                                FontSize: =
+                                                FontWeight: =FontWeight.Normal
+                                                Height: =24
+                                                OnSelect: |-
+                                                  =Remove(
+                                                      colModify,
+                                                      LookUp(
+                                                          colModify,
+                                                          ShiftNum = ThisItem.ShiftNum
+                                                      )
+                                                  );
+
+                                                  Set(
+                                                      varTotalPositions,
+                                                      varTotalPositions - 1
+                                                  );
+
+                                                  Notify(
+                                                      "Position has been deleted.",
+                                                      NotificationType.Success
+                                                  )
+                                                Text: ="Delete Position"
+                                                Visible: =If(ThisItem.NewPositon = "Yes", true, false)
+                                                Width: =120
+                                          - btnStaff_Modify:
+                                              Control: Button@0.0.45
+                                              Properties:
+                                                AccessibleLabel: ="Secondary"
+                                                Appearance: =If(txtStaff_Modify.Text = "(Not Filled)", 'ButtonCanvas.Appearance'.Secondary, 'ButtonCanvas.Appearance'.Transparent)
+                                                DisplayMode: |-
+                                                  =DisplayMode.Edit
+
+
+                                                  /*If(lblStaff_Modify.Text = "(Not Filled)",
+                                                  DisplayMode.Edit,
+                                                  DisplayMode.Disabled
+                                                  )*/
+                                                FontColor: =If (txtStaff_Modify.Text = "(Not Filled)",RGBA(0, 0, 0, 1),App.Theme.Colors.Primary)
+                                                FontItalic: =
+                                                FontSize: =
+                                                FontWeight: =FontWeight.Normal
+                                                Height: =24
+                                                OnSelect: |-
+                                                  =If (
+                                                      txtStaff_Modify.Text = "(Not Filled)",
+                                                      Set(
+                                                          varAddStaff,
+                                                          ThisItem
+                                                      );
+                                                      Navigate('Add Staff Screen'),
+                                                      Patch(
+                                                          colModify,
+                                                          LookUp(
+                                                              colModify,
+                                                              ShiftNum = ThisItem.ShiftNum
+                                                          ),
+                                                          {
+                                                              Resource: "",
+                                                              Status: "Remove"
+                                                          }
+                                                      );
+
+                                                      Set(
+                                                          varFilledPositions,
+                                                          varFilledPositions - 1
+                                                      );
+
+                                                      Notify(
+                                                          "Staff has been removed.",
+                                                          NotificationType.Success,
+                                                          varTheme.toastTimeout
+                                                      )
+                                                  )
+                                                  /*
+                                                  If(
+                                                      ThisItem.Status = "",
+                                                      If(
+                                                          !IsBlank(ThisItem.ShiftBookingResource),
+                                                          ThisItem.ShiftBookingResource,
+                                                          "(Not Filled)"
+                                                      ),
+                                                      ThisItem.Status = "New",
+                                                      ThisItem.Resource,
+                                                      ThisItem.Status = "Remove" Or ThisItem.Status = "Added",
+                                                      "(Not Filled)"
+                                                  )
+
+                                                  If (
+                                                      lblStaff_Modify.Text = "(Not Filled)",
+                                                      Set(
+                                                          varAddStaff,
+                                                          ThisItem
+                                                      );
+                                                      Navigate('Add Staff Screen'),
+                                                      Patch(
+                                                          colModify,
+                                                          LookUp(
+                                                              colModify,
+                                                              ShiftNum = ThisItem.ShiftNum
+                                                          ),
+                                                          {
+                                                              Resource: "",
+                                                              Status: "Remove"
+                                                          }
+                                                      );
+
+                                                      Set(
+                                                          varFilledPositions,
+                                                          varFilledPositions - 1
+                                                      );
+
+                                                      Notify(
+                                                          "Staff has been removed.",
+                                                          NotificationType.Success
+                                                      )
+                                                  )
+                                                  */
+                                                Text: =If (txtStaff_Modify.Text = "(Not Filled)","Assign staff","Remove" )
+                                                Width: =100
+                  - conShiftType_Modify:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        Height: =txtShiftType_Modify.Height
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        PaddingLeft: =10
+                        PaddingRight: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =Parent.TemplateWidth
+                        Y: =txtShiftType_Modify.Height + 8
+                      Children:
+                        - txtShiftTime_Modify:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Start
+                              AutoHeight: =true
+                              FontColor: =ColorValue(varTheme.neutralForeground3)
+                              Size: =
+                              Text: |+
+                                =Concatenate(Text(ThisItem.Startdate, DateTimeFormat.ShortTime) & " to " & Text(ThisItem.Enddate, DateTimeFormat.ShortTime))
+                              Width: =135
+                        - shpSeparateShift_Modify:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              AccessibleLabel: =//customize the accesible label based in the shape
+                              BorderColor: =App.Theme.Colors.Primary
+                              DisabledFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                              DisplayMode: =DisplayMode.View
+                              Fill: =ColorValue(varTheme.neutralStroke2)
+                              FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                              Height: =Parent.Height / 1.2
+                              HoverFill: =App.Theme.Colors.Darker20
+                              PressedFill: =App.Theme.Colors.Primary
+                              Width: =1
+                              X: =388
+                              Y: =50
+                        - txtPositionCount_Modify:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              AutoHeight: =true
+                              FontColor: =ColorValue(varTheme.neutralForeground1)
+                              Height: =
+                              Size: =varThemeFont.H3.size
+                              Text: |-
+                                =Concatenate(
+                                    CountRows(galTeam_Modify.AllItems)
+                                    & " Positions"
+                                )
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =100
+                              Y: =conShiftType_Modify.Height
+                  - txtShiftType_Modify:
+                      Control: Text@0.0.51
+                      Properties:
+                        AutoHeight: =true
+                        FontColor: =App.Theme.Colors.Primary
+                        Height: =Self.Size * 1.5
+                        Size: =varThemeFont.H3.size
+                        Text: =ThisItem.Name
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: =varThemeFont.H1.weightBold
+                        Width: =Parent.TemplateWidth - 10
+                        X: =10
+      - compHeaderCompound_Modify:
+          Control: CanvasComponent
+          ComponentName: compHeaderCompound
+          Properties:
+            Fill: =App.Theme.Colors.Primary
+            HeaderHeight: =51
+            HeaderWidth: =1366
+            Height: |-
+              =compHeaderCompound_Modify.HeaderHeight
+              //varHeaderHeight
+            IsMenuScreen: =false
+            NavigateMenu: =
+            NavigateScreen: ='Main Calendar Screen'
+            Width: =compHeaderCompound_Modify.HeaderWidth

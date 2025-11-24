@@ -1,0 +1,1214 @@
+{
+  "ComponentAllowCustomization": true,
+  "ComponentChangedSinceFileImport": true,
+  "ComponentDefinitionInfo": {
+    "AllowAccessToGlobals": true,
+    "Children": [
+      {
+        "AllowAccessToGlobals": true,
+        "Children": [
+          {
+            "AllowAccessToGlobals": true,
+            "Children": [],
+            "ControlPropertyState": [
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Icon",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "RGBA(0, 18, 107, 1)",
+                "InvariantPropertyName": "Color",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              "DisabledColor",
+              "PressedColor",
+              "HoverColor",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "RGBA(0, 0, 0, 0)",
+                "InvariantPropertyName": "Fill",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              "DisabledFill",
+              "PressedFill",
+              "HoverFill",
+              "DisplayMode",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "20",
+                "InvariantPropertyName": "X",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "0",
+                "InvariantPropertyName": "Y",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Width",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "64",
+                "InvariantPropertyName": "Height",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              "BorderStyle",
+              "BorderColor",
+              "DisabledBorderColor",
+              "PressedBorderColor",
+              "HoverBorderColor",
+              "FocusedBorderColor",
+              "ZIndex",
+              "BorderThickness",
+              "FocusedBorderThickness",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "false",
+                "InvariantPropertyName": "OnSelect",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "true",
+                "InvariantPropertyName": "Visible",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "TabIndex",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "PaddingTop",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "PaddingLeft",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "\"\"",
+                "InvariantPropertyName": "AccessibleLabel",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              }
+            ],
+            "ControlUniqueId": "6",
+            "DynamicProperties": [
+              {
+                "ControlPropertyState": {
+                  "AFDDataSourceName": "",
+                  "AutoRuleBindingEnabled": false,
+                  "AutoRuleBindingString": "",
+                  "InvariantPropertyName": "FillPortions",
+                  "IsLockable": false,
+                  "NameMapSourceSchema": "?"
+                },
+                "PropertyName": "FillPortions",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "1",
+                  "Property": "FillPortions",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": "AlignInContainer",
+                "PropertyName": "AlignInContainer",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "AlignInContainer.SetByContainer",
+                  "Property": "AlignInContainer",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": {
+                  "AFDDataSourceName": "",
+                  "AutoRuleBindingEnabled": false,
+                  "AutoRuleBindingString": "",
+                  "InvariantPropertyName": "LayoutMinWidth",
+                  "IsLockable": false,
+                  "NameMapSourceSchema": "?"
+                },
+                "PropertyName": "LayoutMinWidth",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "40",
+                  "Property": "LayoutMinWidth",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": "LayoutMinHeight",
+                "PropertyName": "LayoutMinHeight",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "64",
+                  "Property": "LayoutMinHeight",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": "LayoutMaxWidth",
+                "PropertyName": "LayoutMaxWidth",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "",
+                  "Property": "LayoutMaxWidth",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": "LayoutMaxHeight",
+                "PropertyName": "LayoutMaxHeight",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "",
+                  "Property": "LayoutMaxHeight",
+                  "RuleProviderType": "Unknown"
+                }
+              }
+            ],
+            "HasDynamicProperties": true,
+            "Index": 0,
+            "IsAutoGenerated": false,
+            "IsDataControl": false,
+            "IsFromScreenLayout": false,
+            "IsGroupControl": false,
+            "IsLocked": false,
+            "LayoutName": "",
+            "MetaDataIDKey": "",
+            "Name": "iconBackButton",
+            "OptimizeForDevices": "Off",
+            "Parent": "ContainerMain",
+            "PersistMetaDataIDKey": false,
+            "PublishOrderIndex": 211,
+            "Rules": [
+              {
+                "Category": "Data",
+                "InvariantScript": "\"Go back\"",
+                "Property": "AccessibleLabel",
+                "RuleProviderType": "User"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "RGBA(244, 244, 244, 1)",
+                "Property": "DisabledColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "RGBA(0,0,0,0)",
+                "Property": "Fill",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "1",
+                "Property": "ZIndex",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "0",
+                "Property": "BorderThickness",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "2",
+                "Property": "FocusedBorderThickness",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "Icon.ChevronLeft",
+                "Property": "Icon",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "BorderStyle.Solid",
+                "Property": "BorderStyle",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "ColorValue(varTheme.neutralBackground2)",
+                "Property": "Color",
+                "RuleProviderType": "User"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "RGBA(166, 166, 166, 1)",
+                "Property": "DisabledBorderColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "DisplayMode.Edit",
+                "Property": "DisplayMode",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "Parent.X",
+                "Property": "X",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "35",
+                "Property": "Width",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "Self.BorderColor",
+                "Property": "FocusedBorderColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "ColorFade(Self.BorderColor, 20%)",
+                "Property": "HoverBorderColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "0",
+                "Property": "TabIndex",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "5",
+                "Property": "PaddingTop",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "RGBA(0, 18, 107, 1)",
+                "Property": "BorderColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "ColorFade(Self.BorderColor, -20%)",
+                "Property": "PressedBorderColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "(Parent.Height - Self.Height) / 2",
+                "Property": "Y",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "Self.Width",
+                "Property": "Height",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "15",
+                "Property": "PaddingLeft",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "Self.Fill",
+                "Property": "HoverFill",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "Self.Fill",
+                "Property": "PressedFill",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "Self.Fill",
+                "Property": "DisabledFill",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "ColorFade(Self.Color, 20%)",
+                "Property": "HoverColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "ColorFade(Self.Color, -20%)",
+                "Property": "PressedColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "If(App.ActiveScreen = compHeaderCompound.NavigateScreen, false, true)",
+                "Property": "Visible",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Behavior",
+                "InvariantScript": "Navigate(compHeaderCompound.NavigateScreen)",
+                "Property": "OnSelect",
+                "RuleProviderType": "Unknown"
+              }
+            ],
+            "StyleName": "defaultIconStyle",
+            "Template": {
+              "CustomGroupControlTemplateName": "",
+              "FirstParty": true,
+              "Id": "http://microsoft.com/appmagic/icon",
+              "IsComponentDefinition": false,
+              "IsCustomGroupControlTemplate": false,
+              "IsPremiumPcfControl": false,
+              "LastModifiedTimestamp": "0",
+              "Name": "icon",
+              "OverridableProperties": {},
+              "Version": "2.5.0"
+            },
+            "Type": "ControlInfo",
+            "VariantName": "Hamburger"
+          },
+          {
+            "AllowAccessToGlobals": true,
+            "Children": [],
+            "ControlPropertyState": [
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Title",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              "UserImage",
+              "UserName",
+              "UserEmail",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "X",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Y",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "1366",
+                "InvariantPropertyName": "Width",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Height",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              "DisplayMode",
+              "OnSelectLogo",
+              "ZIndex",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "IsTitleVisible",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Logo",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Style",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "LogoTooltip",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "IsProfilePictureVisible",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "BasePaletteColor",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "IsLogoVisible",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              "FontColor",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "Visible",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
+              "Align",
+              "BorderStyle",
+              "UserImageAltText",
+              "TitleRole"
+            ],
+            "ControlUniqueId": "7",
+            "DynamicProperties": [
+              {
+                "ControlPropertyState": {
+                  "AFDDataSourceName": "",
+                  "AutoRuleBindingEnabled": false,
+                  "AutoRuleBindingString": "",
+                  "InvariantPropertyName": "FillPortions",
+                  "IsLockable": false,
+                  "NameMapSourceSchema": "?"
+                },
+                "PropertyName": "FillPortions",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "0",
+                  "Property": "FillPortions",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": {
+                  "AFDDataSourceName": "",
+                  "AutoRuleBindingEnabled": false,
+                  "AutoRuleBindingString": "",
+                  "InvariantPropertyName": "AlignInContainer",
+                  "IsLockable": false,
+                  "NameMapSourceSchema": "?"
+                },
+                "PropertyName": "AlignInContainer",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "AlignInContainer.SetByContainer",
+                  "Property": "AlignInContainer",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": "LayoutMinWidth",
+                "PropertyName": "LayoutMinWidth",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "Parent.Width",
+                  "Property": "LayoutMinWidth",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": {
+                  "AFDDataSourceName": "",
+                  "AutoRuleBindingEnabled": false,
+                  "AutoRuleBindingString": "",
+                  "InvariantPropertyName": "LayoutMinHeight",
+                  "IsLockable": false,
+                  "NameMapSourceSchema": "?"
+                },
+                "PropertyName": "LayoutMinHeight",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "50",
+                  "Property": "LayoutMinHeight",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": "LayoutMaxWidth",
+                "PropertyName": "LayoutMaxWidth",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "",
+                  "Property": "LayoutMaxWidth",
+                  "RuleProviderType": "Unknown"
+                }
+              },
+              {
+                "ControlPropertyState": "LayoutMaxHeight",
+                "PropertyName": "LayoutMaxHeight",
+                "Rule": {
+                  "Category": "Design",
+                  "InvariantScript": "",
+                  "Property": "LayoutMaxHeight",
+                  "RuleProviderType": "Unknown"
+                }
+              }
+            ],
+            "HasDynamicProperties": true,
+            "Index": 0,
+            "IsAutoGenerated": false,
+            "IsDataControl": false,
+            "IsFromScreenLayout": false,
+            "IsGroupControl": false,
+            "IsLocked": false,
+            "LayoutName": "",
+            "MetaDataIDKey": "",
+            "Name": "comp_Header",
+            "OptimizeForDevices": "Off",
+            "Parent": "ContainerMain",
+            "PersistMetaDataIDKey": false,
+            "PublishOrderIndex": 212,
+            "Rules": [
+              {
+                "Category": "Data",
+                "InvariantScript": "",
+                "Property": "FontColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "true",
+                "Property": "IsLogoVisible",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "",
+                "Property": "BasePaletteColor",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "\"Shift Planner\"",
+                "Property": "Title",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "User().Image",
+                "Property": "UserImage",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "User().FullName",
+                "Property": "UserName",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "User().Email",
+                "Property": "UserEmail",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "If(App.ActiveScreen.Size = 1 , false, true)",
+                "Property": "IsTitleVisible",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "'LogoColored Resized'",
+                "Property": "Logo",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "'Header.Style'.Primary",
+                "Property": "Style",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "\"Logo\"",
+                "Property": "LogoTooltip",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "true",
+                "Property": "IsProfilePictureVisible",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "\"\"",
+                "Property": "Align",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "\"\"",
+                "Property": "BorderStyle",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "User().FullName &\" profile picture\"",
+                "Property": "UserImageAltText",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "\"\"",
+                "Property": "TitleRole",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "10",
+                "Property": "X",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "0",
+                "Property": "Y",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "DisplayMode.Edit",
+                "Property": "DisplayMode",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "2",
+                "Property": "ZIndex",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "true",
+                "Property": "Visible",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "51",
+                "Property": "Height",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Design",
+                "InvariantScript": "If(iconBackButton.Visible, (ContainerMain.Width - iconBackButton.Width), ContainerMain.Width)",
+                "Property": "Width",
+                "RuleProviderType": "Unknown"
+              },
+              {
+                "Category": "Behavior",
+                "InvariantScript": "false",
+                "Property": "OnSelectLogo",
+                "RuleProviderType": "Unknown"
+              }
+            ],
+            "StyleName": "",
+            "Template": {
+              "CustomGroupControlTemplateName": "",
+              "DynamicControlDefinitionJson": "{\"ControlNamespace\":\"PowerApps\",\"ControlConstructor\":\"Header\",\"DisplayNameKey\":\"Header_Display_Key\",\"Resources\":\"[{\\\"Type\\\":0,\\\"Path\\\":\\\"/PCF/prop-types.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":1,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/PCF/react-fela.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":2,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/PCF/fela.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":3,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/PCF/fela-dom.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":4,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/ctrllib/common/js/container.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":5,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/ctrllib/PCFControls/js/PCFControlWrapper.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":6,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/ctrllib/PcfControlProxy/js/PcfControlProxy.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":7,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":3,\\\"Path\\\":\\\"{\\\\\\\"Id\\\\\\\":\\\\\\\"ManifestTemplate\\\\\\\",\\\\\\\"Data\\\\\\\":{\\\\\\\"ConstructorName\\\\\\\":\\\\\\\"PowerApps.Header\\\\\\\",\\\\\\\"CustomControlId\\\\\\\":\\\\\\\"PowerApps.Header\\\\\\\",\\\\\\\"IsVirtual\\\\\\\":true,\\\\\\\"Properties\\\\\\\":{\\\\\\\"Resources\\\\\\\":[{\\\\\\\"Name\\\\\\\":\\\\\\\"/PCF/prop-types.js\\\\\\\",\\\\\\\"LoadOrder\\\\\\\":1,\\\\\\\"Type\\\\\\\":0,\\\\\\\"LibraryName\\\\\\\":null},{\\\\\\\"Name\\\\\\\":\\\\\\\"/PCF/react-fela.js\\\\\\\",\\\\\\\"LoadOrder\\\\\\\":2,\\\\\\\"Type\\\\\\\":0,\\\\\\\"LibraryName\\\\\\\":null},{\\\\\\\"Name\\\\\\\":\\\\\\\"/PCF/fela.js\\\\\\\",\\\\\\\"LoadOrder\\\\\\\":3,\\\\\\\"Type\\\\\\\":0,\\\\\\\"LibraryName\\\\\\\":null},{\\\\\\\"Name\\\\\\\":\\\\\\\"/PCF/fela-dom.js\\\\\\\",\\\\\\\"LoadOrder\\\\\\\":4,\\\\\\\"Type\\\\\\\":0,\\\\\\\"LibraryName\\\\\\\":null},{\\\\\\\"Name\\\\\\\":\\\\\\\"/ctrllib/common/js/container.js\\\\\\\",\\\\\\\"LoadOrder\\\\\\\":5,\\\\\\\"Type\\\\\\\":0,\\\\\\\"LibraryName\\\\\\\":null},{\\\\\\\"Name\\\\\\\":\\\\\\\"/ctrllib/PCFControls/js/PCFControlWrapper.js\\\\\\\",\\\\\\\"LoadOrder\\\\\\\":6,\\\\\\\"Type\\\\\\\":0,\\\\\\\"LibraryName\\\\\\\":null},{\\\\\\\"Name\\\\\\\":\\\\\\\"/ctrllib/PcfControlProxy/js/PcfControlProxy.js\\\\\\\",\\\\\\\"LoadOrder\\\\\\\":7,\\\\\\\"Type\\\\\\\":0,\\\\\\\"LibraryName\\\\\\\":null}],\\\\\\\"GroupDefinitions\\\\\\\":null,\\\\\\\"DataSetDefinitions\\\\\\\":{},\\\\\\\"Properties\\\\\\\":{\\\\\\\"BasePaletteColor\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"Style\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"Primary\\\\\\\"},\\\\\\\"Font\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"FontColor\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"Fill\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"Logo\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":0,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"IsLogoVisible\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"true\\\\\\\"},\\\\\\\"LogoTooltip\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"The logo image\\\\\\\"},\\\\\\\"LogoMaxHeight\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"70\\\\\\\"},\\\\\\\"Title\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"Header Title\\\\\\\"},\\\\\\\"TitleRole\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"IsTitleVisible\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"true\\\\\\\"},\\\\\\\"TitleFontSize\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"IsProfilePictureVisible\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"true\\\\\\\"},\\\\\\\"UserImage\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":0,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"UserImageAltText\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"UserName\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"UserEmail\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"Align\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"BorderStyle\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"BorderThickness\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"BorderColor\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"BorderRadiusTopLeft\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"BorderRadiusTopRight\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"BorderRadiusBottomRight\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"BorderRadiusBottomLeft\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"PaddingTop\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"PaddingRight\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"PaddingBottom\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"PaddingLeft\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"TabIndex\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"},\\\\\\\"Tooltip\\\\\\\":{\\\\\\\"Required\\\\\\\":true,\\\\\\\"Usage\\\\\\\":1,\\\\\\\"DefaultValue\\\\\\\":\\\\\\\"\\\\\\\"}},\\\\\\\"FeatureUsage\\\\\\\":[{\\\\\\\"IsRequired\\\\\\\":true,\\\\\\\"Name\\\\\\\":\\\\\\\"ExplicitCommonEvents\\\\\\\"}]},\\\\\\\"Events\\\\\\\":{\\\\\\\"OnSelectLogo\\\\\\\":{\\\\\\\"EventName\\\\\\\":\\\\\\\"OnSelectLogo\\\\\\\"}},\\\\\\\"CommonEvents\\\\\\\":null,\\\\\\\"DesignMap\\\\\\\":null,\\\\\\\"PropertyDependencies\\\\\\\":[],\\\\\\\"Children\\\\\\\":null}}\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":8,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":3,\\\"Path\\\":\\\"{\\\\\\\"Id\\\\\\\":\\\\\\\"ManifestPropertyTypes\\\\\\\",\\\\\\\"Data\\\\\\\":{\\\\\\\"Properties\\\\\\\":[{\\\\\\\"Name\\\\\\\":\\\\\\\"BasePaletteColor\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"ColorPalette\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"Style\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Enum\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"Font\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"Font\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"FontColor\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"FontColor\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"Fill\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"ColorPalette\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"Logo\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Image\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"IsLogoVisible\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"TwoOptions\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"LogoTooltip\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"LogoMaxHeight\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"Title\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"TitleRole\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"IsTitleVisible\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"TwoOptions\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"TitleFontSize\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"IsProfilePictureVisible\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"TwoOptions\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"UserImage\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Image\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"UserImageAltText\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"UserName\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"UserEmail\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"Align\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"Align\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"BorderStyle\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"BorderStyle\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"BorderThickness\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"BorderColor\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"Color\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"BorderRadiusTopLeft\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"BorderRadiusTopRight\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"BorderRadiusBottomRight\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"BorderRadiusBottomLeft\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"PaddingTop\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"PaddingRight\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"PaddingBottom\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"PaddingLeft\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"TabIndex\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Whole_None\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"Tooltip\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"SingleLine_Text\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":false},{\\\\\\\"Name\\\\\\\":\\\\\\\"PCFTeamsTheme\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"String\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":true},{\\\\\\\"Name\\\\\\\":\\\\\\\"X\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Number\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":true},{\\\\\\\"Name\\\\\\\":\\\\\\\"Y\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Number\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":true},{\\\\\\\"Name\\\\\\\":\\\\\\\"Width\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Number\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":true},{\\\\\\\"Name\\\\\\\":\\\\\\\"Height\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Number\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":true},{\\\\\\\"Name\\\\\\\":\\\\\\\"Visible\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"Boolean\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":true},{\\\\\\\"Name\\\\\\\":\\\\\\\"DisplayMode\\\\\\\",\\\\\\\"Type\\\\\\\":\\\\\\\"DisplayMode\\\\\\\",\\\\\\\"ComplexType\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"IsPrimary\\\\\\\":false,\\\\\\\"IsIncluded\\\\\\\":true}]}}\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":9,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":3,\\\"Path\\\":\\\"{\\\\\\\"Id\\\\\\\":\\\\\\\"PowerAppsControlInfo\\\\\\\",\\\\\\\"Data\\\\\\\":{\\\\\\\"TemplateVersion\\\\\\\":1,\\\\\\\"Version\\\\\\\":\\\\\\\"0.0.44\\\\\\\",\\\\\\\"IsFirstParty\\\\\\\":true}}\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":10,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/PCFControls/Header/bundle.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":11,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":2,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1033.resx\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":10,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1025.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1026.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1027.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1028.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1029.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1030.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1031.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1032.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1033.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1035.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1036.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1037.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1038.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1040.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1041.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1042.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1043.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1044.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1045.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1046.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1048.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1049.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1050.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1051.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1053.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1054.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1055.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1057.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1058.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1060.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1061.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1062.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1063.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1066.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1069.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1081.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1086.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1087.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.1110.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.2052.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.2070.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.2074.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.3076.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.3082.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":5,\\\"Path\\\":\\\"/PCFControls/Header/strings/Header.3098.json\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":true},{\\\"Type\\\":3,\\\"Path\\\":\\\"{\\\\\\\"Id\\\\\\\":\\\\\\\"LocalizedStrings\\\\\\\",\\\\\\\"Data\\\\\\\":{\\\\\\\"LocStrings\\\\\\\":{\\\\\\\"Header_Display_Key\\\\\\\":\\\\\\\"Header\\\\\\\",\\\\\\\"Header_Desc_Key\\\\\\\":\\\\\\\"The controls that compose the header\\\\\\\",\\\\\\\"Title_Display_Key\\\\\\\":\\\\\\\"Title\\\\\\\",\\\\\\\"Title_Desc_Key\\\\\\\":\\\\\\\"The title text of the header\\\\\\\",\\\\\\\"Default_Title\\\\\\\":\\\\\\\"Header Title\\\\\\\",\\\\\\\"IsTitleVisible_Display_Key\\\\\\\":\\\\\\\"Show title\\\\\\\",\\\\\\\"IsTitleVisible_Desc_Key\\\\\\\":\\\\\\\"Toggles displaying the title\\\\\\\",\\\\\\\"Title_Role_Display_Key\\\\\\\":\\\\\\\"Title role\\\\\\\",\\\\\\\"Title_Role_Desc_Key\\\\\\\":\\\\\\\"Role for the header title\\\\\\\",\\\\\\\"User_Image_Alt_Text\\\\\\\":\\\\\\\"Alt text for user image\\\\\\\",\\\\\\\"User_Image_Alt_Text_desc\\\\\\\":\\\\\\\"Provides alt text to the user image\\\\\\\",\\\\\\\"TitleFontSize_Display_Key\\\\\\\":\\\\\\\"Font size\\\\\\\",\\\\\\\"TitleFontSize_Desc_Key\\\\\\\":\\\\\\\"The title's font size\\\\\\\",\\\\\\\"Logo_Display_Key\\\\\\\":\\\\\\\"Logo\\\\\\\",\\\\\\\"Logo_Desc_Key\\\\\\\":\\\\\\\"The control's logo image\\\\\\\",\\\\\\\"IsLogoVisible_Display_Key\\\\\\\":\\\\\\\"Show logo\\\\\\\",\\\\\\\"IsLogoVisible_Desc_Key\\\\\\\":\\\\\\\"Toggles displaying the logo\\\\\\\",\\\\\\\"LogoTooltip_Display_Key\\\\\\\":\\\\\\\"Tooltip\\\\\\\",\\\\\\\"LogoTooltip_Desc_Key\\\\\\\":\\\\\\\"The logo image tooltip\\\\\\\",\\\\\\\"Default_LogoTooltip\\\\\\\":\\\\\\\"The logo image\\\\\\\",\\\\\\\"LogoMaxHeight_Display_Key\\\\\\\":\\\\\\\"Logo max height\\\\\\\",\\\\\\\"LogoMaxHeight_Desc_Key\\\\\\\":\\\\\\\"The logo image\\\\\\\",\\\\\\\"OnSelectLogo_Display_Key\\\\\\\":\\\\\\\"On select logo\\\\\\\",\\\\\\\"OnSelectLogo_Desc_Key\\\\\\\":\\\\\\\"The event to trigger when the logo is selected\\\\\\\",\\\\\\\"UserName_Display_Key\\\\\\\":\\\\\\\"User name\\\\\\\",\\\\\\\"UserName_Desc_Key\\\\\\\":\\\\\\\"The user's full name\\\\\\\",\\\\\\\"UserEmail_Display_Key\\\\\\\":\\\\\\\"User email\\\\\\\",\\\\\\\"UserEmail_Desc_Key\\\\\\\":\\\\\\\"The user email address\\\\\\\",\\\\\\\"IsProfilePictureVisible_Display_Key\\\\\\\":\\\\\\\"Profile picture\\\\\\\",\\\\\\\"IsProfilePictureVisible_Desc_Key\\\\\\\":\\\\\\\"Toggles displaying the profile picture\\\\\\\",\\\\\\\"UserImage_Display_Key\\\\\\\":\\\\\\\"User image\\\\\\\",\\\\\\\"UserImage_Desc_Key\\\\\\\":\\\\\\\"The user's profile picture image\\\\\\\",\\\\\\\"Style_Display_Key\\\\\\\":\\\\\\\"Style\\\\\\\",\\\\\\\"Style_Desc_Key\\\\\\\":\\\\\\\"The header background style\\\\\\\",\\\\\\\"Style_Neutral\\\\\\\":\\\\\\\"Neutral\\\\\\\",\\\\\\\"Style_Primary\\\\\\\":\\\\\\\"Primary\\\\\\\",\\\\\\\"Style_Light\\\\\\\":\\\\\\\"Light\\\\\\\",\\\\\\\"Base_Palette_Color\\\\\\\":\\\\\\\"Color palette\\\\\\\",\\\\\\\"Base_Palette_Color_description\\\\\\\":\\\\\\\"Choose a color palette that's different from the theme.\\\\\\\",\\\\\\\"Font\\\\\\\":\\\\\\\"Font\\\\\\\",\\\\\\\"Font_description\\\\\\\":\\\\\\\"The name of the family of fonts in which text appears\\\\\\\",\\\\\\\"Font_Color\\\\\\\":\\\\\\\"Font color\\\\\\\",\\\\\\\"Font_Color_description\\\\\\\":\\\\\\\"The color of text in the control\\\\\\\",\\\\\\\"Fill\\\\\\\":\\\\\\\"Fill\\\\\\\",\\\\\\\"Fill_Description\\\\\\\":\\\\\\\"Background color of the control.\\\\\\\",\\\\\\\"Align\\\\\\\":\\\\\\\"Align\\\\\\\",\\\\\\\"Align_Desc\\\\\\\":\\\\\\\"Display text using the selected text alignment.\\\\\\\",\\\\\\\"Align_Start\\\\\\\":\\\\\\\"Start\\\\\\\",\\\\\\\"Align_End\\\\\\\":\\\\\\\"End\\\\\\\",\\\\\\\"Align_Center\\\\\\\":\\\\\\\"Center\\\\\\\",\\\\\\\"Align_Justify\\\\\\\":\\\\\\\"Justify\\\\\\\",\\\\\\\"PaddingTop\\\\\\\":\\\\\\\"Top\\\\\\\",\\\\\\\"PaddingTop_Description\\\\\\\":\\\\\\\"Padding to apply to the top of the control.\\\\\\\",\\\\\\\"PaddingBottom\\\\\\\":\\\\\\\"Bottom\\\\\\\",\\\\\\\"PaddingBottom_Description\\\\\\\":\\\\\\\"Padding to apply to the bottom of the control.\\\\\\\",\\\\\\\"PaddingLeft\\\\\\\":\\\\\\\"Left\\\\\\\",\\\\\\\"PaddingLeft_Description\\\\\\\":\\\\\\\"Padding to apply to the left of the control.\\\\\\\",\\\\\\\"PaddingRight\\\\\\\":\\\\\\\"Right\\\\\\\",\\\\\\\"PaddingRight_Description\\\\\\\":\\\\\\\"Padding to apply to the right of the control.\\\\\\\",\\\\\\\"BorderStyle\\\\\\\":\\\\\\\"Border style\\\\\\\",\\\\\\\"BorderStyle_Description\\\\\\\":\\\\\\\"Style of borders around the control\\\\\\\",\\\\\\\"BorderStyle_Dashed\\\\\\\":\\\\\\\"Dashed\\\\\\\",\\\\\\\"BorderStyle_Dotted\\\\\\\":\\\\\\\"Dotted\\\\\\\",\\\\\\\"BorderStyle_None\\\\\\\":\\\\\\\"None\\\\\\\",\\\\\\\"BorderStyle_Solid\\\\\\\":\\\\\\\"Solid\\\\\\\",\\\\\\\"BorderThickness\\\\\\\":\\\\\\\"Border thickness\\\\\\\",\\\\\\\"BorderThickness_Description\\\\\\\":\\\\\\\"Thickness or width of borders around the control.\\\\\\\",\\\\\\\"BorderColor\\\\\\\":\\\\\\\"Border color\\\\\\\",\\\\\\\"BorderColor_Description\\\\\\\":\\\\\\\"Color of borders around the control.\\\\\\\",\\\\\\\"BorderRadiusTopLeft\\\\\\\":\\\\\\\"Top left border radius\\\\\\\",\\\\\\\"BorderRadiusTopLeft_Description\\\\\\\":\\\\\\\"Roundedness of the control's top left corner. A value of 0 is perfectly square.\\\\\\\",\\\\\\\"BorderRadiusTopRight\\\\\\\":\\\\\\\"Top right border radius\\\\\\\",\\\\\\\"BorderRadiusTopRight_Description\\\\\\\":\\\\\\\"Roundedness of the control's top right corner. A value of 0 is perfectly square.\\\\\\\",\\\\\\\"BorderRadiusBottomRight\\\\\\\":\\\\\\\"Bottom right border radius\\\\\\\",\\\\\\\"BorderRadiusBottomRight_Description\\\\\\\":\\\\\\\"Roundedness of the control's bottom right corner. A value of 0 is perfectly square.\\\\\\\",\\\\\\\"BorderRadiusBottomLeft\\\\\\\":\\\\\\\"Bottom left border radius\\\\\\\",\\\\\\\"BorderRadiusBottomLeft_Description\\\\\\\":\\\\\\\"Roundedness of the control's bottom left corner. A value of 0 is perfectly square.\\\\\\\"}}}\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":13,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":0,\\\"Path\\\":\\\"/PCF/fluentui-react.js\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":5,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":4,\\\"Path\\\":\\\"React/16.8.6/16.14.0\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":0,\\\"IsControlSpecific\\\":false},{\\\"Type\\\":4,\\\"Path\\\":\\\"Fluent/9.4.0/9.4.0\\\",\\\"ModifiedPath\\\":\\\"\\\",\\\"LoadingOrder\\\":0,\\\"IsControlSpecific\\\":false}]\",\"Properties\":\"[{\\\"Name\\\":\\\"BasePaletteColor\\\",\\\"DisplayName\\\":\\\"Color palette\\\",\\\"Description\\\":\\\"Choose a color palette that's different from the theme.\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Base_Palette_Color\\\",\\\"DescriptionResourceString\\\":\\\"Base_Palette_Color_description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"Style\\\",\\\"DisplayName\\\":\\\"Style\\\",\\\"Description\\\":\\\"The header background style\\\",\\\"Type\\\":1,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"Primary\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"Primary\\\",\\\"WebDefaultValue\\\":\\\"Primary\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[{\\\"Name\\\":\\\"Neutral\\\",\\\"DisplayName\\\":\\\"Neutral\\\",\\\"Description\\\":\\\"Neutral\\\",\\\"IsDefaultValue\\\":false,\\\"Value\\\":\\\"Neutral\\\"},{\\\"Name\\\":\\\"Primary\\\",\\\"DisplayName\\\":\\\"Primary\\\",\\\"Description\\\":\\\"Primary\\\",\\\"IsDefaultValue\\\":true,\\\"Value\\\":\\\"Primary\\\"},{\\\"Name\\\":\\\"Light\\\",\\\"DisplayName\\\":\\\"Light\\\",\\\"Description\\\":\\\"Light\\\",\\\"IsDefaultValue\\\":false,\\\"Value\\\":\\\"Light\\\"}],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Style_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"Style_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Font\\\",\\\"DisplayName\\\":\\\"Font\\\",\\\"Description\\\":\\\"The name of the family of fonts in which text appears\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Font\\\",\\\"DescriptionResourceString\\\":\\\"Font_description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"FontColor\\\",\\\"DisplayName\\\":\\\"Font color\\\",\\\"Description\\\":\\\"The color of text in the control\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"color\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Font_Color\\\",\\\"DescriptionResourceString\\\":\\\"Font_Color_description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"Fill\\\",\\\"DisplayName\\\":\\\"Fill\\\",\\\"Description\\\":\\\"Background color of the control.\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Fill\\\",\\\"DescriptionResourceString\\\":\\\"Fill_Description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"Logo\\\",\\\"DisplayName\\\":\\\"Logo\\\",\\\"Description\\\":\\\"The control's logo image\\\",\\\"Type\\\":38,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Logo_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"Logo_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"IsLogoVisible\\\",\\\"DisplayName\\\":\\\"Show logo\\\",\\\"Description\\\":\\\"Toggles displaying the logo\\\",\\\"Type\\\":20,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"true\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"IsLogoVisible_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"IsLogoVisible_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"LogoTooltip\\\",\\\"DisplayName\\\":\\\"Tooltip\\\",\\\"Description\\\":\\\"The logo image tooltip\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"The logo image\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"LogoTooltip_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"LogoTooltip_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"LogoMaxHeight\\\",\\\"DisplayName\\\":\\\"Logo max height\\\",\\\"Description\\\":\\\"The logo image\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"70\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"LogoMaxHeight_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"LogoMaxHeight_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Title\\\",\\\"DisplayName\\\":\\\"Title\\\",\\\"Description\\\":\\\"The title text of the header\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"Header Title\\\",\\\"PfxDefaultValue\\\":\\\"App.ActiveScreen.Name\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Title_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"Title_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"TitleRole\\\",\\\"DisplayName\\\":\\\"Title role\\\",\\\"Description\\\":\\\"Role for the header title\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Title_Role_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"Title_Role_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"IsTitleVisible\\\",\\\"DisplayName\\\":\\\"Show title\\\",\\\"Description\\\":\\\"Toggles displaying the title\\\",\\\"Type\\\":20,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"true\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"IsTitleVisible_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"IsTitleVisible_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"TitleFontSize\\\",\\\"DisplayName\\\":\\\"Font size\\\",\\\"Description\\\":\\\"The title's font size\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"20\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"TitleFontSize_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"TitleFontSize_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"IsProfilePictureVisible\\\",\\\"DisplayName\\\":\\\"Profile picture\\\",\\\"Description\\\":\\\"Toggles displaying the profile picture\\\",\\\"Type\\\":20,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"true\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"IsProfilePictureVisible_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"IsProfilePictureVisible_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"UserImage\\\",\\\"DisplayName\\\":\\\"User image\\\",\\\"Description\\\":\\\"The user's profile picture image\\\",\\\"Type\\\":38,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"User().Image\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"UserImage_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"UserImage_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"UserImageAltText\\\",\\\"DisplayName\\\":\\\"Alt text for user image\\\",\\\"Description\\\":\\\"Provides alt text to the user image\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"User().FullName &\\\\\\\" profile picture\\\\\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"User_Image_Alt_Text\\\",\\\"DescriptionResourceString\\\":\\\"User_Image_Alt_Text_desc\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"UserName\\\",\\\"DisplayName\\\":\\\"User name\\\",\\\"Description\\\":\\\"The user's full name\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"User().FullName\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"UserName_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"UserName_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"UserEmail\\\",\\\"DisplayName\\\":\\\"User email\\\",\\\"Description\\\":\\\"The user email address\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"User().Email\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"UserEmail_Display_Key\\\",\\\"DescriptionResourceString\\\":\\\"UserEmail_Desc_Key\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Align\\\",\\\"DisplayName\\\":\\\"Align\\\",\\\"Description\\\":\\\"Display text using the selected text alignment.\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Align\\\",\\\"DescriptionResourceString\\\":\\\"Align_Desc\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"BorderStyle\\\",\\\"DisplayName\\\":\\\"Border style\\\",\\\"Description\\\":\\\"Style of borders around the control\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"BorderStyle\\\",\\\"DescriptionResourceString\\\":\\\"BorderStyle_Description\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"BorderThickness\\\",\\\"DisplayName\\\":\\\"Border thickness\\\",\\\"Description\\\":\\\"Thickness or width of borders around the control.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"BorderThickness\\\",\\\"DescriptionResourceString\\\":\\\"BorderThickness_Description\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"BorderColor\\\",\\\"DisplayName\\\":\\\"Border color\\\",\\\"Description\\\":\\\"Color of borders around the control.\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"color\\\",\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"BorderColor\\\",\\\"DescriptionResourceString\\\":\\\"BorderColor_Description\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"BorderRadiusTopLeft\\\",\\\"DisplayName\\\":\\\"Top left border radius\\\",\\\"Description\\\":\\\"Roundedness of the control's top left corner. A value of 0 is perfectly square.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"BorderRadiusTopLeft\\\",\\\"DescriptionResourceString\\\":\\\"BorderRadiusTopLeft_Description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"BorderRadiusTopRight\\\",\\\"DisplayName\\\":\\\"Top right border radius\\\",\\\"Description\\\":\\\"Roundedness of the control's top right corner. A value of 0 is perfectly square.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"BorderRadiusTopRight\\\",\\\"DescriptionResourceString\\\":\\\"BorderRadiusTopRight_Description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"BorderRadiusBottomRight\\\",\\\"DisplayName\\\":\\\"Bottom right border radius\\\",\\\"Description\\\":\\\"Roundedness of the control's bottom right corner. A value of 0 is perfectly square.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"BorderRadiusBottomRight\\\",\\\"DescriptionResourceString\\\":\\\"BorderRadiusBottomRight_Description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"BorderRadiusBottomLeft\\\",\\\"DisplayName\\\":\\\"Bottom left border radius\\\",\\\"Description\\\":\\\"Roundedness of the control's bottom left corner. A value of 0 is perfectly square.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"BorderRadiusBottomLeft\\\",\\\"DescriptionResourceString\\\":\\\"BorderRadiusBottomLeft_Description\\\",\\\"IsResettableToManifestDefault\\\":true,\\\"IsLinkableToParentTheme\\\":true},{\\\"Name\\\":\\\"PaddingTop\\\",\\\"DisplayName\\\":\\\"Top\\\",\\\"Description\\\":\\\"Padding to apply to the top of the control.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"PaddingTop\\\",\\\"DescriptionResourceString\\\":\\\"PaddingTop_Description\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"PaddingRight\\\",\\\"DisplayName\\\":\\\"Right\\\",\\\"Description\\\":\\\"Padding to apply to the right of the control.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"PaddingRight\\\",\\\"DescriptionResourceString\\\":\\\"PaddingRight_Description\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"PaddingBottom\\\",\\\"DisplayName\\\":\\\"Bottom\\\",\\\"Description\\\":\\\"Padding to apply to the bottom of the control.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"PaddingBottom\\\",\\\"DescriptionResourceString\\\":\\\"PaddingBottom_Description\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"PaddingLeft\\\",\\\"DisplayName\\\":\\\"Left\\\",\\\"Description\\\":\\\"Padding to apply to the left of the control.\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":null,\\\"Category\\\":\\\"data\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"PaddingLeft\\\",\\\"DescriptionResourceString\\\":\\\"PaddingLeft_Description\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"TabIndex\\\",\\\"DisplayName\\\":\\\"NA\\\",\\\"Description\\\":\\\"NA\\\",\\\"Type\\\":16,\\\"Usage\\\":0,\\\"Hidden\\\":true,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"NA\\\",\\\"DescriptionResourceString\\\":\\\"NA\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Tooltip\\\",\\\"DisplayName\\\":\\\"NA\\\",\\\"Description\\\":\\\"NA\\\",\\\"Type\\\":6,\\\"Usage\\\":0,\\\"Hidden\\\":true,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":null,\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":[],\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"NA\\\",\\\"DescriptionResourceString\\\":\\\"NA\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"PCFTeamsTheme\\\",\\\"DisplayName\\\":\\\"PCFTeamsTheme\\\",\\\"Description\\\":\\\"\\\",\\\"Type\\\":3,\\\"Usage\\\":0,\\\"Hidden\\\":true,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":\\\"\\\",\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":null,\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"\\\",\\\"DescriptionResourceString\\\":\\\"\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false}]\",\"IncludedProperties\":\"[{\\\"Name\\\":\\\"X\\\",\\\"DisplayName\\\":\\\"CC_X\\\",\\\"Description\\\":\\\"\\\",\\\"Type\\\":2,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":null,\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":null,\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"CC_X\\\",\\\"DescriptionResourceString\\\":\\\"\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Y\\\",\\\"DisplayName\\\":\\\"CC_Y\\\",\\\"Description\\\":\\\"\\\",\\\"Type\\\":2,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":null,\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":null,\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"CC_Y\\\",\\\"DescriptionResourceString\\\":\\\"\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Width\\\",\\\"DisplayName\\\":\\\"Width\\\",\\\"Description\\\":\\\"\\\",\\\"Type\\\":2,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"1400\\\",\\\"PfxDefaultValue\\\":\\\"Parent.Width\\\",\\\"PhoneDefaultValue\\\":\\\"1400\\\",\\\"WebDefaultValue\\\":\\\"1400\\\",\\\"NullDefaultValue\\\":\\\"0\\\",\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":null,\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Width\\\",\\\"DescriptionResourceString\\\":\\\"\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Height\\\",\\\"DisplayName\\\":\\\"Height\\\",\\\"Description\\\":\\\"\\\",\\\"Type\\\":2,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"75\\\",\\\"PfxDefaultValue\\\":null,\\\"PhoneDefaultValue\\\":\\\"75\\\",\\\"WebDefaultValue\\\":\\\"75\\\",\\\"NullDefaultValue\\\":\\\"0\\\",\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":null,\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Height\\\",\\\"DescriptionResourceString\\\":\\\"\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"Visible\\\",\\\"DisplayName\\\":\\\"Visible\\\",\\\"Description\\\":\\\"\\\",\\\"Type\\\":4,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"true\\\",\\\"PfxDefaultValue\\\":null,\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":null,\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"Visible\\\",\\\"DescriptionResourceString\\\":\\\"\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false},{\\\"Name\\\":\\\"DisplayMode\\\",\\\"DisplayName\\\":\\\"DisplayMode\\\",\\\"Description\\\":\\\"\\\",\\\"Type\\\":27,\\\"Usage\\\":2,\\\"Hidden\\\":false,\\\"DefaultValue\\\":\\\"\\\",\\\"PfxDefaultValue\\\":null,\\\"PhoneDefaultValue\\\":\\\"\\\",\\\"WebDefaultValue\\\":\\\"\\\",\\\"NullDefaultValue\\\":\\\"\\\",\\\"HelperUI\\\":\\\"\\\",\\\"Category\\\":\\\"design\\\",\\\"IsPrimaryBehavioral\\\":false,\\\"IsPrimaryInput\\\":false,\\\"IsPrimaryOutput\\\":false,\\\"IsResettable\\\":false,\\\"EnumValues\\\":null,\\\"Required\\\":false,\\\"IsDataSourceProperty\\\":false,\\\"PassThroughProperty\\\":\\\"\\\",\\\"ShouldAutoBind\\\":false,\\\"ParentDataSetName\\\":\\\"\\\",\\\"DisplayNameResourceString\\\":\\\"DisplayMode\\\",\\\"DescriptionResourceString\\\":\\\"\\\",\\\"IsResettableToManifestDefault\\\":false,\\\"IsLinkableToParentTheme\\\":false}]\",\"Events\":\"[{\\\"Name\\\":\\\"OnSelectLogo\\\",\\\"DisplayName\\\":\\\"On select logo\\\",\\\"Description\\\":\\\"The event to trigger when the logo is selected\\\",\\\"PfxDefaultValue\\\":null,\\\"Hidden\\\":false,\\\"IsPrimaryInput\\\":false}]\",\"AuthConfigProperties\":\"[{\\\"Title\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"GeneralSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"IsTitleVisible\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"GeneralSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Logo\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"GeneralSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"IsLogoVisible\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"GeneralSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"LogoTooltip\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"GeneralSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"IsProfilePictureVisible\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"GeneralSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Visible\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"GeneralSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Align\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":40,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"X\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Position\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Y\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Position\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Width\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Size\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Height\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Size\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"PaddingTop\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Padding\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"PaddingRight\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Padding\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"PaddingBottom\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Padding\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"PaddingLeft\\\":{\\\"SectionIndex\\\":1,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Padding\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"SizeAndPositioningSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Style\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BasePaletteColor\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":53,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Fill\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":53,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Font\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":33,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"TitleFontSize\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"FontColor\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":\\\"color\\\",\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":31,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BorderStyle\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Border\\\",\\\"SectionName\\\":null,\\\"Type\\\":30,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BorderThickness\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"Border\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BorderColor\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":\\\"color\\\",\\\"PropertyGroupName\\\":\\\"Border\\\",\\\"SectionName\\\":null,\\\"Type\\\":29,\\\"PropertyKind\\\":2,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BorderRadiusTopLeft\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BorderRadiusTopRight\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BorderRadiusBottomLeft\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false},\\\"BorderRadiusBottomRight\\\":{\\\"SectionIndex\\\":2,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":null,\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":\\\"StyleAndThemeSection\\\",\\\"ShowInCanvasInlineActionBar\\\":false}},{\\\"Visible\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":\\\"Design\\\",\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":null,\\\"ShowInCanvasInlineActionBar\\\":false},\\\"X\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":\\\"Design\\\",\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":null,\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Y\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":\\\"Design\\\",\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":null,\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Width\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":\\\"Design\\\",\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":null,\\\"ShowInCanvasInlineActionBar\\\":false},\\\"Height\\\":{\\\"SectionIndex\\\":0,\\\"HelperUI\\\":null,\\\"PropertyGroupName\\\":\\\"\\\",\\\"SectionName\\\":\\\"Design\\\",\\\"Type\\\":0,\\\"PropertyKind\\\":1,\\\"WizardStep\\\":null,\\\"EnabledForFlyout\\\":false,\\\"Hidden\\\":false,\\\"SectionType\\\":null,\\\"ShowInCanvasInlineActionBar\\\":false}}]\"}",
+              "FirstParty": true,
+              "Id": "http://microsoft.com/appmagic/powercontrol/Header",
+              "IsComponentDefinition": false,
+              "IsCustomGroupControlTemplate": false,
+              "IsPremiumPcfControl": false,
+              "LastModifiedTimestamp": "0",
+              "Name": "Header",
+              "OverridableProperties": {},
+              "TemplateDisplayName": "Header",
+              "Version": "0.0.44"
+            },
+            "Type": "ControlInfo",
+            "VariantName": ""
+          }
+        ],
+        "ControlPropertyState": [
+          "BorderColor",
+          "BorderStyle",
+          "Fill",
+          "X",
+          "Y",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "500",
+            "InvariantPropertyName": "Width",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "200",
+            "InvariantPropertyName": "Height",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
+          "DisplayMode",
+          "ChildTabPriority",
+          "LayoutMode",
+          "LayoutDirection",
+          "LayoutAlignItems",
+          "LayoutJustifyContent",
+          "LayoutGap",
+          "LayoutOverflowX",
+          "LayoutOverflowY",
+          "LayoutWrap",
+          "DropShadow",
+          "ZIndex",
+          "RadiusTopLeft",
+          "RadiusTopRight",
+          "RadiusBottomLeft",
+          "RadiusBottomRight"
+        ],
+        "ControlUniqueId": "5",
+        "HasDynamicProperties": false,
+        "Index": 0,
+        "IsAutoGenerated": false,
+        "IsDataControl": false,
+        "IsFromScreenLayout": false,
+        "IsGroupControl": false,
+        "IsLocked": false,
+        "LayoutName": "",
+        "MetaDataIDKey": "",
+        "Name": "ContainerMain",
+        "OptimizeForDevices": "Off",
+        "Parent": "compHeaderCompound",
+        "PersistMetaDataIDKey": false,
+        "PublishOrderIndex": 210,
+        "Rules": [
+          {
+            "Category": "Design",
+            "InvariantScript": "4",
+            "Property": "RadiusBottomRight",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "4",
+            "Property": "RadiusBottomLeft",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "4",
+            "Property": "RadiusTopRight",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "4",
+            "Property": "RadiusTopLeft",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "5",
+            "Property": "ZIndex",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "DropShadow.Light",
+            "Property": "DropShadow",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "false",
+            "Property": "LayoutWrap",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "LayoutOverflow.Hide",
+            "Property": "LayoutOverflowY",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "LayoutOverflow.Hide",
+            "Property": "LayoutOverflowX",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "0",
+            "Property": "LayoutGap",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "LayoutJustifyContent.Start",
+            "Property": "LayoutJustifyContent",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "LayoutAlignItems.Start",
+            "Property": "LayoutAlignItems",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "LayoutDirection.Horizontal",
+            "Property": "LayoutDirection",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "LayoutMode.Auto",
+            "Property": "LayoutMode",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "true",
+            "Property": "ChildTabPriority",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "DisplayMode.Edit",
+            "Property": "DisplayMode",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "compHeaderCompound.HeaderWidth",
+            "Property": "Width",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "compHeaderCompound.HeaderHeight",
+            "Property": "Height",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "0",
+            "Property": "Y",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "0",
+            "Property": "X",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "RGBA(0, 0, 0, 0)",
+            "Property": "Fill",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "BorderStyle.Solid",
+            "Property": "BorderStyle",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "RGBA(0, 0, 0, 1)",
+            "Property": "BorderColor",
+            "RuleProviderType": "Unknown"
+          }
+        ],
+        "StyleName": "defaultGroupContainerStyle",
+        "Template": {
+          "CustomGroupControlTemplateName": "",
+          "FirstParty": true,
+          "Id": "http://microsoft.com/appmagic/groupContainer",
+          "IsComponentDefinition": false,
+          "IsCustomGroupControlTemplate": false,
+          "IsPremiumPcfControl": false,
+          "LastModifiedTimestamp": "0",
+          "Name": "groupContainer",
+          "OverridableProperties": {},
+          "Version": "1.3.0"
+        },
+        "Type": "ControlInfo",
+        "VariantName": "horizontalAutoLayoutContainer"
+      }
+    ],
+    "ControlPropertyState": [
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "RGBA(0, 0, 0, 0)",
+        "InvariantPropertyName": "Fill",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "640",
+        "InvariantPropertyName": "Height",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "640",
+        "InvariantPropertyName": "Width",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      "X",
+      "Y",
+      "ZIndex",
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "100",
+        "InvariantPropertyName": "HeaderWidth",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "100",
+        "InvariantPropertyName": "HeaderHeight",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "IsMenuScreen",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "App.ActiveScreen",
+        "InvariantPropertyName": "NavigateMenu",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      "NavigateScreen"
+    ],
+    "LastModifiedTimestamp": "638985140871618494",
+    "Name": "compHeaderCompound",
+    "Rules": [
+      {
+        "Category": "Data",
+        "InvariantScript": "App.ActiveScreen",
+        "Property": "NavigateScreen",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "",
+        "Property": "NavigateMenu",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "false",
+        "Property": "IsMenuScreen",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "1366",
+        "Property": "HeaderWidth",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "51",
+        "Property": "HeaderHeight",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "App.Theme.Colors.Primary",
+        "Property": "Fill",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "1",
+        "Property": "ZIndex",
+        "RuleProviderType": "Unknown"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "0",
+        "Property": "Y",
+        "RuleProviderType": "Unknown"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "compHeaderCompound.HeaderHeight\r\n//varHeaderHeight",
+        "Property": "Height",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "compHeaderCompound.HeaderWidth",
+        "Property": "Width",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "0",
+        "Property": "X",
+        "RuleProviderType": "Unknown"
+      }
+    ]
+  },
+  "ComponentManifest": {
+    "AllowAccessToGlobals": true,
+    "AllowCustomization": true,
+    "Description": "Header with horizontal navigation",
+    "Name": "compHeaderCompound",
+    "TemplateGuid": "254e09c037a44b1da94c6829b134484f"
+  },
+  "ComponentType": "CanvasComponent",
+  "CustomGroupControlTemplateName": "",
+  "CustomProperties": [
+    {
+      "Category": 0,
+      "DisplayName": "Header Width",
+      "Hidden": false,
+      "Name": "HeaderWidth",
+      "PropertyDataTypeKey": "Number",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "Header Height",
+      "Hidden": false,
+      "Name": "HeaderHeight",
+      "PropertyDataTypeKey": "Number",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "Is Menu Screen",
+      "Hidden": false,
+      "Name": "IsMenuScreen",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "Navigate Menu",
+      "Hidden": false,
+      "Name": "NavigateMenu",
+      "PropertyDataTypeKey": "Screen",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_LimPrimitive\",\"EnumString\":\"\",\"Template\":{\"TemplateName\":\"screen\",\"IsMetaLoc\":false,\"Intangible\":false,\"ExpandoType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"BackgroundImage\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ContentLanguage\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Height\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ImagePosition\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinner\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinnerColor\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Name\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Orientation\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Printing\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Size\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Width\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"Properties\":[{\"Name\":\"Fill\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Fill\"},{\"Name\":\"BackgroundImage\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Background image\"},{\"Name\":\"ImagePosition\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Image position\"},{\"Name\":\"Height\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Height\"},{\"Name\":\"Width\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Width\"},{\"Name\":\"Size\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Size\"},{\"Name\":\"Orientation\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Orientation\"},{\"Name\":\"LoadingSpinner\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner\"},{\"Name\":\"LoadingSpinnerColor\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner color\"},{\"Name\":\"Name\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Name\"},{\"Name\":\"Printing\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Printing\"},{\"Name\":\"ContentLanguage\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Content language\"}]}}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "Navigate Screen",
+      "Hidden": false,
+      "Name": "NavigateScreen",
+      "PropertyDataTypeKey": "Screen",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_LimPrimitive\",\"EnumString\":\"\",\"Template\":{\"TemplateName\":\"screen\",\"IsMetaLoc\":false,\"Intangible\":false,\"ExpandoType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"BackgroundImage\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ContentLanguage\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Height\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ImagePosition\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinner\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinnerColor\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Name\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Orientation\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Printing\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Size\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Width\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"Properties\":[{\"Name\":\"Fill\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Fill\"},{\"Name\":\"BackgroundImage\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Background image\"},{\"Name\":\"ImagePosition\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Image position\"},{\"Name\":\"Height\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Height\"},{\"Name\":\"Width\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Width\"},{\"Name\":\"Size\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Size\"},{\"Name\":\"Orientation\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Orientation\"},{\"Name\":\"LoadingSpinner\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner\"},{\"Name\":\"LoadingSpinnerColor\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner color\"},{\"Name\":\"Name\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Name\"},{\"Name\":\"Printing\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Printing\"},{\"Name\":\"ContentLanguage\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Content language\"}]}}}"
+    }
+  ],
+  "FirstParty": true,
+  "Id": "http://microsoft.com/appmagic/Component",
+  "IsComponentLocked": false,
+  "IsComponentTemplate": true,
+  "IsCustomGroupControlTemplate": false,
+  "IsPcfControl": false,
+  "IsPremiumPcfControl": false,
+  "IsWidgetTemplate": false,
+  "LastModifiedTimestamp": "638985140871618494",
+  "Name": "254e09c037a44b1da94c6829b134484f",
+  "OverridableProperties": {},
+  "TemplateOriginalName": "e66f43f246ab4783b1541bbf702c73cf",
+  "Version": "1.0"
+}

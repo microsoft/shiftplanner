@@ -1,0 +1,129 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_emaillogs",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_emaillog",
+    "MaxGetRowsCount": 1500,
+    "Name": "Email Logs",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_calendarid": "Calendar ID",
+      "mpa_calendarinviteid": "Calendar Invite ID",
+      "mpa_date": "Date",
+      "mpa_inviteaction": "Invite Action",
+      "mpa_name": "Name",
+      "mpa_Resource": "Resource",
+      "mpa_role": "Role",
+      "mpa_shiftendtime": "Shift End Time",
+      "mpa_shiftplanner_emaillog_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_emaillog_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_emaillog_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_emaillog_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_emaillog_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_emaillog_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_emaillogid": "Email Log",
+      "mpa_shiftstarttime": "Shift Start Time",
+      "mpa_shifttype": "Shift Type",
+      "mpa_team": "Team",
+      "mpa_teamposition": "Team Position",
+      "mpa_zone": "Zone",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Email Logs",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Email Logs (Views)",
+    "Name": "_mpa_shiftplanner_emaillog_views",
+    "RelatedEntityName": "Email Logs",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "20b6fea2-6bf5-4816-9b17-a2d7a11fda93": "Active Email Logs",
+      "79ce970e-6632-4e86-a918-4782bcf724a7": "Advanced Find View",
+      "85d06a20-5c89-40f8-877a-e20f7f012f1b": "Lookup View",
+      "89cc2a7f-1eba-4b9c-97d4-913a153d6920": "Associated View",
+      "c40b71d9-ef5a-4492-8d39-07d15f7da8ca": "Inactive Email Logs"
+    }
+  },
+  {
+    "DisplayName": "Status (Email Logs)",
+    "Name": "mpa_shiftplanner_emaillog_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Email Logs"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Email Logs",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Email Logs)",
+    "Name": "mpa_shiftplanner_emaillog_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Email Logs"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Email Logs",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Invite Action",
+    "Name": "mpa_shiftplanner_inviteaction",
+    "OptionSetInfoNameMapping": {
+      "1": "Add",
+      "2": "Unpublished",
+      "3": "Remove",
+      "4": "Swap"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_inviteaction",
+        "OptionSetReferenceEntityName": "Email Logs"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "mpa_inviteaction",
+    "RelatedEntityName": "Email Logs",
+    "Type": "OptionSetInfo"
+  }
+]

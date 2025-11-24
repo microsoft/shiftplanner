@@ -1,0 +1,155 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |
+        =// desktop fonts hybrid
+        Set(
+            varDesktopFonts,
+            {
+                H1: {
+                    size: 32,
+                    weight: 'TextCanvas.Weight'.Regular,
+                    weightBold: 'TextCanvas.Weight'.Semibold,
+                    italic: false
+                },
+                H2: {
+                    size: 24,
+                    weight: 'TextCanvas.Weight'.Regular,
+                    weightBold: 'TextCanvas.Weight'.Semibold,
+                    italic: false
+                },
+                H3: {
+                    size: 20,
+                    weight: 'TextCanvas.Weight'.Regular,
+                    weightBold: 'TextCanvas.Weight'.Semibold,
+                    italic: false
+                },
+                B1: {
+                    face: Font.'Segoe UI',
+                    size: 12,
+                    weight: FontWeight.Normal,
+                    weightBold: FontWeight.Semibold,
+                    italic: false
+                },
+                B2: {
+                    face: Font.'Segoe UI',
+                    size: 14,
+                    weight: FontWeight.Normal,
+                    weightBold: FontWeight.Semibold,
+                    italic: false
+                },
+                B3: {
+                    face: Font.'Segoe UI',
+                    size: 8,
+                    weight: FontWeight.Normal,
+                    weightBold: FontWeight.Semibold,
+                    italic: false
+                },
+                CTA: {
+                    face: Font.'Segoe UI',
+                    size: 12,
+                    weight: FontWeight.Normal,
+                    weightBold: FontWeight.Semibold,
+                    italic: false
+                }
+            }
+        );
+        
+        Set(
+            varThemeFont,
+            varDesktopFonts
+        );
+        
+        
+        // set theme colors
+        Set(
+            varTheme,
+            {
+                neutralBackground1: "#FFFFFF",
+                neutralBackground2: "#FAFAFA",
+                neutralBackground3: "#F5F5F5",
+                neutralBackgroundDisabled: "#F0F0F0",
+                neutralForeground1: "#242424",
+                neutralForeground2: "#424242",
+                neutralForeground3: "#616161",
+                neutralForegroundOnBrand: "#FFFFFF",
+                neutralForegroundPlaceholder: "#707070",
+                neutralForegroundDisabled: "#BDBDBD",
+                neutralStroke1: "#D1D1D1",
+                neutralStroke2: "#E0E0E0",
+                neutralStrokeAccessible: "#616161",
+                neutralStrokeDisabled: "#E0E0E0",
+                statusDanger: "#C50F1F",
+                statusSuccess: "#107C10",
+                statusWarning1: "#FDE300",
+                statusWarning2: "#817400",
+                statusInformative: "#EBEBEB",
+                toastTimeout : 1000
+            }
+        );
+        
+        
+        //Set collection for landing screen filter
+        If(!IsBlank(colFilter), Clear(colFilter));
+        Set(varAllFacilitiesValue, "All Facilities");
+        ClearCollect(colFilter,{Name: varAllFacilitiesValue});
+        Collect(colFilter, RenameColumns(ShowColumns(shiftplanner_facilities, Name),mpa_name,Name));
+        
+        //Set zone gallery wrap count
+        Set(varZoneWrapCount,4);
+        ClearCollect(colShiftZone,
+        
+            AddColumns(
+                shiftplanner_shifttypes As Shift,
+        
+                ShiftTeam,
+                LookUp(
+                    shiftplanner_shiftteams,
+                    'Shift Type'.shiftplanner_shifttype = Shift.shiftplanner_shifttype
+                )
+            )
+        
+        );
+        
+        ClearCollect(
+            colDropDownNav,
+            {
+                Label: "Calendar Mode",
+                Screen: 'Main Calendar Screen'
+            },
+            {
+                Label: "Staff Mode",
+                Screen: 'Staff Mode Screen'
+            }
+        );
+        
+        Set(varCurrentScreen,
+            {
+                Label: "Calendar Mode",
+                Screen: 'Main Calendar Screen'
+            }
+        );
+        
+        //Setting up Publish status variable for Validation Screen
+        Set(varPublishStatus, "Unpublished");
+        
+        //Setting up SelectedWeek from calendar variable for Validation Screen
+        Set(varSelectedWeek, Today());
+        
+        //Setting up Collection for Zone filtered items from Shift Bookings table
+        ClearCollect(colFilteredBookings, {});
+        
+        //Setting up Collection for Calendar
+        ClearCollect(colCalendarValues, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41]);
+        
+        Set(varDuration_Patch, 0);
+    SizeBreakpoints: =[600, 900, 1200, 1600]
+    StartScreen: =
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

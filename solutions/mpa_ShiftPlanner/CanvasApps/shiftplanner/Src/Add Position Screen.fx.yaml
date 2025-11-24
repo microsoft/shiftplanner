@@ -1,0 +1,442 @@
+"'Add Position Screen' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: =
+
+    conMainContent_AddPosition As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderCompound_AddPosition.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =20
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =20
+        PaddingLeft: =119
+        PaddingRight: =119
+        PaddingTop: =12
+        Width: =Parent.Width
+        Y: =compHeaderCompound_AddPosition.Height
+        ZIndex: =1
+
+        conTitles_AddPosition As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            FillPortions: =0
+            Height: =txtBreadCrumbs_AddPosition.Height + txtTitle_AddPosition.Height + Self.LayoutGap
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =4
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =1
+
+            txtBreadCrumbs_AddPosition As Text:
+                AutoHeight: =true
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =ColorValue(varTheme.neutralForeground3)
+                Height: =32
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                Size: =
+                Text: =varSelectedZone.Facility.Name & " / " & varSelectedZone.Name
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            txtTitle_AddPosition As Text:
+                AutoHeight: =false
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =Self.Size * 1.5
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                Size: =varThemeFont.H2.size
+                Text: ="Add Position"
+                VerticalAlign: =VerticalAlign.Middle
+                Weight: =varThemeFont.H2.weightBold
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+        conBody_AddPosition As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =20
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =2
+
+            conPosition_AddPosition As groupContainer.verticalAutoLayoutContainer:
+                Fill: =ColorValue(varTheme.neutralBackground2)
+                FillPortions: =0
+                Height: =txtAddPositionTo_AddPosition.Height + Self.LayoutGap + galTeam_AddPosition.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =20
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =1
+
+                txtAddPositionTo_AddPosition As Text:
+                    AutoHeight: =false
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H3.size
+                    Text: ="Add position to"
+                    VerticalAlign: =VerticalAlign.Middle
+                    Weight: =varThemeFont.H3.weight
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                galTeam_AddPosition As gallery.galleryHorizontal:
+                    AccessibleLabel: ="Team Gallery"
+                    BorderColor: =App.Theme.Colors.Darker40
+                    DelayItemLoading: =true
+                    FillPortions: =0
+                    Height: =90
+                    Items: =Sort( Filter(shiftplanner_shiftteams, Zone.Name = varSelectedZone.Name And 'Shift Type'.shiftplanner_shifttype = varAddPosition.shiftplanner_shifttype), Name)
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =287
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TabIndex: =0
+                    TemplateSize: =275
+                    ZIndex: =2
+
+                    conTeam_AddPosition As groupContainer.horizontalAutoLayoutContainer:
+                        DropShadow: =DropShadow.Light
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        Height: =60
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Width: =267
+                        ZIndex: =1
+
+                        txtTeam_AddPosition As Text:
+                            AutoHeight: =true
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =App.Theme.Colors.Primary
+                            Height: =
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Size: =
+                            Text: =ThisItem.Name
+                            VerticalAlign: =VerticalAlign.Middle
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - Parent.PaddingLeft - shpSelected_AddPosition.Width - Parent.PaddingRight
+                            X: =0
+                            Y: =0
+                            ZIndex: =1
+
+                        shpSelected_AddPosition As circle:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            BorderThickness: =1
+                            DisabledFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                            Fill: =If(ThisItem.IsSelected, App.Theme.Colors.Primary, Color.Transparent)
+                            Height: =15
+                            HoverFill: =App.Theme.Colors.Darker20
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            PressedFill: =App.Theme.Colors.Primary
+                            Width: =15
+                            ZIndex: =2
+
+            "icoSeparator_AddPosition As icon.'3DPrinting'":
+                AccessibleLabel: =//customize the accesible label based in the icon
+                BorderColor: =ColorValue(varTheme.neutralBackground3)
+                Color: =ColorValue(varTheme.neutralStroke2)
+                DisabledBorderColor: =ColorValue(varTheme.neutralBackground3)
+                DisabledColor: =ColorValue(varTheme.neutralBackgroundDisabled)
+                DisabledFill: =RGBA(0,0,0,0)
+                DisplayMode: =DisplayMode.View
+                Fill: =ColorValue(varTheme.neutralStroke2)
+                FocusedBorderColor: =ColorValue(varTheme.neutralBackground3)
+                Height: =2
+                HoverBorderColor: =ColorValue(varTheme.neutralBackground3)
+                HoverColor: =ColorValue(varTheme.neutralBackground3)
+                HoverFill: =RGBA(0,0,0,0)
+                Icon: =Icon.HorizontalLine
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                PressedBorderColor: =App.Theme.Colors.Primary
+                PressedColor: =App.Theme.Colors.Primary
+                PressedFill: =RGBA(0,0,0,0)
+                Width: =Parent.Width
+                Y: =315
+                ZIndex: =2
+
+            conSelectPosition_AddPosition As groupContainer.verticalAutoLayoutContainer:
+                Fill: =ColorValue(varTheme.neutralBackground2)
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =20
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =3
+
+                conSearch_AddPosition As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    FillPortions: =0
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingRight: =20
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                    txtSelectPosition_AddPosition As Text:
+                        AutoHeight: =false
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =Self.Size * 1.5
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =varThemeFont.H3.size
+                        Text: ="Select position"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: =varThemeFont.H3.weight
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight - txiSearh_AddPosition.Width
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    "txiSearh_AddPosition As 'Text input'":
+                        AccessibleLabel: ="Search"
+                        Appearance: ="FilledDarker"
+                        BasePaletteColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =
+                        FontSize: =0
+                        FontWeight: =""
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        Mode: ='TextInputCanvas.Mode'.SingleLine
+                        Placeholder: ="Search"
+                        TriggerOutput: ="FocusOut"
+                        Type: ='TextInputCanvas.Type'.Search
+                        Width: =300
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                galPosition_AddPositon As gallery.galleryVertical:
+                    AccessibleLabel: ="Position Gallery"
+                    BorderColor: =App.Theme.Colors.Darker40
+                    DelayItemLoading: =true
+                    Items: =Search(Sort(shiftplanner_roles, Name),Text(txiSearh_AddPosition.Value),Name)
+                    Layout: =Layout.Vertical
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =287
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TabIndex: =0
+                    TemplateSize: =90
+                    WrapCount: =4
+                    ZIndex: =3
+
+                    conGallPosition_AddPosition As groupContainer.horizontalAutoLayoutContainer:
+                        DropShadow: =DropShadow.Light
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        Height: =72
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Width: =267
+                        ZIndex: =1
+
+                        txtPosition_AddPosition As Text:
+                            AutoHeight: =true
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =App.Theme.Colors.Primary
+                            Height: =
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Size: =
+                            Text: =ThisItem.Name
+                            VerticalAlign: =VerticalAlign.Middle
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - Parent.PaddingLeft - shpSelectedPosition_AddPosition.Width - Parent.PaddingRight
+                            X: =0
+                            Y: =0
+                            ZIndex: =1
+
+                        shpSelectedPosition_AddPosition As circle:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            BorderThickness: =1
+                            DisabledFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                            Fill: =If(ThisItem.IsSelected, App.Theme.Colors.Primary, Color.Transparent)
+                            Height: =15
+                            HoverFill: =App.Theme.Colors.Darker20
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            PressedFill: =App.Theme.Colors.Primary
+                            Width: =15
+                            ZIndex: =2
+
+        conButtons_AddPosition As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            FillPortions: =0
+            Height: =32
+            LayoutGap: =10
+            LayoutJustifyContent: =LayoutJustifyContent.End
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =3
+
+            btnCancel_AddPosition As Button:
+                AccessibleLabel: ="Secondary"
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                BasePaletteColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Navigate('Modify Screen')
+                Text: ="Cancel"
+                VerticalAlign: =""
+                Width: =200
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            btnFinish_AddPosition As Button:
+                AccessibleLabel: ="Primary"
+                Align: =""
+                BasePaletteColor: =
+                BorderStyle: =""
+                DisplayMode: |-
+                    =If(
+                        CountRows(galPosition_AddPositon.AllItems) = 0 And CountRows(galTeam_AddPosition.AllItems) = 0,
+                        DisplayMode.Disabled,
+                        DisplayMode.Edit
+                    )
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |-
+                    =Patch(
+                        colModify,
+                        Defaults(colModify),
+                        {
+                            ShiftNum: GUID(),
+                            ShiftType: varAddPosition.Name,
+                            Team: galTeam_AddPosition.Selected.txtTeam_AddPosition.Text,
+                            Position: galPosition_AddPositon.Selected.txtPosition_AddPosition.Text,
+                            Resource: "",
+                            Status: "Added",
+                            NewPositon: "Yes"
+                        }
+                    );
+                    
+                    Set(
+                        varTotalPositions,
+                        varTotalPositions + 1
+                    );
+                    
+                    Navigate('Modify Screen');
+                    Notify(
+                        "Position has been added.",
+                        NotificationType.Success
+                    )
+                Text: ="Finish"
+                VerticalAlign: =""
+                Width: =200
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+    compHeaderCompound_AddPosition As compHeaderCompound:
+        Height: |-
+            =compHeaderCompound_AddPosition.HeaderHeight
+            //varHeaderHeight
+        NavigateScreen: ='Modify Screen'
+        Width: =compHeaderCompound_AddPosition.HeaderWidth
+        ZIndex: =2
+

@@ -1,0 +1,79 @@
+compHeaderCompound As CanvasComponent:
+    Fill: =App.Theme.Colors.Primary
+    HeaderHeight: =51
+    HeaderWidth: =1366
+    Height: |-
+        =compHeaderCompound.HeaderHeight
+        //varHeaderHeight
+    IsMenuScreen: =false
+    NavigateMenu: =
+    NavigateScreen: =App.ActiveScreen
+    Width: =compHeaderCompound.HeaderWidth
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    ContainerMain As groupContainer.horizontalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Height: =compHeaderCompound.HeaderHeight
+        LayoutMode: =LayoutMode.Auto
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =compHeaderCompound.HeaderWidth
+        ZIndex: =5
+
+        iconBackButton As icon.Hamburger:
+            AccessibleLabel: ="Go back"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(varTheme.neutralBackground2)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0,0,0,0)
+            FillPortions: =1
+            Height: =Self.Width
+            Icon: =Icon.ChevronLeft
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinWidth: =40
+            OnSelect: =Navigate(compHeaderCompound.NavigateScreen)
+            PaddingLeft: =15
+            PaddingTop: =5
+            TabIndex: =0
+            Visible: =If(App.ActiveScreen = compHeaderCompound.NavigateScreen, false, true)
+            Width: =35
+            X: =Parent.X
+            Y: =(Parent.Height - Self.Height) / 2
+            ZIndex: =1
+
+        comp_Header As Header:
+            Align: =""
+            BasePaletteColor: =
+            BorderStyle: =""
+            DisplayMode: =DisplayMode.Edit
+            FontColor: =
+            Height: =51
+            IsLogoVisible: =true
+            IsProfilePictureVisible: =true
+            IsTitleVisible: =If(App.ActiveScreen.Size = 1 , false, true)
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =50
+            LayoutMinWidth: =Parent.Width
+            Logo: ='LogoColored Resized'
+            LogoTooltip: ="Logo"
+            OnSelectLogo: =false
+            Style: ='Header.Style'.Primary
+            Title: ="Shift Planner"
+            TitleRole: =""
+            UserEmail: =User().Email
+            UserImage: =User().Image
+            UserImageAltText: =User().FullName &" profile picture"
+            UserName: =User().FullName
+            Visible: =true
+            Width: =If(iconBackButton.Visible, (ContainerMain.Width - iconBackButton.Width), ContainerMain.Width)
+            X: =10
+            Y: =0
+            ZIndex: =2
+

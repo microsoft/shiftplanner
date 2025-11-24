@@ -1,0 +1,753 @@
+"'Swap Shift Screen' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: |-
+        =
+        
+        Reset(dteRequestSwapDate_SwapShift);
+        Reset(togShowSamePosition_SwapShift);
+        
+        
+        //Set Teams Gallery Items 
+        ClearCollect(colTeams,Sort(
+            Filter(
+                AddColumns(
+                    shiftplanner_shiftteams As ShiftTeam,
+                    WithShiftTeamPosition,
+                    LookUp(
+                        AddColumns(
+                            'Shift Bookings'As ShiftBooking,
+                            ResourceName,
+                            ShiftBooking.Resource,
+                            TeamPositionRole,ShiftBooking.'Team Position'.Role.Name,
+                            TeamPositionRoleId,ShiftBooking.'Team Position'.Role.shiftplanner_role
+                        ) As SB,
+                        SB.'Team Position'.'Shift Team'.shiftplanner_shiftteam = ShiftTeam.shiftplanner_shiftteam 
+                        And SB.'Status Reason' = 'Status Reason (Shift Bookings)'.Published
+                        And SB.Date = dteRequestSwapDate_SwapShift.SelectedDate 
+                        And SB.Resource.'Primary Email' <> varCurrentUser.Email
+                        And !IsBlank(SB.ResourceName) 
+                        And ((SB.'Team Position'.Role.shiftplanner_role = varSelectedShift.'Team Position'.Role.shiftplanner_role And togShowSamePosition_SwapShift.Checked) Or !togShowSamePosition_SwapShift.Checked) 
+                    )
+                ),
+                !IsBlank(WithShiftTeamPosition)
+            ),
+            Name
+        ));
+        
+        
+        //Use collection for Filters - Refresh galleries on screen visible and change of date to avoid performance issue
+        ClearCollect(colMainTeams,colTeams);
+        
+        //Set collection for filter
+        If(
+            !IsBlank(colTeamFilter),
+            Clear(colTeamFilter)
+        );
+        Set(
+            varAllTeamValue,
+            "All Teams"
+        );
+        ClearCollect(
+            colTeamFilter,
+            {Name: varAllTeamValue}
+        );
+        Collect(
+            colTeamFilter,
+            Sort(
+                RenameColumns(
+                    ShowColumns(
+                        colTeams,
+                        Name
+                    ),
+                    mpa_name,
+                    Name
+                ),
+                Name
+            )
+        );
+
+    conMainContent_SwapShift As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height - compHeaderMobile_SwapShift.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: |+
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 0
+            )
+            
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 0
+            )
+        PaddingTop: =24
+        Width: =Parent.Width
+        Y: =compHeaderMobile_SwapShift.Height 
+        ZIndex: =1
+
+        conBodyContent_SwapShift As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            FillPortions: =0
+            Height: |
+                =//Parent.Height - conTitle_SwapShift.Height - Parent.PaddingTop - Parent.PaddingBottom
+                conFilter_SwapShift.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =16
+            PaddingTop: =16
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =2
+
+            conFilter_SwapShift As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                FillPortions: =0
+                Height: |
+                    =//Parent.Height -Parent.PaddingTop
+                    (conInitialDate_SwapShift.Height + conRequestSwapDate_SwapShift.Height  +conTeam_SwapShift.Height+10 + Self.LayoutGap )+30
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =12
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingLeft 
+                ZIndex: =1
+
+                conInitialDate_SwapShift As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =txtInitialDate_SwapShift.Height + txtInitialDateValue_SwapShift.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    txtInitialDate_SwapShift As Text:
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Initial Date"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtInitialDateValue_SwapShift As Text:
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =ColorValue(varTheme.primary)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =Text(varSelectedShift.Date, "mmmm dd, yyyy")
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conRequestSwapDate_SwapShift As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =txtRequestSwapDate_SwapShift.Height + dteRequestSwapDate_SwapShift.Height + Self.LayoutGap
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =4
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width 
+                    ZIndex: =2
+
+                    txtRequestSwapDate_SwapShift As Text:
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Request swap shift date"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    "dteRequestSwapDate_SwapShift As 'Date picker'":
+                        AccessibleLabel: ="Request swap shift date"
+                        Appearance: ="FilledDarker"
+                        BasePaletteColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =
+                        FontSize: =0
+                        FontUnderline: =false
+                        Format: ='DatePickerCanvas.Format'.Short
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        OnChange: |-
+                            =ClearCollect(colTeams,Sort(
+                                Filter(
+                                    AddColumns(
+                                        shiftplanner_shiftteams As ShiftTeam,
+                                        WithShiftTeamPosition,
+                                        LookUp(
+                                            AddColumns(
+                                                 'Shift Bookings'As ShiftBooking,
+                                                ResourceName,
+                                                ShiftBooking.Resource,
+                                                 TeamPositionRole,ShiftBooking.'Team Position'.Role.Name,
+                                                TeamPositionRoleId,ShiftBooking.'Team Position'.Role.shiftplanner_role
+                                            ) As SB,
+                                            SB.'Team Position'.'Shift Team'.shiftplanner_shiftteam = ShiftTeam.shiftplanner_shiftteam 
+                                            And SB.'Status Reason' = 'Status Reason (Shift Bookings)'.Published
+                                            And SB.Date = Self.SelectedDate 
+                                            And SB.Resource.'Primary Email' <> varCurrentUser.Email
+                                            And !IsBlank(SB.ResourceName) 
+                                            And ((SB.'Team Position'.Role.shiftplanner_role = varSelectedShift.'Team Position'.Role.shiftplanner_role And togShowSamePosition_SwapShift.Checked) Or !togShowSamePosition_SwapShift.Checked) 
+                                        )
+                                    ),
+                                    !IsBlank(WithShiftTeamPosition) //And (Name = cboTeam_SwapShift.Selected.Name Or cboTeam_SwapShift.Selected.Name = varAllTeamValue Or IsBlank(cboTeam_SwapShift.Selected.Name))
+                                ),
+                                Name
+                            ));
+                            
+                            //Use collection for Filters - Refresh galleries on screen visible and change of date to avoid performance issue
+                            ClearCollect(colMainTeams,colTeams);
+                            
+                            //Set collection for filter
+                            If(
+                                !IsBlank(colTeamFilter),
+                                Clear(colTeamFilter)
+                            );
+                            Set(
+                                varAllTeamValue,
+                                "All Teams"
+                            );
+                            ClearCollect(
+                                colTeamFilter,
+                                {Name: varAllTeamValue}
+                            );
+                            Collect(
+                                colTeamFilter,
+                                Sort(
+                                    RenameColumns(
+                                        ShowColumns(
+                                            colTeams,
+                                            Name
+                                        ),
+                                        mpa_name,
+                                        Name
+                                    ),
+                                    Name
+                                )
+                            );
+                        SelectedDate: =Today()
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conTeam_SwapShift As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =txtTeam_SwapShift.Height + cboTeam_SwapShift.Height + Self.LayoutGap
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =4
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =3
+
+                    txtTeam_SwapShift As Text:
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Team"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    cboTeam_SwapShift As Combobox.pcfdataset:
+                        AccessibleLabel: ="Team Filter"
+                        Appearance: ="FilledDarker"
+                        BasePaletteColor: =RGBA(5, 102, 178, 1)
+                        BorderStyle: =""
+                        DefaultSelectedItems: =First(colTeamFilter)
+                        DisplayMode: =DisplayMode.Edit
+                        Font: =""
+                        FontItalic: =
+                        FontSize: =0
+                        FontWeight: =""
+                        Height: =32
+                        Items: |
+                            =colTeamFilter
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        OnChange: |-
+                            =/*ClearCollect(colTeams,Sort(
+                                Filter(
+                                    AddColumns(
+                                        shiftplanner_shiftteams As ShiftTeam,
+                                        WithShiftTeamPosition,
+                                        LookUp(
+                                            AddColumns(
+                                                'Shift Bookings',
+                                                ResourceName,
+                                                Resource
+                                            ) As SB,
+                                            SB.'Team Position'.'Shift Team'.shiftplanner_shiftteam = ShiftTeam.shiftplanner_shiftteam 
+                                            And SB.Date = dteRequestSwapDate_SwapShift.SelectedDate 
+                                            And SB.Resource.'Primary Email' <> varCurrentUser.Email
+                                            And !IsBlank(SB.ResourceName) 
+                                            And ((SB.'Team Position'.Role.Name in varCurrentUserRole And togShowSamePosition_SwapShift.Checked) Or !togShowSamePosition_SwapShift.Checked) 
+                                        )
+                                    ),
+                                    !IsBlank(WithShiftTeamPosition) And (Name = Self.Selected.Name Or Self.Selected.Name = varAllTeamValue Or IsBlank(Self.Selected.Name))
+                                ),
+                                Name
+                            ));*/
+                            
+                            ClearCollect(colTeams,Sort(
+                                Filter(
+                                    colMainTeams As Team, (Team.Name = Self.Selected.Name Or Self.Selected.Name = varAllTeamValue Or IsBlank(Self.Selected.Name)) 
+                                ),
+                                Name
+                            ));
+                        Required: =false
+                        SelectMultiple: =false
+                        TriggerOutput: ="Keypress"
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                        X: =0
+                        Y: =0.00
+                        ZIndex: =3
+
+                        Name1 As PowerApps_CoreControls_ComboboxCanvasTemplate_dataField.textualColumn:
+                            FieldDisplayName: ="Name"
+                            FieldName: ="Name"
+                            FieldType: ="s"
+                            FieldVariantName: ="textualColumn"
+                            Order: =2
+                            ZIndex: =16
+
+        conToggle_SwapShift As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =togShowSamePosition_SwapShift.Height +8
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =4
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =5
+            Width: =Parent.Width
+            ZIndex: =3
+
+            togShowSamePosition_SwapShift As Toggle:
+                AccessibleLabel: ="Show same position only"
+                AlignInContainer: =AlignInContainer.Start
+                BasePaletteColor: =
+                Checked: =false
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Label: ="Show same position only"
+                LabelPosition: ='Toggle.LabelPosition'.After
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =35
+                LayoutMinWidth: =110
+                OnCheck: =false
+                OnSelect: |
+                    =ClearCollect(colTeams,Sort(
+                        Filter(
+                            AddColumns(
+                                shiftplanner_shiftteams As ShiftTeam,
+                                WithShiftTeamPosition,
+                                LookUp(
+                                    AddColumns(
+                                        'Shift Bookings',
+                                        ResourceName,
+                                        Resource
+                                    ) As SB,
+                                    SB.'Team Position'.'Shift Team'.shiftplanner_shiftteam = ShiftTeam.shiftplanner_shiftteam 
+                                    And SB.'Status Reason' = 'Status Reason (Shift Bookings)'.Published
+                                    And SB.Date = dteRequestSwapDate_SwapShift.SelectedDate 
+                                    And SB.Resource.'Primary Email' <> varCurrentUser.Email
+                                    And !IsBlank(SB.ResourceName) 
+                                    And ((SB.'Team Position'.Role.shiftplanner_role = varSelectedShift.'Team Position'.Role.shiftplanner_role And Self.Checked) Or !Self.Checked) 
+                                )
+                            ),
+                            !IsBlank(WithShiftTeamPosition) And (Name = cboTeam_SwapShift.Selected.Name Or cboTeam_SwapShift.Selected.Name = varAllTeamValue Or IsBlank(cboTeam_SwapShift.Selected.Name))
+                        ),
+                        Name
+                    ));
+                    
+                    ClearCollect(colMainTeams,colTeams);
+                    
+                    /*ClearCollect(colTeams,Sort(
+                        Filter(
+                             colMainTeams As Team, ((Team.WithShiftTeamPosition.TeamPositionRoleId = varSelectedShift.'Team Position'.Role.shiftplanner_role And Self.Checked) Or !Self.Checked) 
+                        ),
+                        Name
+                    ));*/
+                OnUncheck: =false
+                Width: =230
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+        conGaleries_SwapShift As groupContainer.verticalAutoLayoutContainer:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =16
+            Width: =Parent.Width - Self.PaddingLeft
+            ZIndex: =4
+
+            galTeam_SwapShift As gallery.variableTemplateHeightGallery:
+                AccessibleLabel: ="Teams List"
+                AlignInContainer: =AlignInContainer.Start
+                BorderColor: =App.Theme.Colors.Darker40
+                DelayItemLoading: =true
+                Height: =Parent.Height - conFilter_SwapShift.Height - conMainContent_SwapShift.PaddingTop
+                Items: =colTeams
+                Layout: =Layout.Vertical
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                TabIndex: =0
+                TemplatePadding: =0
+                TemplateSize: |-
+                    =//100
+                    conTeamShiftDetails_SwapShift.Height+galTeamPosition_SwapShift.Height
+                Width: =Parent.Width - Parent.PaddingLeft 
+                ZIndex: =1
+
+                galTeamPosition_SwapShift As gallery.galleryVertical:
+                    AccessibleLabel: ="Resource Details"
+                    BorderColor: =App.Theme.Colors.Darker40
+                    DelayItemLoading: =true
+                    Height: |
+                        =((Self.TemplateHeight )*galTeamPosition_SwapShift.AllItemsCount)+12 //Bottom margin
+                    Items: |-
+                        =Sort(
+                        Filter(
+                            AddColumns(
+                                'Shift Bookings',
+                                ResourceName,
+                                Resource
+                            ) As SB,
+                            SB.Date = dteRequestSwapDate_SwapShift.SelectedDate 
+                            And SB.'Team Position'.'Shift Team'.shiftplanner_shiftteam = ThisItem.shiftplanner_shiftteam 
+                            And SB.'Status Reason' = 'Status Reason (Shift Bookings)'.Published
+                            And SB.Resource.'Primary Email' <> varCurrentUser.Email
+                            And !IsBlank(SB.ResourceName) 
+                            And ((SB.'Team Position'.Role.shiftplanner_role = varSelectedShift.'Team Position'.Role.shiftplanner_role And togShowSamePosition_SwapShift.Checked) Or !togShowSamePosition_SwapShift.Checked)
+                        ),Resource.'Last Name')
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    ShowScrollbar: =false
+                    TabIndex: =0
+                    TemplatePadding: =0
+                    TemplateSize: =60
+                    Width: =Parent.Width - 16
+                    Y: =conTeamShiftDetails_SwapShift.Height
+                    ZIndex: =1
+
+                    conTeamProfile_SwapShift As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =40
+                        LayoutGap: =16
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =2
+
+                        conProfileImage_SwapShift As groupContainer.manualLayoutContainer:
+                            AlignInContainer: =AlignInContainer.Start
+                            FillPortions: =0
+                            Height: |-
+                                =//Parent.Height
+                                40
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =Parent.Height
+                            LayoutMinWidth: =50
+                            Width: =40
+                            ZIndex: =1
+
+                            avaResource_SwapShift As Avatar:
+                                AccessibleLabel: ="Resource profile picture"
+                                Badge: ='Avatar.Badge'.None
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =40
+                                Image: |-
+                                    =If(
+                                        !IsBlank(ThisItem.Resource.'Primary Email') && Office365Users.UserPhotoMetadata(ThisItem.Resource.'Primary Email').HasPhoto,
+                                        Office365Users.UserPhotoV2(ThisItem.Resource.'Primary Email')
+                                    )
+                                Name: =ThisItem.Resource.'Full Name'
+                                Width: =40
+                                X: =0
+                                Y: =0
+                                ZIndex: =4
+
+                        conProfileNameContent_SwapShift As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.Start
+                            FillPortions: =0
+                            Height: =Parent.Height
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            Width: |-
+                                =//140
+                                Parent.Width - conButtons_SwapShift.Width - conProfileImage_SwapShift.Width - 35
+                            ZIndex: =2
+
+                            txtFullname_SwapShift As Text:
+                                AutoHeight: =false
+                                BorderStyle: =""
+                                DisplayMode: =DisplayMode.Edit
+                                FontColor: =ColorValue(varTheme.neutralForeground1)
+                                Height: =20
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Text: |+
+                                    =ThisItem.Resource.'Last Name'&", "&ThisItem.Resource.'First Name'
+                                    
+                                Weight: ='TextCanvas.Weight'.Regular
+                                Width: =Parent.Width
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            txtRoles_SwapShift As Text:
+                                AutoHeight: =false
+                                BorderStyle: =""
+                                DisplayMode: =DisplayMode.Edit
+                                FontColor: =ColorValue( varTheme.neutralForeground3)
+                                Height: =20
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Text: =ThisItem.'Team Position'.Role.Name
+                                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                                Wrap: =false
+                                X: =0
+                                Y: =0
+                                ZIndex: =3
+
+                        conButtons_SwapShift As groupContainer.horizontalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.End
+                            FillPortions: =0
+                            Height: =40
+                            LayoutAlignItems: =LayoutAlignItems.Center
+                            LayoutGap: =8
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            Visible: =If(ThisItem.'Team Position'.Role.shiftplanner_role = varSelectedShift.'Team Position'.Role.shiftplanner_role And dteRequestSwapDate_SwapShift.SelectedDate>=Today(),true,false)
+                            Width: =If(Self.Visible, btnMessage_SwapShift.Width + btnSwapShift_SwapShift.Width + Self.LayoutGap,0)
+                            ZIndex: =3
+
+                            btnMessage_SwapShift As Button:
+                                AccessibleLabel: ="Message Button"
+                                Align: =""
+                                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                                BasePaletteColor: =
+                                BorderStyle: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Font: =""
+                                FontColor: =
+                                FontItalic: =
+                                FontSize: =10
+                                FontWeight: =""
+                                Height: =24
+                                Icon: =""
+                                IconRotation: =0
+                                IconStyle: ="Outline"
+                                Layout: ='ButtonCanvas.Layout'.TextOnly
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: |-
+                                    =Launch("https://teams.microsoft.com/l/chat/0/0?users="&ThisItem.Resource.'Primary Email')
+                                Text: ="Message"
+                                VerticalAlign: =""
+                                Width: =63
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            btnSwapShift_SwapShift As Button:
+                                AccessibleLabel: ="Swap Shift Button"
+                                Align: =""
+                                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                                BasePaletteColor: =
+                                BorderStyle: =""
+                                DisplayMode: =If(ThisItem.'Workflow Status' = 'Workflow Status (Shift Bookings)'.Yes Or dteRequestSwapDate_SwapShift.SelectedDate < Today(),DisplayMode.Disabled, DisplayMode.Edit)
+                                Font: =""
+                                FontColor: =
+                                FontItalic: =
+                                FontSize: =10
+                                FontWeight: =""
+                                Height: =24
+                                Icon: =""
+                                IconRotation: =0
+                                IconStyle: ="Outline"
+                                Layout: ='ButtonCanvas.Layout'.TextOnly
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: |-
+                                    =Set(varSelectedDate,dteRequestSwapDate_SwapShift.SelectedDate);
+                                    Set(varSelectedTeamPosition,ThisItem);
+                                    
+                                    
+                                    Navigate('Swap Reason Screen');
+                                Text: ="Swap Shift"
+                                VerticalAlign: =""
+                                Width: =76
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
+
+                conTeamShiftDetails_SwapShift As groupContainer.verticalAutoLayoutContainer:
+                    Height: =txtTeamName_SwapShift.Height+txtShiftName_SwapShift.Height+txtShiftTime_SwapShift.Height + 16 //Padding Bottom
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =5
+
+                    txtTeamName_SwapShift As Text:
+                        AutoHeight: =false
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =ColorValue(varTheme.primary)
+                        Height: =Self.Size * 1.5
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =varThemeFont.H3.size
+                        Text: =ThisItem.Name
+                        VerticalAlign: =VerticalAlign.Top
+                        Weight: =varThemeFont.H3.weightBold
+                        Width: =351
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtShiftName_SwapShift As Text:
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =ThisItem.'Shift Type'.Name
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =351
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                    txtShiftTime_SwapShift As Text:
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =ColorValue( varTheme.neutralForeground3)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: |-
+                            = Text(ThisItem.'Shift Type'.Startdate, "H:mm AM/PM") & " - " & Text(ThisItem.'Shift Type'.Enddate, "H:mm AM/PM")
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =351
+                        X: =0
+                        Y: =0
+                        ZIndex: =3
+
+    compHeaderMobile_SwapShift As compHeaderMobile:
+        BackScreen: ='Home Screen'
+        HeaderTitle: ="Swap Shifts"
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        ZIndex: =2
+

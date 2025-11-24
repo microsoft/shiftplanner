@@ -1,0 +1,99 @@
+[
+  {
+    "DisplayName": "shiftplanner_zones (Views)",
+    "Name": "_mpa_shiftplanner_zone_views",
+    "RelatedEntityName": "shiftplanner_zones",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3207c75d-0a5e-4321-a5f5-92172435a0a7": "Zone Associated View",
+      "3ae000ea-6417-4850-8199-bcdb8b126f70": "Inactive Zones",
+      "679870ea-ab03-4b5b-8ab8-e7417bf5b33a": "Zone Lookup View",
+      "99e556ca-cb4d-40f0-8bfe-a37405ac7b5f": "Zone Advanced Find View",
+      "eac01f5d-890b-4017-9822-4697786a652e": "Active Zones"
+    }
+  },
+  {
+    "DisplayName": "Status (shiftplanner_zones)",
+    "Name": "mpa_shiftplanner_zone_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "shiftplanner_zones"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "shiftplanner_zones",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (shiftplanner_zones)",
+    "Name": "mpa_shiftplanner_zone_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "shiftplanner_zones"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "shiftplanner_zones",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_zones",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_zone",
+    "MaxGetRowsCount": 1500,
+    "Name": "shiftplanner_zones",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_facility": "Facility",
+      "mpa_name": "Name",
+      "mpa_shiftplanner_shiftbooking_Zone": "Shift Bookings",
+      "mpa_shiftplanner_shiftteam_zone": "Shift Teams",
+      "mpa_shiftplanner_useraffiliation_zone": "User Affiliations",
+      "mpa_shiftplanner_zone_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_zone_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_zone_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_zone_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_zone_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_zone_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_zoneid": "shiftplanner_zone",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "shiftplanner_zones",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

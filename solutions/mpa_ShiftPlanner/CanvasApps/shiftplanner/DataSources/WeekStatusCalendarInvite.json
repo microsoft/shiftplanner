@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "9cbdb51b-2795-4358-9215-ba602246b9a0",
+    "Name": "WeekStatusCalendarInvite",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "55a0c584-ce2e-ef11-8409-0022482dada3"
+  }
+]

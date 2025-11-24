@@ -1,0 +1,1086 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Staff Mode Screen:
+    Properties:
+      Fill: =ColorValue(varTheme.neutralBackground2)
+      OnVisible: |
+        =Set(
+            varDateSelected,
+            Today()
+        );
+        Set(
+            varDateToday,
+            Today()
+        );
+        Set(
+            varFirstDateOfWeek,
+            Switch(
+                Weekday(varDateToday),
+                7,
+                DateAdd(
+                    varDateToday,
+                    -6,
+                    TimeUnit.Days
+                ),
+                6,
+                DateAdd(
+                    varDateToday,
+                    -5,
+                    TimeUnit.Days
+                ),
+                5,
+                DateAdd(
+                    varDateToday,
+                    -4,
+                    TimeUnit.Days
+                ),
+                4,
+                DateAdd(
+                    varDateToday,
+                    -3,
+                    TimeUnit.Days
+                ),
+                3,
+                DateAdd(
+                    varDateToday,
+                    -2,
+                    TimeUnit.Days
+                ),
+                2,
+                DateAdd(
+                    varDateToday,
+                    -1,
+                    TimeUnit.Days
+                ),
+                DateAdd(
+                    varDateToday,
+                    0,
+                    TimeUnit.Days
+                )
+            )
+        );
+        Set(
+            varFirstDayOfMonth,
+            DateAdd(
+                Today(),
+                1 - Day(Today()),
+                TimeUnit.Days
+            )
+        );
+        Set(
+            varFirstDayInView,
+            DateAdd(
+                varFirstDayOfMonth,
+                -(Weekday(varFirstDayOfMonth) - 2 + 1),
+                TimeUnit.Days
+            )
+        );
+        Set(
+            varLastDayOfMonth,
+            DateAdd(
+                DateAdd(
+                    varFirstDayOfMonth,
+                    1,
+                    TimeUnit.Months
+                ),
+                -1,
+                TimeUnit.Days
+            )
+        );
+        Set(
+            varMinDate,
+            DateAdd(
+                varFirstDayOfMonth,
+                -(Weekday(varFirstDayOfMonth) - 2 + 1),
+                TimeUnit.Days
+            )
+        );
+        Set(
+            varMaxDate,
+            DateAdd(
+                DateAdd(
+                    varFirstDayOfMonth,
+                    -(Weekday(varFirstDayOfMonth) - 2 + 1),
+                    TimeUnit.Days
+                ),
+                40,
+                TimeUnit.Days
+            )
+        );
+        ClearCollect(
+            colWeeklyCalendarHeader,
+            {
+                Value: 0,
+                WeekDay: "Sun"
+            },
+            {
+                Value: 1,
+                WeekDay: "Mon"
+            },
+            {
+                Value: 2,
+                WeekDay: "Tue"
+            },
+            {
+                Value: 3,
+                WeekDay: "Wed"
+            },
+            {
+                Value: 4,
+                WeekDay: "Thu"
+            },
+            {
+                Value: 5,
+                WeekDay: "Fri"
+            },
+            {
+                Value: 6,
+                WeekDay: "Sat"
+            }
+        );
+        Set(
+            varPublishButtonDisplayMode,
+            DisplayMode.Edit
+        );
+        Select(btnStaffViewRefresh);
+    Children:
+      - conMainContent_StaffMode:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =Parent.Height - compHeaderCompound_StaffMode.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingRight: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingTop: =20
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =compHeaderCompound_StaffMode.Y + compHeaderCompound_StaffMode.Height
+          Children:
+            - conHeader_StaffMode:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =conTitleHeader_StaffMode.Height
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conTitleHeader_StaffMode:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        FillPortions: =0
+                        Height: =txtBreadcrumbs_StaffMode.Height + txtZoneTitle_StaffMode.Height + Self.LayoutGap
+                        LayoutDirection: =LayoutDirection.Vertical
+                      Children:
+                        - txtBreadcrumbs_StaffMode:
+                            Control: Text@0.0.51
+                            Properties:
+                              AutoHeight: =true
+                              FontColor: =ColorValue(varTheme.neutralForeground3)
+                              Size: =
+                              Text: =varSelectedZone.Facility.Name
+                              Weight: =varThemeFont.H3.weight
+                              Width: =Parent.Width
+                        - txtZoneTitle_StaffMode:
+                            Control: Text@0.0.51
+                            Properties:
+                              AutoHeight: =true
+                              FontColor: =ColorValue(varTheme.neutralForeground1)
+                              Size: =varThemeFont.H1.size
+                              Text: |-
+                                =//To do: Duration added for performance testing. Will remove on final version. 
+                                //Concatenate(varSelectedZone.Name, " ", Text(varDuration_Patch, "[$-en-US]0")," ms")
+                                varSelectedZone.Name
+                              VerticalAlign: =VerticalAlign.Top
+                              Weight: =varThemeFont.H1.weightBold
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                  - btnStaffViewRefresh:
+                      Control: Button@0.0.45
+                      Properties:
+                        FontWeight: =FontWeight.Normal
+                        OnSelect: |-
+                          =// Refresh with a direct Dataverse call
+                          UpdateContext(
+                              {
+                                  varStaffModeTable: ForAll(            
+                                      Filter(
+                                          shiftplanner_shiftbookings,
+                                          Date >= varFirstDateOfWeek,
+                                          Date <= DateAdd(varFirstDateOfWeek, 6, TimeUnit.Days),
+                                          Zone.Name =varSelectedZone.Name
+                                      )
+                                      ,
+                                      {
+                                          StaffGroup: Concatenate(
+                                                  Resource.User,
+                                                  'Team Position'.'Shift Team'.Name,
+                                                  'Team Position'.Role.Name
+                                              ),
+                                          Staff: Resource.'Full Name',
+                                          StaffTeam: 'Team Position'.'Shift Team'.Name,
+                                          StaffRole: 'Team Position'.Role.Name,
+                                          ShiftDate: Date,
+                                          ShiftType: 'Team Position'.'Shift Team'.'Shift Type'.Name
+                                      }
+                                  )
+                              }
+                          );
+
+                          /*
+                          // Refresh using a flow
+
+                          UpdateContext(
+                              {
+                                  varStaffModeTable: ForAll(
+                                      Table(
+                                          ParseJSON(
+                                              GetStaffModeTable.Run(
+                                                  Text(
+                                                      varFirstDateOfWeek,
+                                                      "yyyy-mm-dd"
+                                                  ),
+                                                  varSelectedZone.Name
+                                              ).results
+                                          )
+                                      ),
+                                      {
+                                          StaffGroup: Text(
+                                              Concatenate(
+                                                  Value.'_mpa_resource_value@OData.Community.Display.V1.FormattedValue',
+                                                  Value.'t.mpa_name',
+                                                  Value.'p.mpa_role@OData.Community.Display.V1.FormattedValue'
+                                              )
+                                          ),
+                                          Staff: Text(Value.'_mpa_resource_value@OData.Community.Display.V1.FormattedValue'),
+                                          StaffTeam: Text(Value.'t.mpa_name'),
+                                          StaffRole: Text(Value.'p.mpa_role@OData.Community.Display.V1.FormattedValue'),
+                                          ShiftDate: DateValue(Value.mpa_date),
+                                          ShiftType: Text(Value.'st.mpa_name')
+                                      }
+                                  )
+                              }
+                          )*/
+                        Text: ="Refresh"
+                        Visible: =false
+                  - conFilterView_StaffMode:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =cmbScreenFilter_StaffMode.Height
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =16
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - txtScreenLabel_StaffMode:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.End
+                              Height: =Parent.Height
+                              Text: ="View:"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: =varThemeFont.H3.weightBold
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight - cmbScreenFilter_StaffMode.Width - conFilterView_StaffMode.LayoutGap
+                        - cmbScreenFilter_StaffMode:
+                            Control: ComboBox@0.0.51
+                            Properties:
+                              AccessibleLabel: ="Select Shift Planner View Mode"
+                              DefaultSelectedItems: =varCurrentScreen
+                              FontItalic: =
+                              Items: =colDropDownNav
+                              OnChange: |-
+                                =Set(varCurrentScreen, Self.Selected);
+
+                                Navigate(
+                                    LookUp(
+                                        colDropDownNav,
+                                        Label = Self.Selected.Label
+                                    ).Screen, 
+                                    ScreenTransition.Fade
+                                )
+                              Width: =280
+                            Children:
+                              - ScreenName_StaffMode:
+                                  Control: ComboBoxDataField@1.5.0
+                                  Variant: textualColumn
+                                  IsLocked: true
+                                  Properties:
+                                    FieldDisplayName: ="Label"
+                                    FieldName: ="Label"
+                                    FieldType: ="s"
+                                    Order: =2
+            - conBodyContent_StaffMode:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  Fill: =ColorValue(varTheme.neutralBackground2)
+                  Height: =Parent.Height - conHeader_StaffMode.Height
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conCalendar_StaffMode:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        FillPortions: =0
+                        Height: =400
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =
+                        LayoutMinHeight: =50
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                      Children:
+                        - conMonthHeader_StaffMode:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              DropShadow: =DropShadow.None
+                              Fill: =ColorValue(varTheme.neutralBackground2)
+                              FillPortions: =0
+                              Height: =txtTodayHeader_StaffMode.Height + Self.PaddingBottom
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =10
+                              LayoutWrap: =true
+                              PaddingBottom: =10
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                            Children:
+                              - txtTodayHeader_StaffMode:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Start
+                                    FillPortions: =0.45
+                                    FontColor: =ColorValue(varTheme.neutralForeground3)
+                                    Height: =conCalendarHeader_StaffMode.Height
+                                    Size: =
+                                    Text: =Concatenate("Today is " & Text(Today(), "mmmm dd, yyyy"))
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: =varThemeFont.H3.weight
+                                    Width: =400
+                              - conCalendarHeader_StaffMode:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.SetByContainer
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0.9
+                                    Height: =icoPrevWeek_StaffMode.Height
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutMinWidth: =100
+                                    PaddingLeft: =40
+                                  Children:
+                                    - icoPrevWeek_StaffMode:
+                                        Control: Classic/Icon@2.5.0
+                                        Properties:
+                                          AccessibleLabel: ="Previous Month Left Arrow Icon"
+                                          BorderColor: =RGBA(166, 166, 166, 1)
+                                          Color: =//App.Theme.Colors.Primary
+                                          DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                          DisabledColor: =Self.Color
+                                          DisabledFill: =RGBA(0, 0, 0, 0)
+                                          FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                                          FocusedBorderThickness: =4
+                                          Height: =30
+                                          HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                          HoverColor: =Self.Color
+                                          HoverFill: =RGBA(0, 0, 0, 0)
+                                          Icon: =Icon.ChevronLeft
+                                          OnSelect: |-
+                                            =/*changes month view to previous month*/
+                                            Set(varFirstDateOfWeek, DateAdd(varFirstDateOfWeek, -7, TimeUnit.Days));
+                                            Select(btnStaffViewRefresh);
+                                          PaddingBottom: =7
+                                          PaddingLeft: =7
+                                          PaddingRight: =7
+                                          PaddingTop: =7
+                                          PressedBorderColor: =RGBA(0, 0, 0, 0)
+                                          PressedColor: =Self.Color
+                                          PressedFill: =RGBA(0, 0, 0, 0)
+                                          TabIndex: =0
+                                          Tooltip: ="View previous month"
+                                          Width: =59
+                                          X: =20
+                                          Y: =80
+                                    - txtMonthHeader_StaffMode:
+                                        Control: Text@0.0.51
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.Center
+                                          Height: =28
+                                          Size: =varThemeFont.H3.size
+                                          Text: =Text(varFirstDateOfWeek, "mmmm yyyy")
+                                          Weight: =varThemeFont.H3.weightBold
+                                          Width: =200
+                                    - icoNextWeek_StaffMode:
+                                        Control: Classic/Icon@2.5.0
+                                        Properties:
+                                          AccessibleLabel: ="Next Month Right Arrow Icon"
+                                          BorderColor: =RGBA(166, 166, 166, 1)
+                                          Color: =//App.Theme.Colors.Primary
+                                          DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                          DisabledColor: =Self.Color
+                                          DisabledFill: =RGBA(0, 0, 0, 0)
+                                          FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                                          FocusedBorderThickness: =4
+                                          Height: =30
+                                          HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                          HoverColor: =Self.Color
+                                          HoverFill: =RGBA(0, 0, 0, 0)
+                                          Icon: =Icon.ChevronRight
+                                          OnSelect: |-
+                                            =Set(
+                                                varFirstDateOfWeek,
+                                                DateAdd(
+                                                    varFirstDateOfWeek,
+                                                    7,
+                                                    TimeUnit.Days
+                                                )
+                                            );
+                                            Select(btnStaffViewRefresh);
+                                          PaddingBottom: =7
+                                          PaddingLeft: =7
+                                          PaddingRight: =7
+                                          PaddingTop: =7
+                                          PressedBorderColor: =RGBA(0, 0, 0, 0)
+                                          PressedColor: =Self.Color
+                                          PressedFill: =RGBA(0, 0, 0, 0)
+                                          TabIndex: =0
+                                          Tooltip: ="View next month"
+                                          Width: =59
+                                          X: =360
+                                          Y: =80
+                        - conWeeklyCalendar_StaffMode:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              FillPortions: =0
+                              Height: =Parent.Height - conMonthHeader_StaffMode.Height
+                              LayoutDirection: =LayoutDirection.Vertical
+                              Width: =Parent.Width
+                            Children:
+                              - conDetailsHeader_StaffMode:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.SetByContainer
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0
+                                    Height: =conStaffHeader_StaffMode.Height
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    Width: =Parent.Width
+                                  Children:
+                                    - conStaffHeader_StaffMode:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.SetByContainer
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =conWeeklyCalendarHeader_StaffMode.Height
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          PaddingLeft: =30
+                                          Width: =txtStaffNameHeader_StaffMode.Width + txtTeamHeader_StaffMode.Width + txtRoleHeader_StaffMode.Width
+                                        Children:
+                                          - txtStaffNameHeader_StaffMode:
+                                              Control: Text@0.0.51
+                                              Properties:
+                                                Height: =Parent.Height
+                                                Text: ="Staff Name"
+                                                Weight: =varThemeFont.H3.weightBold
+                                                Width: =140
+                                          - txtTeamHeader_StaffMode:
+                                              Control: Text@0.0.51
+                                              Properties:
+                                                Height: =Parent.Height
+                                                Text: ="Teams"
+                                                Weight: =varThemeFont.H3.weightBold
+                                          - txtRoleHeader_StaffMode:
+                                              Control: Text@0.0.51
+                                              Properties:
+                                                Height: =Parent.Height
+                                                Text: ="Role"
+                                                Weight: =varThemeFont.H3.weightBold
+                                                Width: =160
+                                    - conWeeklyCalendarHeader_StaffMode:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.SetByContainer
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =50
+                                          LayoutDirection: =LayoutDirection.Vertical
+                                          Width: =Parent.Width - conStaffHeader_StaffMode.Width
+                                        Children:
+                                          - galNumericDayOfWeek_StaffMode:
+                                              Control: Gallery@2.15.0
+                                              Variant: Horizontal
+                                              Properties:
+                                                AccessibleLabel: ="Calendar Week"
+                                                AlignInContainer: =AlignInContainer.SetByContainer
+                                                FillPortions: =0
+                                                FocusedBorderThickness: =0
+                                                Height: =Parent.Height
+                                                Items: =colWeeklyCalendarHeader
+                                                TabIndex: =0
+                                                TemplatePadding: =
+                                                TemplateSize: =galNumericDayOfWeek_StaffMode.Width/7
+                                                Width: =Parent.Width
+                                              Children:
+                                                - txtDayOfWeek_StaffMode:
+                                                    Control: Text@0.0.51
+                                                    Properties:
+                                                      Align: ='TextCanvas.Align'.Center
+                                                      AutoHeight: =true
+                                                      FontColor: =If(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) = Today(), App.Theme.Colors.Primary, ColorValue(varTheme.neutralForeground3))
+                                                      Height: =
+                                                      Size: =
+                                                      Text: =ThisItem.WeekDay
+                                                      VerticalAlign: =VerticalAlign.Middle
+                                                      Weight: =If(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) = Today(), varThemeFont.H2.weightBold)
+                                                      Width: =Parent.TemplateWidth
+                                                      Y: =((Parent.TemplateHeight - Self.Height) / 2) + 11
+                                                - txtNumericDayOfWeek_StaffMode:
+                                                    Control: Text@0.0.51
+                                                    Properties:
+                                                      Align: ='TextCanvas.Align'.Center
+                                                      AutoHeight: =true
+                                                      FontColor: =If(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) = Today(), App.Theme.Colors.Primary, ColorValue(varTheme.neutralForeground3))
+                                                      Height: =
+                                                      Size: =varThemeFont.H3.size
+                                                      Text: =Day(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days))
+                                                      VerticalAlign: =VerticalAlign.Middle
+                                                      Weight: =varThemeFont.H2.weightBold
+                                                      Width: =Parent.TemplateWidth
+                                                      Y: =((Parent.TemplateHeight - Self.Height) / 2) - 8
+                              - shpHeaderSeparator_StaffMode:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AccessibleLabel: ="Right pane header divider"
+                                    AlignInContainer: =AlignInContainer.Center
+                                    Height: =2
+                                    TabIndex: =0
+                                    Width: =Parent.Width - 50
+                                    X: =
+                                    Y: =Parent.Height - Self.Height
+                              - txtEmptyDataMessage_StaffMode:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    Height: =Parent.Height - conMonthHeader_StaffMode.Height - conDetailsHeader_StaffMode.Height
+                                    Text: ="No data yet."
+                                    Visible: =If(galStaffView_StaffMode.Visible, false, true)
+                                    Width: =Parent.Width
+                              - galStaffView_StaffMode:
+                                  Control: Gallery@2.15.0
+                                  Variant: Vertical
+                                  Properties:
+                                    AccessibleLabel: ="Staff View"
+                                    AlignInContainer: =AlignInContainer.SetByContainer
+                                    Height: =Parent.Height - conMonthHeader_StaffMode.Height - conDetailsHeader_StaffMode.Height
+                                    Items: |-
+                                      =Sort(
+                                          GroupBy(
+                                              varStaffModeTable,
+                                              Staff,
+                                              StaffTeam,
+                                              StaffRole,        
+                                              StaffGroup,        
+                                              groupedStaffModeTable
+                                          ),
+                                          StaffGroup,
+                                          SortOrder.Ascending
+                                      )
+                                    TabIndex: =0
+                                    TemplateSize: =35
+                                    Visible: =If(galStaffView_StaffMode.AllItemsCount = 0, false, true)
+                                    Width: =Parent.Width
+                                  Children:
+                                    - conStaffWeeklySchedule_StaffMode:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          Height: =35
+                                          LayoutDirection: =LayoutDirection.Vertical
+                                          Width: =Parent.Width - Self.PaddingRight
+                                          X: =
+                                        Children:
+                                          - conStaffRow_StaffMode:
+                                              Control: GroupContainer@1.3.0
+                                              Variant: AutoLayout
+                                              Properties:
+                                                AlignInContainer: =AlignInContainer.SetByContainer
+                                                DropShadow: =DropShadow.None
+                                                FillPortions: =0
+                                                Height: =32
+                                                LayoutDirection: =LayoutDirection.Horizontal
+                                                Width: =Parent.Width - Self.PaddingRight
+                                              Children:
+                                                - conStaffDetails_StaffMode:
+                                                    Control: GroupContainer@1.3.0
+                                                    Variant: AutoLayout
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.Start
+                                                      DropShadow: =DropShadow.None
+                                                      FillPortions: =0
+                                                      Height: =txtStaffName_StaffMode.Height
+                                                      LayoutDirection: =LayoutDirection.Horizontal
+                                                      PaddingLeft: =25
+                                                      Width: =txtStaffName_StaffMode.Width + txtStaffTeam_StaffMode.Width + txtStaffRole_StaffMode.Width
+                                                    Children:
+                                                      - txtStaffName_StaffMode:
+                                                          Control: Text@0.0.51
+                                                          Properties:
+                                                            Text: =ThisItem.Staff
+                                                            Weight: =varThemeFont.H3.weightBold
+                                                            Width: =140
+                                                            Wrap: =false
+                                                      - txtStaffTeam_StaffMode:
+                                                          Control: Text@0.0.51
+                                                          Properties:
+                                                            Text: =ThisItem.StaffTeam
+                                                            Wrap: =false
+                                                      - txtStaffRole_StaffMode:
+                                                          Control: Text@0.0.51
+                                                          Properties:
+                                                            Text: =ThisItem.StaffRole
+                                                            Width: =160
+                                                            Wrap: =false
+                                                - conStaffSchedule_StaffMode:
+                                                    Control: GroupContainer@1.3.0
+                                                    Variant: AutoLayout
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.Start
+                                                      DropShadow: =DropShadow.None
+                                                      FillPortions: =0
+                                                      Height: =conStaffDetails_StaffMode.Height
+                                                      LayoutDirection: =LayoutDirection.Horizontal
+                                                      Width: =Parent.Width - conStaffDetails_StaffMode.Width
+                                                    Children:
+                                                      - galStaffScheduleIcons_StaffMode:
+                                                          Control: Gallery@2.15.0
+                                                          Variant: Horizontal
+                                                          Properties:
+                                                            AccessibleLabel: ="Staff schedule Icons"
+                                                            AlignInContainer: =AlignInContainer.Start
+                                                            FillPortions: =0
+                                                            FocusedBorderThickness: =0
+                                                            Height: =Parent.Height
+                                                            Items: =[0,1,2,3,4,5,6]
+                                                            LayoutMinHeight: =200
+                                                            ShowScrollbar: =false
+                                                            TabIndex: =0
+                                                            TemplatePadding: =0
+                                                            TemplateSize: =galStaffScheduleIcons_StaffMode.Width/7
+                                                            Width: =Parent.Width + 3
+                                                            X: =
+                                                          Children:
+                                                            - imgShiftIcon_StaffMode:
+                                                                Control: Image@2.2.3
+                                                                Properties:
+                                                                  AccessibleLabel: ="Shift Icon"
+                                                                  Height: =20
+                                                                  Image: |-
+                                                                    =First(
+                                                                        Filter(
+                                                                            shiftplanner_shifttypes,
+                                                                            Name = First(
+                                                                                Filter(
+                                                                                    varStaffModeTable,
+                                                                                    Staff = txtStaffName_StaffMode.Text && StaffTeam = txtStaffTeam_StaffMode.Text && StaffRole = txtStaffRole_StaffMode.Text && ShiftDate = (DateAdd(
+                                                                                        varFirstDateOfWeek,
+                                                                                        ThisItem.Value,
+                                                                                        TimeUnit.Days
+                                                                                    ))
+                                                                                )
+                                                                            ).ShiftType
+                                                                        )
+                                                                    ).'Shift Type Icon'.Full
+                                                                  OnSelect: =Select(Parent)
+                                                                  Tooltip: |-
+                                                                    =First(
+                                                                        Filter(
+                                                                            varStaffModeTable,
+                                                                            Staff = txtStaffName_StaffMode.Text 
+                                                                            && StaffTeam = txtStaffTeam_StaffMode.Text 
+                                                                            && StaffRole = txtStaffRole_StaffMode.Text
+                                                                            && ShiftDate = (DateAdd(
+                                                                                varFirstDateOfWeek,
+                                                                                ThisItem.Value,
+                                                                                TimeUnit.Days
+                                                                            ))
+                                                                        )
+                                                                    ).ShiftType
+                                                                  Width: =25
+                                                                  X: =If( IsBlank(icoAvailability_StaffMode.Icon), (galStaffScheduleIcons_StaffMode.TemplateWidth - Self.Width) / 2, ((galStaffScheduleIcons_StaffMode.TemplateWidth - Self.Width) / 2) + 10)
+                                                                  Y: =7
+                                                            - icoAvailability_StaffMode:
+                                                                Control: Classic/Icon@2.5.0
+                                                                Properties:
+                                                                  AccessibleLabel: ="Availability Icon"
+                                                                  Color: =ColorValue(varTheme.neutralForeground2)
+                                                                  Fill: =Color.White
+                                                                  Height: =20
+                                                                  Icon: "=If(\r\n    First(\r\n        Filter(\r\n            shiftplanner_useravailabilities,\r\n            User.'Full Name' = txtStaffName_StaffMode.Text \r\n            && StartDate <= (DateAdd(\r\n                        varFirstDateOfWeek,\r\n                        ThisItem.Value,\r\n                        TimeUnit.Days\r\n                    )\r\n                )\r\n            && Enddate >= (DateAdd(\r\n                        varFirstDateOfWeek,\r\n                        ThisItem.Value,\r\n                        TimeUnit.Days\r\n                    )\r\n                )\r\n                 \r\n        )\r\n    ).'Is Available' = 'Is Available (shiftplanner_useravailabilities)'.No, \r\n    Icon.Blocked\r\n)"
+                                                                  OnSelect: =
+                                                                  Width: =20
+                                                                  X: =If(IsBlank(imgShiftIcon_StaffMode.Image), ((galStaffScheduleIcons_StaffMode.TemplateWidth - Self.Width) / 2) + 3, ((galStaffScheduleIcons_StaffMode.TemplateWidth - Self.Width) / 2) - 20)
+                                                                  Y: =imgShiftIcon_StaffMode.Y
+                                          - shpSeparator_StaffMode:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                AccessibleLabel: ="Week divider"
+                                                Fill: =ColorValue(varTheme.neutralBackground3)
+                                                Height: =2
+                                                TabIndex: =0
+                                                Width: =Parent.Width - 50
+                  - conCoverage_StaffMode:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        FillPortions: =0
+                        Height: =192
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        PaddingBottom: =20
+                        PaddingLeft: =20
+                        PaddingTop: =15
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                      Children:
+                        - conCoverageTitle_StaffMode:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =Parent.Height - Parent.PaddingTop
+                              LayoutDirection: =LayoutDirection.Vertical
+                              Width: =conStaffHeader_StaffMode.Width - txtRoleHeader_StaffMode.Width
+                            Children:
+                              - txtCoverageTitle_StaffMode:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    FontColor: =App.Theme.Colors.Primary
+                                    Height: =Parent.Height
+                                    Size: =varThemeFont.H2.size
+                                    Text: ="Total FTE Coverage"
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Weight: =varThemeFont.H3.weightBold
+                                    Width: =Parent.Width
+                        - conCoverageSummary_StaffMode:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =
+                              Width: =Parent.Width - conCoverageTitle_StaffMode.Width - Parent.LayoutGap - Parent.PaddingRight - Parent.PaddingLeft
+                            Children:
+                              - txtEmptyCoverageMessage_StaffMode:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    Height: =Parent.Height
+                                    Text: ="No data yet."
+                                    Visible: =If(galStaffView_StaffMode.Visible, false, true)
+                                    Width: =Parent.Width
+                              - conAvailabilityRow_StaffMode:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Start
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0
+                                    Height: =conAvailabilityLabel_StaffMode.Height
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    Visible: =If(galStaffView_StaffMode.Visible, true, false)
+                                    Width: =Parent.Width - Self.PaddingRight
+                                  Children:
+                                    - conAvailabilityLabel_StaffMode:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.SetByContainer
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =txtAvailabilityLabel_StaffMode.Height
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          PaddingLeft: =1
+                                          Width: =140
+                                        Children:
+                                          - icoAvailabilityIcon_StaffMode:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                AccessibleLabel: ="Unavailable Icon"
+                                                Color: =ColorValue(varTheme.neutralForeground2)
+                                                Fill: =Color.White
+                                                Height: =20
+                                                Icon: =Icon.Blocked
+                                                OnSelect: =
+                                                Width: =30
+                                                X: =((galStaffScheduleIcons_StaffMode.TemplateWidth - Self.Width) / 2) - 25
+                                                Y: =imgShiftIcon_StaffMode.Y
+                                          - txtAvailabilityLabel_StaffMode:
+                                              Control: Text@0.0.51
+                                              Properties:
+                                                PaddingLeft: =2.5
+                                                Text: ="Not Available"
+                                                Weight: =varThemeFont.H3.weightBold
+                                                Width: =Parent.Width - icoAvailabilityIcon_StaffMode.Width
+                                                Wrap: =false
+                                    - conAvailabiltyCount_StaffMode:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.SetByContainer
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =conAvailabilityLabel_StaffMode.Height
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          Width: =Parent.Width - conAvailabilityLabel_StaffMode.Width
+                                        Children:
+                                          - galAvailabilityRowCount_StaffMode:
+                                              Control: Gallery@2.15.0
+                                              Variant: Horizontal
+                                              Properties:
+                                                AccessibleLabel: ="Staff schedule count"
+                                                AlignInContainer: =AlignInContainer.SetByContainer
+                                                FillPortions: =0
+                                                FocusedBorderThickness: =0
+                                                Height: =Parent.Height
+                                                Items: =[0,1,2,3,4,5,6]
+                                                ShowScrollbar: =false
+                                                TabIndex: =0
+                                                TemplatePadding: =0
+                                                TemplateSize: =galAvailabilityRowCount_StaffMode.Width/7
+                                                Width: =Parent.Width
+                                                X: =
+                                              Children:
+                                                - txtAvailabilityCount_StaffMode:
+                                                    Control: Text@0.0.51
+                                                    Properties:
+                                                      Align: ='TextCanvas.Align'.Center
+                                                      Text: |-
+                                                        =CountRows(
+                                                            Filter(
+                                                                AddColumns(
+                                                                shiftplanner_useravailabilities, 
+                                                                StaffAvailable,
+                                                                LookUp(varStaffModeTable, Staff = User.'Full Name')
+                                                                ),
+                                                                StartDate <= (DateAdd(
+                                                                    varFirstDateOfWeek,
+                                                                    ThisItem.Value,
+                                                                    TimeUnit.Days
+                                                                )) &&
+                                                                Enddate >= (DateAdd(
+                                                                    varFirstDateOfWeek,
+                                                                    ThisItem.Value,
+                                                                    TimeUnit.Days
+                                                                )) &&
+                                                                User.'Full Name' = StaffAvailable.Staff
+                                                                &&
+                                                                'Is Available' = 'Is Available (shiftplanner_useravailabilities)'.No
+                                                            )
+                                                        )
+                                                      Width: =Parent.TemplateWidth
+                              - shpCoverageSeparator_StaffMode:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AccessibleLabel: ="Week divider"
+                                    AlignInContainer: =AlignInContainer.Start
+                                    Fill: =ColorValue(varTheme.neutralBackground3)
+                                    Height: =2
+                                    TabIndex: =0
+                                    Width: =Parent.Width - 30
+                              - galShiftSummary_StaffMode:
+                                  Control: Gallery@2.15.0
+                                  Variant: Vertical
+                                  Properties:
+                                    AccessibleLabel: ="Staff schedule count"
+                                    AlignInContainer: =AlignInContainer.SetByContainer
+                                    FillPortions: =0
+                                    FocusedBorderThickness: =0
+                                    Height: =Parent.Height - conAvailabilityRow_StaffMode.Height
+                                    Items: =Sort(Distinct(varStaffModeTable.ShiftType, ShiftType), Value)
+                                    TabIndex: =0
+                                    TemplateSize: =conShiftSummaryRow_StaffMode.Height
+                                    Visible: =If(galStaffView_StaffMode.Visible, true, false)
+                                    Width: =Parent.Width
+                                  Children:
+                                    - conShiftSummaryRow_StaffMode:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          Height: =35
+                                          LayoutDirection: =LayoutDirection.Vertical
+                                          Width: =Parent.TemplateWidth - Self.PaddingRight
+                                        Children:
+                                          - conShiftRow_StaffMode:
+                                              Control: GroupContainer@1.3.0
+                                              Variant: AutoLayout
+                                              Properties:
+                                                AlignInContainer: =AlignInContainer.SetByContainer
+                                                DropShadow: =DropShadow.None
+                                                FillPortions: =0
+                                                Height: =32
+                                                LayoutDirection: =LayoutDirection.Horizontal
+                                                Width: =Parent.Width
+                                              Children:
+                                                - conShiftType_StaffMode:
+                                                    Control: GroupContainer@1.3.0
+                                                    Variant: AutoLayout
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.SetByContainer
+                                                      DropShadow: =DropShadow.None
+                                                      FillPortions: =0
+                                                      Height: =txtShiftType_StaffMode.Height
+                                                      LayoutDirection: =LayoutDirection.Horizontal
+                                                      LayoutGap: =5
+                                                      Width: =conAvailabilityLabel_StaffMode.Width -5
+                                                    Children:
+                                                      - imgShiftTypeIcon_StaffMode:
+                                                          Control: Image@2.2.3
+                                                          Properties:
+                                                            AccessibleLabel: ="Shift Icon"
+                                                            AlignInContainer: =AlignInContainer.Center
+                                                            Height: =25
+                                                            Image: |-
+                                                              =LookUp(
+                                                                  shiftplanner_shifttypes,
+                                                                  Name = txtShiftType_StaffMode.Text
+                                                              ).'Shift Type Icon'.Full
+                                                            Width: =25
+                                                      - txtShiftType_StaffMode:
+                                                          Control: Text@0.0.51
+                                                          Properties:
+                                                            Text: =ThisItem.Value
+                                                            Weight: =varThemeFont.H3.weightBold
+                                                            Width: =Parent.Width - imgShiftTypeIcon_StaffMode.Width - 5
+                                                            Wrap: =false
+                                                - conShiftRowCount_StaffMode:
+                                                    Control: GroupContainer@1.3.0
+                                                    Variant: AutoLayout
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.SetByContainer
+                                                      DropShadow: =DropShadow.None
+                                                      FillPortions: =0
+                                                      Height: =conShiftType_StaffMode.Height
+                                                      LayoutDirection: =LayoutDirection.Horizontal
+                                                      Width: =Parent.Width - conShiftType_StaffMode.Width
+                                                    Children:
+                                                      - galShiftRowCount_StaffMode:
+                                                          Control: Gallery@2.15.0
+                                                          Variant: Horizontal
+                                                          Properties:
+                                                            AccessibleLabel: ="Staff schedule count"
+                                                            AlignInContainer: =AlignInContainer.SetByContainer
+                                                            FillPortions: =0
+                                                            Height: =Parent.Height
+                                                            Items: =[0,1,2,3,4,5,6]
+                                                            ShowScrollbar: =false
+                                                            TabIndex: =0
+                                                            TemplatePadding: =0
+                                                            TemplateSize: =galShiftRowCount_StaffMode.Width/7
+                                                            Width: =Parent.Width + 3
+                                                            X: =
+                                                          Children:
+                                                            - txtShiftCount_StaffMode:
+                                                                Control: Text@0.0.51
+                                                                Properties:
+                                                                  Align: ='TextCanvas.Align'.Center
+                                                                  Text: |-
+                                                                    =CountRows(
+                                                                        Filter(
+                                                                            varStaffModeTable,
+                                                                            ShiftDate = (DateAdd(
+                                                                                varFirstDateOfWeek,
+                                                                                ThisItem.Value,
+                                                                                TimeUnit.Days
+                                                                            ))
+                                                                            && ShiftType = txtShiftType_StaffMode.Text
+                                                                        )
+                                                                    )
+                                                                  Width: =Parent.TemplateWidth
+                                          - shpCoverageSeparator_StaffMode_1:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                AccessibleLabel: ="Week divider"
+                                                AlignInContainer: =AlignInContainer.Start
+                                                Fill: =ColorValue(varTheme.neutralBackground3)
+                                                Height: =2
+                                                OnSelect: =
+                                                Width: =Parent.Width - 30
+                                                X: =
+      - compHeaderCompound_StaffMode:
+          Control: CanvasComponent
+          ComponentName: compHeaderCompound
+          Properties:
+            Fill: =App.Theme.Colors.Primary
+            HeaderHeight: =51
+            HeaderWidth: =1366
+            Height: |-
+              =compHeaderCompound_StaffMode.HeaderHeight
+              //varHeaderHeight
+            IsMenuScreen: =false
+            NavigateMenu: =
+            NavigateScreen: ='Application Landing Screen'
+            Width: =compHeaderCompound_StaffMode.HeaderWidth
