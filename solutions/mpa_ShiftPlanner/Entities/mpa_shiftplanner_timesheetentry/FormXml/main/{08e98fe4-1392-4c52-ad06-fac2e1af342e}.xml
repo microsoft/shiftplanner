@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{08e98fe4-1392-4c52-ad06-fac2e1af342e}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{2cf1d814-2459-4ad1-9d81-e6f25e5a8722}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{8ae6b0d0-b3f7-4426-87bb-40d5291dee93}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{330a0f28-1428-4d26-acbe-5dd1cf15f641}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mpa_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{810dbcff-c365-430c-ae15-c21330c51c73}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Shift Booking" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_shiftbooking" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mpa_shiftbooking" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1478c688-693e-427d-9d52-45a8e57b6834}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Time Entry Type" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_timeentrytype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="mpa_timeentrytype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9283b147-5e98-461f-bd2a-39b79a6500a2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Start Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_starttime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_starttime" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{51d1918d-3507-4686-a26a-ab6c76c1c651}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="End Time" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_endtime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="mpa_endtime" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8d419afc-85ec-41f9-8aff-8c88c13f76bf}" locklevel="0" colspan="1" rowspan="4" auto="true">
+                        <labels>
+                          <label description="Notes" languagecode="1033" />
+                        </labels>
+                        <control id="mpa_notes" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="mpa_notes" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{7a78d00c-73d3-4fb7-86cd-471545305171}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{e9557605-1a0a-4e2a-815e-5028fc1c1737}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1ea8332d-ce00-415f-ba55-0eea27670a9a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{095d1ce7-e68e-444e-a893-b88e36f2daec}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e069a74c-0082-4d52-9ce9-b1fe7a8d0a5b}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+            <cell id="{3f79750e-dad1-4fc8-817e-712289dba02d}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{cf76d254-e8f0-4aa1-8964-0b2c7658ce60}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{a6450b67-4c68-40fd-95e1-f2a3e413457c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7d9c1d9e-a68a-44b2-ab02-099c1ee57940}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a68884ab-3eb3-4287-8023-0752f775a52a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

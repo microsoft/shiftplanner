@@ -1,0 +1,121 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_Booking_Date_Changes": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "mpa_shiftplanner_shiftbooking",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "mpa_date"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "0ec688d6-6833-43e8-a2c2-423db73cd7ab"
+          }
+        }
+      },
+      "actions": {
+        "Set_Planned_Start_and_End_Dates": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftbookings",
+              "recordId": "@triggerOutputs()?['body/mpa_shiftplanner_shiftbookingid']",
+              "item/mpa_plannedendtime": "@addMinutes(\r\n    addHours(\r\n        addMinutes(\r\n            triggerOutputs()?['body/mpa_date'],\r\n            int(formatDateTime(outputs('Get_Shift_Team')?['body/mpa_shifttype/mpa_startdate'], 'mm'))\r\n        ), \r\n        int(formatDateTime(outputs('Get_Shift_Team')?['body/mpa_shifttype/mpa_startdate'], 'HH'))\r\n    ),\r\n    outputs('Get_Shift_Team')?['body/mpa_shifttype/mpa_duration']\r\n)",
+              "item/mpa_plannedstarttime": "@addHours(\r\naddMinutes(\r\n  triggerOutputs()?['body/mpa_date'],\r\n  int(formatDateTime(outputs('Get_Shift_Team')?['body/mpa_shifttype/mpa_startdate'], 'mm'))\r\n  ), \r\nint(formatDateTime(outputs('Get_Shift_Team')?['body/mpa_shifttype/mpa_startdate'], 'HH'))\r\n)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateOnlyRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Get_Shift_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "51043bcf-2225-48ca-a68b-e2050a7d343a"
+          }
+        },
+        "Get_Team_Position": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_teampositions",
+              "recordId": "@triggerOutputs()?['body/_mpa_teamposition_value']",
+              "$expand": "mpa_shiftteam($select=mpa_name,mpa_shiftplanner_shiftteamid)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a34476db-43ba-461c-93af-9d246691cc83"
+          }
+        },
+        "Get_Shift_Team": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftteams",
+              "recordId": "@outputs('Get_Team_Position')?['body/_mpa_shiftteam_value']",
+              "$expand": "mpa_shifttype($select=mpa_duration,mpa_startdate)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Get_Team_Position": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "07abe021-9649-49c4-ad2b-62f17a261ca9"
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
