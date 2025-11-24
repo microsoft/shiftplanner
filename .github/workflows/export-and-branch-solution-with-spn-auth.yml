@@ -61,11 +61,11 @@ jobs:
         solution-type: 'Unmanaged'
         overwrite-files: true
 
-    - name: unpack-shiftplanner-app action
-      run: ${{env.POWERPLATFORMTOOLS_PACPATH}} canvas unpack --msapp ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/mpa_shiftplanner_7f37a_DocumentUri.msapp --sources ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/shiftplanner
+    #- name: unpack-shiftplanner-app action
+    #  run: ${{env.POWERPLATFORMTOOLS_PACPATH}} canvas unpack --msapp ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/mpa_shiftplanner_7f37a_DocumentUri.msapp --sources ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/shiftplanner
 
-    - name: unpack-shiftplannermobile-app action
-      run: ${{env.POWERPLATFORMTOOLS_PACPATH}} canvas unpack --msapp ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/mpa_shiftplannermobile_4f37b_DocumentUri.msapp --sources ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/shiftplannermobile
+    #- name: unpack-shiftplannermobile-app action
+    #  run: ${{env.POWERPLATFORMTOOLS_PACPATH}} canvas unpack --msapp ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/mpa_shiftplannermobile_4f37b_DocumentUri.msapp --sources ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}/CanvasApps/shiftplannermobile
 
     - name: branch-solution, prepare it for a PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v1
