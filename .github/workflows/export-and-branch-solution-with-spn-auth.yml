@@ -43,9 +43,6 @@ jobs:
       with:
         pac-version-override: 1.43.6
 
-    - name: Verify pac installation
-      run: ${{env.POWERPLATFORMTOOLS_PACPATH}} --version
-
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
@@ -63,6 +60,12 @@ jobs:
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-type: 'Unmanaged'
         overwrite-files: true
+
+    - name: unpack-shiftplanner-app action
+      run: ${{env.POWERPLATFORMTOOLS_PACPATH}} canvas unpack --msapp ${{ github.event.inputs.solution_folder}}/CanvasApps/mpa_shiftplanner_7f37a_DocumentUri.msapp --sources ${{ github.event.inputs.solution_folder}}/CanvasApps/shiftplanner
+
+    - name: unpack-shiftplannermobile-app action
+      run: ${{env.POWERPLATFORMTOOLS_PACPATH}} canvas unpack --msapp ${{ github.event.inputs.solution_folder}}/CanvasApps/mpa_shiftplannermobile_4f37b_DocumentUri.msapp --sources ${{ github.event.inputs.solution_folder}}/CanvasApps/shiftplannermobile
 
     - name: branch-solution, prepare it for a PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v1
