@@ -142,8 +142,10 @@
 
                     txtInitialDate_SwapShift As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -159,8 +161,10 @@
 
                     txtInitialDateValue_SwapShift As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.primary)
                         Height: =32
                         LayoutMaxHeight: =
@@ -190,8 +194,10 @@
 
                     txtRequestSwapDate_SwapShift As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -209,8 +215,10 @@
                         AccessibleLabel: ="Request swap shift date"
                         Appearance: ="FilledDarker"
                         BasePaletteColor: =
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         Font: =""
                         FontColor: =
                         FontItalic: =
@@ -301,8 +309,10 @@
 
                     txtTeam_SwapShift As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -469,6 +479,7 @@
                 AlignInContainer: =AlignInContainer.Start
                 BorderColor: =App.Theme.Colors.Darker40
                 DelayItemLoading: =true
+                FocusedBorderThickness: =0
                 Height: =Parent.Height - conFilter_SwapShift.Height - conMainContent_SwapShift.PaddingTop
                 Items: =colTeams
                 Layout: =Layout.Vertical
@@ -489,6 +500,7 @@
                     AccessibleLabel: ="Resource Details"
                     BorderColor: =App.Theme.Colors.Darker40
                     DelayItemLoading: =true
+                    FocusedBorderThickness: =0
                     Height: |
                         =((Self.TemplateHeight )*galTeamPosition_SwapShift.AllItemsCount)+12 //Bottom margin
                     Items: |-
@@ -539,7 +551,9 @@
                             avaResource_SwapShift As Avatar:
                                 AccessibleLabel: ="Resource profile picture"
                                 Badge: ='Avatar.Badge'.None
+                                BasePaletteColor: =
                                 DisplayMode: =DisplayMode.Edit
+                                FontColor: =
                                 Height: =40
                                 Image: |-
                                     =If(
@@ -569,8 +583,10 @@
 
                             txtFullname_SwapShift As Text:
                                 AutoHeight: =false
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue(varTheme.neutralForeground1)
                                 Height: =20
                                 LayoutMaxHeight: =
@@ -588,8 +604,10 @@
 
                             txtRoles_SwapShift As Text:
                                 AutoHeight: =false
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue( varTheme.neutralForeground3)
                                 Height: =20
                                 LayoutMaxHeight: =
@@ -623,6 +641,7 @@
                                 Align: =""
                                 Appearance: ='ButtonCanvas.Appearance'.Secondary
                                 BasePaletteColor: =
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Font: =""
@@ -643,6 +662,7 @@
                                     =Launch("https://teams.microsoft.com/l/chat/0/0?users="&ThisItem.Resource.'Primary Email')
                                 Text: ="Message"
                                 VerticalAlign: =""
+                                Visible: =false
                                 Width: =63
                                 X: =0
                                 Y: =0
@@ -653,6 +673,7 @@
                                 Align: =""
                                 Appearance: ='ButtonCanvas.Appearance'.Secondary
                                 BasePaletteColor: =
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =If(ThisItem.'Workflow Status' = 'Workflow Status (Shift Bookings)'.Yes Or dteRequestSwapDate_SwapShift.SelectedDate < Today(),DisplayMode.Disabled, DisplayMode.Edit)
                                 Font: =""
@@ -677,7 +698,7 @@
                                     Navigate('Swap Reason Screen');
                                 Text: ="Swap Shift"
                                 VerticalAlign: =""
-                                Width: =76
+                                Width: =84
                                 X: =0
                                 Y: =0
                                 ZIndex: =2
@@ -691,8 +712,10 @@
 
                     txtTeamName_SwapShift As Text:
                         AutoHeight: =false
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.primary)
                         Height: =Self.Size * 1.5
                         LayoutMaxHeight: =
@@ -710,8 +733,10 @@
 
                     txtShiftName_SwapShift As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -727,8 +752,10 @@
 
                     txtShiftTime_SwapShift As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue( varTheme.neutralForeground3)
                         Height: =32
                         LayoutMaxHeight: =
@@ -736,7 +763,7 @@
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         Text: |-
-                            = Text(ThisItem.'Shift Type'.Startdate, "H:mm AM/PM") & " - " & Text(ThisItem.'Shift Type'.Enddate, "H:mm AM/PM")
+                            = Text(ThisItem.'Shift Type'.'Start Date Time', "H:mm AM/PM") & " - " & Text(ThisItem.'Shift Type'.'End Date', "H:mm AM/PM")
                         Weight: ='TextCanvas.Weight'.Regular
                         Width: =351
                         X: =0
@@ -749,5 +776,6 @@
         HomeScreen: ='Home Screen'
         NavigationScreen: ='Navigation Screen'
         TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
         ZIndex: =2
 

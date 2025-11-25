@@ -55,7 +55,7 @@
         </tab>
         <tab name="tab_zone" id="40a50b13-753c-4cda-8c46-cd8f73bdec40" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
-            <label description="Zone" languagecode="1033" />
+            <label description="Zones" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">

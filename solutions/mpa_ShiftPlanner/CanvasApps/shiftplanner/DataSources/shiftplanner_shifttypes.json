@@ -14,6 +14,31 @@
     }
   },
   {
+    "DisplayName": "Days Included (shiftplanner_shifttypes)",
+    "Name": "mpa_shiftplanner_shifttype_mpa_daysincluded",
+    "OptionSetInfoNameMapping": {
+      "1": "Sunday",
+      "2": "Monday",
+      "3": "Tuesday",
+      "4": "Wednesday",
+      "5": "Thursday",
+      "6": "Friday",
+      "7": "Saturday"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_daysincluded",
+        "OptionSetReferenceEntityName": "shiftplanner_shifttypes"
+      }
+    },
+    "OptionSetTypeKey": "MultiSelectPicklistType",
+    "RelatedColumnInvariantName": "mpa_daysincluded",
+    "RelatedEntityName": "shiftplanner_shifttypes",
+    "Type": "OptionSetInfo"
+  },
+  {
     "DisplayName": "Status (shiftplanner_shifttypes)",
     "Name": "mpa_shiftplanner_shifttype_statecode",
     "OptionSetInfoNameMapping": {
@@ -71,8 +96,9 @@
       "modifiedby": "Modified By",
       "modifiedon": "Modified On",
       "modifiedonbehalfby": "Modified By (Delegate)",
-      "mpa_duration": "Duration (hours)",
-      "mpa_enddate": "Enddate",
+      "mpa_daysincluded": "Days Included",
+      "mpa_duration": "Duration",
+      "mpa_enddate": "End Date",
       "mpa_name": "Name",
       "mpa_shiftplanner_shiftteam_shifttype": "Shift Teams",
       "mpa_shiftplanner_shifttype_AsyncOperations": "System Jobs",
@@ -84,7 +110,7 @@
       "mpa_shiftplanner_shifttypeid": "shiftplanner_shifttype",
       "mpa_shifttypeicon": "Shift Type Icon",
       "mpa_shifttypeiconid": "mpa_shifttypeiconId",
-      "mpa_startdate": "Startdate",
+      "mpa_startdate": "Start Date Time",
       "overriddencreatedon": "Record Created On",
       "owningbusinessunit": "Owning Business Unit",
       "owningteam": "Owning Team",

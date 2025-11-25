@@ -43,6 +43,20 @@
     "TemplateDisplayName": "Badge",
     "Version": "0.0.24"
   },
+  "button": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/button",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": true,
+    "LastModifiedTimestamp": "0",
+    "Name": "button",
+    "OverridableProperties": {},
+    "Version": "2.2.0"
+  },
   "Button": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -57,6 +71,20 @@
     "OverridableProperties": {},
     "TemplateDisplayName": "Button",
     "Version": "0.0.45"
+  },
+  "circle": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/shapes/circle",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": true,
+    "LastModifiedTimestamp": "0",
+    "Name": "circle",
+    "OverridableProperties": {},
+    "Version": "2.3.0"
   },
   "Combobox": {
     "CustomGroupControlTemplateName": "",
@@ -87,6 +115,35 @@
     "OverridableProperties": {},
     "TemplateDisplayName": "Date picker",
     "Version": "0.0.46"
+  },
+  "Dropdown": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_DropdownCanvas",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": true,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "PowerApps_CoreControls_DropdownCanvas",
+    "OverridableProperties": {},
+    "TemplateDisplayName": "Dropdown",
+    "Version": "0.0.45"
+  },
+  "form": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/form",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": true,
+    "LastModifiedTimestamp": "0",
+    "Name": "form",
+    "OverridableProperties": {},
+    "Version": "2.4.4"
   },
   "gallery": {
     "CustomGroupControlTemplateName": "",
@@ -230,6 +287,21 @@
     "OverridableProperties": {},
     "Version": "1.0"
   },
+  "Spinner": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_Spinner",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": true,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "PowerApps_CoreControls_Spinner",
+    "OverridableProperties": {},
+    "TemplateDisplayName": "Spinner",
+    "Version": "1.4.6"
+  },
   "Text": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -260,6 +332,20 @@
     "TemplateDisplayName": "Text input",
     "Version": "0.0.54"
   },
+  "timer": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/timer",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": true,
+    "LastModifiedTimestamp": "0",
+    "Name": "timer",
+    "OverridableProperties": {},
+    "Version": "2.1.0"
+  },
   "Toggle": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -274,5 +360,19 @@
     "OverridableProperties": {},
     "TemplateDisplayName": "Toggle",
     "Version": "1.1.5"
+  },
+  "typedDataCard": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/card",
+    "IsComponentTemplate": false,
+    "IsCustomGroupControlTemplate": false,
+    "IsPcfControl": false,
+    "IsPremiumPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "typedDataCard",
+    "OverridableProperties": {},
+    "Version": "1.0.7"
   }
 }

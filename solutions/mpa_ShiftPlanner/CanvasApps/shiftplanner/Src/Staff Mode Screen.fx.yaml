@@ -209,8 +209,10 @@
 
                 txtBreadcrumbs_StaffMode As Text:
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground3)
                     Height: =32
                     LayoutMaxHeight: =
@@ -227,8 +229,10 @@
 
                 txtZoneTitle_StaffMode As Text:
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground1)
                     Height: =32
                     LayoutMaxHeight: =
@@ -248,7 +252,10 @@
                     ZIndex: =2
 
             btnStaffViewRefresh As Button:
+                BasePaletteColor: =
+                BorderColor: =
                 DisplayMode: =DisplayMode.Edit
+                FontColor: =
                 FontWeight: =FontWeight.Normal
                 Height: =32
                 LayoutMaxHeight: =
@@ -339,8 +346,10 @@
                 txtScreenLabel_StaffMode As Text:
                     Align: ='TextCanvas.Align'.End
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =Parent.Height
                     LayoutMaxHeight: =
@@ -464,8 +473,10 @@
                     txtTodayHeader_StaffMode As Text:
                         Align: ='TextCanvas.Align'.Start
                         AutoHeight: =false
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FillPortions: =0.45
                         FontColor: =ColorValue(varTheme.neutralForeground3)
                         Height: =conCalendarHeader_StaffMode.Height
@@ -534,8 +545,10 @@
 
                         txtMonthHeader_StaffMode As Text:
                             Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FontColor: =
                             Height: =28
                             LayoutMaxHeight: =
@@ -643,8 +656,11 @@
 
                             txtStaffNameHeader_StaffMode As Text:
                                 AutoHeight: =false
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
                                 Height: =Parent.Height
                                 LayoutMaxHeight: =
                                 LayoutMaxWidth: =
@@ -658,8 +674,11 @@
                                 ZIndex: =1
 
                             txtTeamHeader_StaffMode As Text:
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
                                 Height: =Parent.Height
                                 LayoutMaxHeight: =
                                 LayoutMaxWidth: =
@@ -673,8 +692,11 @@
                                 ZIndex: =2
 
                             txtRoleHeader_StaffMode As Text:
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
                                 Height: =Parent.Height
                                 LayoutMaxHeight: =
                                 LayoutMaxWidth: =
@@ -727,8 +749,10 @@
                                 txtDayOfWeek_StaffMode As Text:
                                     Align: ='TextCanvas.Align'.Center
                                     AutoHeight: =true
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =If(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) = Today(), App.Theme.Colors.Primary, ColorValue(varTheme.neutralForeground3))
                                     Height: =
                                     Size: =
@@ -743,8 +767,10 @@
                                 txtNumericDayOfWeek_StaffMode As Text:
                                     Align: ='TextCanvas.Align'.Center
                                     AutoHeight: =true
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =If(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) = Today(), App.Theme.Colors.Primary, ColorValue(varTheme.neutralForeground3))
                                     Height: =
                                     Size: =varThemeFont.H3.size
@@ -773,8 +799,11 @@
                     txtEmptyDataMessage_StaffMode As Text:
                         Align: ='TextCanvas.Align'.Center
                         AutoHeight: =false
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =Parent.Height - conMonthHeader_StaffMode.Height - conDetailsHeader_StaffMode.Height
                         LayoutMaxHeight: =
                         LayoutMaxWidth: =
@@ -792,19 +821,23 @@
                         AlignInContainer: =AlignInContainer.SetByContainer
                         BorderColor: =App.Theme.Colors.Darker40
                         DelayItemLoading: =true
+                        FocusedBorderThickness: =0
                         Height: =Parent.Height - conMonthHeader_StaffMode.Height - conDetailsHeader_StaffMode.Height
                         Items: |-
-                            =Sort(
-                                GroupBy(
-                                    varStaffModeTable,
-                                    Staff,
-                                    StaffTeam,
-                                    StaffRole,        
-                                    StaffGroup,        
-                                    groupedStaffModeTable
-                                ),
-                                StaffGroup,
-                                SortOrder.Ascending
+                            =If(
+                                !IsBlank(varStaffModeTable),
+                                Sort(
+                                    GroupBy(
+                                        varStaffModeTable,
+                                        Staff,
+                                        StaffTeam,
+                                        StaffRole,        
+                                        StaffGroup,        
+                                        groupedStaffModeTable
+                                    ),
+                                    StaffGroup,
+                                    SortOrder.Ascending
+                                )
                             )
                         Layout: =Layout.Vertical
                         LayoutMaxHeight: =
@@ -864,8 +897,11 @@
                                     ZIndex: =1
 
                                     txtStaffName_StaffMode As Text:
+                                        BorderColor: =
                                         BorderStyle: =""
                                         DisplayMode: =DisplayMode.Edit
+                                        Fill: =
+                                        FontColor: =
                                         Height: =32
                                         LayoutMaxHeight: =
                                         LayoutMaxWidth: =
@@ -880,8 +916,11 @@
                                         ZIndex: =1
 
                                     txtStaffTeam_StaffMode As Text:
+                                        BorderColor: =
                                         BorderStyle: =""
                                         DisplayMode: =DisplayMode.Edit
+                                        Fill: =
+                                        FontColor: =
                                         Height: =32
                                         LayoutMaxHeight: =
                                         LayoutMaxWidth: =
@@ -895,8 +934,11 @@
                                         ZIndex: =2
 
                                     txtStaffRole_StaffMode As Text:
+                                        BorderColor: =
                                         BorderStyle: =""
                                         DisplayMode: =DisplayMode.Edit
+                                        Fill: =
+                                        FontColor: =
                                         Height: =32
                                         LayoutMaxHeight: =
                                         LayoutMaxWidth: =
@@ -1077,8 +1119,10 @@
 
                     txtCoverageTitle_StaffMode As Text:
                         Align: ='TextCanvas.Align'.Center
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =App.Theme.Colors.Primary
                         Height: =Parent.Height
                         LayoutMaxHeight: =
@@ -1112,8 +1156,11 @@
 
                     txtEmptyCoverageMessage_StaffMode As Text:
                         Align: ='TextCanvas.Align'.Center
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =Parent.Height
                         LayoutMaxHeight: =
                         LayoutMaxWidth: =
@@ -1178,8 +1225,11 @@
                                 ZIndex: =1
 
                             txtAvailabilityLabel_StaffMode As Text:
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
                                 Height: =32
                                 LayoutMaxHeight: =
                                 LayoutMaxWidth: =
@@ -1234,8 +1284,11 @@
 
                                 txtAvailabilityCount_StaffMode As Text:
                                     Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
+                                    FontColor: =
                                     Height: =32
                                     Text: |-
                                         =CountRows(
@@ -1360,8 +1413,11 @@
                                         ZIndex: =1
 
                                     txtShiftType_StaffMode As Text:
+                                        BorderColor: =
                                         BorderStyle: =""
                                         DisplayMode: =DisplayMode.Edit
+                                        Fill: =
+                                        FontColor: =
                                         Height: =32
                                         LayoutMaxHeight: =
                                         LayoutMaxWidth: =
@@ -1397,6 +1453,7 @@
                                         BorderColor: =App.Theme.Colors.Darker40
                                         DelayItemLoading: =true
                                         FillPortions: =0
+                                        FocusedBorderThickness: =0
                                         Height: =Parent.Height
                                         Items: =[0,1,2,3,4,5,6]
                                         LayoutMaxHeight: =
@@ -1414,8 +1471,11 @@
 
                                         txtShiftCount_StaffMode As Text:
                                             Align: ='TextCanvas.Align'.Center
+                                            BorderColor: =
                                             BorderStyle: =""
                                             DisplayMode: =DisplayMode.Edit
+                                            Fill: =
+                                            FontColor: =
                                             Height: =32
                                             Text: |-
                                                 =CountRows(

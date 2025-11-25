@@ -284,8 +284,11 @@ ComponentDefinitions:
                               TabIndex: =0
                               TemplateFill: |-
                                 =If(
-                                    /*The day is outside the range of the currently selected month*/
-                                    Abs(btnDate_CalendarComp.Text - ThisItem.Value) > 10, ColorValue(varTheme.neutralBackgroundDisabled), RGBA(0, 0, 0, 0)
+                                    IsNumeric(btnDate_CalendarComp.Text),
+                                    If(
+                                        /*The day is outside the range of the currently selected month*/
+                                        Abs(btnDate_CalendarComp.Text - ThisItem.Value) > 10, ColorValue(varTheme.neutralBackgroundDisabled), RGBA(0, 0, 0, 0)
+                                    )
                                 )
                               TemplateSize: =65
                               Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
@@ -355,12 +358,15 @@ ComponentDefinitions:
                                       )
                                     FontColor: |-
                                       =If(
-                                          /*Today when it is not selected*/
-                                          DateAdd(varFirstDayInView, ThisItem.Value) = Today(), App.Theme.Colors.Lighter80,
-                                          /*Date selected is this date*/
-                                          DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, 
-                                          /*The day is outside the range of the currently selected month*/
-                                          Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)
+                                          IsNumeric(Self.Text) And IsNumeric(Self.Text),
+                                          If(
+                                              /*Today when it is not selected*/
+                                              DateAdd(varFirstDayInView, ThisItem.Value) = Today(), App.Theme.Colors.Lighter80,
+                                              /*Date selected is this date*/
+                                              DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, 
+                                              /*The day is outside the range of the currently selected month*/
+                                              Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)
+                                      )
                                     Height: =galCalendar_CalendarComp.TemplateHeight - 25
                                     OnSelect: |+
                                       =Set(varDateSelected, DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days));
@@ -445,26 +451,31 @@ ComponentDefinitions:
                                           Text: |-
                                             =With(
                                                 {
-                                                    DayDate: DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days)
-                                                },
-                                                If(Weekday(DayDate)>1 && Weekday(DayDate)<7 ,
-                                                    Concatenate(
-                                                        CountRows(
-                                                        Filter(
-                                                            AddColumns(
+                                                    TodaysBookings : Filter(
+                                                              AddColumns(
                                                                 colFilteredBookings As Booking,
                                                                 ResourceName,
                                                                 Booking.Resource
-                                                            ),
-                                                            DateValue(Date) = DayDate && !IsBlank(ResourceName) && Text(Status) = "Active"
-                                                        )
-                                                    ) 
-                                                        & " of " 
-                                                        & CountRows(Filter(shiftplanner_teampositions, ('Effective From' <= DayDate && 'Effective To' >= DayDate) && 'Shift Team'.Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone))
+                                                              ),
+                                                              DateValue(Date) = DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days) && Status  = 'Status (shiftplanner_shiftbookings)'.Active
                                                     )
-                                                )
+                                                },
+                                                    Concatenate(
+                                                        // Find the count of the bookings
+                                                        CountRows(
+                                                           Filter(
+                                                              TodaysBookings,
+                                                              !IsBlank(Resource)
+                                                           )
+                                                        ), 
+                                                        " of "
+                                                        ,
+                                                        // Find all the rows that need bookings
+                                                        CountRows(TodaysBookings)
+                                                    )
                                             )
                                           VerticalAlign: =VerticalAlign.Middle
+                                          Visible: =!EndsWith(lblCount_CalendarComp.Text, "of 0")
                                           Width: =65
                                           X: =(galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
                   - conWeekStatusColumn_CalendarComp:
@@ -555,37 +566,6 @@ ComponentDefinitions:
                                   Properties:
                                     AccessibleLabel: ="Published/Unpublished Button"
                                     Appearance: ='ButtonCanvas.Appearance'.Secondary
-                                    DisplayMode: |-
-                                      =/*With(
-                                          {
-                                              //Day after 8 weeks from today
-                                              DayAfterWeeks: DateAdd((Today() - Weekday(Today(),StartOfWeek.Sunday)),56,TimeUnit.Days)
-                                          },
-                                          If(
-                                              //All months before current month and the month 8 weeks from current date should be disabled
-                                              Month(varFirstDayOfMonth) >= Month(Today()) && Month(varFirstDayOfMonth) <= Month(DayAfterWeeks),
-                                              If(
-                                              //Check if current Month calendar view is the same as current date's Month
-                                              Month(varFirstDayOfMonth) = Month(Today()),
-                                                  //Check which week of the month it is
-                                                  If(ThisItem.Value < ((Day(Today()) + (Weekday(varFirstDayOfMonth) - 1)) / 7),
-                                                      DisplayMode.Disabled,
-                                                      DisplayMode.Edit
-                                                  ),
-                                                  //Check if current Month calendar view is the same as the month 8 weeks from current date
-                                                  If(Month(varFirstDayOfMonth) = Month(DayAfterWeeks), 
-                                                      //Check which week of the month the day 8 weeks from current date is
-                                                      If(ThisItem.Value > ((Day(DayAfterWeeks) + (Weekday(varFirstDayOfMonth) - 1)) / 7),
-                                                          DisplayMode.Disabled,
-                                                          DisplayMode.Edit
-                                                      )
-                                                  )
-                                              ),
-                                              DisplayMode.Disabled
-                                          )
-                                      )
-                                      */
-                                      DisplayMode.Edit
                                     Height: =24
                                     OnSelect: |-
                                       =Set(varPublishStatus, lblPublishedStatusLabel_CalendarComp.Text);
@@ -690,11 +670,3 @@ ComponentDefinitions:
                                           VerticalAlign: =VerticalAlign.Top
                                           Weight: =varThemeFont.H3.weightBold
                                           Wrap: =false
-            - Label1:
-                Control: Label@2.5.1
-                Properties:
-                  LayoutMaxHeight: =0
-                  LayoutMaxWidth: =0
-                  LayoutMinHeight: =16
-                  LayoutMinWidth: =16
-                  Text: =Month(DateAdd((Today() - Weekday(Today(),StartOfWeek.Sunday)),56,TimeUnit.Days))

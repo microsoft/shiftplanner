@@ -64,6 +64,12 @@ ComponentDefinitions:
         Description: Whether or not to show the header in Teams embedded format
         DataType: Boolean
         Default: =true
+      TimeTrackScreen:
+        PropertyKind: Input
+        DisplayName: Time Track Screen
+        Description: A custom property
+        DataType: Screen
+        Default: =App.ActiveScreen
     Properties:
       Height: =104
       Width: =App.Width
@@ -301,6 +307,54 @@ ComponentDefinitions:
                               OnSelect: =Navigate(compHeaderMobile.MyRequestsScreen)
                               Text: =""
                               Width: =Parent.Width
+                  - conTimeTrackTab:
+                      Control: GroupContainer@1.3.0
+                      Variant: ManualLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        LayoutMinHeight: =10
+                        LayoutMinWidth: =10
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =40
+                      Children:
+                        - icoHeaderHighlightTimeTrack:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              BorderStyle: =BorderStyle.None
+                              Fill: =RGBA(245, 245, 245,1)
+                              Height: =rectHeaderUnderlineTimeTrack.Y + rectHeaderUnderlineTimeTrack.Height
+                              Visible: =rectHeaderUnderlineTimeTrack.Visible
+                              Width: =Parent.Width
+                        - imgHeaderTimeTrack:
+                            Control: Image@2.2.3
+                            Properties:
+                              Height: =26
+                              Image: =stopwatch
+                              Width: =32
+                              X: =4
+                              Y: =7
+                        - rectHeaderUnderlineTimeTrack:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              BorderStyle: =BorderStyle.None
+                              Fill: =RGBA(36, 36, 36, 1)
+                              Height: =3
+                              Visible: =App.ActiveScreen = compHeaderMobile.TimeTrackScreen
+                              Width: =Parent.Width-(Self.X*2)
+                              X: =10
+                              Y: =Parent.Height-Self.Height-4
+                        - btnHeaderTimeTrack:
+                            Control: Button@0.0.45
+                            Properties:
+                              Appearance: ='ButtonCanvas.Appearance'.Transparent
+                              Height: =Parent.Height
+                              OnSelect: =Navigate(compHeaderMobile.TimeTrackScreen)
+                              Text: =""
+                              Width: =Parent.Width
                   - txtTitleBarTitleText:
                       Control: Text@0.0.51
                       Properties:
@@ -356,6 +410,10 @@ ComponentDefinitions:
                   LayoutDirection: =LayoutDirection.Horizontal
                   LayoutMinHeight: =52
                   PaddingLeft: =10
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
                 Children:
                   - txtTitleBarTitleText_1:
                       Control: Text@0.0.51

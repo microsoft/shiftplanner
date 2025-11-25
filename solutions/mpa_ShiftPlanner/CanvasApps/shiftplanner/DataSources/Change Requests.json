@@ -1,0 +1,170 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_changerequests",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_changerequest",
+    "MaxGetRowsCount": 1500,
+    "Name": "Change Requests",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_changetype": "Change Type",
+      "mpa_finalapproval": "Final Approval",
+      "mpa_isapproved": "Approved?",
+      "mpa_name": "Name",
+      "mpa_newresource": "New Resource",
+      "mpa_reason": "Reason",
+      "mpa_resource": "Resource",
+      "mpa_shiftbooking": "Shift Booking",
+      "mpa_shiftplanner_changerequest_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_changerequest_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_changerequest_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_changerequest_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_changerequest_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_changerequest_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_changerequestid": "shiftplanner_changerequest",
+      "mpa_swapwith": "Swap With",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "processid": "Process Id",
+      "stageid": "(Deprecated) Stage Id",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "traversedpath": "(Deprecated) Traversed Path",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Change Requests",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Change Requests (Views)",
+    "Name": "_mpa_shiftplanner_changerequest_views",
+    "RelatedEntityName": "Change Requests",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2a6161df-c6ea-452e-bd97-591d1cc4444c": "Advanced Find View",
+      "2cbd83d4-5ba1-4e7f-bd34-011a5ae66044": "Active Change Requests",
+      "6ee13348-b991-4bef-8f24-eaa9e8cd5a89": "Inactive Change Requests",
+      "c50a8529-e386-4ba6-a5a9-df71cebcd2c3": "Lookup View",
+      "d1516e7c-e777-463d-9f36-e2c6346cc623": "Associated View"
+    }
+  },
+  {
+    "DisplayName": "Final Approval (Change Requests)",
+    "Name": "mpa_shiftplanner_changerequest_mpa_finalapproval",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_finalapproval",
+        "OptionSetReferenceEntityName": "Change Requests"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "mpa_finalapproval",
+    "RelatedEntityName": "Change Requests",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Approved? (Change Requests)",
+    "Name": "mpa_shiftplanner_changerequest_mpa_isapproved",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_isapproved",
+        "OptionSetReferenceEntityName": "Change Requests"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "mpa_isapproved",
+    "RelatedEntityName": "Change Requests",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Change Requests)",
+    "Name": "mpa_shiftplanner_changerequest_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Change Requests"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Change Requests",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Change Requests)",
+    "Name": "mpa_shiftplanner_changerequest_statuscode",
+    "OptionSetInfoNameMapping": {
+      "2": "Inactive",
+      "865420002": "Pending Approval",
+      "865420003": "Declined",
+      "865420004": "Approved",
+      "865420005": "Canceled",
+      "865420006": "Pending Final Approval"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Change Requests"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Change Requests",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Change type",
+    "Name": "mpa_shiftplanner_changetype",
+    "OptionSetInfoNameMapping": {
+      "1": "Time off",
+      "2": "Swap"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_changetype",
+        "OptionSetReferenceEntityName": "Change Requests"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "mpa_changetype",
+    "RelatedEntityName": "Change Requests",
+    "Type": "OptionSetInfo"
+  }
+]

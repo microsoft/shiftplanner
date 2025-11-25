@@ -108,6 +108,8 @@ Screens:
                             Properties:
                               AccessibleLabel: ="Team Gallery"
                               FillPortions: =0
+                              FocusedBorderColor: =ColorValue(varTheme.focusBorder)
+                              FocusedBorderThickness: =2
                               Height: =90
                               Items: =Sort( Filter(shiftplanner_shiftteams, Zone.Name = varSelectedZone.Name And 'Shift Type'.shiftplanner_shifttype = varAddPosition.shiftplanner_shifttype), Name)
                               TabIndex: =0
@@ -220,6 +222,8 @@ Screens:
                             Variant: Vertical
                             Properties:
                               AccessibleLabel: ="Position Gallery"
+                              FocusedBorderColor: =ColorValue(varTheme.focusBorder)
+                              FocusedBorderThickness: =2
                               Items: =Search(Sort(shiftplanner_roles, Name),Text(txiSearh_AddPosition.Value),Name)
                               TabIndex: =0
                               TemplateSize: =90
@@ -301,14 +305,20 @@ Screens:
                               colModify,
                               Defaults(colModify),
                               {
-                                  ShiftNum: GUID(),
+                                  BookingId: GUID(),
+                                  TeamPositionId: GUID(),
                                   ShiftType: varAddPosition.Name,
+                                  ShiftTypeId: varAddPosition.shiftplanner_shifttype,
                                   Team: galTeam_AddPosition.Selected.txtTeam_AddPosition.Text,
+                                  TeamId: galTeam_AddPosition.Selected.shiftplanner_shiftteam,
                                   Position: galPosition_AddPositon.Selected.txtPosition_AddPosition.Text,
+                                  PositionId: galPosition_AddPositon.Selected.shiftplanner_role,
                                   Resource: "",
+                                  ResourceId: Blank(),
                                   Status: "Added",
                                   NewPositon: "Yes"
                               }
+
                           );
 
                           Set(
@@ -319,7 +329,8 @@ Screens:
                           Navigate('Modify Screen');
                           Notify(
                               "Position has been added.",
-                              NotificationType.Success
+                              NotificationType.Success,
+                              varTheme.toastTimeout
                           )
                         Text: ="Finish"
                         Width: =200

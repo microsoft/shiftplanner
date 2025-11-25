@@ -90,7 +90,9 @@
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
                   },
-                  "BorderStyle"
+                  "BorderStyle",
+                  "Fill",
+                  "BorderColor"
                 ],
                 "ControlUniqueId": "18",
                 "DynamicProperties": [
@@ -175,7 +177,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conMonthHeader_CalendarComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 221,
+                "PublishOrderIndex": 413,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -223,6 +225,18 @@
                     "Category": "Data",
                     "InvariantScript": "\"\"",
                     "Property": "BorderStyle",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Data",
+                    "InvariantScript": "",
+                    "Property": "Fill",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Data",
+                    "InvariantScript": "",
+                    "Property": "BorderColor",
                     "RuleProviderType": "Unknown"
                   },
                   {
@@ -466,7 +480,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conCalendarHeader_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 223,
+                    "PublishOrderIndex": 415,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -734,7 +748,9 @@
                         "NameMapSourceSchema": "?"
                       },
                       "FontColor",
-                      "BorderStyle"
+                      "BorderStyle",
+                      "Fill",
+                      "BorderColor"
                     ],
                     "ControlUniqueId": "21",
                     "DynamicProperties": [
@@ -812,7 +828,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conCalendarHeader_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 224,
+                    "PublishOrderIndex": 416,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -848,6 +864,18 @@
                         "Category": "Data",
                         "InvariantScript": "\"\"",
                         "Property": "BorderStyle",
+                        "RuleProviderType": "Unknown"
+                      },
+                      {
+                        "Category": "Data",
+                        "InvariantScript": "",
+                        "Property": "Fill",
+                        "RuleProviderType": "Unknown"
+                      },
+                      {
+                        "Category": "Data",
+                        "InvariantScript": "",
+                        "Property": "BorderColor",
                         "RuleProviderType": "Unknown"
                       },
                       {
@@ -1088,7 +1116,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conCalendarHeader_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 225,
+                    "PublishOrderIndex": 417,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -1444,7 +1472,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conMonthHeader_CalendarComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 222,
+                "PublishOrderIndex": 414,
                 "Rules": [
                   {
                     "Category": "Design",
@@ -1765,7 +1793,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conCalendar_CalendarComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 220,
+            "PublishOrderIndex": 412,
             "Rules": [
               {
                 "Category": "Design",
@@ -1781,7 +1809,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "2",
+                "InvariantScript": "1",
                 "Property": "ZIndex",
                 "RuleProviderType": "Unknown"
               },
@@ -1959,7 +1987,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galWeekday_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 229,
+                        "PublishOrderIndex": 421,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -2069,7 +2097,9 @@
                             "IsLockable": false,
                             "NameMapSourceSchema": "?"
                           },
-                          "BorderStyle"
+                          "BorderStyle",
+                          "Fill",
+                          "BorderColor"
                         ],
                         "ControlUniqueId": "27",
                         "HasDynamicProperties": false,
@@ -2085,7 +2115,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galWeekday_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 230,
+                        "PublishOrderIndex": 422,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -2127,6 +2157,18 @@
                             "Category": "Data",
                             "InvariantScript": "\"\"",
                             "Property": "BorderStyle",
+                            "RuleProviderType": "Unknown"
+                          },
+                          {
+                            "Category": "Data",
+                            "InvariantScript": "",
+                            "Property": "Fill",
+                            "RuleProviderType": "Unknown"
+                          },
+                          {
+                            "Category": "Data",
+                            "InvariantScript": "",
+                            "Property": "BorderColor",
                             "RuleProviderType": "Unknown"
                           },
                           {
@@ -2283,7 +2325,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galWeekday_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 231,
+                        "PublishOrderIndex": 423,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -2570,7 +2612,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conCalendarMain_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 228,
+                    "PublishOrderIndex": 420,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -2813,11 +2855,11 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galCalendar_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 233,
+                        "PublishOrderIndex": 425,
                         "Rules": [
                           {
                             "Category": "Design",
-                            "InvariantScript": "If(\r\n    /*The day is outside the range of the currently selected month*/\r\n    Abs(btnDate_CalendarComp.Text - ThisItem.Value) > 10, ColorValue(varTheme.neutralBackgroundDisabled), RGBA(0, 0, 0, 0)\r\n)",
+                            "InvariantScript": "If(\r\n    IsNumeric(btnDate_CalendarComp.Text),\r\n    If(\r\n        /*The day is outside the range of the currently selected month*/\r\n        Abs(btnDate_CalendarComp.Text - ThisItem.Value) > 10, ColorValue(varTheme.neutralBackgroundDisabled), RGBA(0, 0, 0, 0)\r\n    )\r\n)",
                             "Property": "TemplateFill",
                             "RuleProviderType": "User"
                           },
@@ -2936,7 +2978,8 @@
                           "IconStyle",
                           "Align",
                           "VerticalAlign",
-                          "BorderStyle"
+                          "BorderStyle",
+                          "BorderColor"
                         ],
                         "ControlUniqueId": "31",
                         "HasDynamicProperties": false,
@@ -2952,7 +2995,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galCalendar_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 234,
+                        "PublishOrderIndex": 426,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -2974,9 +3017,9 @@
                           },
                           {
                             "Category": "Data",
-                            "InvariantScript": "If(\r\n    /*Today when it is not selected*/\r\n    DateAdd(varFirstDayInView, ThisItem.Value) = Today(), App.Theme.Colors.Lighter80,\r\n    /*Date selected is this date*/\r\n    DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, \r\n    /*The day is outside the range of the currently selected month*/\r\n    Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)",
+                            "InvariantScript": "If(\r\n    IsNumeric(Self.Text) And IsNumeric(Self.Text),\r\n    If(\r\n        /*Today when it is not selected*/\r\n        DateAdd(varFirstDayInView, ThisItem.Value) = Today(), App.Theme.Colors.Lighter80,\r\n        /*Date selected is this date*/\r\n        DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, \r\n        /*The day is outside the range of the currently selected month*/\r\n        Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)\r\n)",
                             "Property": "FontColor",
-                            "RuleProviderType": "Unknown"
+                            "RuleProviderType": "User"
                           },
                           {
                             "Category": "Data",
@@ -3024,6 +3067,12 @@
                             "Category": "Data",
                             "InvariantScript": "\"\"",
                             "Property": "BorderStyle",
+                            "RuleProviderType": "Unknown"
+                          },
+                          {
+                            "Category": "Data",
+                            "InvariantScript": "",
+                            "Property": "BorderColor",
                             "RuleProviderType": "Unknown"
                           },
                           {
@@ -3179,7 +3228,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galCalendar_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 235,
+                        "PublishOrderIndex": 427,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -3472,7 +3521,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "conStatusCount_CalendarComp",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 237,
+                            "PublishOrderIndex": 429,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -3662,7 +3711,18 @@
                                 "IsLockable": false,
                                 "NameMapSourceSchema": "?"
                               },
-                              "BorderStyle"
+                              "BorderStyle",
+                              "FontColor",
+                              "Fill",
+                              "BorderColor",
+                              {
+                                "AFDDataSourceName": "",
+                                "AutoRuleBindingEnabled": false,
+                                "AutoRuleBindingString": "true",
+                                "InvariantPropertyName": "Visible",
+                                "IsLockable": false,
+                                "NameMapSourceSchema": "?"
+                              }
                             ],
                             "ControlUniqueId": "35",
                             "DynamicProperties": [
@@ -3754,11 +3814,11 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "conStatusCount_CalendarComp",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 238,
+                            "PublishOrderIndex": 430,
                             "Rules": [
                               {
                                 "Category": "Data",
-                                "InvariantScript": "With(\r\n    {\r\n        DayDate: DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days)\r\n    },\r\n    If(Weekday(DayDate)>1 && Weekday(DayDate)<7 ,\r\n        Concatenate(\r\n            CountRows(\r\n            Filter(\r\n                AddColumns(\r\n                    colFilteredBookings As Booking,\r\n                    ResourceName,\r\n                    Booking.Resource\r\n                ),\r\n                DateValue(Date) = DayDate && !IsBlank(ResourceName) && Text(Status) = \"Active\"\r\n            )\r\n        ) \r\n            & \" of \" \r\n            & CountRows(Filter(shiftplanner_teampositions, ('Effective From' <= DayDate && 'Effective To' >= DayDate) && 'Shift Team'.Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone))\r\n        )\r\n    )\r\n)",
+                                "InvariantScript": "With(\r\n    {\r\n        TodaysBookings : Filter(\r\n                  AddColumns(\r\n                    colFilteredBookings As Booking,\r\n                    ResourceName,\r\n                    Booking.Resource\r\n                  ),\r\n                  DateValue(Date) = DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days) && Status  = 'Status (shiftplanner_shiftbookings)'.Active\r\n        )\r\n    },\r\n        Concatenate(\r\n            // Find the count of the bookings\r\n            CountRows(\r\n               Filter(\r\n                  TodaysBookings,\r\n                  !IsBlank(Resource)\r\n               )\r\n            ), \r\n            \" of \"\r\n            ,\r\n            // Find all the rows that need bookings\r\n            CountRows(TodaysBookings)\r\n        )\r\n)",
                                 "Property": "Text",
                                 "RuleProviderType": "User"
                               },
@@ -3784,6 +3844,24 @@
                                 "Category": "Data",
                                 "InvariantScript": "\"\"",
                                 "Property": "BorderStyle",
+                                "RuleProviderType": "Unknown"
+                              },
+                              {
+                                "Category": "Data",
+                                "InvariantScript": "",
+                                "Property": "FontColor",
+                                "RuleProviderType": "Unknown"
+                              },
+                              {
+                                "Category": "Data",
+                                "InvariantScript": "",
+                                "Property": "Fill",
+                                "RuleProviderType": "Unknown"
+                              },
+                              {
+                                "Category": "Data",
+                                "InvariantScript": "",
+                                "Property": "BorderColor",
                                 "RuleProviderType": "Unknown"
                               },
                               {
@@ -3820,6 +3898,12 @@
                                 "Category": "Design",
                                 "InvariantScript": "Parent.Height",
                                 "Property": "Height",
+                                "RuleProviderType": "User"
+                              },
+                              {
+                                "Category": "Design",
+                                "InvariantScript": "!EndsWith(lblCount_CalendarComp.Text, \"of 0\")",
+                                "Property": "Visible",
                                 "RuleProviderType": "User"
                               }
                             ],
@@ -3946,7 +4030,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galCalendar_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 236,
+                        "PublishOrderIndex": 428,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -4317,7 +4401,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conCalendarMain_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 232,
+                    "PublishOrderIndex": 424,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -4665,7 +4749,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conShiftCalendar_CalendarComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 227,
+                "PublishOrderIndex": 419,
                 "Rules": [
                   {
                     "Category": "Design",
@@ -4890,7 +4974,9 @@
                         "NameMapSourceSchema": "?"
                       },
                       "FontColor",
-                      "BorderStyle"
+                      "BorderStyle",
+                      "Fill",
+                      "BorderColor"
                     ],
                     "ControlUniqueId": "37",
                     "DynamicProperties": [
@@ -4982,7 +5068,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conWeekStatusColumn_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 240,
+                    "PublishOrderIndex": 432,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -5024,6 +5110,18 @@
                         "Category": "Data",
                         "InvariantScript": "\"\"",
                         "Property": "BorderStyle",
+                        "RuleProviderType": "Unknown"
+                      },
+                      {
+                        "Category": "Data",
+                        "InvariantScript": "",
+                        "Property": "Fill",
+                        "RuleProviderType": "Unknown"
+                      },
+                      {
+                        "Category": "Data",
+                        "InvariantScript": "",
+                        "Property": "BorderColor",
                         "RuleProviderType": "Unknown"
                       },
                       {
@@ -5235,7 +5333,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conWeekStatusColumn_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 241,
+                    "PublishOrderIndex": 433,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -5394,7 +5492,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galWeekStatus_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 243,
+                        "PublishOrderIndex": 435,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -5501,9 +5599,11 @@
                                 "IsLockable": false,
                                 "NameMapSourceSchema": "?"
                               },
-                              "BorderStyle"
+                              "BorderStyle",
+                              "Fill",
+                              "BorderColor"
                             ],
-                            "ControlUniqueId": "43",
+                            "ControlUniqueId": "42",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -5579,7 +5679,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "conPublishedStatus_CalendarComp",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 245,
+                            "PublishOrderIndex": 437,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -5627,6 +5727,18 @@
                                 "Category": "Data",
                                 "InvariantScript": "\"\"",
                                 "Property": "BorderStyle",
+                                "RuleProviderType": "Unknown"
+                              },
+                              {
+                                "Category": "Data",
+                                "InvariantScript": "",
+                                "Property": "Fill",
+                                "RuleProviderType": "Unknown"
+                              },
+                              {
+                                "Category": "Data",
+                                "InvariantScript": "",
+                                "Property": "BorderColor",
                                 "RuleProviderType": "Unknown"
                               },
                               {
@@ -5770,7 +5882,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "42",
+                            "ControlUniqueId": "43",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -5853,7 +5965,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "conPublishedStatus_CalendarComp",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 246,
+                            "PublishOrderIndex": 438,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -6077,7 +6189,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galWeekStatus_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 244,
+                        "PublishOrderIndex": 436,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -6276,14 +6388,7 @@
                             "IsLockable": false,
                             "NameMapSourceSchema": "?"
                           },
-                          {
-                            "AFDDataSourceName": "",
-                            "AutoRuleBindingEnabled": false,
-                            "AutoRuleBindingString": "DisplayMode.Edit",
-                            "InvariantPropertyName": "DisplayMode",
-                            "IsLockable": false,
-                            "NameMapSourceSchema": "?"
-                          },
+                          "DisplayMode",
                           {
                             "AFDDataSourceName": "",
                             "AutoRuleBindingEnabled": false,
@@ -6325,7 +6430,8 @@
                           "IconStyle",
                           "Align",
                           "VerticalAlign",
-                          "BorderStyle"
+                          "BorderStyle",
+                          "BorderColor"
                         ],
                         "ControlUniqueId": "44",
                         "HasDynamicProperties": false,
@@ -6341,7 +6447,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galWeekStatus_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 247,
+                        "PublishOrderIndex": 439,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -6416,6 +6522,12 @@
                             "RuleProviderType": "Unknown"
                           },
                           {
+                            "Category": "Data",
+                            "InvariantScript": "",
+                            "Property": "BorderColor",
+                            "RuleProviderType": "Unknown"
+                          },
+                          {
                             "Category": "Design",
                             "InvariantScript": "//(galWeekStatus_CalendarComp.TemplateWidth - Self.Width) / 2\r\nshpCircleStatus_CalendarComp.X - conPublishedStatus_CalendarComp.LayoutGap",
                             "Property": "X",
@@ -6441,7 +6553,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "/*With(\r\n    {\r\n        //Day after 8 weeks from today\r\n        DayAfterWeeks: DateAdd((Today() - Weekday(Today(),StartOfWeek.Sunday)),56,TimeUnit.Days)\r\n    },\r\n    If(\r\n        //All months before current month and the month 8 weeks from current date should be disabled\r\n        Month(varFirstDayOfMonth) >= Month(Today()) && Month(varFirstDayOfMonth) <= Month(DayAfterWeeks),\r\n        If(\r\n        //Check if current Month calendar view is the same as current date's Month\r\n        Month(varFirstDayOfMonth) = Month(Today()),\r\n            //Check which week of the month it is\r\n            If(ThisItem.Value < ((Day(Today()) + (Weekday(varFirstDayOfMonth) - 1)) / 7),\r\n                DisplayMode.Disabled,\r\n                DisplayMode.Edit\r\n            ),\r\n            //Check if current Month calendar view is the same as the month 8 weeks from current date\r\n            If(Month(varFirstDayOfMonth) = Month(DayAfterWeeks), \r\n                //Check which week of the month the day 8 weeks from current date is\r\n                If(ThisItem.Value > ((Day(DayAfterWeeks) + (Weekday(varFirstDayOfMonth) - 1)) / 7),\r\n                    DisplayMode.Disabled,\r\n                    DisplayMode.Edit\r\n                )\r\n            )\r\n        ),\r\n        DisplayMode.Disabled\r\n    )\r\n)\r\n*/\r\nDisplayMode.Edit",
+                            "InvariantScript": "DisplayMode.Edit",
                             "Property": "DisplayMode",
                             "RuleProviderType": "User"
                           },
@@ -6561,7 +6673,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "galWeekStatus_CalendarComp",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 248,
+                        "PublishOrderIndex": 440,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -6890,7 +7002,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "conWeekStatusColumn_CalendarComp",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 242,
+                    "PublishOrderIndex": 434,
                     "Rules": [
                       {
                         "Category": "Data",
@@ -7239,7 +7351,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conShiftCalendar_CalendarComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 239,
+                "PublishOrderIndex": 431,
                 "Rules": [
                   {
                     "Category": "Design",
@@ -7533,7 +7645,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conCalendar_CalendarComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 226,
+            "PublishOrderIndex": 418,
             "Rules": [
               {
                 "Category": "Design",
@@ -7633,7 +7745,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "4",
+                "InvariantScript": "2",
                 "Property": "ZIndex",
                 "RuleProviderType": "Unknown"
               },
@@ -7689,386 +7801,6 @@
             },
             "Type": "ControlInfo",
             "VariantName": "horizontalAutoLayoutContainer"
-          },
-          {
-            "AllowAccessToGlobals": true,
-            "Children": [],
-            "ControlPropertyState": [
-              "Live",
-              "Overflow",
-              {
-                "AFDDataSourceName": "",
-                "AutoRuleBindingEnabled": false,
-                "AutoRuleBindingString": "\"Text\"",
-                "InvariantPropertyName": "Text",
-                "IsLockable": false,
-                "NameMapSourceSchema": "?"
-              },
-              "Role",
-              "Color",
-              "DisabledColor",
-              "PressedColor",
-              "HoverColor",
-              "BorderColor",
-              "DisabledBorderColor",
-              "PressedBorderColor",
-              "HoverBorderColor",
-              "BorderStyle",
-              "FocusedBorderColor",
-              "Fill",
-              "DisabledFill",
-              "PressedFill",
-              "HoverFill",
-              "Font",
-              "FontWeight",
-              "Align",
-              "VerticalAlign",
-              "X",
-              "Y",
-              "Width",
-              "Height",
-              "DisplayMode",
-              "ZIndex",
-              "LineHeight",
-              "BorderThickness",
-              "FocusedBorderThickness",
-              "Size",
-              "Italic",
-              "Underline",
-              "Strikethrough",
-              "PaddingTop",
-              "PaddingRight",
-              "PaddingBottom",
-              "PaddingLeft"
-            ],
-            "ControlUniqueId": "263",
-            "DynamicProperties": [
-              {
-                "ControlPropertyState": "FillPortions",
-                "PropertyName": "FillPortions",
-                "Rule": {
-                  "Category": "Design",
-                  "InvariantScript": "0",
-                  "Property": "FillPortions",
-                  "RuleProviderType": "Unknown"
-                }
-              },
-              {
-                "ControlPropertyState": "AlignInContainer",
-                "PropertyName": "AlignInContainer",
-                "Rule": {
-                  "Category": "Design",
-                  "InvariantScript": "AlignInContainer.SetByContainer",
-                  "Property": "AlignInContainer",
-                  "RuleProviderType": "Unknown"
-                }
-              },
-              {
-                "ControlPropertyState": "LayoutMinWidth",
-                "PropertyName": "LayoutMinWidth",
-                "Rule": {
-                  "Category": "Design",
-                  "InvariantScript": "16",
-                  "Property": "LayoutMinWidth",
-                  "RuleProviderType": "Unknown"
-                }
-              },
-              {
-                "ControlPropertyState": "LayoutMinHeight",
-                "PropertyName": "LayoutMinHeight",
-                "Rule": {
-                  "Category": "Design",
-                  "InvariantScript": "16",
-                  "Property": "LayoutMinHeight",
-                  "RuleProviderType": "Unknown"
-                }
-              },
-              {
-                "ControlPropertyState": "LayoutMaxWidth",
-                "PropertyName": "LayoutMaxWidth",
-                "Rule": {
-                  "Category": "Design",
-                  "InvariantScript": "0",
-                  "Property": "LayoutMaxWidth",
-                  "RuleProviderType": "Unknown"
-                }
-              },
-              {
-                "ControlPropertyState": "LayoutMaxHeight",
-                "PropertyName": "LayoutMaxHeight",
-                "Rule": {
-                  "Category": "Design",
-                  "InvariantScript": "0",
-                  "Property": "LayoutMaxHeight",
-                  "RuleProviderType": "Unknown"
-                }
-              }
-            ],
-            "HasDynamicProperties": true,
-            "Index": 0,
-            "IsAutoGenerated": false,
-            "IsDataControl": false,
-            "IsFromScreenLayout": false,
-            "IsGroupControl": false,
-            "IsLocked": false,
-            "LayoutName": "",
-            "MetaDataIDKey": "",
-            "Name": "Label1",
-            "OptimizeForDevices": "Off",
-            "Parent": "conCalendar_CalendarComp",
-            "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 249,
-            "Rules": [
-              {
-                "Category": "Data",
-                "InvariantScript": "Live.Off",
-                "Property": "Live",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Data",
-                "InvariantScript": "Month(DateAdd((Today() - Weekday(Today(),StartOfWeek.Sunday)),56,TimeUnit.Days))",
-                "Property": "Text",
-                "RuleProviderType": "User"
-              },
-              {
-                "Category": "Data",
-                "InvariantScript": "TextRole.Default",
-                "Property": "Role",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Overflow.Hidden",
-                "Property": "Overflow",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "RGBA(0, 0, 0, 1)",
-                "Property": "Color",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "RGBA(166, 166, 166, 1)",
-                "Property": "DisabledColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Self.Color",
-                "Property": "PressedColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Self.Color",
-                "Property": "HoverColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "App.Theme.Colors.Darker40",
-                "Property": "BorderColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "RGBA(56, 56, 56, 1)",
-                "Property": "DisabledBorderColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Self.BorderColor",
-                "Property": "PressedBorderColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Self.BorderColor",
-                "Property": "HoverBorderColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "BorderStyle.Solid",
-                "Property": "BorderStyle",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Self.BorderColor",
-                "Property": "FocusedBorderColor",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "RGBA(0, 0, 0, 0)",
-                "Property": "Fill",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "RGBA(0, 0, 0, 0)",
-                "Property": "DisabledFill",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Self.Fill",
-                "Property": "PressedFill",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Self.Fill",
-                "Property": "HoverFill",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "App.Theme.Font",
-                "Property": "Font",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "FontWeight.Normal",
-                "Property": "FontWeight",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "Align.Left",
-                "Property": "Align",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "VerticalAlign.Middle",
-                "Property": "VerticalAlign",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "0",
-                "Property": "X",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "0",
-                "Property": "Y",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "150",
-                "Property": "Width",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "40",
-                "Property": "Height",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "DisplayMode.Edit",
-                "Property": "DisplayMode",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "5",
-                "Property": "ZIndex",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "1.2",
-                "Property": "LineHeight",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "0",
-                "Property": "BorderThickness",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "0",
-                "Property": "FocusedBorderThickness",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "13",
-                "Property": "Size",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "false",
-                "Property": "Italic",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "false",
-                "Property": "Underline",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "false",
-                "Property": "Strikethrough",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "5",
-                "Property": "PaddingTop",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "5",
-                "Property": "PaddingRight",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "5",
-                "Property": "PaddingBottom",
-                "RuleProviderType": "Unknown"
-              },
-              {
-                "Category": "Design",
-                "InvariantScript": "5",
-                "Property": "PaddingLeft",
-                "RuleProviderType": "Unknown"
-              }
-            ],
-            "StyleName": "defaultLabelStyle",
-            "Template": {
-              "CustomGroupControlTemplateName": "",
-              "FirstParty": true,
-              "Id": "http://microsoft.com/appmagic/label",
-              "IsComponentDefinition": false,
-              "IsCustomGroupControlTemplate": false,
-              "IsPremiumPcfControl": false,
-              "LastModifiedTimestamp": "0",
-              "Name": "label",
-              "OverridableProperties": {},
-              "Version": "2.5.1"
-            },
-            "Type": "ControlInfo",
-            "VariantName": ""
           }
         ],
         "ControlPropertyState": [
@@ -8219,7 +7951,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "compCalendar",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 219,
+        "PublishOrderIndex": 411,
         "Rules": [
           {
             "Category": "Design",
@@ -8449,7 +8181,7 @@
       },
       "ConfirmationScreen"
     ],
-    "LastModifiedTimestamp": "638985155513026066",
+    "LastModifiedTimestamp": "638995609753756998",
     "Name": "compCalendar",
     "Rules": [
       {
@@ -8575,7 +8307,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638985155513026066",
+  "LastModifiedTimestamp": "638995609753756998",
   "Name": "371ff073f9f7435080383e58073c35e5",
   "OverridableProperties": {},
   "TemplateOriginalName": "e3e976965ba94daaa4c20c4605fcb06b",

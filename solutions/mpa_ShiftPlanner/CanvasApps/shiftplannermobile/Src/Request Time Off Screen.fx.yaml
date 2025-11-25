@@ -86,8 +86,10 @@
 
                     txtRequestTimeOffDate_RequestTimeOff As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -103,8 +105,10 @@
 
                     txtRequestTimeOffDateValue_RequestTimeOff As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.primary)
                         Height: =28
                         LayoutMaxHeight: =
@@ -121,8 +125,10 @@
 
                     txtRequestTimeOffShiftName_RequestTimeOff As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -138,15 +144,17 @@
 
                     txtRequestTimeOffShiftTime_RequestTimeOff As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
                         LayoutMaxWidth: =
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        Text: =Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Startdate , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Enddate, DateTimeFormat.ShortTime))
+                        Text: =Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time' , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'End Date', DateTimeFormat.ShortTime))
                         Weight: ='TextCanvas.Weight'.Regular
                         Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
                         X: =0
@@ -170,8 +178,10 @@
 
                     txtReason_RequestTimeOff As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -189,8 +199,10 @@
                         AccessibleLabel: ="Text Input"
                         Appearance: ='TextInputCanvas.Appearance'.Outline
                         BasePaletteColor: =
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         Font: =""
                         FontColor: =
                         FontItalic: =
@@ -232,6 +244,7 @@
                 Align: =""
                 Appearance: ='ButtonCanvas.Appearance'.Secondary
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
                 Font: =""
@@ -261,6 +274,7 @@
                 Align: =""
                 Appearance: ='ButtonCanvas.Appearance'.Primary
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =If(IsBlank(txiReason_RequestTimeOff.Value) || Len(Trim(txiReason_RequestTimeOff.Value))<=0, DisplayMode.Disabled,DisplayMode.Edit)
                 Font: =""
@@ -328,5 +342,6 @@
         HomeScreen: ='Home Screen'
         NavigationScreen: ='Navigation Screen'
         TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
         ZIndex: =2
 

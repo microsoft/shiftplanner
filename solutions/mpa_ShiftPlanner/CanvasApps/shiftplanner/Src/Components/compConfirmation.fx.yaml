@@ -34,8 +34,10 @@ compConfirmation As CanvasComponent:
         lblHeader_ConfirmationComp As Text:
             Align: ='TextCanvas.Align'.Start
             AutoHeight: =false
+            BorderColor: =
             BorderStyle: =""
             DisplayMode: =DisplayMode.Edit
+            Fill: =
             FontColor: =
             Height: =Self.Size * 1.5
             LayoutMaxHeight: =
@@ -53,8 +55,11 @@ compConfirmation As CanvasComponent:
 
         lblSubtitle_ConfirmationComp As Text:
             AutoHeight: =true
+            BorderColor: =
             BorderStyle: =""
             DisplayMode: =DisplayMode.Edit
+            Fill: =
+            FontColor: =
             Height: =32
             LayoutMaxHeight: =
             LayoutMaxWidth: =
@@ -113,6 +118,7 @@ compConfirmation As CanvasComponent:
                 Align: =""
                 Appearance: ="Secondary"
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
                 FontColor: =
@@ -141,6 +147,7 @@ compConfirmation As CanvasComponent:
                 AccessibleLabel: =Self.Text
                 Align: =""
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: |-
                     =//DisplayMode.Edit
@@ -204,8 +211,8 @@ compConfirmation As CanvasComponent:
                     //Run both Week Status Email Notification and Week Status Calendar Invite flow with parameters: First Day of Selected Week, Last Day of Selected Week, Zone, Action (Publish/Unpublish)
                     
                     
-                    WeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text);
-                    WeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text);
+                    WeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text, "");
+                    WeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text,"");
                     
                     
                     // calculate the difference between start time and end time

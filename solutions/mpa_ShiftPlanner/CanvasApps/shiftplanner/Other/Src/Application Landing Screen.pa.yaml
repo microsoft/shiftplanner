@@ -37,6 +37,7 @@ Screens:
                   DropShadow: =DropShadow.None
                   Height: =Parent.Height
                   LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
                   RadiusBottomLeft: =0
                   RadiusBottomRight: =0
                   RadiusTopLeft: =0
@@ -57,6 +58,90 @@ Screens:
                         RadiusTopLeft: =0
                         RadiusTopRight: =0
                       Children:
+                        - conPlanningMode_LandingScreen:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              PaddingLeft: =22
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =250
+                            Children:
+                              - btnPlanningModeFacility_LandingScreen:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderStyle: =BorderStyle.None
+                                    DisabledColor: =App.Theme.Colors.PrimaryForeground
+                                    DisabledFill: =App.Theme.Colors.Primary
+                                    DisplayMode: =DisplayMode.Disabled
+                                    Height: =32
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    RadiusBottomLeft: =15
+                                    RadiusBottomRight: =0
+                                    RadiusTopLeft: =15
+                                    RadiusTopRight: =0
+                                    Size: =11
+                                    Text: ="Facility Plan"
+                                    Width: =100
+                              - btnPlanningModeStaff_LandingScreen:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =0
+                                    Color: =ColorValue(varTheme.neutralForegroundDisabled)
+                                    Fill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                                    Height: =32
+                                    HoverBorderColor: =ColorValue(varTheme.neutralBackground2)
+                                    HoverColor: =App.Theme.Colors.Primary
+                                    HoverFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: =Navigate('Staff Planning Screen')
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    PressedColor: =App.Theme.Colors.PrimaryForeground
+                                    PressedFill: =Self.HoverFill
+                                    RadiusBottomLeft: =0
+                                    RadiusBottomRight: =15
+                                    RadiusTopLeft: =0
+                                    RadiusTopRight: =15
+                                    Size: =11
+                                    Text: ="Staff Plan"
+                                    Width: =100
+                        - txtHeaderSpacer_LandingScreen:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              AlignInContainer: =AlignInContainer.Center
+                              FillPortions: =1
+                              Height: =Self.Size * 1.5
+                              LayoutMinWidth: =10
+                              Text: =
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: =varThemeFont.H3.weightBold
+                              Width: =20
+                              Wrap: =false
                         - txtFilter_LandingScreen:
                             Control: Text@0.0.51
                             Properties:
@@ -66,7 +151,7 @@ Screens:
                               Text: ="Filter:"
                               VerticalAlign: =VerticalAlign.Middle
                               Weight: =varThemeFont.H3.weightBold
-                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight - cmbFilter_LandingScreen.Width - conFilter_landingScreen.LayoutGap
+                              Width: '=80  '
                         - cmbFilter_LandingScreen:
                             Control: ComboBox@0.0.51
                             Properties:
@@ -130,7 +215,7 @@ Screens:
                                       With(
                                           {
                                               Rows: RoundUp(
-                                                  galZone_LandingScreen.AllItemsCount / varZoneWrapCount,
+                                                  galZone_LandingScreen.AllItemsCount / If(varZoneWrapCount=0 Or galZone_LandingScreen.AllItemsCount=0,1,varZoneWrapCount),
                                                   0
                                               )
                                           },
@@ -194,6 +279,8 @@ Screens:
                                           Height: =galZone_LandingScreen.TemplateHeight
                                           OnSelect: |-
                                             =Set(varSelectedZone, ThisItem);
+
+                                            // ToDo: Add a date range
                                             ClearCollect(colFilteredBookings, 
                                                 Filter(
                                                     shiftplanner_shiftbookings, 

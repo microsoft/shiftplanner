@@ -420,6 +420,7 @@ Screens:
                       Properties:
                         AccessibleLabel: ="Teams List"
                         AlignInContainer: =AlignInContainer.Start
+                        FocusedBorderThickness: =0
                         Height: =Parent.Height - conFilter_SwapShift.Height - conMainContent_SwapShift.PaddingTop
                         Items: =colTeams
                         TabIndex: =0
@@ -434,6 +435,7 @@ Screens:
                             Variant: Vertical
                             Properties:
                               AccessibleLabel: ="Resource Details"
+                              FocusedBorderThickness: =0
                               Height: |+
                                 =((Self.TemplateHeight )*galTeamPosition_SwapShift.AllItemsCount)+12 //Bottom margin
                               Items: |-
@@ -567,6 +569,7 @@ Screens:
                                                 Layout: ='ButtonCanvas.Layout'.TextOnly
                                                 OnSelect: =Launch("https://teams.microsoft.com/l/chat/0/0?users="&ThisItem.Resource.'Primary Email')
                                                 Text: ="Message"
+                                                Visible: =false
                                                 Width: =63
                                           - btnSwapShift_SwapShift:
                                               Control: Button@0.0.45
@@ -585,7 +588,7 @@ Screens:
 
                                                   Navigate('Swap Reason Screen');
                                                 Text: ="Swap Shift"
-                                                Width: =76
+                                                Width: =84
                         - conTeamShiftDetails_SwapShift:
                             Control: GroupContainer@1.3.0
                             Variant: AutoLayout
@@ -622,7 +625,7 @@ Screens:
                                   Properties:
                                     AutoHeight: =true
                                     FontColor: =ColorValue( varTheme.neutralForeground3)
-                                    Text: = Text(ThisItem.'Shift Type'.Startdate, "H:mm AM/PM") & " - " & Text(ThisItem.'Shift Type'.Enddate, "H:mm AM/PM")
+                                    Text: = Text(ThisItem.'Shift Type'.'Start Date Time', "H:mm AM/PM") & " - " & Text(ThisItem.'Shift Type'.'End Date', "H:mm AM/PM")
                                     Weight: ='TextCanvas.Weight'.Regular
                                     Width: =351
       - compHeaderMobile_SwapShift:
@@ -639,4 +642,5 @@ Screens:
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
             TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

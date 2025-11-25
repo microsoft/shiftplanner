@@ -14,6 +14,1166 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 208,
+                  "charOffset": 677,
+                  "snippet": {
+                    "text": "ShowColumns(\r\n            AddColumns(\r\n                    varStaffPlanTable,\r\n                    UserId,\r\n                    Resource.User                    \r\n            ),\r\n            UserId\r\n        )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "ShowColumns"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 664,
+                  "snippet": {
+                    "text": "in"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "UpdateIf"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 3,
+                  "charOffset": 637,
+                  "snippet": {
+                    "text": "And"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "UpdateIf"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 252,
+                  "charOffset": 353,
+                  "snippet": {
+                    "text": "ShowColumns(\r\n                    AddColumns(\r\n                        varStaffPlanTable,\r\n                        UserId,\r\n                        Resource.User                    \r\n                    ),\r\n                    UserId\r\n                )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "ShowColumns"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 336,
+                  "snippet": {
+                    "text": "in"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 3,
+                  "charOffset": 305,
+                  "snippet": {
+                    "text": "And"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 30,
+                  "charOffset": 98,
+                  "snippet": {
+                    "text": "Text(ThisRecord.Resource.User)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Text"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 128,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 162,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 338,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 1275,
+                  "snippet": {
+                    "text": "Text(User.User)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Text"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 1291,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 1346,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 1600,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.btnSelectCell_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 30,
+                  "charOffset": 98,
+                  "snippet": {
+                    "text": "Text(ThisRecord.Resource.User)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Text"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 128,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 162,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 338,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.txtDayCellData_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 8,
+                  "charOffset": 224,
+                  "snippet": {
+                    "text": "Resource"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Resource"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 17,
+                  "charOffset": 216,
+                  "snippet": {
+                    "text": "IsBlank(Resource)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "IsBlank"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 3,
+                  "charOffset": 203,
+                  "snippet": {
+                    "text": "And"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.txtOpenShiftCount_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 8,
+                  "charOffset": 43,
+                  "snippet": {
+                    "text": "Resource"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Resource"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 17,
+                  "charOffset": 35,
+                  "snippet": {
+                    "text": "IsBlank(Resource)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "IsBlank"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 53,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 8,
+                  "charOffset": 99,
+                  "snippet": {
+                    "text": "Resource"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning - Show Open Bookings",
+                "type": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Resource"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 17,
+                  "charOffset": 91,
+                  "snippet": {
+                    "text": "IsBlank(Resource)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning - Show Open Bookings",
+                "type": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "IsBlank"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 3,
+                  "charOffset": 82,
+                  "snippet": {
+                    "text": "And"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning - Show Open Bookings",
+                "type": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 3,
+                  "charOffset": 215,
+                  "snippet": {
+                    "text": "And"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 3,
+                  "charOffset": 579,
+                  "snippet": {
+                    "text": "And"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Application Landing Screen'.conMainContent_Body_LandingScreen.conPageContent_LandingScreen.galFacility_LandingScreen.FocusedBorderThickness"
                 }
               ],
@@ -37,7 +1197,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -67,7 +1227,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -97,7 +1257,67 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Modify Screen'.conMainContent_Modify.conHeader_Modify.conTitlesButtons_Modify.conButtons_Modify.btnRefresh_Modify.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Modify Screen'.conMainContent_Modify.conHeader_Modify.conTitlesButtons_Modify.conButtons_Modify.btnRefresh_Modify.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Modify Screen",
+                "type": "'Modify Screen'.conMainContent_Modify.conHeader_Modify.conTitlesButtons_Modify.conButtons_Modify.btnRefresh_Modify"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Modify Screen'.conMainContent_Modify.conHeader_Modify.conTitlesButtons_Modify.spnSaveInProgress_Modify.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Modify Screen'.conMainContent_Modify.conHeader_Modify.conTitlesButtons_Modify.spnSaveInProgress_Modify.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Modify Screen",
+                "type": "'Modify Screen'.conMainContent_Modify.conHeader_Modify.conTitlesButtons_Modify.spnSaveInProgress_Modify"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -127,7 +1347,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -157,7 +1377,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -187,7 +1407,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 1
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -217,7 +1437,37 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Mode Screen'.conMainContent_StaffMode.conBodyContent_StaffMode.conCalendar_StaffMode.conWeeklyCalendar_StaffMode.galStaffView_StaffMode.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Mode Screen'.conMainContent_StaffMode.conBodyContent_StaffMode.conCalendar_StaffMode.conWeeklyCalendar_StaffMode.galStaffView_StaffMode.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Staff Mode Screen",
+                "type": "'Staff Mode Screen'.conMainContent_StaffMode.conBodyContent_StaffMode.conCalendar_StaffMode.conWeeklyCalendar_StaffMode.galStaffView_StaffMode"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -247,7 +1497,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -277,7 +1527,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -307,7 +1557,1417 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 0
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Mode Screen'.conMainContent_StaffMode.conBodyContent_StaffMode.conCoverage_StaffMode.conCoverageSummary_StaffMode.galShiftSummary_StaffMode.conShiftSummaryRow_StaffMode.conShiftRow_StaffMode.conShiftRowCount_StaffMode.galShiftRowCount_StaffMode.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Mode Screen'.conMainContent_StaffMode.conBodyContent_StaffMode.conCoverage_StaffMode.conCoverageSummary_StaffMode.galShiftSummary_StaffMode.conShiftSummaryRow_StaffMode.conShiftRow_StaffMode.conShiftRowCount_StaffMode.galShiftRowCount_StaffMode.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Staff Mode Screen",
+                "type": "'Staff Mode Screen'.conMainContent_StaffMode.conBodyContent_StaffMode.conCoverage_StaffMode.conCoverageSummary_StaffMode.galShiftSummary_StaffMode.conShiftSummaryRow_StaffMode.conShiftRow_StaffMode.conShiftRowCount_StaffMode.galShiftRowCount_StaffMode"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.spnPublish_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.spnPublish_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.spnPublish_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnRefresh_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnRefresh_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnRefresh_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conDetailsHeader_StaffPlanScreen.conWeeklyCalendarHeader_StaffPlanScreen.galNumericDayOfWeek_StaffPlanScreen.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conDetailsHeader_StaffPlanScreen.conWeeklyCalendarHeader_StaffPlanScreen.galNumericDayOfWeek_StaffPlanScreen.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conDetailsHeader_StaffPlanScreen.conWeeklyCalendarHeader_StaffPlanScreen.galNumericDayOfWeek_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.galStaffView_StaffPlanScreen.conStaffWeeklySchedule_StaffPlanScreen.conStaffRow_StaffPlanScreen.conStaffSchedule_StaffPlanScreen.galDayCells_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.btnViewOpenShifts_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.btnViewOpenShifts_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conWeeklyCalendar_StaffPlanScreen.conOpenCountFooter_StaffPlanScreen.conOpenCalendarFooter_StaffPlanScreen.galOpenDayOfWeek_StaffPlanScreen.btnViewOpenShifts_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen.conAssignActions_StaffPlanScreen.btnReassign_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen.conAssignActions_StaffPlanScreen.btnReassign_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen.conAssignActions_StaffPlanScreen.btnReassign_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen.conAssignActions_StaffPlanScreen.btnRemove_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen.conAssignActions_StaffPlanScreen.btnRemove_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galAssignedBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen.conAssignActions_StaffPlanScreen.btnRemove_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen_1.conAssignActions_StaffPlanScreen_1.btnAssign_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen_1.conAssignActions_StaffPlanScreen_1.btnAssign_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galOpenBooking_StaffPlanScreen.conAssignedBooking_StaffPlanScreen_1.conAssignActions_StaffPlanScreen_1.btnAssign_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conAvailable_StaffPlanScreen.rectAvailable_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conAvailable_StaffPlanScreen.rectAvailable_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conAvailable_StaffPlanScreen.rectAvailable_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conAvailable_StaffPlanScreen.rectAvailable_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conAvailable_StaffPlanScreen.rectAvailable_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conAvailable_StaffPlanScreen.rectAvailable_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conBooked_StaffPlanScreen.rectBooked_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conBooked_StaffPlanScreen.rectBooked_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conBooked_StaffPlanScreen.rectBooked_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conBooked_StaffPlanScreen.rectBooked_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conBooked_StaffPlanScreen.rectBooked_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conBooked_StaffPlanScreen.rectBooked_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conSelected_StaffPlanScreen.rectSelected_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conSelected_StaffPlanScreen.rectSelected_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conSelected_StaffPlanScreen.rectSelected_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conSelected_StaffPlanScreen.rectSelected_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conSelected_StaffPlanScreen.rectSelected_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendLeftPanel_StaffPlanScreen.conSelected_StaffPlanScreen.rectSelected_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conOnLeave_StaffPlanScreen.rectOnLeave_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conOnLeave_StaffPlanScreen.rectOnLeave_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conOnLeave_StaffPlanScreen.rectOnLeave_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conOnLeave_StaffPlanScreen.rectOnLeave_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conOnLeave_StaffPlanScreen.rectOnLeave_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conOnLeave_StaffPlanScreen.rectOnLeave_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conDoubleBooked_StaffPlanScreen.rectDoubleBooked_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conDoubleBooked_StaffPlanScreen.rectDoubleBooked_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conDoubleBooked_StaffPlanScreen.rectDoubleBooked_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conDoubleBooked_StaffPlanScreen.rectDoubleBooked_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conDoubleBooked_StaffPlanScreen.rectDoubleBooked_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conLegend_StaffPlanScreen.conLegendItems_StaffPlanScreen.conLegendRightPanel_StaffPlanScreen.conDoubleBooked_StaffPlanScreen.rectDoubleBooked_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Show Open Bookings",
+                "type": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning - Show Open Bookings",
+                "type": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.btnViewZone_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.btnViewZone_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Show Open Bookings",
+                "type": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.galOpenBookings_StaffPlanScreen.btnViewZone_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.btnOpenBookingsClose_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.btnOpenBookingsClose_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Show Open Bookings",
+                "type": "'Staff Planning - Show Open Bookings'.conViewOpenBookingsPopup_StaffPlanScreen.conViewOpenBookings_StaffPlanScreen.btnOpenBookingsClose_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTab_StaffPlanScreen.btnActive_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTab_StaffPlanScreen.btnActive_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTab_StaffPlanScreen.btnActive_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTab_StaffPlanScreen.btnInActive_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTab_StaffPlanScreen.btnInActive_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTab_StaffPlanScreen.btnInActive_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTabHL_StaffPlanScreen.btnInactiveHL_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTabHL_StaffPlanScreen.btnInactiveHL_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTabHL_StaffPlanScreen.btnInactiveHL_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTabHL_StaffPlanScreen.btnInactiveHL_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTabHL_StaffPlanScreen.btnInactiveHL_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.conResourcesTabHL_StaffPlanScreen.btnInactiveHL_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.btnCommitReassign_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.btnCommitReassign_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galAvailableResources_StaffPlanScreen.btnCommitReassign_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.ButtonCanvas1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.ButtonCanvas1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.ButtonCanvas1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Add Leave'.conBackground_AddLeave.conViewForm_AddLeave.conButtonBar_AddLeave.btnOpenBookingsClose_StaffPlanScreen_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Add Leave'.conBackground_AddLeave.conViewForm_AddLeave.conButtonBar_AddLeave.btnOpenBookingsClose_StaffPlanScreen_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Add Leave",
+                "type": "'Staff Planning - Add Leave'.conBackground_AddLeave.conViewForm_AddLeave.conButtonBar_AddLeave.btnOpenBookingsClose_StaffPlanScreen_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Add Leave'.conBackground_AddLeave.conViewForm_AddLeave.conButtonBar_AddLeave.btnOpenBookingsClose_StaffPlanScreen_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Add Leave'.conBackground_AddLeave.conViewForm_AddLeave.conButtonBar_AddLeave.btnOpenBookingsClose_StaffPlanScreen_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Add Leave",
+                "type": "'Staff Planning - Add Leave'.conBackground_AddLeave.conViewForm_AddLeave.conButtonBar_AddLeave.btnOpenBookingsClose_StaffPlanScreen_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -337,7 +2997,7 @@
             "level": "Medium"
           },
           "ruleId": "app-UnusedVariables",
-          "ruleIndex": 2
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -366,7 +3026,36 @@
             "level": "Medium"
           },
           "ruleId": "app-DataSourceDefaultMaxRowsLimit",
-          "ruleIndex": 3
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-ScreenHasManyControls",
+          "ruleIndex": 7
         }
       ],
       "tool": {
@@ -374,6 +3063,44 @@
           "fullName": "PowerApps app checker",
           "name": "PowerApps app checker",
           "rules": [
+            {
+              "id": "app-SuggestRemoteExecutionHint",
+              "messageStrings": {
+                "issue": {
+                  "text": "Delegation warning. The \"{0}\" part of this formula might not work correctly on large data sets."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "If your data set exceeds the 500 record limit but contains less than 2,000 records, try resetting the limit.",
+                  "Try simplifying the formula.",
+                  "Try moving your data to a different data source."
+                ],
+                "level": "Medium",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-SuggestRemoteExecutionHint-OpNotSupportedByColumn",
+              "messageStrings": {
+                "issue": {
+                  "text": "Delegation warning. The highlighted part of this formula might not work correctly with column \"{0}\" on large data sets."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "If your data set exceeds the 500 record limit but contains less than 2,000 records, try resetting the limit.",
+                  "Try simplifying the formula.",
+                  "Try moving your data to a different data source."
+                ],
+                "level": "Medium",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
             {
               "id": "acc-FocusBorderShouldBeVisible",
               "messageStrings": {
@@ -409,6 +3136,23 @@
               }
             },
             {
+              "id": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+              "messageStrings": {
+                "issue": {
+                  "text": "Missing tab stop"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Set TabIndex to 0 or greater to ensure that interactive elements have a tab stop."
+                ],
+                "level": "Medium",
+                "primaryCategory": "accessibility",
+                "whyFix": "People who use the keyboard with your app will not be able to access this element without a tab stop."
+              }
+            },
+            {
               "id": "app-UnusedVariables",
               "messageStrings": {
                 "issue": {
@@ -440,6 +3184,27 @@
                 "level": "Medium",
                 "primaryCategory": "performance",
                 "whyFix": "A 'data row limit' more than 500 may result in a slower app when running non-delegable queries, because the app will have to process every row itself, rather than running the query on the server."
+              }
+            },
+            {
+              "id": "app-ScreenHasManyControls",
+              "messageStrings": {
+                "issue": {
+                  "text": "Too many controls on a screen"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Reduce the number of controls on the screen.",
+                  "Break the app into more screens to reduce the per-screen complexity.",
+                  "Use components to unify grouped controls that are identical across screens, reducing duplication.",
+                  "Use galleries to represent a series of repeated similar controls.",
+                  "Break the app into multiple apps so that each app is small and performant."
+                ],
+                "level": "Medium",
+                "primaryCategory": "performance",
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Staff Planning Screen\" is 309, which exceeds the maximum threshold recommended (300)."
               }
             }
           ],

@@ -629,19 +629,23 @@ Screens:
                                   Properties:
                                     AccessibleLabel: ="Staff View"
                                     AlignInContainer: =AlignInContainer.SetByContainer
+                                    FocusedBorderThickness: =0
                                     Height: =Parent.Height - conMonthHeader_StaffMode.Height - conDetailsHeader_StaffMode.Height
                                     Items: |-
-                                      =Sort(
-                                          GroupBy(
-                                              varStaffModeTable,
-                                              Staff,
-                                              StaffTeam,
-                                              StaffRole,        
-                                              StaffGroup,        
-                                              groupedStaffModeTable
-                                          ),
-                                          StaffGroup,
-                                          SortOrder.Ascending
+                                      =If(
+                                          !IsBlank(varStaffModeTable),
+                                          Sort(
+                                              GroupBy(
+                                                  varStaffModeTable,
+                                                  Staff,
+                                                  StaffTeam,
+                                                  StaffRole,        
+                                                  StaffGroup,        
+                                                  groupedStaffModeTable
+                                              ),
+                                              StaffGroup,
+                                              SortOrder.Ascending
+                                          )
                                       )
                                     TabIndex: =0
                                     TemplateSize: =35
@@ -1034,6 +1038,7 @@ Screens:
                                                             AccessibleLabel: ="Staff schedule count"
                                                             AlignInContainer: =AlignInContainer.SetByContainer
                                                             FillPortions: =0
+                                                            FocusedBorderThickness: =0
                                                             Height: =Parent.Height
                                                             Items: =[0,1,2,3,4,5,6]
                                                             ShowScrollbar: =false

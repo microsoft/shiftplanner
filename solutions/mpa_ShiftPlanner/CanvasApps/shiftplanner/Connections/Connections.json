@@ -9,11 +9,11 @@
       "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1774/1.0.1774.4397/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "b3b5270b-f248-42e9-80a2-d82b31409c04": {
-          "value": "shared_office365_1"
-        },
-        "e2e4d658-4c12-4ac5-b4bc-c53095527f26": {
+        "e824c45d-fd07-4fbf-8be6-e7070e3d86a9": {
           "value": "shared_commondataserviceforapps_1"
+        },
+        "eff5f373-9848-4d09-8954-bb7f3fc35c96": {
+          "value": "shared_office365_1"
         },
         "workflowDisplayName": {
           "value": "Week Status Email Notification"
@@ -22,15 +22,15 @@
           "value": "3afd79e8-e12d-ef11-840a-0022482dada3"
         },
         "workflowName": {
-          "value": "c9ce3695-6b24-4af9-93f6-1f11115f74db"
+          "value": "d51e655f-2b3b-7e69-96b7-de0ccd183390"
         }
       },
       "parameterHintsV2": {
         "shared_commondataserviceforapps_1": {
-          "value": "e2e4d658-4c12-4ac5-b4bc-c53095527f26"
+          "value": "e824c45d-fd07-4fbf-8be6-e7070e3d86a9"
         },
         "shared_office365_1": {
-          "value": "b3b5270b-f248-42e9-80a2-d82b31409c04"
+          "value": "eff5f373-9848-4d09-8954-bb7f3fc35c96"
         },
         "workflowDisplayName": {
           "value": "Week Status Email Notification"
@@ -39,7 +39,7 @@
           "value": "3afd79e8-e12d-ef11-840a-0022482dada3"
         },
         "workflowName": {
-          "value": "c9ce3695-6b24-4af9-93f6-1f11115f74db"
+          "value": "d51e655f-2b3b-7e69-96b7-de0ccd183390"
         }
       }
     },
@@ -48,8 +48,8 @@
       "WeekStatusEmailNotification"
     ],
     "dependencies": {
-      "shared_commondataserviceforapps_1": "e2e4d658-4c12-4ac5-b4bc-c53095527f26",
-      "shared_office365_1": "b3b5270b-f248-42e9-80a2-d82b31409c04"
+      "shared_commondataserviceforapps_1": "e824c45d-fd07-4fbf-8be6-e7070e3d86a9",
+      "shared_office365_1": "eff5f373-9848-4d09-8954-bb7f3fc35c96"
     },
     "dependents": [],
     "id": "8dafcc65-b4a6-40bf-95f4-ca49e55fe87b"
@@ -64,7 +64,7 @@
       "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1774/1.0.1774.4397/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "e2e4d658-4c12-4ac5-b4bc-c53095527f26": {
+        "e824c45d-fd07-4fbf-8be6-e7070e3d86a9": {
           "value": "shared_commondataserviceforapps_1"
         },
         "workflowDisplayName": {
@@ -74,12 +74,12 @@
           "value": "55a0c584-ce2e-ef11-8409-0022482dada3"
         },
         "workflowName": {
-          "value": "73ad6702-be04-4482-979d-2a2961b4497b"
+          "value": "6abab2fb-bfe6-31d6-a60b-6da953057068"
         }
       },
       "parameterHintsV2": {
         "shared_commondataserviceforapps_1": {
-          "value": "e2e4d658-4c12-4ac5-b4bc-c53095527f26"
+          "value": "e824c45d-fd07-4fbf-8be6-e7070e3d86a9"
         },
         "workflowDisplayName": {
           "value": "Week Status Calendar Invite"
@@ -88,7 +88,7 @@
           "value": "55a0c584-ce2e-ef11-8409-0022482dada3"
         },
         "workflowName": {
-          "value": "73ad6702-be04-4482-979d-2a2961b4497b"
+          "value": "6abab2fb-bfe6-31d6-a60b-6da953057068"
         }
       }
     },
@@ -97,12 +97,33 @@
       "WeekStatusCalendarInvite"
     ],
     "dependencies": {
-      "shared_commondataserviceforapps_1": "e2e4d658-4c12-4ac5-b4bc-c53095527f26"
+      "shared_commondataserviceforapps_1": "e824c45d-fd07-4fbf-8be6-e7070e3d86a9"
     },
     "dependents": [],
     "id": "9d67c29e-1d11-49ad-a7dd-a5a93cfab985"
   },
-  "b3b5270b-f248-42e9-80a2-d82b31409c04": {
+  "e824c45d-fd07-4fbf-8be6-e7070e3d86a9": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Premium",
+      "authenticationType": "Oauth",
+      "bypassConsent": true,
+      "displayName": "Microsoft Dataverse",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1782/1.0.1782.4447/commondataserviceforapps/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_commondataserviceforapps",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "9d67c29e-1d11-49ad-a7dd-a5a93cfab985",
+      "8dafcc65-b4a6-40bf-95f4-ca49e55fe87b"
+    ],
+    "id": "e824c45d-fd07-4fbf-8be6-e7070e3d86a9"
+  },
+  "eff5f373-9848-4d09-8954-bb7f3fc35c96": {
     "appActions": [],
     "connectionRef": {
       "apiTier": "Standard",
@@ -118,26 +139,6 @@
     "dependents": [
       "8dafcc65-b4a6-40bf-95f4-ca49e55fe87b"
     ],
-    "id": "b3b5270b-f248-42e9-80a2-d82b31409c04"
-  },
-  "e2e4d658-4c12-4ac5-b4bc-c53095527f26": {
-    "appActions": [],
-    "connectionRef": {
-      "apiTier": "Premium",
-      "bypassConsent": true,
-      "displayName": "Microsoft Dataverse",
-      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1782/1.0.1782.4447/commondataserviceforapps/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_commondataserviceforapps",
-      "parameterHints": {},
-      "parameterHintsV2": {}
-    },
-    "datasets": {},
-    "dataSources": [],
-    "dependencies": {},
-    "dependents": [
-      "9d67c29e-1d11-49ad-a7dd-a5a93cfab985",
-      "8dafcc65-b4a6-40bf-95f4-ca49e55fe87b"
-    ],
-    "id": "e2e4d658-4c12-4ac5-b4bc-c53095527f26"
+    "id": "eff5f373-9848-4d09-8954-bb7f3fc35c96"
   }
 }

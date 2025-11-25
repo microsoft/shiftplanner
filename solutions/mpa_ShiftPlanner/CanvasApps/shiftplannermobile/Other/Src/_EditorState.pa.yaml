@@ -19,5 +19,8 @@ EditorState:
     - All Shifts Screen
     - Swap Reason Screen
     - Request Time Off Screen
+    - Time Track Screen
+    - Time Sheet View Screen
+    - Time Sheet Edit Screen
   ComponentDefinitionsOrder:
     - compHeaderMobile
