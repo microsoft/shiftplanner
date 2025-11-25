@@ -10,6 +10,64 @@ App:
   Properties:
     ConfirmExit: =true
     ConfirmExitMessage: ="Are you sure you want to close this application?"
+    Formulas: |-
+      =nf_SimpleHourMinSecondTimeFormat(parSeconds:Number): Text 
+          = nf_SimpleHourMinTimeFormat(parSeconds) & " " & Text(Mod(parSeconds, 60), "00") & "s";
+
+      nf_SimpleHourMinTimeFormat(parSeconds:Number): Text 
+          = RoundDown(parSeconds/60/60,0) & "h " & Text(Mod(RoundDown(parSeconds/60,0),60), "00") & "m";
+
+
+
+      // desktop fonts
+      varDesktopFonts = {
+          H1: {
+              size: 28,
+              weight: 'TextCanvas.Weight'.Regular,
+              weightBold: 'TextCanvas.Weight'.Semibold,
+              italic: false
+          },
+          H2: {
+              size: 22,
+              weight: 'TextCanvas.Weight'.Regular,
+              weightBold: 'TextCanvas.Weight'.Semibold,
+              italic: false
+          },
+          H3: {
+              size: 16,
+              weight: 'TextCanvas.Weight'.Regular,
+              weightBold: 'TextCanvas.Weight'.Semibold,
+              italic: false
+          }
+      };
+
+      varTheme = {
+          neutralBackground1: "#FFFFFF",
+          neutralBackground2: "#FAFAFA",
+          neutralBackground3: "#F5F5F5",
+          neutralBackgroundDisabled: "#F0F0F0",
+          neutralForeground1: "#242424",
+          neutralForeground2: "#424242",
+          neutralForeground3: "#616161",
+          neutralForegroundOnBrand: "#FFFFFF",
+          neutralForegroundPlaceholder: "#707070",
+          neutralForegroundDisabled: "#BDBDBD",
+          neutralStroke1: "#D1D1D1",
+          neutralStroke2: "#E0E0E0",
+          neutralStrokeAccessible: "#616161",
+          neutralStrokeDisabled: "#E0E0E0",
+          statusDanger: "#C50F1F",
+          statusSuccess: "#107C10",
+          statusWarning1: "#FDE300",
+          statusWarning2: "#817400",
+          statusInformative: "#EBEBEB",
+          primary: "#0F6CBD"
+      };
+
+      varCurrentUser = User();
+
+      // Determine if the app is being launched by teams
+      varIsTeamsEmbedded = Not(IsBlank(Param("hostClientType")));
     MinScreenHeight: '=640 '
     OnStart: |-
       =// left nav menu items
@@ -31,99 +89,21 @@ App:
               Screen: 'Request Screen'
           },
           {
+              Label: "Time Sheets",
+              Icon: Icon.Clock,
+              Screen: 'Time Sheet View Screen'
+          },
+          {
               Label: "Profile",
               Icon: Icon.Person,
               Screen: 'Profile Screen'
-          }
-      );
-      // desktop fonts
-      Set(
-          varDesktopFonts,
-          {
-              H1: {
-                  size: 28,
-                  weight: 'TextCanvas.Weight'.Regular,
-                  weightBold: 'TextCanvas.Weight'.Semibold,
-                  italic: false
-              },
-              H2: {
-                  size: 22,
-                  weight: 'TextCanvas.Weight'.Regular,
-                  weightBold: 'TextCanvas.Weight'.Semibold,
-                  italic: false
-              },
-              H3: {
-                  size: 16,
-                  weight: 'TextCanvas.Weight'.Regular,
-                  weightBold: 'TextCanvas.Weight'.Semibold,
-                  italic: false
-              }
           }
       );
       Set(
           varThemeFont,
           varDesktopFonts
       );
-      // set theme colors
-      /*Set(
-          varTheme,
-          {
-              background: "#FAF9F8",
-              backgroundFill: "#FFFFFF",
-              backgroundFillDisabled: "#F3F2F1",
-              primaryGray: "#8A8886",
-              secondaryGray: "#EDEBE9",
-              tertiaryGray: "#605E5C",
-              confirmation: "#107C10",
-              warning: "#FFB900",
-              error: "#D13438",
-              info: "#006FC8"
-          }
-      );*/
-      Set(
-          varTheme,
-          {
-              neutralBackground1: "#FFFFFF",
-              neutralBackground2: "#FAFAFA",
-              neutralBackground3: "#F5F5F5",
-              neutralBackgroundDisabled: "#F0F0F0",
-              neutralForeground1: "#242424",
-              neutralForeground2: "#424242",
-              neutralForeground3: "#616161",
-              neutralForegroundOnBrand: "#FFFFFF",
-              neutralForegroundPlaceholder: "#707070",
-              neutralForegroundDisabled: "#BDBDBD",
-              neutralStroke1: "#D1D1D1",
-              neutralStroke2: "#E0E0E0",
-              neutralStrokeAccessible: "#616161",
-              neutralStrokeDisabled: "#E0E0E0",
-              statusDanger: "#C50F1F",
-              statusSuccess: "#107C10",
-              statusWarning1: "#FDE300",
-              statusWarning2: "#817400",
-              statusInformative: "#EBEBEB",
-              primary: "#0F6CBD"
-          }
-      );
 
-      Set(varCurrentUser,User());
-
-
-      //Set current selected screen
-      Set(varSelectedScreen, 'Home Screen');
-
-      // Determine if the app is being launched by teams
-      Set(varIsTeamsEmbedded, Not(IsBlank(Param("hostClientType"))));
-      //Set(varIsTeamsEmbedded, true);
-
-      /*
-      //Filter bookings by Current User
-      ClearCollect(colFilteredBookings, 
-          Filter(
-              'Shift Bookings', Resource.'Primary Email' = varCurrentUser.Email
-          )
-      );
-      */
       //Create collection of 3 months from this month to 3 months forward
       ClearCollect(colFilterMonths,
           {
@@ -139,6 +119,10 @@ App:
               Month: Month(DateAdd(Today(), 2, TimeUnit.Months))
           }
       );
+
+
+      //Set current selected screen
+      Set(varSelectedScreen, 'Home Screen');
     SizeBreakpoints: |-
       =//[600, 900, 1200, 1600]
       [600]

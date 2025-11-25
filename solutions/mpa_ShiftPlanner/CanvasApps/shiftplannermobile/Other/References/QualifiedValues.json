@@ -83,15 +83,27 @@
     },
     {
       "Kind": "default.cds_mpa_shiftplanner_zone_forms",
-      "Namespace": "shiftplanner_zones (Forms)",
+      "Namespace": "Zones (Forms)",
       "Values": {
         "Information": "2e339313-2141-4f59-8432-4d57d4e97ec5",
         "Zone": "7affd6a6-a618-ef11-9f89-000d3a9d8d48"
       }
     },
     {
+      "Kind": "default.cds_mpa_shiftplanner_timesheetentry_forms",
+      "Namespace": "Time Sheet Entries (Forms)",
+      "Values": {
+        "Information": "08e98fe4-1392-4c52-ad06-fac2e1af342e"
+      }
+    },
+    {
+      "Kind": "default.cds_bulkdeletefailure_forms",
+      "Namespace": "Bulk Delete Failures (Forms)",
+      "Values": {}
+    },
+    {
       "Kind": "default.cds_mpa_shiftplanner_zone_forms",
-      "Namespace": "Zones (Forms)",
+      "Namespace": "shiftplanner_zones (Forms)",
       "Values": {
         "Information": "2e339313-2141-4f59-8432-4d57d4e97ec5",
         "Zone": "7affd6a6-a618-ef11-9f89-000d3a9d8d48"

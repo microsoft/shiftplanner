@@ -1,0 +1,124 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_timesheetentries",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_timesheetentry",
+    "MaxGetRowsCount": 500,
+    "Name": "Time Sheet Entries",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_durationminutes": "Duration Minutes",
+      "mpa_endtime": "End Time",
+      "mpa_name": "Name",
+      "mpa_notes": "Notes",
+      "mpa_shiftbooking": "Shift Booking",
+      "mpa_shiftplanner_timesheetentry_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_timesheetentry_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_timesheetentry_DuplicateBaseRecord": "Duplicate Records (mpa_shiftplanner_timesheetentry_DuplicateBaseRecord)",
+      "mpa_shiftplanner_timesheetentry_DuplicateMatchingRecord": "Duplicate Records (mpa_shiftplanner_timesheetentry_DuplicateMatchingRecord)",
+      "mpa_shiftplanner_timesheetentry_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_timesheetentry_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_timesheetentry_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_timesheetentry_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_timesheetentryid": "Time Sheet Entry",
+      "mpa_starttime": "Start Time",
+      "mpa_timeentrytype": "Time Entry Type",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Time Sheet Entries",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Time Sheet Entries (Views)",
+    "Name": "_mpa_shiftplanner_timesheetentry_views",
+    "RelatedEntityName": "Time Sheet Entries",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "556402e6-2ede-41ee-a14e-5877b1da3966": "Time Sheet Entry Associated View",
+      "87a5cab2-75c6-4b2c-ad97-c2ce942da3a4": "All Time Sheet Entries",
+      "a80ed2e6-e3fa-48c6-a10e-07acf008e766": "Confirmed Time Sheet Entries",
+      "ce467c99-6fc3-f011-8543-7c1e5200c456": "Shift Booking Related View",
+      "e76a126a-2b3f-475e-9f9f-c4f98d87f1ad": "Time Sheet Entry Lookup View",
+      "eca58e68-6ad9-48d7-a870-9df315e7e029": "Time Sheet Entry Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Time Entry Type (Time Sheet Entries)",
+    "Name": "mpa_shiftplanner_timesheetentry_mpa_timeentrytype",
+    "OptionSetInfoNameMapping": {
+      "865420000": "Break"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_timeentrytype",
+        "OptionSetReferenceEntityName": "Time Sheet Entries"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "mpa_timeentrytype",
+    "RelatedEntityName": "Time Sheet Entries",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Time Sheet Entries)",
+    "Name": "mpa_shiftplanner_timesheetentry_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Time Sheet Entries"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Time Sheet Entries",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Time Sheet Entries)",
+    "Name": "mpa_shiftplanner_timesheetentry_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Draft",
+      "2": "Inactive",
+      "865420001": "Completed"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Time Sheet Entries"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Time Sheet Entries",
+    "Type": "OptionSetInfo"
+  }
+]

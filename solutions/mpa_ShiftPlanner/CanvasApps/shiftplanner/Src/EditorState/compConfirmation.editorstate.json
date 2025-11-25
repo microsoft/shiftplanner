@@ -69,7 +69,8 @@
         "IconStyle",
         "Align",
         "VerticalAlign",
-        "BorderStyle"
+        "BorderStyle",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -204,6 +205,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Height",
           "RuleProviderType": "Unknown"
@@ -312,7 +318,8 @@
         "IconStyle",
         "Align",
         "VerticalAlign",
-        "BorderStyle"
+        "BorderStyle",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -456,6 +463,11 @@
         {
           "Category": "Data",
           "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1293,7 +1305,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -1406,6 +1420,16 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Y",
           "RuleProviderType": "Unknown"
@@ -1471,7 +1495,10 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "FontColor",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -1556,6 +1583,21 @@
         {
           "Category": "Data",
           "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "FontColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
           "RuleProviderType": "Unknown"
         },
         {

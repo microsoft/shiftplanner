@@ -1,0 +1,1031 @@
+"'Time Sheet Edit Screen' As screen":
+    ContentLanguage: =""
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: =Select(btnHiddenRefreshBreaks_EditTimeSheet);
+
+    conMainContent_EditTimeSheet As groupContainer.horizontalAutoLayoutContainer:
+        Height: =Parent.Height - compHeaderMobile_EditTimeSheet.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =5
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: |+
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 0
+            )
+            
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 0
+            )
+        Width: =Parent.Width
+        Y: =compHeaderMobile_EditTimeSheet.Height 
+        ZIndex: =1
+
+        btnHiddenSaveShiftDetails_EditTimeSheet As Button:
+            AlignInContainer: =AlignInContainer.Stretch
+            BasePaletteColor: =
+            BorderColor: =
+            DisplayMode: =DisplayMode.Edit
+            FontColor: =
+            Height: =32
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            OnSelect: |
+                =//////////////////////////////////////////////////////
+                //// Calculate summary and Save the timesheet header
+                //////////////////////////////////////////////////////
+                
+                // Extract the start time
+                UpdateContext({varActualStartTime :
+                    If(
+                        !IsBlank(dcActualStartDateValue_EditTimeSheet.SelectedDate),
+                        DateTimeValue(
+                            DateValue(dcActualStartDateValue_EditTimeSheet.SelectedDate) + Time(First(dcActualStartHourValue_EditTimeSheet.SelectedItems).Value, First(dcActualStartMinuteValue_EditTimeSheet.SelectedItems).Value, 0)
+                        ), 
+                        Blank()
+                    )
+                });
+                
+                // Extract the end time
+                UpdateContext({varActualEndTime :
+                    If(!IsBlank(dcActualStartDateValue_EditTimeSheet.SelectedDate),
+                            DateTimeValue(
+                                DateValue(dcActualEndDateValue_EditTimeSheet.SelectedDate) + Time(First(dcActualEndHourValue_EditTimeSheet.SelectedItems).Value, First(dcActualEndMinuteValue_EditTimeSheet.SelectedItems).Value, 0)
+                            ), 
+                        Blank()
+                    )
+                });
+                
+                // Calculate Total Break Time
+                UpdateContext({varOffClockDuration : Sum(Filter('Time Sheet Entries', 'Shift Booking'.shiftplanner_shiftbooking = varTimeSheetToEdit.shiftplanner_shiftbooking), ThisRecord.'Duration Minutes')});
+                
+                // Calculate Total Working Time
+                UpdateContext({varOnClockDuration : 
+                    If(
+                        Or(IsBlank(varActualEndTime),IsBlank(varActualEndTime)),
+                        Blank(),
+                        DateDiff(varActualStartTime, varActualEndTime, TimeUnit.Minutes) + varOffClockDuration
+                    )
+                });
+                
+                IfError(
+                    Patch('Shift Bookings', varTimeSheetToEdit, {
+                        'Actual End Time': varActualEndTime,
+                        'Actual Start Time': varActualStartTime,
+                        'Actual Worked Duration': varOnClockDuration,
+                        'Break Duration': varOffClockDuration,
+                        'Timesheet Notes': dcNotesDataCardValue_EditTimeSheet.Value
+                    }),
+                    Notify("Unable to Save. " & FirstError.Message)
+                );
+            Text: ="Hidden Shift Save"
+            Visible: =false
+            Width: =96
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+        btnHiddenRefreshBreaks_EditTimeSheet As Button:
+            AlignInContainer: =AlignInContainer.Stretch
+            BasePaletteColor: =
+            BorderColor: =
+            DisplayMode: =DisplayMode.Edit
+            FontColor: =
+            Height: =32
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            OnSelect: |-
+                =// Make sure the names match
+                
+                With(
+                    {
+                        breaks: SortByColumns(
+                            Filter('Time Sheet Entries', 'Shift Booking'.shiftplanner_shiftbooking = varTimeSheetToEdit.shiftplanner_shiftbooking),
+                            "mpa_starttime",
+                            SortOrder.Ascending
+                        )
+                    },
+                    ForAll(
+                        Sequence(CountRows(breaks)),
+                        With(
+                            {
+                                rec: Last(FirstN(breaks, Value)),
+                                expectedName: "Break " & Text(Value, "0")
+                            },
+                            If(
+                                Lower(Trim(rec.Name)) <> Lower(Trim(expectedName)),
+                                Patch('Time Sheet Entries', rec, { Name: expectedName })
+                            )
+                        )
+                    )
+                );
+                
+                
+                
+                
+                UpdateContext({
+                    colTimeSheetEntries :Filter('Time Sheet Entries', 'Shift Booking'.shiftplanner_shiftbooking = varTimeSheetToEdit.shiftplanner_shiftbooking)
+                });
+                /*
+                ForAll(
+                    Sequence(CountRows(colTimeSheetEntries)),
+                    Patch(
+                        'Time Sheet Entries',
+                        Last(FirstN(Sort(colTimeSheetEntries, 'Start Time'), Value)),
+                        { Name: "Break " & Value }
+                    )
+                );*/
+            Text: ="Hidden Refresh"
+            Visible: =false
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+        conShiftDetails_EditTimeSheet As groupContainer.horizontalAutoLayoutContainer:
+            Fill: =ColorValue(varTheme.neutralBackground3)
+            FillPortions: =0
+            Height: =45
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =10
+            X: =40
+            Y: =40
+            ZIndex: =3
+
+            txtZoneAndRole_TimeTrack_1 As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =20
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                Size: =14
+                TabIndex: =0
+                Text: =varTimeSheetToEdit.Zone.Name & " (" & varTimeSheetToEdit.'Team Position'.Role.Name & ")"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: =varThemeFont.H3.weightBold
+                Width: =96
+                Wrap: =true
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            txtShiftType_TimeTrack_1 As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =true
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                FillPortions: =1
+                Font: =""
+                FontColor: =ColorValue(varTheme.neutralForeground1)
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =20
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =20
+                LayoutMinWidth: =80
+                Size: =14
+                TabIndex: =0
+                Text: =varTimeSheetToEdit.'Team Position'.'Shift Team'.'Shift Type'.Name & " " & Concatenate(Text(varTimeSheetToEdit.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time' , DateTimeFormat.ShortTime) & " - " & Text(varTimeSheetToEdit.'Team Position'.'Shift Team'.'Shift Type'.'End Date', DateTimeFormat.ShortTime)) & ""
+                Tooltip: =""
+                VerticalAlign: =VerticalAlign.Middle
+                Visible: =true
+                Weight: =varThemeFont.H3.weight
+                Width: =60
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =2
+
+        frmShiftBooking_EditTimeSheet As form.PowerApps_CoreControls_Form:
+            BorderColor: =App.Theme.Colors.Darker40
+            DataSource: ='Shift Bookings'
+            FillPortions: =0
+            FocusedBorderThickness: =0
+            Height: =235
+            Item: =varTimeSheetToEdit
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =250
+            LayoutMinWidth: =300
+            NumberOfColumns: =1
+            UseFluentV9Cards: =true
+            Width: =759
+            X: =40
+            Y: =40
+            ZIndex: =4
+
+            dcNotes_EditTimeSheet As typedDataCard.fluentV9TextualMultiLineEditCard:
+                BorderColor: =App.Theme.Colors.Darker40
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="mpa_timesheetnotes"
+                Default: =ThisItem.'Timesheet Notes'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Shift Bookings'],DataSourceInfo.DisplayName,'mpa_timesheetnotes')
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =90
+                Required: =false
+                Update: =dcNotesDataCardValue_EditTimeSheet.Value
+                Width: =Parent.Width
+                X: =0
+                Y: =2
+                ZIndex: =1
+
+                dcNotesDataCardKey_EditTimeSheet As Text:
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =22
+                    Text: ="Notes"
+                    Weight: =varThemeFont.H3.weight
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =15
+                    Y: =10
+                    ZIndex: =1
+
+                "dcNotesDataCardValue_EditTimeSheet As 'Text input'":
+                    AccessibleLabel: =Parent.DisplayName
+                    BasePaletteColor: =
+                    BorderColor: =
+                    DisplayMode: =Parent.DisplayMode
+                    Fill: =
+                    FontColor: =
+                    Height: =60
+                    Mode: ='TextInputCanvas.Mode'.Multiline
+                    OnChange: =Select(btnHiddenSaveShiftDetails_EditTimeSheet)
+                    Required: =Parent.Required
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Value: =Parent.Default
+                    Width: =Parent.Width - 38
+                    X: =15
+                    Y: =dcNotesDataCardKey_EditTimeSheet.Y + dcNotesDataCardKey_EditTimeSheet.Height + 4
+                    ZIndex: =2
+
+                dcNotesErrorMessage_EditTimeSheet As Text:
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =dcNotesDataCardValue_EditTimeSheet.Y + dcNotesDataCardValue_EditTimeSheet.Height
+                    ZIndex: =3
+
+                dcNotesStarVisible_EditTimeSheet As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =dcNotesDataCardKey_EditTimeSheet.Y
+                    ZIndex: =4
+
+            dcActualStartTime_EditTimeSheet As typedDataCard.fluentV9DateTimeEditCard:
+                BorderColor: =App.Theme.Colors.Darker40
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="mpa_actualstarttime"
+                Default: =ThisItem.'Actual Start Time'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Shift Bookings'],DataSourceInfo.DisplayName,'Actual Start Time')
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =60
+                Required: =false
+                Update: =If(Not IsBlank(dcActualStartDateValue_EditTimeSheet.SelectedDate), DateTime(Year(dcActualStartDateValue_EditTimeSheet.SelectedDate), Month(dcActualStartDateValue_EditTimeSheet.SelectedDate), Day(dcActualStartDateValue_EditTimeSheet.SelectedDate), Value(dcActualStartHourValue_EditTimeSheet.Selected.Value), Value(dcActualStartMinuteValue_EditTimeSheet.Selected.Value), Second(dcActualStartDateValue_EditTimeSheet.SelectedDate)))
+                Width: =Parent.Width
+                X: =0
+                Y: =0
+                ZIndex: =4
+
+                dcActualStartDataCardKey_EditTimeSheet As Text:
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =22
+                    Text: ="Start Time"
+                    Weight: =varThemeFont.H3.weight
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =15
+                    Y: =0
+                    ZIndex: =1
+
+                "dcActualStartDateValue_EditTimeSheet As 'Date picker'":
+                    AccessibleLabel: =Parent.DisplayName
+                    BasePaletteColor: =
+                    BorderColor: =
+                    DisplayMode: =Parent.DisplayMode
+                    Fill: =
+                    FontColor: =
+                    Height: =32
+                    OnChange: =Select(btnHiddenSaveShiftDetails_EditTimeSheet)
+                    Required: =Parent.Required
+                    SelectedDate: =Parent.Default
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =(Parent.Width - 38) / 2
+                    X: =15
+                    Y: =dcActualStartDataCardKey_EditTimeSheet.Y + dcActualStartDataCardKey_EditTimeSheet.Height + 4
+                    ZIndex: =2
+
+                dcActualStartHourValue_EditTimeSheet As Dropdown.pcfdataset:
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DefaultSelectedItems: =[Text(Hour(Parent.Default),"00")]
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =28
+                    Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+                    OnChange: =Select(btnHiddenSaveShiftDetails_EditTimeSheet)
+                    Required: =Parent.Required
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =dcActualStartDateValue_EditTimeSheet.Width / 2 - 10
+                    X: =dcActualStartDateValue_EditTimeSheet.X + dcActualStartDateValue_EditTimeSheet.Width + 10
+                    Y: =dcActualStartDateValue_EditTimeSheet.Y + 1
+                    ZIndex: =3
+
+                dcActualStartSeparator_EditTimeSheet As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =dcActualStartHourValue_EditTimeSheet.Height
+                    Text: |-
+                        =":"
+                    Width: =10
+                    X: =dcActualStartHourValue_EditTimeSheet.X + dcActualStartHourValue_EditTimeSheet.Width
+                    Y: =dcActualStartHourValue_EditTimeSheet.Y
+                    ZIndex: =4
+
+                dcActualStartMinuteValue_EditTimeSheet As Dropdown.pcfdataset:
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DefaultSelectedItems: =[Text(Minute(Parent.Default),"00")]
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =28
+                    Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                    OnChange: =Select(btnHiddenSaveShiftDetails_EditTimeSheet)
+                    Required: =false
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =dcActualStartHourValue_EditTimeSheet.Width
+                    X: =dcActualStartHourValue_EditTimeSheet.X + dcActualStartHourValue_EditTimeSheet.Width + dcActualStartSeparator_EditTimeSheet.Width
+                    Y: =dcActualStartHourValue_EditTimeSheet.Y + 1
+                    ZIndex: =5
+
+                dcActualStartErrorMessage_EditTimeSheet As Text:
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =dcActualStartDateValue_EditTimeSheet.Y + dcActualStartDateValue_EditTimeSheet.Height
+                    ZIndex: =6
+
+                dcActualStartStarVisible_EditTimeSheet As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =20
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =dcActualStartDataCardKey_EditTimeSheet.Y
+                    ZIndex: =7
+
+            dcActualEndTime_EditTimeSheet As typedDataCard.fluentV9DateTimeEditCard:
+                BorderColor: =App.Theme.Colors.Darker40
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="mpa_actualendtime"
+                Default: =ThisItem.'Actual End Time'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Shift Bookings'],DataSourceInfo.DisplayName,'Actual End Time')
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                Required: =false
+                Update: =If(Not IsBlank(dcActualEndDateValue_EditTimeSheet.SelectedDate), DateTime(Year(dcActualEndDateValue_EditTimeSheet.SelectedDate), Month(dcActualEndDateValue_EditTimeSheet.SelectedDate), Day(dcActualEndDateValue_EditTimeSheet.SelectedDate), Value(dcActualEndHourValue_EditTimeSheet.Selected.Value), Value(dcActualEndMinuteValue_EditTimeSheet.Selected.Value), Second(dcActualEndDateValue_EditTimeSheet.SelectedDate)))
+                Width: =Parent.Width
+                X: =0
+                Y: =1
+                ZIndex: =4
+
+                dcActualEndDataCardKey_EditTimeSheet As Text:
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =22
+                    Text: ="End Time"
+                    Weight: =varThemeFont.H3.weight
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =15
+                    Y: =10
+                    ZIndex: =1
+
+                "dcActualEndDateValue_EditTimeSheet As 'Date picker'":
+                    AccessibleLabel: =Parent.DisplayName
+                    BasePaletteColor: =
+                    BorderColor: =
+                    DisplayMode: =Parent.DisplayMode
+                    Fill: =
+                    FontColor: =
+                    Height: =32
+                    OnChange: =Select(btnHiddenSaveShiftDetails_EditTimeSheet)
+                    Required: =Parent.Required
+                    SelectedDate: =Parent.Default
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =(Parent.Width - 38) / 2
+                    X: =15
+                    Y: =dcActualEndDataCardKey_EditTimeSheet.Y + dcActualEndDataCardKey_EditTimeSheet.Height + 4
+                    ZIndex: =2
+
+                dcActualEndHourValue_EditTimeSheet As Dropdown.pcfdataset:
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DefaultSelectedItems: =[Text(Hour(Parent.Default),"00")]
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =28
+                    Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+                    OnChange: =Select(btnHiddenSaveShiftDetails_EditTimeSheet)
+                    Required: =Parent.Required
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =dcActualEndDateValue_EditTimeSheet.Width / 2 - 10
+                    X: =dcActualEndDateValue_EditTimeSheet.X + dcActualEndDateValue_EditTimeSheet.Width + 10
+                    Y: =dcActualEndDateValue_EditTimeSheet.Y + 1
+                    ZIndex: =3
+
+                dcActualEndSeparator_EditTimeSheet As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =dcActualEndHourValue_EditTimeSheet.Height
+                    Text: |-
+                        =":"
+                    Width: =10
+                    X: =dcActualEndHourValue_EditTimeSheet.X + dcActualEndHourValue_EditTimeSheet.Width
+                    Y: =dcActualEndHourValue_EditTimeSheet.Y
+                    ZIndex: =4
+
+                dcActualEndMinuteValue_EditTimeSheet As Dropdown.pcfdataset:
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DefaultSelectedItems: =[Text(Minute(Parent.Default),"00")]
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =28
+                    Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                    OnChange: =Select(btnHiddenSaveShiftDetails_EditTimeSheet)
+                    Required: =false
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =dcActualEndHourValue_EditTimeSheet.Width
+                    X: =dcActualEndHourValue_EditTimeSheet.X + dcActualEndHourValue_EditTimeSheet.Width + dcActualEndSeparator_EditTimeSheet.Width
+                    Y: =dcActualEndHourValue_EditTimeSheet.Y + 1
+                    ZIndex: =5
+
+                dcActualEndErrorMessage_EditTimeSheet As Text:
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =dcActualEndDateValue_EditTimeSheet.Y + dcActualEndDateValue_EditTimeSheet.Height
+                    ZIndex: =6
+
+                dcActualEndStarVisible_EditTimeSheet As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =20
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =dcActualEndDataCardKey_EditTimeSheet.Y
+                    ZIndex: =7
+
+        "galBreaks_EditTimeSheet As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+            '#CopilotOverlayLabel': ="Filtered"
+            BorderColor: =App.Theme.Colors.Darker40
+            DelayItemLoading: =true
+            FocusedBorderThickness: =0
+            Items: =SortByColumns(colTimeSheetEntries,"mpa_starttime", SortOrder.Ascending, "createdon", SortOrder.Ascending)
+            Layout: =Layout.Vertical
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplatePadding: =0
+            TemplateSize: =180
+            ZIndex: =5
+
+            conBreakForm_EditTimeSheet As groupContainer.verticalAutoLayoutContainer:
+                Height: =Parent.TemplateHeight
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =15
+                Width: =Parent.Width-20
+                ZIndex: =2
+
+                lblBreakName_EditTimeSheet As Text:
+                    Align: ='TextCanvas.Align'.Start
+                    AlignInContainer: =AlignInContainer.Stretch
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =24
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =14
+                    TabIndex: =0
+                    Text: =ThisItem.Name
+                    Tooltip: =""
+                    VerticalAlign: =""
+                    Visible: =true
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                lblStartTime_EditTimeSheet As Text:
+                    Align: ="Start"
+                    AlignInContainer: =AlignInContainer.Stretch
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =22
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =14
+                    TabIndex: =0
+                    Text: ="Start Time"
+                    Tooltip: =""
+                    VerticalAlign: =""
+                    Visible: =true
+                    Weight: =varThemeFont.H3.weight
+                    Width: =Parent.Width
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+                conStartTime_EditTimeSheet As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =34
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutGap: =10
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =3
+
+                    "cmbBreakStartDate_EditTimeSheet As 'Date picker'":
+                        BasePaletteColor: =
+                        BorderColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FillPortions: =2
+                        FontColor: =
+                        Height: =30
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =30
+                        OnChange: =Select(btnHiddenSaveBreak_EditTimeSheet)
+                        SelectedDate: =ThisItem.'Start Time'
+                        Width: =320
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    cmbBreakStartHour_EditTimeSheet As Dropdown.pcfdataset:
+                        AccessibleLabel: ="Start Break Hour"
+                        Appearance: ="FilledDarker"
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DefaultSelectedItems: =[Text(Hour(ThisItem.'Start Time'),"00")]
+                        DisplayMode: =Parent.DisplayMode
+                        FillPortions: =1
+                        FontSize: =0
+                        Height: =28
+                        Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =30
+                        OnChange: =Select(btnHiddenSaveBreak_EditTimeSheet)
+                        Required: =true
+                        TabIndex: =0
+                        Tooltip: =""
+                        ValidationState: =
+                        Visible: =true
+                        Width: =dcActualStartDateValue_EditTimeSheet.Width / 2 - 10
+                        X: =dcActualStartDateValue_EditTimeSheet.X + dcActualStartDateValue_EditTimeSheet.Width + 10
+                        Y: =dcActualStartDateValue_EditTimeSheet.Y + 1
+                        ZIndex: =2
+
+                    cmbBreakStartMin_EditTimeSheet As Dropdown.pcfdataset:
+                        AccessibleLabel: ="Start Break Hour"
+                        Appearance: ="FilledDarker"
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DefaultSelectedItems: =[Text(Minute(ThisItem.'Start Time'),"00")]
+                        DisplayMode: =Parent.DisplayMode
+                        FillPortions: =1
+                        FontSize: =0
+                        Height: =28
+                        Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =30
+                        OnChange: =Select(btnHiddenSaveBreak_EditTimeSheet)
+                        Required: =false
+                        TabIndex: =0
+                        Tooltip: =""
+                        ValidationState: =
+                        Visible: =true
+                        Width: =cmbBreakStartHour_EditTimeSheet.Width
+                        X: =cmbBreakStartHour_EditTimeSheet.X + cmbBreakStartHour_EditTimeSheet.Width + dcActualStartSeparator_EditTimeSheet.Width
+                        Y: =cmbBreakStartHour_EditTimeSheet.Y + 1
+                        ZIndex: =3
+
+                lblEndTime_EditTimeSheet As Text:
+                    Align: ="Start"
+                    AlignInContainer: =AlignInContainer.Stretch
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =22
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =14
+                    TabIndex: =0
+                    Text: ="End Time"
+                    Tooltip: =""
+                    VerticalAlign: =""
+                    Visible: =true
+                    Weight: =varThemeFont.H3.weight
+                    Width: =Parent.Width
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+                conEndTime_EditTimeSheet As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =34
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutGap: =10
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =5
+
+                    "cmbBreakEndDate_EditTimeSheet As 'Date picker'":
+                        AccessibleLabel: =""
+                        Appearance: ="FilledDarker"
+                        BasePaletteColor: =
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DateTimeZone: ="Local"
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FillPortions: =2
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =false
+                        FontSize: =0
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        FontWeight: =""
+                        Format: ="Long Abbreviated"
+                        Height: =30
+                        IsEditable: =false
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =30
+                        OnChange: =Select(btnHiddenSaveBreak_EditTimeSheet)
+                        Placeholder: ="Select a date..."
+                        Required: =false
+                        SelectedDate: =ThisItem.'End Time'
+                        StartOfWeek: ="Sunday"
+                        TabIndex: =0
+                        Tooltip: =""
+                        ValidationState: ="None"
+                        Visible: =true
+                        Width: =320
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    cmbBreakEndHour_EditTimeSheet As Dropdown.pcfdataset:
+                        AccessibleLabel: ="Start Break Hour"
+                        Appearance: ="FilledDarker"
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DefaultSelectedItems: =[Text(Hour(ThisItem.'End Time'),"00")]
+                        DisplayMode: =Parent.DisplayMode
+                        FillPortions: =1
+                        FontSize: =0
+                        Height: =28
+                        Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =30
+                        OnChange: =Select(btnHiddenSaveBreak_EditTimeSheet)
+                        Required: =true
+                        TabIndex: =0
+                        Tooltip: =""
+                        ValidationState: =
+                        Visible: =true
+                        Width: =dcActualStartDateValue_EditTimeSheet.Width / 2 - 10
+                        X: =dcActualStartDateValue_EditTimeSheet.X + dcActualStartDateValue_EditTimeSheet.Width + 10
+                        Y: =dcActualStartDateValue_EditTimeSheet.Y + 1
+                        ZIndex: =2
+
+                    cmbBreakEndMin_EditTimeSheet As Dropdown.pcfdataset:
+                        AccessibleLabel: ="Start Break Hour"
+                        Appearance: ="FilledDarker"
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DefaultSelectedItems: =[Text(Minute(ThisItem.'End Time'),"00")]
+                        DisplayMode: =Parent.DisplayMode
+                        FillPortions: =1
+                        FontSize: =0
+                        Height: =28
+                        Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =30
+                        OnChange: =Select(btnHiddenSaveBreak_EditTimeSheet)
+                        Required: =false
+                        TabIndex: =0
+                        Tooltip: =""
+                        ValidationState: =
+                        Visible: =true
+                        Width: =cmbBreakEndHour_EditTimeSheet.Width
+                        X: =cmbBreakEndHour_EditTimeSheet.X + cmbBreakEndHour_EditTimeSheet.Width + dcActualStartSeparator_EditTimeSheet.Width
+                        Y: =cmbBreakEndHour_EditTimeSheet.Y + 1
+                        ZIndex: =3
+
+                rectSpacer_EditTimeSheet As rectangle:
+                    AlignInContainer: =AlignInContainer.Stretch
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =RGBA(0,0,0,0)
+                    FocusedBorderThickness: =0
+                    Height: =5
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    X: =40
+                    Y: =40
+                    ZIndex: =6
+
+                btnDeleteBreak_EditTimeSheet As Button:
+                    AlignInContainer: =AlignInContainer.Start
+                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                    BasePaletteColor: =
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    FontSize: =14
+                    Height: =26
+                    Icon: ="DismissCircle"
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    OnSelect: |
+                        =IfError(
+                            Remove('Time Sheet Entries', ThisItem),
+                            
+                            Notify("Delete failed: " & FirstError.Message, NotificationType.Error),
+                            
+                            Select(btnHiddenRefreshBreaks_EditTimeSheet);
+                        );
+                    Text: ="Delete"
+                    Width: =80
+                    X: =40
+                    Y: =40
+                    ZIndex: =7
+
+            btnHiddenSaveBreak_EditTimeSheet As Button:
+                BasePaletteColor: =
+                BorderColor: =
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =28
+                OnSelect: |-
+                    =IfError(
+                        Patch('Time Sheet Entries', ThisItem, {
+                            'Start Time': 
+                                    If(!IsBlank(cmbBreakStartDate_EditTimeSheet.SelectedDate),
+                                        DateTimeValue(
+                                            DateValue(cmbBreakStartDate_EditTimeSheet.SelectedDate) + Time(First(cmbBreakStartHour_EditTimeSheet.SelectedItems).Value, First(cmbBreakStartMin_EditTimeSheet.SelectedItems).Value, 0)
+                                        ), 
+                                    Blank()
+                                ),
+                            'End Time': 
+                                If(!IsBlank(cmbBreakEndDate_EditTimeSheet.SelectedDate),
+                                    DateTimeValue(
+                                        DateValue(cmbBreakEndDate_EditTimeSheet.SelectedDate) + Time(First(cmbBreakEndHour_EditTimeSheet.SelectedItems).Value, First(cmbBreakEndMin_EditTimeSheet.SelectedItems).Value, 0)
+                                    ), 
+                                    Blank()
+                                )
+                        }),
+                        Notify("Unable to Save. " & FirstError.Message)
+                    );
+                    
+                    Select(btnHiddenSaveShiftDetails_EditTimeSheet);
+                Text: ="Hidden Save"
+                Visible: =false
+                Width: =96
+                X: =0
+                Y: =0
+                ZIndex: =3
+
+        conAddBreak_EditTimeSheet As groupContainer.horizontalAutoLayoutContainer:
+            FillPortions: =0
+            Height: =26
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutJustifyContent: =LayoutJustifyContent.End
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            PaddingRight: =20
+            ZIndex: =6
+
+            btnAddBreak_EditTimeSheet As Button:
+                AcceptsFocus: =true
+                AccessibleLabel: =""
+                Align: =Align.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontSize: =14
+                FontStrikethrough: =false
+                FontUnderline: =false
+                FontWeight: =""
+                Height: =26
+                Icon: ="Add"
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: |-
+                    =IfError(
+                        Patch(
+                            'Time Sheet Entries', 
+                            Defaults('Time Sheet Entries'), {
+                                Name: "Break " & CountRows(colTimeSheetEntries) + 1, 
+                                'Start Time': varTimeSheetToEdit.'Actual Start Time',
+                                'End Time': varTimeSheetToEdit.'Actual Start Time',
+                                'Shift Booking': varTimeSheetToEdit
+                            }
+                        ),
+                    
+                        Notify("Error saving " & FirstError.Message)
+                        
+                    
+                    );
+                    Select(btnHiddenRefreshBreaks_EditTimeSheet);
+                TabIndex: =0
+                Text: ="Add Break"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Width: =120
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+    compHeaderMobile_EditTimeSheet As compHeaderMobile:
+        BackScreen: ='Time Sheet View Screen'
+        ChildTabPriority: =true
+        ContentLanguage: =""
+        EnableChildFocus: =true
+        HeaderTitle: ="Edit Time Sheet"
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
+        Visible: =true
+        ZIndex: =2
+

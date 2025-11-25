@@ -108,6 +108,7 @@ Screens:
                         RadiusBottomRight: =0
                         RadiusTopLeft: =0
                         RadiusTopRight: =0
+                        Visible: =false
                       Children:
                         - txtScreenLabel_MainCalendar:
                             Control: Text@0.0.51
@@ -304,24 +305,31 @@ Screens:
                                         Properties:
                                           FillPortions: =1
                                           Size: =
-                                          Text: |-
-                                            =Concatenate(
-                                                CountRows(
-                                                    Filter(
-                                                        AddColumns(
-                                                            colFilteredBookings As Booking,
-                                                            ResourceName,
-                                                            Booking.Resource
-                                                        ),
-                                                        DateValue(Date) = varDateSelected && !IsBlank(ResourceName) && Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                          Text: |+
+                                            =With(
+                                                {
+                                                    TodaysBookings : Filter(
+                                                              AddColumns(
+                                                                colFilteredBookings As Booking,
+                                                                ResourceName,
+                                                                Booking.Resource
+                                                              ),
+                                                              DateValue(Date) = varDateSelected && Status  = 'Status (shiftplanner_shiftbookings)'.Active
                                                     )
-                                                ) 
-                                            & " of " & CountRows(
-                                                    Filter(
-                                                        shiftplanner_teampositions,
-                                                        ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) && 'Shift Team'.Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
-                                                    )
-                                                ) & " positions filled"
+                                                },
+                                                    Concatenate(
+                                                        // Find the count of the bookings
+                                                        CountRows(
+                                                           Filter(
+                                                              TodaysBookings,
+                                                              !IsBlank(Resource)
+                                                           )
+                                                        ), 
+                                                        " of "
+                                                        ,
+                                                        // Find all the rows that need bookings
+                                                        CountRows(TodaysBookings)
+                                                    ) & " positions filled"
                                             )
                                           Weight: =varThemeFont.H3.weight
                                           Width: =Parent.Width - btnModify_MainCalendar.Width
@@ -332,7 +340,47 @@ Screens:
                                           AccessibleLabel: ="Modify button"
                                           Height: =30
                                           OnSelect: |-
-                                            =Set(
+                                            =With(
+                                                {
+                                                    TodaysBookings : Filter(
+                                                              AddColumns(
+                                                                colFilteredBookings As Booking,
+                                                                ResourceName,
+                                                                Booking.Resource
+                                                              ),
+                                                              DateValue(Date) = varDateSelected && Status  = 'Status (shiftplanner_shiftbookings)'.Active
+                                                    )
+                                                },
+
+                                                Set(varTotalPositions,CountRows(TodaysBookings));
+
+                                                ClearCollect(colDraftResources, 
+                                                    ForAll(TodaysBookings,
+                                                        {
+                                                            BookingId:shiftplanner_shiftbooking ,
+                                                            TeamPositionId: 'Team Position'.shiftplanner_teamposition,
+                                                            ShiftType: 'Team Position'.'Shift Team'.'Shift Type'.Name,
+                                                            ShiftTypeId: 'Team Position'.'Shift Team'.'Shift Type'.shiftplanner_shifttype,
+                                                            Team: 'Team Position'.'Shift Team'.Name,
+                                                            TeamId: 'Team Position'.'Shift Team'.shiftplanner_shiftteam,
+                                                            Position: 'Team Position'.Role.Name,
+                                                            PositionId: 'Team Position'.Role.shiftplanner_role,
+                                                            Resource: Resource.'Full Name',
+                                                            ResourceId: Resource.User,
+                                                            Status: "",
+                                                            NewPositon: "No"
+                                                        }
+                                                    )
+                                                );
+
+                                                ClearCollect(colModify, colDraftResources);
+
+                                            );
+
+
+                                            /*
+                                            Old Model
+                                            Set(
                                                 varFilledPositions,
                                                 CountRows(
                                                     Filter(
@@ -355,7 +403,6 @@ Screens:
                                                     )
                                                 )
                                             );
-
                                             ClearCollect(
                                                 colTeamPositions,
                                                 ForAll(
@@ -366,9 +413,13 @@ Screens:
                                                     {
                                                         ShiftNum: shiftplanner_teamposition,
                                                         ShiftType: 'Shift Team'.'Shift Type'.Name,
+                                                        ShiftTypeId: 'Shift Team'.'Shift Type'.shiftplanner_shifttype,
                                                         Team: 'Shift Team'.Name,
+                                                        TeamId: 'Shift Team'.shiftplanner_shiftteam,
                                                         Position: Role.Name,
+                                                        PositionId: Role.shiftplanner_role,
                                                         Resource: Resource.'Full Name',
+                                                        ResourceId: Resource.User,
                                                         Status: "",
                                                         NewPositon: "No"
                                                     }
@@ -385,14 +436,15 @@ Screens:
                                                         'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
                                                         shiftplanner_shiftbooking
                                                     ),
-                                                    ShiftBookingResource,
+                                                    ShiftBookingResourceId,
                                                     LookUp(
                                                         shiftplanner_shiftbookings,
                                                         'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
-                                                        Resource.'Full Name'
+                                                        Resource.User
                                                     )
                                                 )
                                             );
+                                            */
 
                                             Navigate('Modify Screen')
                                           Text: ="Modify"
@@ -450,6 +502,21 @@ Screens:
                                             =SortByColumns(
                                                 AddColumns(
                                                     Filter(
+                                                        colFilteredBookings,
+                                                        Date = varDateSelected And 
+                                                        Text('Team Position'.'Shift Team'.'Shift Type'.shiftplanner_shifttype) = hdnShiftTypeShiftTime_MainCalendar.Text And
+                                                        Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                                                    ),
+                                                    TeamSort, 
+                                                    'Team Position'.'Shift Team'.Name
+                                                ),
+                                                "TeamSort"
+                                            )
+                                            /*
+                                            The old model
+                                            SortByColumns(
+                                                AddColumns(
+                                                    Filter(
                                                         shiftplanner_teampositions, 
                                                         'Shift Team'.'Shift Type'.Name = txtShiftType_MainCalendar.Text 
                                                         && ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) 
@@ -460,6 +527,7 @@ Screens:
                                                     ), 
                                                 "TeamSort"
                                             )
+                                            */
                                           ShowNavigation: =true
                                           ShowScrollbar: =false
                                           TabIndex: =0
@@ -488,7 +556,7 @@ Screens:
                                                       AutoHeight: =true
                                                       FontColor: =ColorValue(varTheme.neutralForeground3)
                                                       Size: =
-                                                      Text: =ThisItem.'Shift Team'.Name
+                                                      Text: =ThisItem.'Team Position'.'Shift Team'.Name
                                                       Weight: ='TextCanvas.Weight'.Semibold
                                                       Width: =Parent.Width
                                                       X: =40
@@ -500,7 +568,7 @@ Screens:
                                                       FontColor: =App.Theme.Colors.Primary
                                                       Height: =
                                                       Size: =
-                                                      Text: =ThisItem.Role.Name
+                                                      Text: =ThisItem.'Team Position'.Role.Name
                                                       VerticalAlign: =VerticalAlign.Middle
                                                       Weight: =varThemeFont.H1.weight
                                                       Width: =Parent.Width
@@ -511,42 +579,17 @@ Screens:
                                                       AutoHeight: =true
                                                       FontColor: =ColorValue(varTheme.neutralForeground1)
                                                       Size: =
-                                                      Text: |+
-                                                        =/*
-                                                        If(
-                                                            !IsBlank(
-                                                                First(
-                                                                    SortByColumns(
-                                                                        Filter(
-                                                                            AddColumns(
-                                                                                colFilteredBookings As Booking,
-                                                                                BookingDate,
-                                                                                Booking.Date
-                                                                            ),
-                                                                            'Team Position'.shiftplanner_teamposition = ThisItem.shiftplanner_teamposition && DateValue(BookingDate) = varDateSelected
-                                                                        ),
-                                                                        "modifiedon",
-                                                                        SortOrder.Descending
-                                                                    )
-                                                                ).Resource.'Full Name'
-                                                            ),
-                                                            First(
-                                                                SortByColumns(
-                                                                    Filter(
-                                                                        AddColumns(
-                                                                            colFilteredBookings As Booking,
-                                                                            BookingDate,
-                                                                            Booking.Date
-                                                                        ),
-                                                                        'Team Position'.shiftplanner_teamposition = ThisItem.shiftplanner_teamposition && DateValue(BookingDate) = varDateSelected
-                                                                    ),
-                                                                    "modifiedon",
-                                                                    SortOrder.Descending
-                                                                )
-                                                            ).Resource.'Full Name',
-                                                            "(Not Filled)"
+                                                      Text: |-
+                                                        =If(
+                                                            IsBlank(ThisItem.Resource),
+                                                            "(Not Filled)",
+                                                            ThisItem.Resource.'Full Name'
                                                         )
-                                                        */
+
+
+                                                        /*
+                                                        The old model
+
                                                         If(
                                                             !IsBlank(
                                                                 First(
@@ -580,6 +623,7 @@ Screens:
                                                             ).Resource.'Full Name',
                                                             "(Not Filled)"
                                                         )
+                                                        */
                                                       Weight: =
                                                       Width: =Parent.Width
                                                       X: =40
@@ -632,8 +676,19 @@ Screens:
                                                       Height: =txtShiftType_MainCalendar.Height
                                                       Size: =varThemeFont.B2.size
                                                       Text: |+
-                                                        =Concatenate(Text(ThisItem.Startdate, DateTimeFormat.ShortTime) & " to " & Text(ThisItem.Enddate, DateTimeFormat.ShortTime))
+                                                        =Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
                                                       VerticalAlign: =VerticalAlign.Middle
+                                                      Width: =140
+                                                - hdnShiftTypeShiftTime_MainCalendar:
+                                                    Control: Text@0.0.51
+                                                    Properties:
+                                                      Align: ='TextCanvas.Align'.End
+                                                      FontColor: =ColorValue(varTheme.neutralForeground3)
+                                                      Height: =txtShiftType_MainCalendar.Height
+                                                      Size: =varThemeFont.B2.size
+                                                      Text: =ThisItem.shiftplanner_shifttype
+                                                      VerticalAlign: =VerticalAlign.Middle
+                                                      Visible: =false
                                                       Width: =140
                                           - txtPositionCount_MainCalendar:
                                               Control: Text@0.0.51

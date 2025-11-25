@@ -117,7 +117,9 @@ Screens:
                   AccessibleLabel: ="Staff Gallery"
                   FocusedBorderThickness: =0
                   Items: |-
-                    =Search(
+                    =// TODO: Check there are no bookings
+
+                    Search(
                         Filter(
                             AddColumns(
                                 shiftplanner_userroles As Staff,
@@ -270,17 +272,13 @@ Screens:
                               colModify,
                               LookUp(
                                   colModify,
-                                  ShiftNum = varAddStaff.ShiftNum
+                                  BookingId = varAddStaff.BookingId
                               ),
                               {
                                   Resource: galStaff_AddStaff.Selected.txtName_AddStaff.Text,
+                                  ResourceId: galStaff_AddStaff.Selected.Resource.User,
                                   Status: "New"
                               }
-                          );
-
-                          Set(
-                              varFilledPositions,
-                              varFilledPositions + 1
                           );
 
                           Navigate('Modify Screen');

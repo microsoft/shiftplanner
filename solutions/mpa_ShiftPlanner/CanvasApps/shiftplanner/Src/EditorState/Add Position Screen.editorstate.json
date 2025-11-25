@@ -156,7 +156,8 @@
         "IconStyle",
         "Align",
         "VerticalAlign",
-        "BorderStyle"
+        "BorderStyle",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -309,6 +310,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
@@ -427,7 +433,8 @@
         "IconStyle",
         "Align",
         "VerticalAlign",
-        "BorderStyle"
+        "BorderStyle",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -575,6 +582,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "X",
           "RuleProviderType": "Unknown"
@@ -607,7 +619,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "",
@@ -3387,7 +3399,14 @@
         "PressedBorderColor",
         "HoverBorderColor",
         "BorderStyle",
-        "FocusedBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Self.BorderColor",
+          "InvariantPropertyName": "FocusedBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Fill",
         "DisabledFill",
         "PressedFill",
@@ -3410,6 +3429,14 @@
           "AutoRuleBindingEnabled": false,
           "AutoRuleBindingString": "-1",
           "InvariantPropertyName": "TabIndex",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "4",
+          "InvariantPropertyName": "FocusedBorderThickness",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         }
@@ -3543,7 +3570,7 @@
         {
           "Category": "Design",
           "PropertyName": "FocusedBorderColor",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -3619,6 +3646,11 @@
           "Category": "Design",
           "PropertyName": "TabIndex",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderThickness",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -3655,7 +3687,14 @@
         "PressedBorderColor",
         "HoverBorderColor",
         "BorderStyle",
-        "FocusedBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Self.BorderColor",
+          "InvariantPropertyName": "FocusedBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Fill",
         "DisabledFill",
         "PressedFill",
@@ -3701,6 +3740,14 @@
           "AutoRuleBindingEnabled": false,
           "AutoRuleBindingString": "-1",
           "InvariantPropertyName": "TabIndex",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "4",
+          "InvariantPropertyName": "FocusedBorderThickness",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         }
@@ -3906,7 +3953,7 @@
         {
           "Category": "Design",
           "PropertyName": "FocusedBorderColor",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -3921,6 +3968,11 @@
         {
           "Category": "Design",
           "PropertyName": "TabIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderThickness",
           "RuleProviderType": "Unknown"
         }
       ],
@@ -4823,7 +4875,9 @@
         },
         "Appearance",
         "BorderStyle",
-        "TriggerOutput"
+        "TriggerOutput",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -4961,6 +5015,16 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Y",
           "RuleProviderType": "Unknown"
@@ -5058,7 +5122,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -5173,6 +5239,16 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "DisplayMode",
           "RuleProviderType": "Unknown"
@@ -5254,7 +5330,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -5349,6 +5427,16 @@
         {
           "Category": "Data",
           "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5456,7 +5544,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -5571,6 +5661,16 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Y",
           "RuleProviderType": "Unknown"
@@ -5668,7 +5768,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -5783,6 +5885,16 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "DisplayMode",
           "RuleProviderType": "Unknown"
@@ -5887,7 +5999,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -6002,6 +6116,16 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "DisplayMode",
           "RuleProviderType": "Unknown"
@@ -6099,7 +6223,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderStyle"
+        "BorderStyle",
+        "Fill",
+        "BorderColor"
       ],
       "DynamicProperties": [
         {
@@ -6211,6 +6337,16 @@
         {
           "Category": "Data",
           "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderColor",
           "RuleProviderType": "Unknown"
         },
         {

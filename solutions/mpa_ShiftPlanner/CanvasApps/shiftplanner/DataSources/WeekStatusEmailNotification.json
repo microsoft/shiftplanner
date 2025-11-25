@@ -1,7 +1,7 @@
 [
   {
     "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
-    "FlowNameId": "f4b3ec1a-cbcc-41b9-8f64-07ac925ea4a4",
+    "FlowNameId": "81753cd5-36b4-408d-b135-17b84f23e46d",
     "Name": "WeekStatusEmailNotification",
     "ServiceKind": "ConnectedWadl",
     "Type": "ServiceInfo",

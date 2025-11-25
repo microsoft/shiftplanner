@@ -2,52 +2,54 @@
   "properties": {
     "connectionReferences": {
       "shared_commondataserviceforapps": {
-        "runtimeSource": "embedded",
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
         "connection": {
           "connectionReferenceLogicalName": "mpa_MicrosoftPowerAcceleratorDataverse"
         },
-        "api": {
-          "name": "shared_commondataserviceforapps"
-        }
+        "runtimeSource": "embedded"
       }
     },
     "definition": {
       "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
-        "$connections": {
-          "defaultValue": {},
-          "type": "Object"
-        },
         "$authentication": {
           "defaultValue": {},
           "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
         }
       },
       "triggers": {
         "When_a_Team_position_is_added,_modified_or_deleted": {
-          "metadata": {
-            "operationMetadataId": "9ad60364-fb9b-4eaf-87c9-276db9c3f0ab"
-          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "SubscribeWebhookTrigger",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
             "parameters": {
               "subscriptionRequest/message": 7,
               "subscriptionRequest/entityname": "mpa_shiftplanner_teamposition",
               "subscriptionRequest/scope": 4
             },
-            "authentication": "@parameters('$authentication')"
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
           },
-          "conditions": []
+          "conditions": [],
+          "metadata": {
+            "operationMetadataId": "9ad60364-fb9b-4eaf-87c9-276db9c3f0ab"
+          }
         }
       },
       "actions": {
         "Get_Number_of_Days": {
+          "type": "Compose",
+          "description": "Get the number of days when the Team Position is effective",
+          "inputs": "@div(sub(ticks(formatDateTime(triggerOutputs()?['body/mpa_effectiveto'],'yyyy-MM-dd')),ticks(triggerOutputs()?['body/mpa_effectivefrom'])),864000000000)",
           "runAfter": {
             "Initialize_varDayCount": [
               "Succeeded"
@@ -55,20 +57,9 @@
           },
           "metadata": {
             "operationMetadataId": "1cf8c1b6-6878-41ce-b47c-dab8c64df62b"
-          },
-          "type": "Compose",
-          "inputs": "@div(sub(ticks(formatDateTime(triggerOutputs()?['body/mpa_effectiveto'],'yyyy-MM-dd')),ticks(triggerOutputs()?['body/mpa_effectivefrom'])),864000000000)",
-          "description": "Get the number of days when the Team Position is effective"
+          }
         },
         "Initialize_varNumberOfDays": {
-          "runAfter": {
-            "Compose": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "7bc2bb3b-e022-4022-a25b-f4e0fb77059a"
-          },
           "type": "InitializeVariable",
           "inputs": {
             "variables": [
@@ -77,17 +68,17 @@
                 "type": "integer"
               }
             ]
-          }
-        },
-        "Initialize_varDayCount": {
+          },
           "runAfter": {
-            "Initialize_varNumberOfDays": [
+            "Compose": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "f35be6d2-87b9-4f8c-8a9c-68a0aea39a39"
-          },
+            "operationMetadataId": "7bc2bb3b-e022-4022-a25b-f4e0fb77059a"
+          }
+        },
+        "Initialize_varDayCount": {
           "type": "InitializeVariable",
           "inputs": {
             "variables": [
@@ -97,9 +88,22 @@
                 "value": 0
               }
             ]
+          },
+          "runAfter": {
+            "Initialize_varNumberOfDays": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f35be6d2-87b9-4f8c-8a9c-68a0aea39a39"
           }
         },
         "Set_varNumberOfDays": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "varNumberOfDays",
+            "value": "@add(outputs('Get_Number_of_Days'), 1)"
+          },
           "runAfter": {
             "Get_Number_of_Days": [
               "Succeeded"
@@ -107,14 +111,23 @@
           },
           "metadata": {
             "operationMetadataId": "47f6abdb-7a9d-4dda-af00-3555fc276c27"
-          },
-          "type": "SetVariable",
-          "inputs": {
-            "name": "varNumberOfDays",
-            "value": "@add(outputs('Get_Number_of_Days'), 1)"
           }
         },
         "Get_Shift_Team_by_ID": {
+          "type": "OpenApiConnection",
+          "description": "Get Shift Team name using lookup value",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftteams",
+              "recordId": "@triggerOutputs()?['body/_mpa_shiftteam_value']",
+              "$expand": "mpa_shifttype"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
           "runAfter": {
             "Delete_related_Shift_Booking": [
               "Succeeded"
@@ -122,24 +135,22 @@
           },
           "metadata": {
             "operationMetadataId": "42c88ae2-afa5-4303-876b-f900f986f667"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "mpa_shiftplanner_shiftteams",
-              "recordId": "@triggerOutputs()?['body/_mpa_shiftteam_value']",
-              "$expand": "mpa_shifttype"
-            },
-            "authentication": "@parameters('$authentication')"
-          },
-          "description": "Get Shift Team name using lookup value"
+          }
         },
         "Get_Related_Shift_Booking": {
+          "type": "OpenApiConnection",
+          "description": "Get shift bookings that are assigned with the modified team position",
+          "inputs": {
+            "parameters": {
+              "entityName": "mpa_shiftplanner_shiftbookings",
+              "$filter": "_mpa_teamposition_value eq '@{triggerOutputs()?['body/mpa_shiftplanner_teampositionid']}' and statuscode ne 865420003"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
           "runAfter": {
             "Set_varNumberOfDays": [
               "Succeeded"
@@ -147,44 +158,29 @@
           },
           "metadata": {
             "operationMetadataId": "e833a888-a14f-45df-807a-9effe0c53044"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "ListRecords",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "mpa_shiftplanner_shiftbookings",
-              "$filter": "_mpa_teamposition_value eq '@{triggerOutputs()?['body/mpa_shiftplanner_teampositionid']}' and statuscode ne 865420003"
-            },
-            "authentication": "@parameters('$authentication')"
-          },
-          "description": "Get shift bookings that are assigned with the modified team position"
+          }
         },
         "Delete_related_Shift_Booking": {
+          "type": "Foreach",
           "foreach": "@outputs('Get_Related_Shift_Booking')?['body/value']",
           "actions": {
             "Delete_a_row": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "ce0314fc-fd4c-48d6-9957-5ee94ab8ec28"
-              },
               "type": "OpenApiConnection",
+              "description": "Deleting old shift booking item",
               "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps",
-                  "operationId": "DeleteRecord",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
                 "parameters": {
                   "entityName": "mpa_shiftplanner_shiftbookings",
                   "recordId": "@items('Delete_related_Shift_Booking')?['mpa_shiftplanner_shiftbookingid']"
                 },
-                "authentication": "@parameters('$authentication')"
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "DeleteRecord",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
               },
-              "description": "Deleting old shift booking item"
+              "metadata": {
+                "operationMetadataId": "ce0314fc-fd4c-48d6-9957-5ee94ab8ec28"
+              }
             }
           },
           "runAfter": {
@@ -194,21 +190,31 @@
           },
           "metadata": {
             "operationMetadataId": "3fed097c-e87d-437a-a76d-a40f3ab80df0"
-          },
-          "type": "Foreach"
+          }
         },
         "Compose": {
+          "type": "Compose",
+          "description": "Check if team position resource is empty or not",
+          "inputs": "@if(\r\n\tnot(empty(triggerOutputs()?['body/_mpa_resource_value'])), \r\n'Not empty', \r\n'empty')",
           "runAfter": {},
           "metadata": {
             "operationMetadataId": "69b97ebe-8c24-462e-be13-8f0f4deb45ab"
-          },
-          "type": "Compose",
-          "inputs": "@if(\r\n\tnot(empty(triggerOutputs()?['body/_mpa_resource_value'])), \r\n'Not empty', \r\n'empty')",
-          "description": "Check if team position resource is empty or not"
+          }
         },
         "Insert_shift_Booking_records": {
+          "type": "Until",
+          "expression": "@equals(variables('varDayCount'), variables('varNumberOfDays'))",
+          "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+          },
           "actions": {
             "Increment_variable": {
+              "type": "IncrementVariable",
+              "inputs": {
+                "name": "varDayCount",
+                "value": 1
+              },
               "runAfter": {
                 "Is_this_weekday_included": [
                   "Succeeded"
@@ -216,48 +222,10 @@
               },
               "metadata": {
                 "operationMetadataId": "865579a1-ef06-4dbd-90f9-eaaf4264dc17"
-              },
-              "type": "IncrementVariable",
-              "inputs": {
-                "name": "varDayCount",
-                "value": 1
               }
             },
             "Is_this_weekday_included": {
-              "actions": {
-                "Add_a_new_row": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "9c154cba-eb7b-44c8-ba58-cd35e5ec20e0"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps",
-                      "operationId": "CreateRecord",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "mpa_shiftplanner_shiftbookings",
-                      "item/mpa_date": "@addDays(triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))",
-                      "item/mpa_name": "@{triggerOutputs()?['body/mpa_name']} - @{formatDateTime( adddays(triggerOutputs()?['body/mpa_effectivefrom'],variables('varDayCount')), 'yyyy-MM-dd')}",
-                      "item/mpa_resource@odata.bind": "@if(equals(triggerOutputs()?['body/_mpa_resource_value'], null), triggerOutputs()?['body/_mpa_resource_value'], concat('/systemusers/',triggerOutputs()?['body/_mpa_resource_value']))",
-                      "item/statuscode": 865420002,
-                      "item/mpa_teamposition@odata.bind": "/mpa_shiftplanner_teampositions/@{triggerOutputs()?['body/mpa_shiftplanner_teampositionid']}",
-                      "item/timezoneruleversionnumber": "@triggerOutputs()?['body/timezoneruleversionnumber']",
-                      "item/utcconversiontimezonecode": "@triggerOutputs()?['body/utcconversiontimezonecode']",
-                      "item/mpa_zone@odata.bind": "/mpa_shiftplanner_zones/@{outputs('Get_Shift_Team_by_ID')?['body/_mpa_zone_value']}"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  },
-                  "description": "Add new shift booking items as per the updated team position"
-                }
-              },
-              "runAfter": {
-                "Compose_1": [
-                  "Succeeded"
-                ]
-              },
+              "type": "If",
               "expression": {
                 "and": [
                   {
@@ -268,18 +236,39 @@
                   }
                 ]
               },
+              "actions": {
+                "Add_a_new_row": {
+                  "type": "OpenApiConnection",
+                  "description": "Add new shift booking items as per the updated team position",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "mpa_shiftplanner_shiftbookings",
+                      "item/mpa_date": "@addDays(triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))",
+                      "item/mpa_name": "@{triggerOutputs()?['body/mpa_name']} - @{formatDateTime( adddays(triggerOutputs()?['body/mpa_effectivefrom'],variables('varDayCount')), 'yyyy-MM-dd')}",
+                      "item/mpa_resource@odata.bind": "@if(equals(triggerOutputs()?['body/_mpa_resource_value'], null), triggerOutputs()?['body/_mpa_resource_value'], concat('/systemusers/',triggerOutputs()?['body/_mpa_resource_value']))",
+                      "item/statuscode": 865420001,
+                      "item/mpa_teamposition@odata.bind": "/mpa_shiftplanner_teampositions/@{triggerOutputs()?['body/mpa_shiftplanner_teampositionid']}",
+                      "item/timezoneruleversionnumber": "@triggerOutputs()?['body/timezoneruleversionnumber']",
+                      "item/utcconversiontimezonecode": "@triggerOutputs()?['body/utcconversiontimezonecode']",
+                      "item/mpa_zone@odata.bind": "/mpa_shiftplanner_zones/@{outputs('Get_Shift_Team_by_ID')?['body/_mpa_zone_value']}"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9c154cba-eb7b-44c8-ba58-cd35e5ec20e0"
+                  }
+                }
+              },
+              "else": {
+                "actions": {}
+              },
               "metadata": {
                 "operationMetadataId": "f2c3bbdd-032c-4133-bdf9-cd24acf5fd46"
-              },
-              "type": "If"
-            },
-            "Compose_1": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "ea7054f1-ca2d-4dd9-931e-de61ab47545f"
-              },
-              "type": "Compose",
-              "inputs": "Shift Days [@{outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_daysincluded']}] \nRecord Day [@{string(add(dayOfWeek(addDays( triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))),1))}]\nRecord Date [@{addDays( triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))}]"
+              }
             }
           },
           "runAfter": {
@@ -287,19 +276,14 @@
               "Succeeded"
             ]
           },
-          "expression": "@equals(variables('varDayCount'), variables('varNumberOfDays'))",
-          "limit": {
-            "count": 60,
-            "timeout": "PT1H"
-          },
           "metadata": {
             "operationMetadataId": "748bfcaa-78e7-4717-9fe4-4bcc9bb4ba26"
-          },
-          "type": "Until"
+          }
         }
-      }
+      },
+      "description": "Flow that adds or updates an item in Shift Booking table when a Team Position is added or modified"
     },
-    "templateName": ""
+    "templateName": null
   },
   "schemaVersion": "1.0.0.0"
 }

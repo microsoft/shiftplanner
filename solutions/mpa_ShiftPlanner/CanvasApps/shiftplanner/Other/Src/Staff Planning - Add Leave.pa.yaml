@@ -1,0 +1,477 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Staff Planning - Add Leave:
+    Properties:
+      Fill: =ColorValue(varTheme.neutralBackground1)
+    Children:
+      - conBackground_AddLeave:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =varTheme.popupBackground
+            Height: =Parent.Height - Self.Y
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =40
+            PaddingLeft: =40
+            PaddingRight: =40
+            PaddingTop: =40
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =51
+          Children:
+            - conViewForm_AddLeave:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  DropShadow: =DropShadow.Bold
+                  Fill: =ColorValue(varTheme.neutralBackground1)
+                  Height: =120
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  LayoutMaxHeight: =0
+                  LayoutMaxWidth: =0
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Width: =Parent.Width-200
+                  X: =40
+                  Y: =40
+                Children:
+                  - txtTitle_AddLeave:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        AlignInContainer: =AlignInContainer.Stretch
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Size: =varThemeFont.H3.size
+                        Text: ="Add Leave for " & varSelectedUserDay.User.'Full Name' & " on " & Text(varSelectedUserDay.ShiftDate, "dd mmm")
+                        Weight: =varThemeFont.H3.weightBold
+                        X: =40
+                        Y: =40
+                  - frmLeaveDetails_AddLeave:
+                      Control: Form@2.4.4
+                      Layout: Vertical
+                      Properties:
+                        DataSource: =shiftplanner_useravailabilities
+                        DefaultMode: =FormMode.New
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        NumberOfColumns: =1
+                        OnFailure: =Notify(frmLeaveDetails_AddLeave.Error, NotificationType.Error, varTheme.toastTimeout)
+                        OnSuccess: |-
+                          =Refresh(shiftplanner_useravailabilities);
+                          ResetForm(frmLeaveDetails_AddLeave);
+                          Navigate('Staff Planning Screen');
+                      Children:
+                        - StartDate_DataCard_AddLeave:
+                            Control: TypedDataCard@1.0.7
+                            Variant: DateEdit
+                            Properties:
+                              DataField: ="mpa_startdate"
+                              Default: =varSelectedUserDay.ShiftDate
+                              DisplayName: =DataSourceInfo([@shiftplanner_useravailabilities],DataSourceInfo.DisplayName,'mpa_startdate')
+                              Required: =true
+                              Update: =StartDate_DataCardValue_AddLeave.SelectedDate
+                              Width: =Parent.Width
+                              X: =0
+                              Y: =0
+                            Children:
+                              - StartDate_DataCardKey_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldName
+                                  Properties:
+                                    Height: =22
+                                    Text: ="First Day of Leave"
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Parent.Width - 48
+                                    Wrap: =false
+                                    X: =24
+                                    Y: =10
+                              - StartDate_DataCardValue_AddLeave:
+                                  Control: DatePicker@0.0.46
+                                  MetadataKey: FieldValue
+                                  Properties:
+                                    AccessibleLabel: =Parent.DisplayName
+                                    DisplayMode: =Parent.DisplayMode
+                                    EndDate: =Date(Year(Today())+100, 12, 31)
+                                    SelectedDate: =Parent.Default
+                                    StartDate: =Date(1900, 1, 1)
+                                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =StartDate_DataCardKey_AddLeave.Y + StartDate_DataCardKey_AddLeave.Height + 4
+                              - StartDate_ErrorMessage_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: ErrorMessage
+                                  Properties:
+                                    Height: =30
+                                    Text: =Parent.Error
+                                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =StartDate_DataCardValue_AddLeave.Y + StartDate_DataCardValue_AddLeave.Height
+                              - StartDate_StarVisible_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldRequired
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    Height: =30
+                                    Text: ="*"
+                                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =30
+                                    Y: =StartDate_DataCardKey_AddLeave.Y
+                        - Enddate_DataCard_AddLeave:
+                            Control: TypedDataCard@1.0.7
+                            Variant: DateEdit
+                            Properties:
+                              DataField: ="mpa_enddate"
+                              Default: =varSelectedUserDay.ShiftDate
+                              DisplayName: =DataSourceInfo([@shiftplanner_useravailabilities],DataSourceInfo.DisplayName,'mpa_enddate')
+                              Required: =true
+                              Update: =Enddate_DataCardValue_AddLeave.SelectedDate
+                              Width: =Parent.Width
+                              X: =0
+                              Y: =1
+                            Children:
+                              - Enddate_DataCardKey_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldName
+                                  Properties:
+                                    Height: =22
+                                    Text: ="Last Day of Leave"
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Parent.Width - 48
+                                    Wrap: =false
+                                    X: =24
+                                    Y: =10
+                              - Enddate_DataCardValue_AddLeave:
+                                  Control: DatePicker@0.0.46
+                                  MetadataKey: FieldValue
+                                  Properties:
+                                    AccessibleLabel: =Parent.DisplayName
+                                    DisplayMode: =Parent.DisplayMode
+                                    EndDate: =Date(Year(Today())+100, 12, 31)
+                                    SelectedDate: =Parent.Default
+                                    StartDate: =Date(1900, 1, 1)
+                                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =Enddate_DataCardKey_AddLeave.Y + Enddate_DataCardKey_AddLeave.Height + 4
+                              - Enddate_ErrorMessage_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: ErrorMessage
+                                  Properties:
+                                    Height: =30
+                                    Text: =Parent.Error
+                                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =Enddate_DataCardValue_AddLeave.Y + Enddate_DataCardValue_AddLeave.Height
+                              - Enddate_StarVisible_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldRequired
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    Height: =30
+                                    Text: ="*"
+                                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =30
+                                    Y: =Enddate_DataCardKey_AddLeave.Y
+                        - Reason_DataCard_AddLeave:
+                            Control: TypedDataCard@1.0.7
+                            Variant: TextualMultilineEdit
+                            IsLocked: true
+                            Properties:
+                              DataField: ="mpa_reason"
+                              Default: =ThisItem.Reason
+                              DisplayName: =DataSourceInfo([@shiftplanner_useravailabilities],DataSourceInfo.DisplayName,'mpa_reason')
+                              Required: =false
+                              Update: =Reason_DataCardValue_AddLeave.Value
+                              Width: =Parent.Width
+                              X: =0
+                              Y: =2
+                            Children:
+                              - Reason_DataCardKey_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldName
+                                  Properties:
+                                    Height: =22
+                                    Text: =Parent.DisplayName
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Parent.Width - 48
+                                    Wrap: =false
+                                    X: =24
+                                    Y: =10
+                              - Reason_DataCardValue_AddLeave:
+                                  Control: TextInput@0.0.54
+                                  MetadataKey: FieldValue
+                                  Properties:
+                                    AccessibleLabel: =Parent.DisplayName
+                                    DisplayMode: =Parent.DisplayMode
+                                    Height: =144
+                                    Mode: ='TextInputCanvas.Mode'.Multiline
+                                    Required: =Parent.Required
+                                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                    Value: =Parent.Default
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =Reason_DataCardKey_AddLeave.Y + Reason_DataCardKey_AddLeave.Height + 4
+                              - Reason_ErrorMessage_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: ErrorMessage
+                                  Properties:
+                                    Height: =30
+                                    Text: =Parent.Error
+                                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =Reason_DataCardValue_AddLeave.Y + Reason_DataCardValue_AddLeave.Height
+                              - Reason_StarVisible_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldRequired
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    Height: =30
+                                    Text: ="*"
+                                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =30
+                                    Y: =Reason_DataCardKey_AddLeave.Y
+                        - User_DataCard_AddLeave:
+                            Control: TypedDataCard@1.0.7
+                            Variant: ComboBoxEdit
+                            Properties:
+                              DataField: ="mpa_SystemUser"
+                              Default: =varSelectedUserDay.User
+                              DisplayName: =DataSourceInfo([@shiftplanner_useravailabilities],DataSourceInfo.DisplayName,'mpa_SystemUser')
+                              Required: =false
+                              Update: =User_DataCardValue_AddLeave.Selected
+                              Visible: =false
+                              Width: =1150
+                              X: =0
+                              Y: =3
+                            Children:
+                              - User_DataCardKey_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldName
+                                  Properties:
+                                    Height: =22
+                                    Text: =Parent.DisplayName
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Parent.Width - 48
+                                    Wrap: =false
+                                    X: =24
+                                    Y: =10
+                              - User_DataCardValue_AddLeave:
+                                  Control: ComboBox@0.0.51
+                                  MetadataKey: FieldValue
+                                  Properties:
+                                    AccessibleLabel: =Parent.DisplayName
+                                    DefaultSelectedItems: =[Parent.Default]
+                                    DisplayMode: =Parent.DisplayMode
+                                    Items: =Choices([@shiftplanner_useravailabilities].'mpa_SystemUser')
+                                    Required: =Parent.Required
+                                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =User_DataCardKey_AddLeave.Y + User_DataCardKey_AddLeave.Height + 4
+                                  Children:
+                                    - Full Name1:
+                                        Control: ComboBoxDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          FieldDisplayName: ="Full Name"
+                                          FieldName: ="fullname"
+                                          FieldType: ="s"
+                                          Order: =1
+                                    - Business Unit1:
+                                        Control: ComboBoxDataField@1.5.0
+                                        IsLocked: true
+                                        Properties:
+                                          FieldDisplayName: ="Business Unit"
+                                          FieldName: ="businessunitid"
+                                          FieldType: ="E"
+                                          Order: =2
+                                    - Title2:
+                                        Control: ComboBoxDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          FieldDisplayName: ="Title"
+                                          FieldName: ="title"
+                                          FieldType: ="s"
+                                          Order: =3
+                                    - Position1:
+                                        Control: ComboBoxDataField@1.5.0
+                                        IsLocked: true
+                                        Properties:
+                                          FieldDisplayName: ="Position"
+                                          FieldName: ="positionid"
+                                          FieldType: ="E"
+                                          Order: =4
+                                    - Main Phone1:
+                                        Control: ComboBoxDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          FieldDisplayName: ="Main Phone"
+                                          FieldName: ="address1_telephone1"
+                                          FieldType: ="s"
+                                          Order: =5
+                              - User_ErrorMessage_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: ErrorMessage
+                                  Properties:
+                                    Height: =30
+                                    Text: =Parent.Error
+                                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =User_DataCardValue_AddLeave.Y + User_DataCardValue_AddLeave.Height
+                              - User_StarVisible_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldRequired
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    Height: =20
+                                    Text: ="*"
+                                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =30
+                                    Y: =User_DataCardKey_AddLeave.Y
+                        - IsAvailable_DataCard_AddLeave:
+                            Control: TypedDataCard@1.0.7
+                            Variant: ComboBoxOptionSetSingleEdit
+                            Properties:
+                              DataField: ="mpa_isavailable"
+                              Default: ='Is Available (shiftplanner_useravailabilities)'.No
+                              DisplayName: =DataSourceInfo([@shiftplanner_useravailabilities],DataSourceInfo.DisplayName,'mpa_isavailable')
+                              Required: =false
+                              Update: =IsAvailable_DataCardValue_AddLeave.Selected.Value
+                              Visible: =false
+                              Width: =1150
+                              X: =0
+                              Y: =4
+                            Children:
+                              - IsAvailable_DataCardKey_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldName
+                                  Properties:
+                                    Height: =22
+                                    Text: =Parent.DisplayName
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Parent.Width - 48
+                                    Wrap: =false
+                                    X: =24
+                                    Y: =10
+                              - IsAvailable_DataCardValue_AddLeave:
+                                  Control: ComboBox@0.0.51
+                                  MetadataKey: FieldValue
+                                  Properties:
+                                    AccessibleLabel: =Parent.DisplayName
+                                    DefaultSelectedItems: =[Parent.Default]
+                                    DisplayMode: =Parent.DisplayMode
+                                    Items: =Choices('Is Available (shiftplanner_useravailabilities)')
+                                    Required: =Parent.Required
+                                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =IsAvailable_DataCardKey_AddLeave.Y + IsAvailable_DataCardKey_AddLeave.Height + 4
+                              - IsAvailable_ErrorMessage_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: ErrorMessage
+                                  Properties:
+                                    Height: =30
+                                    Text: =Parent.Error
+                                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =Parent.Width - 48
+                                    X: =24
+                                    Y: =IsAvailable_DataCardValue_AddLeave.Y + IsAvailable_DataCardValue_AddLeave.Height
+                              - IsAvailable_StarVisible_AddLeave:
+                                  Control: Text@0.0.51
+                                  MetadataKey: FieldRequired
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    Height: =20
+                                    Text: ="*"
+                                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                    Width: =30
+                                    Y: =IsAvailable_DataCardKey_AddLeave.Y
+                  - conButtonBar_AddLeave:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        Height: =32
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =10
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - btnOpenBookingsClose_StaffPlanScreen_1:
+                            Control: Button@0.0.45
+                            Properties:
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              OnSelect: =Navigate('Staff Planning Screen')
+                              Text: ="Close"
+                        - btnOpenBookingsClose_StaffPlanScreen_2:
+                            Control: Button@0.0.45
+                            Properties:
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              OnSelect: =SubmitForm(frmLeaveDetails_AddLeave);
+                              Text: ="Save"
+      - compHeader_AddLeave:
+          Control: CanvasComponent
+          ComponentName: compHeaderCompound
+          Properties:
+            Fill: =App.Theme.Colors.Primary
+            HeaderHeight: =51
+            HeaderWidth: =1366
+            Height: |-
+              =compHeader_AddLeave.HeaderHeight
+              //varHeaderHeight
+            IsMenuScreen: =false
+            NavigateMenu: =
+            NavigateScreen: ='Staff Planning Screen'
+            Width: =compHeader_AddLeave.HeaderWidth

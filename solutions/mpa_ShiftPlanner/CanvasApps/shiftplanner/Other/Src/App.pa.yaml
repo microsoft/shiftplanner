@@ -8,11 +8,27 @@
 # ************************************************************************************************
 App:
   Properties:
-    OnStart: |+
-      =// desktop fonts hybrid
-      Set(
-          varDesktopFonts,
-          {
+    Formulas: |+
+      =///// Non-Behaviour Functions
+      nf_GetOptionForWorkday(parWorkday:Number): Text 
+          = Switch(parWorkday, 
+              1, 'Days Included (shiftplanner_shifttypes)'.Sunday,
+              2, 'Days Included (shiftplanner_shifttypes)'.Monday,
+              3, 'Days Included (shiftplanner_shifttypes)'.Tuesday,
+              4, 'Days Included (shiftplanner_shifttypes)'.Wednesday,
+              5, 'Days Included (shiftplanner_shifttypes)'.Thursday,
+              6, 'Days Included (shiftplanner_shifttypes)'.Friday,
+              7, 'Days Included (shiftplanner_shifttypes)'.Saturday
+          );
+
+
+
+      ///// Variables
+      DataverseUrl = LookUp('Environment Variable Values', 'Schema Name' = "mpa_environmenturl", Value);
+
+
+      varDesktopFonts =
+          { 
               H1: {
                   size: 32,
                   weight: 'TextCanvas.Weight'.Regular,
@@ -27,6 +43,12 @@ App:
               },
               H3: {
                   size: 20,
+                  weight: 'TextCanvas.Weight'.Regular,
+                  weightBold: 'TextCanvas.Weight'.Semibold,
+                  italic: false
+              },
+              H4: {
+                  size: 16,
                   weight: 'TextCanvas.Weight'.Regular,
                   weightBold: 'TextCanvas.Weight'.Semibold,
                   italic: false
@@ -59,18 +81,9 @@ App:
                   weightBold: FontWeight.Semibold,
                   italic: false
               }
-          }
-      );
+          };
 
-      Set(
-          varThemeFont,
-          varDesktopFonts
-      );
-
-
-      // set theme colors
-      Set(
-          varTheme,
+      varTheme =
           {
               neutralBackground1: "#FFFFFF",
               neutralBackground2: "#FAFAFA",
@@ -91,9 +104,20 @@ App:
               statusWarning1: "#FDE300",
               statusWarning2: "#817400",
               statusInformative: "#EBEBEB",
-              toastTimeout : 1000
-          }
+              toastTimeout : 500,
+              focusBorder : "#D1D1D1",
+              popupBackground: RGBA(0, 0, 0, 0.38)
+          };
+
+    OnStart: |+
+      =// desktop fonts hybrid
+
+      Set(
+          varThemeFont,
+          varDesktopFonts
       );
+
+
 
 
       //Set collection for landing screen filter

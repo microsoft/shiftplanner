@@ -6,6 +6,7 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "mpa_shiftplanner_zone",
+    "MaxGetRowsCount": 500,
     "Name": "Zones",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",

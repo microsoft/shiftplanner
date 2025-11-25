@@ -50,8 +50,10 @@ compHeaderCompound As CanvasComponent:
         comp_Header As Header:
             Align: =""
             BasePaletteColor: =
+            BorderColor: =
             BorderStyle: =""
             DisplayMode: =DisplayMode.Edit
+            Fill: =
             FontColor: =
             Height: =51
             IsLogoVisible: =true

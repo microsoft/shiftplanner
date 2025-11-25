@@ -374,4 +374,5 @@ Screens:
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
             TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

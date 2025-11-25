@@ -40,13 +40,15 @@ compCalendar As CanvasComponent:
             RadiusTopLeft: =4
             RadiusTopRight: =4
             Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
-            ZIndex: =2
+            ZIndex: =1
 
             lblTodayHeader_CalendarComp As Text:
                 Align: ='TextCanvas.Align'.Start
                 AutoHeight: =false
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
+                Fill: =
                 FillPortions: =0.3
                 FontColor: =ColorValue(varTheme.neutralForeground3)
                 Height: =conCalendarHeader_CalendarComp.Height
@@ -124,8 +126,10 @@ compCalendar As CanvasComponent:
 
                 lblMonthHeader_CalendarComp As Text:
                     Align: ='TextCanvas.Align'.Center
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =28
                     LayoutMaxHeight: =
@@ -200,7 +204,7 @@ compCalendar As CanvasComponent:
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            ZIndex: =4
+            ZIndex: =2
 
             conCalendarMain_CalendarComp As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
@@ -258,8 +262,10 @@ compCalendar As CanvasComponent:
                     lblWeekdayHeader_CalendarComp As Text:
                         Align: ='TextCanvas.Align'.Center
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground3)
                         Height: =
                         Size: =
@@ -310,8 +316,11 @@ compCalendar As CanvasComponent:
                     TabIndex: =0
                     TemplateFill: |-
                         =If(
-                            /*The day is outside the range of the currently selected month*/
-                            Abs(btnDate_CalendarComp.Text - ThisItem.Value) > 10, ColorValue(varTheme.neutralBackgroundDisabled), RGBA(0, 0, 0, 0)
+                            IsNumeric(btnDate_CalendarComp.Text),
+                            If(
+                                /*The day is outside the range of the currently selected month*/
+                                Abs(btnDate_CalendarComp.Text - ThisItem.Value) > 10, ColorValue(varTheme.neutralBackgroundDisabled), RGBA(0, 0, 0, 0)
+                            )
                         )
                     TemplateSize: =65
                     Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
@@ -354,6 +363,7 @@ compCalendar As CanvasComponent:
                         Align: =""
                         Appearance: ='ButtonCanvas.Appearance'.Transparent
                         BasePaletteColor: =
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: |-
                             =If(
@@ -383,12 +393,15 @@ compCalendar As CanvasComponent:
                             )
                         FontColor: |-
                             =If(
-                                /*Today when it is not selected*/
-                                DateAdd(varFirstDayInView, ThisItem.Value) = Today(), App.Theme.Colors.Lighter80,
-                                /*Date selected is this date*/
-                                DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, 
-                                /*The day is outside the range of the currently selected month*/
-                                Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)
+                                IsNumeric(Self.Text) And IsNumeric(Self.Text),
+                                If(
+                                    /*Today when it is not selected*/
+                                    DateAdd(varFirstDayInView, ThisItem.Value) = Today(), App.Theme.Colors.Lighter80,
+                                    /*Date selected is this date*/
+                                    DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, 
+                                    /*The day is outside the range of the currently selected month*/
+                                    Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)
+                            )
                         Height: =galCalendar_CalendarComp.TemplateHeight - 25
                         Icon: =""
                         IconRotation: =0
@@ -477,8 +490,11 @@ compCalendar As CanvasComponent:
 
                         lblCount_CalendarComp As Text:
                             Align: ='TextCanvas.Align'.Start
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
                             Height: =Parent.Height
                             LayoutMaxHeight: =
                             LayoutMaxWidth: =
@@ -487,26 +503,31 @@ compCalendar As CanvasComponent:
                             Text: |-
                                 =With(
                                     {
-                                        DayDate: DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days)
-                                    },
-                                    If(Weekday(DayDate)>1 && Weekday(DayDate)<7 ,
-                                        Concatenate(
-                                            CountRows(
-                                            Filter(
-                                                AddColumns(
+                                        TodaysBookings : Filter(
+                                                  AddColumns(
                                                     colFilteredBookings As Booking,
                                                     ResourceName,
                                                     Booking.Resource
-                                                ),
-                                                DateValue(Date) = DayDate && !IsBlank(ResourceName) && Text(Status) = "Active"
-                                            )
-                                        ) 
-                                            & " of " 
-                                            & CountRows(Filter(shiftplanner_teampositions, ('Effective From' <= DayDate && 'Effective To' >= DayDate) && 'Shift Team'.Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone))
+                                                  ),
+                                                  DateValue(Date) = DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days) && Status  = 'Status (shiftplanner_shiftbookings)'.Active
                                         )
-                                    )
+                                    },
+                                        Concatenate(
+                                            // Find the count of the bookings
+                                            CountRows(
+                                               Filter(
+                                                  TodaysBookings,
+                                                  !IsBlank(Resource)
+                                               )
+                                            ), 
+                                            " of "
+                                            ,
+                                            // Find all the rows that need bookings
+                                            CountRows(TodaysBookings)
+                                        )
                                 )
                             VerticalAlign: =VerticalAlign.Middle
+                            Visible: =!EndsWith(lblCount_CalendarComp.Text, "of 0")
                             Width: =65
                             Wrap: =true
                             X: =(galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
@@ -532,8 +553,10 @@ compCalendar As CanvasComponent:
                 lblWeekStatusLabel_CalendarComp As Text:
                     Align: ='TextCanvas.Align'.Center
                     AlignInContainer: =AlignInContainer.Start
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =galWeekday_CalendarComp.Height - 2
                     LayoutMaxHeight: =
@@ -624,38 +647,9 @@ compCalendar As CanvasComponent:
                         Align: =""
                         Appearance: ='ButtonCanvas.Appearance'.Secondary
                         BasePaletteColor: =
+                        BorderColor: =
                         BorderStyle: =""
-                        DisplayMode: |-
-                            =/*With(
-                                {
-                                    //Day after 8 weeks from today
-                                    DayAfterWeeks: DateAdd((Today() - Weekday(Today(),StartOfWeek.Sunday)),56,TimeUnit.Days)
-                                },
-                                If(
-                                    //All months before current month and the month 8 weeks from current date should be disabled
-                                    Month(varFirstDayOfMonth) >= Month(Today()) && Month(varFirstDayOfMonth) <= Month(DayAfterWeeks),
-                                    If(
-                                    //Check if current Month calendar view is the same as current date's Month
-                                    Month(varFirstDayOfMonth) = Month(Today()),
-                                        //Check which week of the month it is
-                                        If(ThisItem.Value < ((Day(Today()) + (Weekday(varFirstDayOfMonth) - 1)) / 7),
-                                            DisplayMode.Disabled,
-                                            DisplayMode.Edit
-                                        ),
-                                        //Check if current Month calendar view is the same as the month 8 weeks from current date
-                                        If(Month(varFirstDayOfMonth) = Month(DayAfterWeeks), 
-                                            //Check which week of the month the day 8 weeks from current date is
-                                            If(ThisItem.Value > ((Day(DayAfterWeeks) + (Weekday(varFirstDayOfMonth) - 1)) / 7),
-                                                DisplayMode.Disabled,
-                                                DisplayMode.Edit
-                                            )
-                                        )
-                                    ),
-                                    DisplayMode.Disabled
-                                )
-                            )
-                            */
-                            DisplayMode.Edit
+                        DisplayMode: =DisplayMode.Edit
                         FontColor: =
                         Height: =24
                         Icon: =""
@@ -723,8 +717,10 @@ compCalendar As CanvasComponent:
 
                         lblPublishedStatusLabel_CalendarComp As Text:
                             AutoHeight: =false
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FontColor: =ColorValue(varTheme.neutralForeground1)
                             Height: =20
                             LayoutMaxHeight: =
@@ -780,17 +776,4 @@ compCalendar As CanvasComponent:
                             X: =0
                             Y: =0
                             ZIndex: =2
-
-        Label1 As label:
-            BorderColor: =App.Theme.Colors.Darker40
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            Font: =App.Theme.Font
-            LayoutMaxHeight: =0
-            LayoutMaxWidth: =0
-            LayoutMinHeight: =16
-            LayoutMinWidth: =16
-            Size: =13
-            Text: =Month(DateAdd((Today() - Weekday(Today(),StartOfWeek.Sunday)),56,TimeUnit.Days))
-            ZIndex: =5
 

@@ -86,8 +86,10 @@
 
                     txtInitialDate_SwapReason As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -103,8 +105,10 @@
 
                     txtInitialDateValue_SwapReason As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -135,8 +139,10 @@
 
                     txtRequestSwapShiftDate_SwapReason As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -152,8 +158,10 @@
 
                     txtRequestSwapShiftDateValue_SwapReason As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -184,8 +192,10 @@
 
                     txtSwapTo_SwapReason As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -201,8 +211,10 @@
 
                     txtSwapToValue_SwapReason As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -233,8 +245,10 @@
 
                     txtReason_SwapReason As Text:
                         AutoHeight: =true
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ColorValue(varTheme.neutralForeground1)
                         Height: =32
                         LayoutMaxHeight: =
@@ -252,8 +266,10 @@
                         AccessibleLabel: ="Text Input"
                         Appearance: ='TextInputCanvas.Appearance'.Outline
                         BasePaletteColor: =
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         Font: =""
                         FontColor: =
                         FontItalic: =
@@ -295,6 +311,7 @@
                 Align: =""
                 Appearance: ='ButtonCanvas.Appearance'.Secondary
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
                 Font: =""
@@ -324,6 +341,7 @@
                 Align: =""
                 Appearance: ='ButtonCanvas.Appearance'.Primary
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =If(IsBlank(txIReason_SwapReason.Value) || Len(Trim(txIReason_SwapReason.Value))<=0, DisplayMode.Disabled,DisplayMode.Edit)
                 Font: =""
@@ -391,5 +409,6 @@
         HomeScreen: ='Home Screen'
         NavigationScreen: ='Navigation Screen'
         TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
         ZIndex: =2
 

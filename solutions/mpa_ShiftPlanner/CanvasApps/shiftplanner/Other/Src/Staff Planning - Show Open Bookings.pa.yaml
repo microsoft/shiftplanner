@@ -1,0 +1,167 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Staff Planning - Show Open Bookings:
+    Properties:
+      Fill: =ColorValue(varTheme.neutralBackground1)
+    Children:
+      - conViewOpenBookingsPopup_StaffPlanScreen:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =varTheme.popupBackground
+            Height: =Parent.Height - Self.Y
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =40
+            PaddingLeft: =40
+            PaddingRight: =40
+            PaddingTop: =40
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =51
+          Children:
+            - conViewOpenBookings_StaffPlanScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  DropShadow: =DropShadow.Bold
+                  Fill: =ColorValue(varTheme.neutralBackground1)
+                  Height: =120
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  LayoutMaxHeight: =0
+                  LayoutMaxWidth: =0
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  X: =40
+                  Y: =40
+                Children:
+                  - txtViewOpenBookingsTitle_StaffPlanScreen:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        AlignInContainer: =AlignInContainer.Stretch
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Size: =varThemeFont.H3.size
+                        Text: ="Open Bookings for " & Text(varViewOpenBookingsPopupDate, "dd mmm")
+                        Weight: =varThemeFont.H3.weightBold
+                        X: =40
+                        Y: =40
+                  - galOpenBookings_StaffPlanScreen:
+                      Control: Gallery@2.15.0
+                      Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                      Properties:
+                        Items: |+
+                          =Filter(
+                              shiftplanner_shiftbookings,
+                              Date = varViewOpenBookingsPopupDate And
+                              IsBlank(Resource) 
+                          )
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        TemplateSize: =70
+                        X: =40
+                        Y: =40
+                      Children:
+                        - txtOpenBookingRole_StaffPlanScreen:
+                            Control: Text@0.0.51
+                            Properties:
+                              FontColor: =App.Theme.Colors.Primary
+                              Height: =22
+                              Text: =ThisItem.'Team Position'.Role.Name
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Regular
+                              Width: =Parent.Width
+                              Y: =txtOpenBookingZone_StaffPlanScreen.Height + txtOpenBookingZone_StaffPlanScreen.Y
+                        - txtOpenBookingZone_StaffPlanScreen:
+                            Control: Text@0.0.51
+                            Properties:
+                              Height: =22
+                              Text: =ThisItem.Zone.Name
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Regular
+                              Width: =Parent.Width
+                              Y: =txtOpenBookingFacility_StaffPlanScreen.Height
+                        - txtOpenBookingFacility_StaffPlanScreen:
+                            Control: Text@0.0.51
+                            Properties:
+                              Height: =24
+                              Text: =ThisItem.Zone.Facility.Name
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width
+                        - btnViewZone_StaffPlanScreen:
+                            Control: Button@0.0.45
+                            Properties:
+                              Appearance: ='ButtonCanvas.Appearance'.Transparent
+                              Height: =Parent.TemplateHeight
+                              Icon: ="Open"
+                              Layout: ='ButtonCanvas.Layout'.IconOnly
+                              OnSelect: |-
+                                =Set(varSelectedZone, ThisItem.Zone);
+                                // ToDo: Add a date range
+                                ClearCollect(colFilteredBookings, 
+                                    Filter(
+                                        shiftplanner_shiftbookings, 
+                                        Zone.shiftplanner_zone = ThisItem.Zone.shiftplanner_zone
+                                        //&& Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                    )
+                                );
+                                Navigate('Main Calendar Screen',ScreenTransition.Fade);
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =30
+                              X: =Parent.TemplateWidth - Self.Width - 12
+                        - rectOpenBookings_StaffPlanScreen:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              BorderStyle: =BorderStyle.None
+                              Fill: =ColorValue(varTheme.neutralStroke2)
+                              Height: =1
+                              OnSelect: =Select(Parent)
+                              Width: =Parent.Width
+                              Y: =69
+                  - btnOpenBookingsClose_StaffPlanScreen:
+                      Control: Button@0.0.45
+                      Properties:
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Navigate('Staff Planning Screen')
+                        Text: ="Close"
+      - compHeader_StaffPlanScreen_SOB:
+          Control: CanvasComponent
+          ComponentName: compHeaderCompound
+          Properties:
+            Fill: =App.Theme.Colors.Primary
+            HeaderHeight: =51
+            HeaderWidth: =1366
+            Height: |-
+              =compHeader_StaffPlanScreen_SOB.HeaderHeight
+              //varHeaderHeight
+            IsMenuScreen: =false
+            NavigateMenu: =
+            NavigateScreen: ='Staff Planning Screen'
+            Width: =compHeader_StaffPlanScreen_SOB.HeaderWidth

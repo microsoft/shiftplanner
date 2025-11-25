@@ -100,8 +100,10 @@
 
                 txtStatus_Request As Text:
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground1)
                     Height: =32
                     LayoutMaxHeight: =
@@ -151,8 +153,10 @@
 
             txtItemCount_Request As Text:
                 AutoHeight: =true
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
+                Fill: =
                 FontColor: =
                 Height: =32
                 LayoutMaxHeight: =
@@ -186,6 +190,7 @@
                 BorderStyle: =BorderStyle.None
                 DelayItemLoading: =true
                 FillPortions: =0
+                FocusedBorderThickness: =0
                 Height: =Parent.Height
                 Items: |-
                     =Filter(
@@ -254,8 +259,10 @@
 
                             txtType_Request As Text:
                                 AutoHeight: =true
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue(varTheme.primary)
                                 Height: =32
                                 LayoutMaxHeight: =
@@ -273,8 +280,10 @@
 
                             txtStaff_Request As Text:
                                 AutoHeight: =true
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue(varTheme.neutralForeground1)
                                 Height: =32
                                 LayoutMaxHeight: =
@@ -291,8 +300,10 @@
 
                             txtDate_Request As Text:
                                 AutoHeight: =true
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue(varTheme.neutralForeground1)
                                 Height: =32
                                 LayoutMaxHeight: =
@@ -362,8 +373,10 @@
                         txtViewDetails_Request As Text:
                             Align: ='TextCanvas.Align'.End
                             AutoHeight: =true
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FontColor: =ColorValue(varTheme.primary)
                             Height: =32
                             Text: ="View details"
@@ -378,6 +391,7 @@
                             Align: =""
                             Appearance: ='ButtonCanvas.Appearance'.Transparent
                             BasePaletteColor: =
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Font: =""
@@ -408,5 +422,6 @@
         HomeScreen: ='Home Screen'
         NavigationScreen: ='Home Screen'
         TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
         ZIndex: =2
 

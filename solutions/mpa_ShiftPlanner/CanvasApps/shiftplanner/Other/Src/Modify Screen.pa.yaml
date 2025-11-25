@@ -129,6 +129,65 @@ Screens:
                                     VerticalAlign: =VerticalAlign.Middle
                                     Weight: =varThemeFont.H2.weightBold
                                     Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        - timWaitForBackground_Modify:
+                            Control: Timer@2.1.0
+                            Properties:
+                              AutoPause: =false
+                              Duration: =WaitDuration
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              OnTimerEnd: |+
+                                =//Refresh Team positions
+                                Refresh(shiftplanner_teampositions);
+
+                                // TODO: Add a date range
+                                ClearCollect(
+                                    colFilteredBookings,
+                                    Filter(
+                                        shiftplanner_shiftbookings,
+                                        Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                                    )
+                                );    
+                                Select(btnRefresh_Modify);
+                                If(
+                                    SaveAndClose,
+                                    Select(btnBack_Modify);
+                                );
+
+                                // Then all the new bookings have been created, so handle form closure
+                                Select(btnRefresh_Modify);
+                                If(
+                                    SaveAndClose,
+                                    Select(btnBack_Modify);
+                                );
+                                UpdateContext({SaveInProgress: false, WaitStart:false});
+                              Repeat: =true
+                              Start: =WaitStart
+                              Visible: =false
+                              X: =40
+                              Y: =40
+                        - lblStatus:
+                            Control: Text@0.0.51
+                            Properties:
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: =
+                        - spnSaveInProgress_Modify:
+                            Control: Spinner@1.4.6
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              Label: ="Saving"
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Visible: =SaveInProgress
+                              X: =40
+                              Y: =40
                         - conButtons_Modify:
                             Control: GroupContainer@1.3.0
                             Variant: AutoLayout
@@ -175,70 +234,7 @@ Screens:
                                           DisplayMode.Edit
                                       )
                                     FontItalic: =
-                                    OnSelect: |-
-                                      =Set(
-                                          varFilledPositions,
-                                          CountRows(
-                                              Filter(
-                                                  AddColumns(
-                                                      shiftplanner_shiftbookings As Booking,
-                                                      ResourceName,
-                                                      Booking.Resource
-                                                  ),
-                                                  DateValue(Date) = varDateSelected && Zone.Name = varSelectedZone.Name && !IsBlank(ResourceName) && Text(Status) = "Active"
-                                              )
-                                          )
-                                      );
-
-                                      Set(
-                                          varTotalPositions,
-                                          CountRows(
-                                              Filter(
-                                                  shiftplanner_teampositions,
-                                                  ('Effective From' < varDateSelected && 'Effective To' > varDateSelected) && 'Shift Team'.Zone.Name = varSelectedZone.Name
-                                              )
-                                          )
-                                      );
-
-                                      //Resfresh colTeamPositions
-                                      ClearCollect(
-                                          colTeamPositions,
-                                          ForAll(
-                                              Filter(
-                                                  shiftplanner_teampositions,
-                                                  ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) && 'Shift Team'.Zone.Name = varSelectedZone.Name
-                                              ),
-                                              {
-                                                  ShiftNum: shiftplanner_teamposition,
-                                                  ShiftType: 'Shift Team'.'Shift Type'.Name,
-                                                  Team: 'Shift Team'.Name,
-                                                  Position: Role.Name,
-                                                  Resource: Resource.'Full Name',
-                                                  Status: "",
-                                                  NewPositon: "No"
-                                              }
-                                          )
-                                      );
-
-                                      //Refresh colModify
-                                      ClearCollect(
-                                          colModify,
-                                          AddColumns(
-                                              colTeamPositions As Positions,
-                                              ShiftBookingID,
-                                              LookUp(
-                                                  shiftplanner_shiftbookings,
-                                                  'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
-                                                  shiftplanner_shiftbooking
-                                              ),
-                                              ShiftBookingResource,
-                                              LookUp(
-                                                  shiftplanner_shiftbookings,
-                                                  'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
-                                                  Resource.'Full Name'
-                                              )
-                                          )
-                                      );
+                                    OnSelect: =Select(btnRefresh_Modify);
                                     Text: ="Clear changes"
                                     Width: =130
                               - btnSave_Modify:
@@ -258,7 +254,7 @@ Screens:
                                           DisplayMode.Edit
                                       )
                                     FontItalic: =
-                                    OnSelect: "=UpdateContext({SaveInProgress: true});\n\nIfError(\n    //Insert newly added positions\n    ForAll(\n        Filter(\n            colModify,\n            NewPositon = \"Yes\"\n        ) As colMod,\n        Patch(\n            shiftplanner_teampositions,\n            Defaults(shiftplanner_teampositions),\n            {\n                Resource: If(\n                    IsBlank(colMod.Resource),\n                    Blank(),\n                    LookUp(\n                        Users,\n                        'Full Name' = colMod.Resource// Will update once GUID is available in colModify\n                    )\n                ),\n                Role: LookUp(\n                    shiftplanner_roles,\n                    Name = colMod.Position//Will update once GUID is available in colModify\n                ),\n                'Shift Team': LookUp(\n                    shiftplanner_shiftteams,\n                    Name = colMod.Team//Will update once GUID is available in colModify\n                ),\n                'Effective From': varDateSelected,\n                'Effective To': varDateSelected\n            }\n        );\n    );\n    \n    //Remove Resource \n    ClearCollect(\n        colRemoveResource,\n        Filter(\n            shiftplanner_shiftbookings,\n            shiftplanner_shiftbooking in (ShowColumns(\n                Filter(\n                    colModify,\n                    NewPositon = \"No\" And Status = \"Remove\"\n                ),\n                ShiftBookingID\n            ))\n        )\n    );\n\n    UpdateIf(\n        colRemoveResource,\n        Status = 'Status (shiftplanner_shiftbookings)'.Active,\n        {Status: 'Status (shiftplanner_shiftbookings)'.Inactive}\n    );\n    Patch(\n        shiftplanner_shiftbookings,\n        ShowColumns(\n            colRemoveResource,\n            shiftplanner_shiftbooking,\n            Status\n        )\n    );\n    \n    //Replace Resource\n    ClearCollect(\n        colReplaceResource,\n        Filter(\n            shiftplanner_shiftbookings,\n            shiftplanner_shiftbooking in (ShowColumns(\n                Filter(\n                    colModify,\n                    NewPositon = \"No\" And Status = \"New\" And !IsBlank(ShiftBookingResource)\n                ),\n                ShiftBookingID\n            ))\n        )\n    );\n    UpdateIf(\n        colReplaceResource,\n        Status = 'Status (shiftplanner_shiftbookings)'.Active,\n        {Status: 'Status (shiftplanner_shiftbookings)'.Inactive}\n    );\n    Patch(\n        shiftplanner_shiftbookings,\n        ShowColumns(\n            colReplaceResource,\n            shiftplanner_shiftbooking,\n            Status\n        )\n    );\n    \n    //New Resource\n    ForAll(\n        Filter(\n            colModify,\n            NewPositon = \"No\" And Status = \"New\"\n        ) As colMod,\n        Patch(\n            shiftplanner_shiftbookings,\n            Defaults(shiftplanner_shiftbookings),\n            {\n                Name: LookUp(\n                    shiftplanner_teampositions,\n                    shiftplanner_teamposition = colMod.ShiftNum,\n                    Name\n                ) & \" - \" & Text(\n                    varDateSelected,\n                    \"yyyy-mm-dd\"\n                ),\n                Resource: LookUp(\n                    Users,\n                    'Full Name' = colMod.Resource\n                ),\n                'Team Position': LookUp(\n                    shiftplanner_teampositions,\n                    shiftplanner_teamposition = colMod.ShiftNum\n                ),\n                Zone: LookUp(\n                    shiftplanner_zones,\n                    shiftplanner_zone = varSelectedZone.shiftplanner_zone\n                ),\n                Date: varDateSelected,\n                'Status Reason': varDateSelectedPublishStatus\n            }\n        )\n    );\n    \n    /////////////////////////////////////////////////////////////////////////////////////\n    // If this week is published then send out emails and calendar invites for changes\n    /////////////////////////////////////////////////////////////////////////////////////\n\n    If(\n        varDateSelectedPublishStatus = 'Status Reason (shiftplanner_shiftbookings)'.Published,\n\n        //Email for added Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"New\"\n            ) As colMod,\n            If(\n                !IsBlank(colMod.Resource),\n                Patch(\n                    'Email Logs',\n                    Defaults('Email Logs'),\n                    {\n                        Resource: LookUp(\n                            Users,\n                            'Full Name' = colMod.Resource\n                        ),\n                        'Team Position': LookUp(\n                            shiftplanner_teampositions,\n                            shiftplanner_teamposition = colMod.ShiftNum\n                        ),\n                        Zone: varSelectedZone.Name,\n                        Role: colMod.Position,\n                        'Shift Type': colMod.ShiftType,\n                        Team: colMod.Team,\n                        Date: varDateSelected,\n                        'Invite Action': 'Invite Action'.Add\n                    }\n                )\n            )\n        );\n            \n        //Email for remove Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"Remove\"\n            ) As colMod,\n            Patch(\n                'Email Logs',\n                Defaults('Email Logs'),\n                {\n                    Resource: LookUp(\n                        Users,\n                        'Full Name' = colMod.ShiftBookingResource\n                    ),\n                    'Team Position': LookUp(\n                        shiftplanner_teampositions,\n                        shiftplanner_teamposition = colMod.ShiftNum\n                    ),\n                    Zone: varSelectedZone.Name,\n                    Role: colMod.Position,\n                    'Shift Type': colMod.ShiftType,\n                    Team: colMod.Team,\n                    Date: varDateSelected,\n                    'Invite Action': 'Invite Action'.Remove\n                }\n            )\n        );\n            \n        //Email for replace Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"New\" And !IsBlank(ShiftBookingResource)\n            ) As colMod,\n            Patch(\n                'Email Logs',\n                Defaults('Email Logs'),\n                {\n                    Resource: LookUp(\n                        Users,\n                        'Full Name' = colMod.ShiftBookingResource\n                    ),\n                    'Team Position': LookUp(\n                        shiftplanner_teampositions,\n                        shiftplanner_teamposition = colMod.ShiftNum\n                    ),\n                    Zone: varSelectedZone.Name,\n                    Role: colMod.Position,\n                    'Shift Type': colMod.ShiftType,\n                    Team: colMod.Team,\n                    Date: varDateSelected,\n                    'Invite Action': 'Invite Action'.Remove\n                }\n            )\n        );\n    ),\n\n    // Handle the end of the IfError\n    //Notify message\n        Notify(\n            \"Error inserting record.\",\n            NotificationType.Error, \n            varTheme.toastTimeout\n        ),\n        Notify(\n            \"Record inserted successfully.\",\n            NotificationType.Success,\n            varTheme.toastTimeout\n        )\n    );\n\n\n//Refresh Team positions\nRefresh(shiftplanner_teampositions);\n\n//Refresh colTeamPositions\nClearCollect(\n    colTeamPositions,\n    ForAll(\n        Filter(\n            shiftplanner_teampositions,\n            ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) && 'Shift Team'.Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone\n        ),\n        {\n            ShiftNum: shiftplanner_teamposition,\n            ShiftType: 'Shift Team'.'Shift Type'.Name,\n            Team: 'Shift Team'.Name,\n            Position: Role.Name,\n            Resource: Resource.'Full Name',\n            Status: \"\",\n            NewPositon: \"No\"\n        }\n    )\n);\n\n//Refresh colModify\nClearCollect(\n    colModify,\n    AddColumns(\n        colTeamPositions As Positions,\n        ShiftBookingID,\n        LookUp(\n            shiftplanner_shiftbookings,\n            'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,\n            shiftplanner_shiftbooking\n        ),\n        ShiftBookingResource,\n        LookUp(\n            shiftplanner_shiftbookings,\n            'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,\n            Resource.'Full Name'\n        )\n    )\n);\n\nClearCollect(\n    colFilteredBookings,\n    Filter(\n        shiftplanner_shiftbookings,\n        Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone\n    )\n);\nIf(\n    SaveAndClose,\n    Select(btnBack_Modify);\n);\n\nUpdateContext({SaveInProgress: false});"
+                                    OnSelect: "=UpdateContext({SaveInProgress: true});\nClear(colCreatedPositions);\n\nIfError(\n\n    //Insert newly added positions\n    ForAll(\n        Filter(\n            colModify,\n            NewPositon = \"Yes\"\n        ) As colMod,\n        Collect(\n            colCreatedPositions,\n            Patch(\n                shiftplanner_teampositions,\n                Defaults(shiftplanner_teampositions),\n                {\n                    Resource: If(\n                        IsBlank(colMod.Resource),\n                        Blank(),\n                        LookUp(\n                            Users,\n                            User = colMod.ResourceId// Will update once GUID is available in colModify\n                        )\n                    ),\n                    Role: LookUp(\n                        shiftplanner_roles,\n                        shiftplanner_role = colMod.PositionId//Will update once GUID is available in colModify\n                    ),\n                    'Shift Team': LookUp(\n                        shiftplanner_shiftteams,\n                        shiftplanner_shiftteam = colMod.TeamId//Will update once GUID is available in colModify\n                    ),\n                    'Effective From': varDateSelected,\n                    'Effective To': varDateSelected\n                }\n            )\n        );            \n    );\n    // If we added a position, save this state information\n    If(CountRows(colCreatedPositions), UpdateContext({WaitForBackgroundCreate : true}));\n\n    //Remove Resource \n    ClearCollect(\n        colRemoveResource,\n        Filter(\n            shiftplanner_shiftbookings,\n            shiftplanner_shiftbooking in (ShowColumns(\n                Filter(\n                    colModify,\n                    NewPositon = \"No\" And Status = \"Remove\"\n                ),\n                BookingId\n            ))\n        )\n    );\n    UpdateIf(\n        colRemoveResource,\n        Status = 'Status (shiftplanner_shiftbookings)'.Active,\n        {Status: 'Status (shiftplanner_shiftbookings)'.Inactive, Resource:Blank()}\n    );\n    Patch(\n        shiftplanner_shiftbookings,\n        ShowColumns(\n            colRemoveResource,\n            shiftplanner_shiftbooking,\n            Resource\n        )\n    );\n    \n    //Replace Resource\n    ForAll(\n        Filter(\n            colModify,\n            NewPositon = \"No\" And Status = \"New\"\n        ) As colMod,\n        UpdateIf(\n            shiftplanner_shiftbookings, \n            shiftplanner_shiftbooking = colMod.BookingId, \n            {Resource:LookUp(Users,User = colMod.ResourceId)}\n        )\n    );\n\n    /////////////////////////////////////////////////////////////////////////////////////\n    // If this week is published then send out emails and calendar invites for changes\n    /////////////////////////////////////////////////////////////////////////////////////\n\n    If(\n        varDateSelectedPublishStatus = 'Status Reason (shiftplanner_shiftbookings)'.Published,\n\n        //Email for added Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"New\"\n            ) As colMod,\n            If(\n                !IsBlank(colMod.Resource),\n                Patch(\n                    'Email Logs',\n                    Defaults('Email Logs'),\n                    {\n                        Resource: LookUp(\n                            Users,\n                            User = colMod.ResourceId\n                        ),\n                        'Team Position': LookUp(\n                            shiftplanner_teampositions,\n                            shiftplanner_teamposition = colMod.TeamPositionId\n                        ),\n                        Zone: varSelectedZone.Name,\n                        Role: colMod.Position,\n                        'Shift Type': colMod.ShiftType,\n                        Team: colMod.Team,\n                        Date: varDateSelected,\n                        'Invite Action': 'Invite Action'.Add\n                    }\n                )\n            )\n        );\n            \n        //Email for remove Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"Remove\"\n            ) As colMod,\n            Patch(\n                'Email Logs',\n                Defaults('Email Logs'),\n                {\n                    Resource: LookUp(\n                        Users,\n                        User = colMod.ResourceId\n                    ),\n                    'Team Position': LookUp(\n                        shiftplanner_teampositions,\n                        shiftplanner_teamposition = colMod.TeamPositionId\n                    ),\n                    Zone: varSelectedZone.Name,\n                    Role: colMod.Position,\n                    'Shift Type': colMod.ShiftType,\n                    Team: colMod.Team,\n                    Date: varDateSelected,\n                    'Invite Action': 'Invite Action'.Remove\n                }\n            )\n        );\n            \n        //Email for replace Resource\n        ForAll(\n            Filter(\n                colModify,\n                NewPositon = \"No\" And Status = \"New\" And !IsBlank(ResourceId)\n            ) As colMod,\n            Patch(\n                'Email Logs',\n                Defaults('Email Logs'),\n                {\n                    Resource: LookUp(\n                        Users,\n                        User = colMod.ResourceId\n                    ),\n                    'Team Position': LookUp(\n                        shiftplanner_teampositions,\n                        shiftplanner_teamposition = colMod.TeamPositionId\n                    ),\n                    Zone: varSelectedZone.Name,\n                    Role: colMod.Position,\n                    'Shift Type': colMod.ShiftType,\n                    Team: colMod.Team,\n                    Date: varDateSelected,\n                    'Invite Action': 'Invite Action'.Remove\n                }\n            )\n        );\n    ),\n\n    // Handle the end of the IfError\n    //Notify message\n        Notify(\n            \"Error inserting record.\",\n            NotificationType.Error, \n            varTheme.toastTimeout\n        ),\n        Notify(\n            \"Record inserted successfully.\",\n            NotificationType.Success,\n            varTheme.toastTimeout\n        )\n    );\n\n\n//Refresh Team positions\n///nf_RefreshCalendarDetails();\n\n\nIf(\n    // Do we need to wait for background tasks\n    WaitForBackgroundCreate,\n    \n    // If so wait for 5 secs\n    UpdateContext({WaitStart: true, WaitDuration:5000});,\n\n    // Otherwise wait 1ms\n    UpdateContext({WaitStart: true, WaitDuration:1});\n\n);"
                                     Text: ="Save"
                                     Width: =130
                               - btnSaveAndClose_Modify:
@@ -282,15 +278,85 @@ Screens:
                                       Select(btnSave_Modify);
                                     Text: ="Save and Close"
                                     Width: =130
+                              - btnRefresh_Modify:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: |+
+                                      =// Refresh the content
+                                      With(
+                                          {
+                                              TodaysBookings : Filter(
+                                                        AddColumns(
+                                                          colFilteredBookings As Booking,
+                                                          ResourceName,
+                                                          Booking.Resource
+                                                        ),
+                                                        DateValue(Date) = varDateSelected && Status  = 'Status (shiftplanner_shiftbookings)'.Active
+                                              )
+                                          },
+
+                                          Set(varTotalPositions,CountRows(TodaysBookings));
+
+                                          ClearCollect(colDraftResources, 
+                                              ForAll(TodaysBookings,
+                                                  {
+                                                      BookingId:shiftplanner_shiftbooking ,
+                                                      TeamPositionId: 'Team Position'.shiftplanner_teamposition,
+                                                      ShiftType: 'Team Position'.'Shift Team'.'Shift Type'.Name,
+                                                      ShiftTypeId: 'Team Position'.'Shift Team'.'Shift Type'.shiftplanner_shifttype,
+                                                      Team: 'Team Position'.'Shift Team'.Name,
+                                                      TeamId: 'Team Position'.'Shift Team'.shiftplanner_shiftteam,
+                                                      Position: 'Team Position'.Role.Name,
+                                                      PositionId: 'Team Position'.Role.shiftplanner_role,
+                                                      Resource: Resource.'Full Name',
+                                                      ResourceId: Resource.User,
+                                                      Status: "",
+                                                      NewPositon: "No"
+                                                  }
+                                              )
+                                          );
+
+                                          ClearCollect(colModify, colDraftResources);
+
+                                      );
+
+                                    Text: ="Refresh"
+                                    Visible: =false
                   - txtPositionsAndDates_Modify:
                       Control: Text@0.0.51
                       Properties:
                         AutoHeight: =true
                         Height: =Self.Size * 1.5
                         Size: =
-                        Text: |-
-                          =Concatenate(
-                              varFilledPositions & " of " & varTotalPositions & " positions filled for " & Text(
+                        Text: |
+                          =With(
+                              {
+                                  TodaysBookings : Filter(
+                                            AddColumns(
+                                              colFilteredBookings As Booking,
+                                              ResourceName,
+                                              Booking.Resource
+                                            ),
+                                            DateValue(Date) = varDateSelected && Status  = 'Status (shiftplanner_shiftbookings)'.Active
+                                  )
+                              },
+                                  Concatenate(
+                                      // Find the count of the bookings
+                                      CountRows(
+                                         Filter(
+                                            TodaysBookings,
+                                            !IsBlank(Resource)
+                                         )
+                                      ), 
+                                      " of "
+                                      ,
+                                      // Find all the rows that need bookings
+                                      CountRows(TodaysBookings)
+                                  ) & " positions filled for " & Text(
                                   varDateSelected,
                                   DateTimeFormat.LongDate
                               )
@@ -422,7 +488,7 @@ Screens:
                                 =Sort(
                                     Filter(
                                         colModify, 
-                                        ShiftType = txtShiftType_Modify.Text
+                                        Text(ShiftTypeId) = hdnShiftTypeId_Modify.Text
                                     ),
                                     Team
                                 )
@@ -479,8 +545,8 @@ Screens:
                                             =If(
                                                 ThisItem.Status = "",
                                                 If(
-                                                    !IsBlank(ThisItem.ShiftBookingResource),
-                                                    "Booking: " & ThisItem.ShiftBookingResource,
+                                                    !IsBlank(ThisItem.Resource),
+                                                    "Booking: " & ThisItem.Resource,
                                                     Not(IsBlank(ThisItem.Resource)),
                                                     ThisItem.Resource,
                                                     "(Not Filled)"
@@ -527,7 +593,7 @@ Screens:
                                                       colModify,
                                                       LookUp(
                                                           colModify,
-                                                          ShiftNum = ThisItem.ShiftNum
+                                                          BookingId = ThisItem.BookingId
                                                       )
                                                   );
 
@@ -538,7 +604,8 @@ Screens:
 
                                                   Notify(
                                                       "Position has been deleted.",
-                                                      NotificationType.Success
+                                                      NotificationType.Success,
+                                                      varTheme.toastTimeout
                                                   )
                                                 Text: ="Delete Position"
                                                 Visible: =If(ThisItem.NewPositon = "Yes", true, false)
@@ -564,16 +631,20 @@ Screens:
                                                 OnSelect: |-
                                                   =If (
                                                       txtStaff_Modify.Text = "(Not Filled)",
+
+                                                      // No Staff, need to add one
                                                       Set(
                                                           varAddStaff,
                                                           ThisItem
                                                       );
                                                       Navigate('Add Staff Screen'),
+
+                                                      // Staff is there, need to delete it
                                                       Patch(
                                                           colModify,
                                                           LookUp(
                                                               colModify,
-                                                              ShiftNum = ThisItem.ShiftNum
+                                                              BookingId = ThisItem.BookingId
                                                           ),
                                                           {
                                                               Resource: "",
@@ -581,10 +652,6 @@ Screens:
                                                           }
                                                       );
 
-                                                      Set(
-                                                          varFilledPositions,
-                                                          varFilledPositions - 1
-                                                      );
 
                                                       Notify(
                                                           "Staff has been removed.",
@@ -664,7 +731,7 @@ Screens:
                               FontColor: =ColorValue(varTheme.neutralForeground3)
                               Size: =
                               Text: |+
-                                =Concatenate(Text(ThisItem.Startdate, DateTimeFormat.ShortTime) & " to " & Text(ThisItem.Enddate, DateTimeFormat.ShortTime))
+                                =Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
                               Width: =135
                         - shpSeparateShift_Modify:
                             Control: Rectangle@2.3.0
@@ -709,6 +776,19 @@ Screens:
                         Weight: =varThemeFont.H1.weightBold
                         Width: =Parent.TemplateWidth - 10
                         X: =10
+                  - hdnShiftTypeId_Modify:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.End
+                        AutoHeight: =true
+                        FontColor: =App.Theme.Colors.Primary
+                        Height: =Self.Size * 1.5
+                        Size: =varThemeFont.H3.size
+                        Text: =ThisItem.shiftplanner_shifttype
+                        VerticalAlign: =VerticalAlign.Middle
+                        Visible: =false
+                        Weight: =varThemeFont.H1.weightBold
+                        Width: =Parent.TemplateWidth - 10
       - compHeaderCompound_Modify:
           Control: CanvasComponent
           ComponentName: compHeaderCompound

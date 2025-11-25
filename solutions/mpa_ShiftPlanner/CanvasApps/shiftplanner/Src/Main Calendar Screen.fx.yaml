@@ -133,8 +133,10 @@
 
                 txtFacility_MainCalendar As Text:
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground3)
                     Height: =32
                     LayoutMaxHeight: =
@@ -151,8 +153,10 @@
 
                 txtZoneTitle_MainCalendar As Text:
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground1)
                     Height: =32
                     LayoutMaxHeight: =
@@ -181,13 +185,16 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                Visible: =false
                 ZIndex: =2
 
                 txtScreenLabel_MainCalendar As Text:
                     Align: ='TextCanvas.Align'.End
                     AutoHeight: =false
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =
                     Height: =Parent.Height
                     LayoutMaxHeight: =
@@ -320,8 +327,10 @@
                     Align: ='TextCanvas.Align'.Center
                     AlignInContainer: =AlignInContainer.Stretch
                     AutoHeight: =true
+                    BorderColor: =
                     BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
+                    Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground1)
                     Height: =20
                     LayoutMaxHeight: =
@@ -403,8 +412,10 @@
                         txtPublishedStatusLabel_MainCalendar As Text:
                             Align: ='TextCanvas.Align'.Start
                             AutoHeight: =true
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FontColor: =If(Self.Text = "Published", ColorValue(varTheme.neutralForeground1), ColorValue(varTheme.neutralForeground3))
                             Height: =38
                             LayoutMaxHeight: =
@@ -455,8 +466,10 @@
                         ZIndex: =3
 
                         txtFilledPositionsLabel_MainCalendar As Text:
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FillPortions: =1
                             FontColor: =
                             Height: =32
@@ -465,24 +478,31 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
                             Size: =
-                            Text: |-
-                                =Concatenate(
-                                    CountRows(
-                                        Filter(
-                                            AddColumns(
-                                                colFilteredBookings As Booking,
-                                                ResourceName,
-                                                Booking.Resource
-                                            ),
-                                            DateValue(Date) = varDateSelected && !IsBlank(ResourceName) && Status = 'Status (shiftplanner_shiftbookings)'.Active
+                            Text: |
+                                =With(
+                                    {
+                                        TodaysBookings : Filter(
+                                                  AddColumns(
+                                                    colFilteredBookings As Booking,
+                                                    ResourceName,
+                                                    Booking.Resource
+                                                  ),
+                                                  DateValue(Date) = varDateSelected && Status  = 'Status (shiftplanner_shiftbookings)'.Active
                                         )
-                                    ) 
-                                & " of " & CountRows(
-                                        Filter(
-                                            shiftplanner_teampositions,
-                                            ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) && 'Shift Team'.Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
-                                        )
-                                    ) & " positions filled"
+                                    },
+                                        Concatenate(
+                                            // Find the count of the bookings
+                                            CountRows(
+                                               Filter(
+                                                  TodaysBookings,
+                                                  !IsBlank(Resource)
+                                               )
+                                            ), 
+                                            " of "
+                                            ,
+                                            // Find all the rows that need bookings
+                                            CountRows(TodaysBookings)
+                                        ) & " positions filled"
                                 )
                             Weight: =varThemeFont.H3.weight
                             Width: =Parent.Width - btnModify_MainCalendar.Width
@@ -495,6 +515,7 @@
                             AccessibleLabel: ="Modify button"
                             Align: =""
                             BasePaletteColor: =
+                            BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontColor: =
@@ -508,7 +529,47 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
                             OnSelect: |-
-                                =Set(
+                                =With(
+                                    {
+                                        TodaysBookings : Filter(
+                                                  AddColumns(
+                                                    colFilteredBookings As Booking,
+                                                    ResourceName,
+                                                    Booking.Resource
+                                                  ),
+                                                  DateValue(Date) = varDateSelected && Status  = 'Status (shiftplanner_shiftbookings)'.Active
+                                        )
+                                    },
+                                
+                                    Set(varTotalPositions,CountRows(TodaysBookings));
+                                
+                                    ClearCollect(colDraftResources, 
+                                        ForAll(TodaysBookings,
+                                            {
+                                                BookingId:shiftplanner_shiftbooking ,
+                                                TeamPositionId: 'Team Position'.shiftplanner_teamposition,
+                                                ShiftType: 'Team Position'.'Shift Team'.'Shift Type'.Name,
+                                                ShiftTypeId: 'Team Position'.'Shift Team'.'Shift Type'.shiftplanner_shifttype,
+                                                Team: 'Team Position'.'Shift Team'.Name,
+                                                TeamId: 'Team Position'.'Shift Team'.shiftplanner_shiftteam,
+                                                Position: 'Team Position'.Role.Name,
+                                                PositionId: 'Team Position'.Role.shiftplanner_role,
+                                                Resource: Resource.'Full Name',
+                                                ResourceId: Resource.User,
+                                                Status: "",
+                                                NewPositon: "No"
+                                            }
+                                        )
+                                    );
+                                
+                                    ClearCollect(colModify, colDraftResources);
+                                
+                                );
+                                
+                                
+                                /*
+                                Old Model
+                                Set(
                                     varFilledPositions,
                                     CountRows(
                                         Filter(
@@ -531,7 +592,6 @@
                                         )
                                     )
                                 );
-                                
                                 ClearCollect(
                                     colTeamPositions,
                                     ForAll(
@@ -542,9 +602,13 @@
                                         {
                                             ShiftNum: shiftplanner_teamposition,
                                             ShiftType: 'Shift Team'.'Shift Type'.Name,
+                                            ShiftTypeId: 'Shift Team'.'Shift Type'.shiftplanner_shifttype,
                                             Team: 'Shift Team'.Name,
+                                            TeamId: 'Shift Team'.shiftplanner_shiftteam,
                                             Position: Role.Name,
+                                            PositionId: Role.shiftplanner_role,
                                             Resource: Resource.'Full Name',
+                                            ResourceId: Resource.User,
                                             Status: "",
                                             NewPositon: "No"
                                         }
@@ -561,14 +625,15 @@
                                             'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
                                             shiftplanner_shiftbooking
                                         ),
-                                        ShiftBookingResource,
+                                        ShiftBookingResourceId,
                                         LookUp(
                                             shiftplanner_shiftbookings,
                                             'Team Position'.shiftplanner_teamposition = Positions.ShiftNum And Date = varDateSelected And Status = 'Status (shiftplanner_shiftbookings)'.Active,
-                                            Resource.'Full Name'
+                                            Resource.User
                                         )
                                     )
                                 );
+                                */
                                 
                                 Navigate('Modify Screen')
                             Text: ="Modify"
@@ -642,6 +707,21 @@
                                 =SortByColumns(
                                     AddColumns(
                                         Filter(
+                                            colFilteredBookings,
+                                            Date = varDateSelected And 
+                                            Text('Team Position'.'Shift Team'.'Shift Type'.shiftplanner_shifttype) = hdnShiftTypeShiftTime_MainCalendar.Text And
+                                            Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                                        ),
+                                        TeamSort, 
+                                        'Team Position'.'Shift Team'.Name
+                                    ),
+                                    "TeamSort"
+                                )
+                                /*
+                                The old model
+                                SortByColumns(
+                                    AddColumns(
+                                        Filter(
                                             shiftplanner_teampositions, 
                                             'Shift Team'.'Shift Type'.Name = txtShiftType_MainCalendar.Text 
                                             && ('Effective From' <= varDateSelected && 'Effective To' >= varDateSelected) 
@@ -652,6 +732,7 @@
                                         ), 
                                     "TeamSort"
                                 )
+                                */
                             LoadingSpinner: =LoadingSpinner.Data
                             ShowNavigation: =true
                             ShowScrollbar: =false
@@ -682,8 +763,10 @@
                                 txtTeam_MainCalendar As Text:
                                     Align: ='TextCanvas.Align'.Start
                                     AutoHeight: =true
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =ColorValue(varTheme.neutralForeground3)
                                     Height: =32
                                     LayoutMaxHeight: =
@@ -691,7 +774,7 @@
                                     LayoutMinHeight: =32
                                     LayoutMinWidth: =96
                                     Size: =
-                                    Text: =ThisItem.'Shift Team'.Name
+                                    Text: =ThisItem.'Team Position'.'Shift Team'.Name
                                     Weight: ='TextCanvas.Weight'.Semibold
                                     Width: =Parent.Width
                                     X: =40
@@ -700,8 +783,10 @@
 
                                 txtPosition_MainCalendar As Text:
                                     AutoHeight: =true
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =App.Theme.Colors.Primary
                                     Height: =
                                     LayoutMaxHeight: =
@@ -709,7 +794,7 @@
                                     LayoutMinHeight: =32
                                     LayoutMinWidth: =96
                                     Size: =
-                                    Text: =ThisItem.Role.Name
+                                    Text: =ThisItem.'Team Position'.Role.Name
                                     VerticalAlign: =VerticalAlign.Middle
                                     Weight: =varThemeFont.H1.weight
                                     Width: =Parent.Width
@@ -720,8 +805,10 @@
                                 txtStaff_MainCalendar As Text:
                                     Align: ='TextCanvas.Align'.Start
                                     AutoHeight: =true
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =ColorValue(varTheme.neutralForeground1)
                                     Height: =32
                                     LayoutMaxHeight: =
@@ -729,42 +816,17 @@
                                     LayoutMinHeight: =32
                                     LayoutMinWidth: =96
                                     Size: =
-                                    Text: |
-                                        =/*
-                                        If(
-                                            !IsBlank(
-                                                First(
-                                                    SortByColumns(
-                                                        Filter(
-                                                            AddColumns(
-                                                                colFilteredBookings As Booking,
-                                                                BookingDate,
-                                                                Booking.Date
-                                                            ),
-                                                            'Team Position'.shiftplanner_teamposition = ThisItem.shiftplanner_teamposition && DateValue(BookingDate) = varDateSelected
-                                                        ),
-                                                        "modifiedon",
-                                                        SortOrder.Descending
-                                                    )
-                                                ).Resource.'Full Name'
-                                            ),
-                                            First(
-                                                SortByColumns(
-                                                    Filter(
-                                                        AddColumns(
-                                                            colFilteredBookings As Booking,
-                                                            BookingDate,
-                                                            Booking.Date
-                                                        ),
-                                                        'Team Position'.shiftplanner_teamposition = ThisItem.shiftplanner_teamposition && DateValue(BookingDate) = varDateSelected
-                                                    ),
-                                                    "modifiedon",
-                                                    SortOrder.Descending
-                                                )
-                                            ).Resource.'Full Name',
-                                            "(Not Filled)"
+                                    Text: |-
+                                        =If(
+                                            IsBlank(ThisItem.Resource),
+                                            "(Not Filled)",
+                                            ThisItem.Resource.'Full Name'
                                         )
-                                        */
+                                        
+                                        
+                                        /*
+                                        The old model
+                                        
                                         If(
                                             !IsBlank(
                                                 First(
@@ -798,6 +860,7 @@
                                             ).Resource.'Full Name',
                                             "(Not Filled)"
                                         )
+                                        */
                                     Weight: =
                                     Width: =Parent.Width
                                     X: =40
@@ -833,8 +896,10 @@
 
                                 txtShiftType_MainCalendar As Text:
                                     AutoHeight: =false
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FillPortions: =1
                                     FontColor: =App.Theme.Colors.Primary
                                     Height: =20
@@ -855,8 +920,10 @@
                                 txtShiftTime_MainCalendar As Text:
                                     Align: ='TextCanvas.Align'.End
                                     AutoHeight: =false
+                                    BorderColor: =
                                     BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =ColorValue(varTheme.neutralForeground3)
                                     Height: =txtShiftType_MainCalendar.Height
                                     LayoutMaxHeight: =
@@ -865,17 +932,50 @@
                                     LayoutMinWidth: =96
                                     Size: =varThemeFont.B2.size
                                     Text: |
-                                        =Concatenate(Text(ThisItem.Startdate, DateTimeFormat.ShortTime) & " to " & Text(ThisItem.Enddate, DateTimeFormat.ShortTime))
+                                        =Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
                                     VerticalAlign: =VerticalAlign.Middle
                                     Width: =140
                                     X: =0
                                     Y: =0
                                     ZIndex: =3
 
+                                hdnShiftTypeShiftTime_MainCalendar As Text:
+                                    Align: ='TextCanvas.Align'.End
+                                    AutoHeight: =false
+                                    BorderColor: =
+                                    BorderStyle: =""
+                                    ContentLanguage: =""
+                                    DisplayMode: =DisplayMode.Edit
+                                    Fill: =
+                                    Font: =""
+                                    FontColor: =ColorValue(varTheme.neutralForeground3)
+                                    FontItalic: =false
+                                    FontStrikethrough: =false
+                                    FontUnderline: =false
+                                    Height: =txtShiftType_MainCalendar.Height
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =96
+                                    Size: =varThemeFont.B2.size
+                                    TabIndex: =0
+                                    Text: =ThisItem.shiftplanner_shifttype
+                                    Tooltip: =""
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Visible: =false
+                                    Weight: ="Regular"
+                                    Width: =140
+                                    Wrap: =true
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =4
+
                             txtPositionCount_MainCalendar As Text:
                                 AutoHeight: =true
+                                BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
                                 FontColor: =ColorValue(varTheme.neutralForeground1)
                                 Height: =32
                                 LayoutMaxHeight: =

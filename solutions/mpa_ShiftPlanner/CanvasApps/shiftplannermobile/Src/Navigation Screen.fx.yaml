@@ -37,6 +37,7 @@
             Color: =App.Theme.Colors.Darker70
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =0
             Height: =19.5
             Icon: =Icon.Cancel
             LayoutMaxHeight: =
@@ -51,6 +52,7 @@
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =App.Theme.Colors.Darker40
             DelayItemLoading: =true
+            FocusedBorderThickness: =0
             Height: =Parent.Height - icoCancel_Navigation.Height
             Items: =leftNavItems
             Layout: =Layout.Vertical
@@ -101,6 +103,7 @@
                             )
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
                         DisabledColor: =RGBA(244, 244, 244, 1)
+                        FocusedBorderThickness: =0
                         Height: =Self.Width
                         Icon: =ThisItem.Icon
                         LayoutMaxHeight: =
@@ -111,8 +114,10 @@
                     txtScreenName_Navigation As Text:
                         Align: ='TextCanvas.Align'.Start
                         AutoHeight: =false
+                        BorderColor: =
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
                         FontColor: =ico_ScreenIcon_Navigation.Color
                         Height: =32
                         LayoutMaxHeight: =
@@ -137,6 +142,7 @@
                 Align: =""
                 Appearance: ='ButtonCanvas.Appearance'.Transparent
                 BasePaletteColor: =
+                BorderColor: =
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
                 FontColor: =
@@ -154,4 +160,14 @@
                 X: =0
                 Y: =(galMenu_Navigation.TemplateHeight - Self.Height) / 2
                 ZIndex: =2
+
+    Image2 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =0
+        Image: =
+        X: =40
+        Y: =40
+        ZIndex: =2
 
