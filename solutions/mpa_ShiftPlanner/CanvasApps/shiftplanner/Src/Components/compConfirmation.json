@@ -167,7 +167,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conBody_ConfirmationComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 406,
+            "PublishOrderIndex": 407,
             "Rules": [
               {
                 "Category": "Data",
@@ -398,7 +398,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conBody_ConfirmationComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 407,
+            "PublishOrderIndex": 408,
             "Rules": [
               {
                 "Category": "Data",
@@ -658,7 +658,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conButtons_ConfirmationComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 409,
+                "PublishOrderIndex": 410,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -955,7 +955,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conButtons_ConfirmationComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 410,
+                "PublishOrderIndex": 411,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -1272,7 +1272,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conBody_ConfirmationComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 408,
+            "PublishOrderIndex": 409,
             "Rules": [
               {
                 "Category": "Design",
@@ -1571,7 +1571,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "compConfirmation",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 405,
+        "PublishOrderIndex": 406,
         "Rules": [
           {
             "Category": "Design",
@@ -1807,7 +1807,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638995590105213678",
+    "LastModifiedTimestamp": "639000931010369664",
     "Name": "compConfirmation",
     "Rules": [
       {
@@ -1981,7 +1981,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638995590105213678",
+  "LastModifiedTimestamp": "639000931010369664",
   "Name": "52ddb765399f439aaee19cc24bab42b9",
   "OverridableProperties": {},
   "TemplateOriginalName": "1dd50174c273419288a5c747d9ec59a4",

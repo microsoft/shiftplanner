@@ -1,6 +1,34 @@
 "'Application Landing Screen' As screen":
     Fill: =Color.White
     LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: |-
+        =With(
+            {
+                // Build a summary table: one row per Zone with its count
+                uaByZone:
+                    AddColumns(
+                        GroupBy(
+                            AddColumns(shiftplanner_useraffiliations, ZoneId,Zone.shiftplanner_zone),
+                            ZoneId,      // group key: the lookup column to Zone
+                            ua         // subgroup table name
+                        ),
+                        AffiliationCount,
+                        CountRows(ua)  // count affiliations in each group
+                    )
+            },
+        
+            UpdateContext({
+                colZoneSummary:
+                    AddColumns(
+                        shiftplanner_zones As z,
+                        AffiliationCount,
+                        Coalesce(
+                            LookUp(uaByZone, ZoneId = z.shiftplanner_zone).AffiliationCount,
+                            0
+                        )
+                    )
+            });
+        )
 
     conMainContent_Body_LandingScreen As groupContainer.verticalAutoLayoutContainer:
         Fill: =ColorValue(varTheme.neutralBackground2)
@@ -264,7 +292,9 @@
                                 },
                                 ((Rows * conGalZone_LandingScreen.Height) + (Rows * Self.TemplatePadding)) + 48//bottom Padding
                             )
-                        Items: =Sort(Filter(shiftplanner_zones,ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
+                        Items: |-
+                            =//Sort(Filter(shiftplanner_zones,ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
+                            Sort(Filter(colZoneSummary, ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
                         Layout: =Layout.Vertical
                         LayoutMaxHeight: =
                         LayoutMaxWidth: =
@@ -298,13 +328,13 @@
                             ZIndex: =3
 
                             txtZone_LandingScreen As Text:
-                                AutoHeight: =true
+                                AutoHeight: =false
                                 BorderColor: =
                                 BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
                                 FontColor: =App.Theme.Colors.Primary
-                                Height: =44
+                                Height: =46
                                 LayoutMaxHeight: =
                                 LayoutMaxWidth: =
                                 LayoutMinHeight: =32
@@ -314,6 +344,7 @@
                                 VerticalAlign: =VerticalAlign.Top
                                 Weight: =varThemeFont.H3.weightBold
                                 Width: =Parent.Width - Parent.PaddingRight-Parent.PaddingLeft
+                                Wrap: =true
                                 X: =0
                                 Y: =0
                                 ZIndex: =1
@@ -332,11 +363,7 @@
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
                                 Size: =//varThemeFont.H3.size
-                                Text: |-
-                                    = CountIf(
-                                              shiftplanner_useraffiliations,
-                                              Facility.shiftplanner_facility = ThisItem.Facility.shiftplanner_facility && Zone.shiftplanner_zone = ThisItem.shiftplanner_zone
-                                          )&" Staff"
+                                Text: =ThisItem.AffiliationCount &" Staff"
                                 VerticalAlign: =VerticalAlign.Top
                                 Weight: =varThemeFont.H3.weight
                                 Width: =Parent.Width - Parent.PaddingRight-Parent.PaddingLeft

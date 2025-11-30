@@ -28,7 +28,19 @@
         UpdateContext(
             {
                 SaveAndClose: false,
-                SaveInProgress: false
+                SaveInProgress: false,
+                tmpPositionsToModify : Filter(
+                    AddColumns(
+                        shiftplanner_shifttypes As ShiftType,
+                        ShiftZone,
+                        LookUp(
+                            shiftplanner_shiftteams,
+                            'Shift Type'.shiftplanner_shifttype = ShiftType.shiftplanner_shifttype And Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone,
+                            Zone
+                        )
+                    ),
+                    ShiftZone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                )
             }
         )
 
@@ -199,6 +211,7 @@
                     ZIndex: =3
 
                 spnSaveInProgress_Modify As Spinner:
+                    AccessibleLabel: ="Save in progress"
                     AlignInContainer: =AlignInContainer.Stretch
                     BasePaletteColor: =
                     DisplayMode: =DisplayMode.Edit
@@ -595,6 +608,7 @@
                         ZIndex: =4
 
                     btnRefresh_Modify As Button:
+                        AccessibleLabel: ="Refresh"
                         BasePaletteColor: =
                         BorderColor: =
                         DisplayMode: =DisplayMode.Edit
@@ -708,7 +722,7 @@
             FocusedBorderThickness: =0
             Height: =Parent.Height - Parent.PaddingTop - conHeader_Modify.Height - Parent.PaddingBottom
             Items: |-
-                =Filter(
+                =/*Filter(
                     AddColumns(
                         shiftplanner_shifttypes As ShiftType,
                         ShiftZone,
@@ -719,7 +733,8 @@
                         )
                     ),
                     ShiftZone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
-                )
+                )*/
+                tmpPositionsToModify
             Layout: =Layout.Vertical
             LayoutMaxHeight: =
             LayoutMaxWidth: =
@@ -873,13 +888,13 @@
 
                         txtTeam_Modify As Text:
                             Align: ='TextCanvas.Align'.Start
-                            AutoHeight: =true
+                            AutoHeight: =false
                             BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Fill: =
                             FontColor: =
-                            Height: =32
+                            Height: =17
                             LayoutMaxHeight: =
                             LayoutMaxWidth: =
                             LayoutMinHeight: =32
@@ -888,18 +903,19 @@
                             Text: =ThisItem.Team
                             Weight: ='TextCanvas.Weight'.Semibold
                             Width: =Parent.Width
+                            Wrap: =false
                             X: =40
                             Y: =40
                             ZIndex: =1
 
                         txtPosition_Modify As Text:
-                            AutoHeight: =true
+                            AutoHeight: =false
                             BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Fill: =
                             FontColor: =App.Theme.Colors.Primary
-                            Height: =
+                            Height: =17
                             LayoutMaxHeight: =
                             LayoutMaxWidth: =
                             LayoutMinHeight: =32
@@ -915,7 +931,7 @@
 
                         txtStaff_Modify As Text:
                             Align: ='TextCanvas.Align'.Start
-                            AutoHeight: =true
+                            AutoHeight: =false
                             BorderColor: =
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit

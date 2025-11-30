@@ -112,7 +112,7 @@
       "MetaDataIDKey": "",
       "Name": "btnStaffViewRefresh",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7046,7 +7046,7 @@
       "MetaDataIDKey": "",
       "Name": "conTitleHeader_StaffMode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9001,7 +9001,7 @@
       "MetaDataIDKey": "",
       "Name": "galShiftSummary_StaffMode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9655,7 +9655,7 @@
       "MetaDataIDKey": "",
       "Name": "galStaffView_StaffMode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11841,7 +11841,7 @@
       "MetaDataIDKey": "",
       "Name": "shpCoverageSeparator_StaffMode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12341,7 +12341,7 @@
       "MetaDataIDKey": "",
       "Name": "shpHeaderSeparator_StaffMode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14018,7 +14018,7 @@
       "MetaDataIDKey": "",
       "Name": "txtEmptyDataMessage_StaffMode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

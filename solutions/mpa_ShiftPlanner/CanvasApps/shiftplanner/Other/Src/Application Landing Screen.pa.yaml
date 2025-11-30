@@ -8,6 +8,35 @@
 # ************************************************************************************************
 Screens:
   Application Landing Screen:
+    Properties:
+      OnVisible: |-
+        =With(
+            {
+                // Build a summary table: one row per Zone with its count
+                uaByZone:
+                    AddColumns(
+                        GroupBy(
+                            AddColumns(shiftplanner_useraffiliations, ZoneId,Zone.shiftplanner_zone),
+                            ZoneId,      // group key: the lookup column to Zone
+                            ua         // subgroup table name
+                        ),
+                        AffiliationCount,
+                        CountRows(ua)  // count affiliations in each group
+                    )
+            },
+
+            UpdateContext({
+                colZoneSummary:
+                    AddColumns(
+                        shiftplanner_zones As z,
+                        AffiliationCount,
+                        Coalesce(
+                            LookUp(uaByZone, ZoneId = z.shiftplanner_zone).AffiliationCount,
+                            0
+                        )
+                    )
+            });
+        )
     Children:
       - conMainContent_Body_LandingScreen:
           Control: GroupContainer@1.3.0
@@ -221,7 +250,9 @@ Screens:
                                           },
                                           ((Rows * conGalZone_LandingScreen.Height) + (Rows * Self.TemplatePadding)) + 48//bottom Padding
                                       )
-                                    Items: =Sort(Filter(shiftplanner_zones,ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
+                                    Items: |-
+                                      =//Sort(Filter(shiftplanner_zones,ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
+                                      Sort(Filter(colZoneSummary, ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
                                     TabIndex: =0
                                     TemplatePadding: =20
                                     TemplateSize: =conGalZone_LandingScreen.Height
@@ -246,9 +277,8 @@ Screens:
                                           - txtZone_LandingScreen:
                                               Control: Text@0.0.51
                                               Properties:
-                                                AutoHeight: =true
                                                 FontColor: =App.Theme.Colors.Primary
-                                                Height: =44
+                                                Height: =46
                                                 Size: =varThemeFont.B2.size + 2
                                                 Text: =ThisItem.Name
                                                 VerticalAlign: =VerticalAlign.Top
@@ -261,11 +291,7 @@ Screens:
                                                 FontColor: =ColorValue(varTheme.neutralForeground1)
                                                 Height: =20
                                                 Size: =//varThemeFont.H3.size
-                                                Text: |-
-                                                  = CountIf(
-                                                            shiftplanner_useraffiliations,
-                                                            Facility.shiftplanner_facility = ThisItem.Facility.shiftplanner_facility && Zone.shiftplanner_zone = ThisItem.shiftplanner_zone
-                                                        )&" Staff"
+                                                Text: =ThisItem.AffiliationCount &" Staff"
                                                 VerticalAlign: =VerticalAlign.Top
                                                 Weight: =varThemeFont.H3.weight
                                                 Width: =Parent.Width - Parent.PaddingRight-Parent.PaddingLeft

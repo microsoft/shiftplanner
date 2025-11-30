@@ -6052,7 +6052,14 @@
         "FontItalic",
         "FontStrikethrough",
         "FontUnderline",
-        "Wrap",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Wrap",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "BorderStyle",
         "TabIndex",
         "Tooltip",

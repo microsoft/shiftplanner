@@ -2,7 +2,13 @@
     Fill: =ColorValue(varTheme.neutralBackground2)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnVisible: |-
-        =If(IsBlank(varFirstDayOfMonth),
+        =// Cache the teams for this zone
+        UpdateContext({
+            tmpTeamsForThisZone : Filter(shiftplanner_shiftteams, Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone)
+        });
+        
+        // 
+        If(IsBlank(varFirstDayOfMonth),
             
             // If no day is selected, then select today and this month
             Set(
@@ -117,7 +123,6 @@
             conTitleHeader_MainCalendar As groupContainer.verticalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 Fill: =ColorValue(varTheme.neutralBackground2)
-                FillPortions: =0
                 Height: =txtFacility_MainCalendar.Height + txtZoneTitle_MainCalendar.Height + Self.LayoutGap
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutMaxHeight: =
@@ -158,7 +163,7 @@
                     DisplayMode: =DisplayMode.Edit
                     Fill: =
                     FontColor: =ColorValue(varTheme.neutralForeground1)
-                    Height: =32
+                    Height: =60
                     LayoutMaxHeight: =
                     LayoutMaxWidth: =
                     LayoutMinHeight: =32
@@ -264,8 +269,10 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =2
             PaddingLeft: =20
             PaddingRight: =20
+            PaddingTop: =1
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
@@ -667,8 +674,8 @@
                         FillPortions: =0
                         FocusedBorderThickness: =0
                         Height: =Parent.Height
-                        Items: |-
-                            =Filter(
+                        Items: |
+                            =/*Filter(
                                 AddColumns(
                                     shiftplanner_shifttypes As ShiftType,
                                     ShiftZone,
@@ -679,7 +686,9 @@
                                     )
                                 ),
                                 ShiftZone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
-                            )
+                            )*/
+                            
+                            varSelectedZone.'Shift Teams'
                         Layout: =Layout.Vertical
                         LayoutMaxHeight: =
                         LayoutMaxWidth: =
@@ -932,7 +941,8 @@
                                     LayoutMinWidth: =96
                                     Size: =varThemeFont.B2.size
                                     Text: |
-                                        =Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
+                                        =Concatenate(Text(ThisItem.'Shift Type'.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(DateAdd( ThisItem.'Shift Type'.'Start Date Time', ThisItem.'Shift Type'.Duration,TimeUnit.Minutes), DateTimeFormat.ShortTime))
+                                        //Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
                                     VerticalAlign: =VerticalAlign.Middle
                                     Width: =140
                                     X: =0
@@ -959,7 +969,7 @@
                                     LayoutMinWidth: =96
                                     Size: =varThemeFont.B2.size
                                     TabIndex: =0
-                                    Text: =ThisItem.shiftplanner_shifttype
+                                    Text: =ThisItem.'Shift Type'.shiftplanner_shifttype
                                     Tooltip: =""
                                     VerticalAlign: =VerticalAlign.Middle
                                     Visible: =false
