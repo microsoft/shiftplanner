@@ -1,0 +1,1 @@
+mpa_isresourced: =!IsBlank(mpa_resource)

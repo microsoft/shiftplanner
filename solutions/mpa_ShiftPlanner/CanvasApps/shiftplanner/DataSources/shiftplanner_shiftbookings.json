@@ -15,6 +15,26 @@
     }
   },
   {
+    "DisplayName": "IsResourced (shiftplanner_shiftbookings)",
+    "Name": "mpa_shiftplanner_shiftbooking_mpa_isresourced",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_isresourced",
+        "OptionSetReferenceEntityName": "shiftplanner_shiftbookings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "mpa_isresourced",
+    "RelatedEntityName": "shiftplanner_shiftbookings",
+    "Type": "OptionSetInfo"
+  },
+  {
     "DisplayName": "Workflow Status (shiftplanner_shiftbookings)",
     "Name": "mpa_shiftplanner_shiftbooking_mpa_workflowstatus",
     "OptionSetInfoNameMapping": {
@@ -101,6 +121,7 @@
       "mpa_calendarid": "Calendar ID",
       "mpa_calendaritemid": "Calendar Item ID",
       "mpa_date": "Date",
+      "mpa_isresourced": "IsResourced",
       "mpa_name": "Name",
       "mpa_plannedendtime": "Planned End Time",
       "mpa_plannedstarttime": "Planned Start Time",

@@ -144,46 +144,6 @@
         );
         
         
-        // Remove the System Views from options to make it more usable
-        UpdateContext(
-        {
-            AvailableUserViews: 
-            Filter(
-                Choices('Users (Views)'),
-                Not( 
-                    ThisRecord in [
-                    'Users (Views)'.'Activity Sender Users Lookup View',
-                    'Users (Views)'.'Administrative Access Users',
-                    'Users (Views)'.'Application Users',
-                    'Users (Views)'.'Associated Record Team Members',
-                    'Users (Views)'.'Disabled Users',
-                    'Users (Views)'.'Disabled users consuming licenses',
-                    'Users (Views)'.'Full Access Users',
-                    'Users (Views)'.'Local Business Users',
-                    'Users (Views)'.'My Connections',
-                    'Users (Views)'.'My Direct Reports',
-                    'Users (Views)'.'Power Pages Users',
-                    'Users (Views)'.'Read-Only Access Users',
-                    'Users (Views)'.'Salespeople Lookup View',
-                    'Users (Views)'.'Salesperson Associated View - By Territories',
-                    'Users (Views)'.'Soft deleted Users',
-                    'Users (Views)'.'Stub Users',
-                    'Users (Views)'.'Team members',
-                    'Users (Views)'.'Unassigned Salespeople',
-                    'Users (Views)'.'User Advanced Find View',
-                    'Users (Views)'.'User Associated View',
-                    'Users (Views)'.'User Lookup View',
-                    'Users (Views)'.'Users Assigned to Mobile Offline Profile',
-                    'Users (Views)'.'Users deleted in tenant but exist in the environment',
-                    'Users (Views)'.'Users in this position',
-                    'Users (Views)'.'Users: Influenced Deals That We Won',
-                    'Users (Views)'.'Users: Primary Email (Pending Approval)'
-                    ]
-                )
-            ) 
-        }
-        );
-        
         // Refresh the Data
         Select(btnRefresh_StaffPlanScreen)
 
@@ -340,7 +300,7 @@
                     ZIndex: =1
 
                 cmbSelectedUserView As Combobox.pcfdataset:
-                    DefaultSelectedItems: =First(AvailableUserViews)
+                    DefaultSelectedItems: =['Users (Views)'.'My Direct Reports']
                     DisplayMode: =DisplayMode.Edit
                     Height: =32
                     Items: =AvailableUserViews
@@ -1144,7 +1104,7 @@
                                             LayoutMinWidth: =96
                                             Size: =14
                                             TabIndex: =0
-                                            Text: =ThisItem.User
+                                            Text: =ThisItem.'Primary Email'
                                             Tooltip: =""
                                             VerticalAlign: =""
                                             Visible: =false
@@ -1201,7 +1161,7 @@
                                                     =With ( {
                                                             TodaysBookings : Filter(
                                                                 shiftplanner_shiftbookings, 
-                                                                Text(ThisRecord.Resource.User)= txtStaffId_StaffPlanScreen.Text && 
+                                                                ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && 
                                                                 ThisRecord.Date = DateAdd(
                                                                         varFirstDateOfWeek,
                                                                         ThisItem.Value,
@@ -1217,7 +1177,7 @@
                                                         //// TEST 1: Is this Cell selected?
                                                     
                                                         // If this is the selected cell
-                                                        Text(varSelectedUserDay.User.User) = txtStaffId_StaffPlanScreen.Text && 
+                                                        varSelectedUserDay.User.'Primary Email' = txtStaffId_StaffPlanScreen.Text && 
                                                         varSelectedUserDay.ShiftDate = DateAdd(
                                                             varFirstDateOfWeek,
                                                             ThisItem.Value,
@@ -1244,7 +1204,7 @@
                                                                 First(
                                                                     Filter(
                                                                         shiftplanner_useravailabilities,
-                                                                        Text(User.User) = txtStaffId_StaffPlanScreen.Text
+                                                                        User.'Primary Email' = txtStaffId_StaffPlanScreen.Text
                                                                         && StartDate <= (DateAdd(
                                                                                     varFirstDateOfWeek,
                                                                                     ThisItem.Value,
@@ -1303,7 +1263,7 @@
                                                 OnSelect: |-
                                                     =UpdateContext({
                                                             varSelectedUserDay : {
-                                                                User : LookUp(Users, User = GUID(txtStaffId_StaffPlanScreen.Text)),
+                                                                User : LookUp(Users, 'Primary Email' = txtStaffId_StaffPlanScreen.Text),
                                                                 ShiftDate : DateAdd(
                                                                     varFirstDateOfWeek,
                                                                     ThisItem.Value,
@@ -1311,6 +1271,18 @@
                                                                 )
                                                             }
                                                         }
+                                                    );
+                                                    Clear(colAvailableBookings);
+                                                    ForAll( 
+                                                        varSelectedUserDay.User.'User Affiliations (mpa_shiftplanner_useraffiliation_resource_usr)' As uaf, 
+                                                        Collect(
+                                                            colAvailableBookings, 
+                                                            Filter(
+                                                                shiftplanner_shiftbookings, 
+                                                                Date = varSelectedUserDay.ShiftDate 
+                                                                And Not(Resource.'Full Name' = "") 
+                                                                And Zone.shiftplanner_zone = uaf.Zone.shiftplanner_zone) 
+                                                        )
                                                     );
                                                 PressedBorderColor: =RGBA(0,0,0,0)
                                                 PressedColor: =Self.Color
@@ -1340,7 +1312,7 @@
                                                     =With ( {
                                                             TodaysBookings : Filter(
                                                                 shiftplanner_shiftbookings, 
-                                                                Text(ThisRecord.Resource.User)= txtStaffId_StaffPlanScreen.Text && 
+                                                                ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && 
                                                                 ThisRecord.Date = DateAdd(
                                                                         varFirstDateOfWeek,
                                                                         ThisItem.Value,
@@ -1516,18 +1488,26 @@
                                         Size: =varThemeFont.H3.size
                                         TabIndex: =0
                                         Text: |-
-                                            =//Day(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days))
-                                            CountRows(
+                                            =CountRows(
                                                 Filter(
                                                     shiftplanner_shiftbookings,
-                                                    Date = DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) And
-                                                    IsBlank(Resource) 
+                                                    Date = DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) And IsResourced = false
+                                                    
+                                                    //And IsBlank(Resource)
+                                                    
                                                 )
                                             )
                                             
-                                            
-                                            
-                                                        
+                                            //Day(DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days))
+                                            /*CountRows(
+                                                Filter(
+                                                    AddColumns(shiftplanner_shiftbookings, ResourceID, Resource.'Full Name'),
+                                                    Date = DateAdd(varFirstDateOfWeek, ThisItem.Value, TimeUnit.Days) 
+                                                    And Len(ResourceID) = 0
+                                                    //And IsBlank(Resource)
+                                                    
+                                                )
+                                            )*/
                                         Tooltip: =""
                                         VerticalAlign: =VerticalAlign.Middle
                                         Visible: =true
@@ -1576,7 +1556,7 @@
                         PaddingBottom: =1
                         PaddingLeft: =1
                         PaddingRight: =2
-                        Width: =300
+                        Width: =350
                         X: =40
                         Y: =40
                         ZIndex: =8
@@ -1617,7 +1597,7 @@
                                 FontItalic: =false
                                 FontStrikethrough: =false
                                 FontUnderline: =false
-                                Height: =32
+                                Height: =30
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0
                                 LayoutMinHeight: =16
@@ -1649,7 +1629,7 @@
                                 FontItalic: =false
                                 FontStrikethrough: =false
                                 FontUnderline: =false
-                                Height: =22
+                                Height: =20
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0
                                 LayoutMinHeight: =16
@@ -1866,7 +1846,7 @@
                                 FontItalic: =false
                                 FontStrikethrough: =false
                                 FontUnderline: =false
-                                Height: =28
+                                Height: =20
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0
                                 LayoutMinHeight: =16
@@ -1887,7 +1867,9 @@
                             "galAssignedBooking_StaffPlanScreen As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
                                 BorderColor: =App.Theme.Colors.Darker40
                                 DelayItemLoading: =true
-                                Items: =Filter(shiftplanner_shiftbookings, Resource.User = varSelectedUserDay.User.User && Date = varSelectedUserDay.ShiftDate && Status = 'Status (shiftplanner_shiftbookings)'.Active)
+                                FillPortions: =0
+                                Height: =If(galAssignedBooking_StaffPlanScreen.AllItemsCount=1, 85,175)
+                                Items: =Sort(Filter(shiftplanner_shiftbookings, Resource.User = varSelectedUserDay.User.User && Date = varSelectedUserDay.ShiftDate && Status = 'Status (shiftplanner_shiftbookings)'.Active), 'Planned Start Time', SortOrder.Ascending)
                                 Layout: =Layout.Vertical
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0
@@ -1904,22 +1886,22 @@
                                     Height: =Parent.TemplateHeight-10
                                     LayoutDirection: =LayoutDirection.Vertical
                                     LayoutMode: =LayoutMode.Auto
-                                    PaddingBottom: =5
+                                    PaddingBottom: =2
                                     PaddingLeft: =10
                                     PaddingRight: =10
-                                    PaddingTop: =5
+                                    PaddingTop: =2
                                     RadiusBottomLeft: =4
                                     RadiusBottomRight: =4
                                     RadiusTopLeft: =4
                                     RadiusTopRight: =4
-                                    Width: =Parent.Width-Self.X-1
+                                    Width: =Parent.Width-Self.X-14
                                     X: =1
                                     Y: =1
                                     ZIndex: =17
 
                                     txtAssignedTeam_StaffPlanScreen As Text:
                                         Align: ='TextCanvas.Align'.Start
-                                        AutoHeight: =true
+                                        AutoHeight: =false
                                         BorderColor: =
                                         BorderStyle: =""
                                         ContentLanguage: =""
@@ -1930,19 +1912,19 @@
                                         FontItalic: =false
                                         FontStrikethrough: =false
                                         FontUnderline: =false
-                                        Height: =32
+                                        Height: =34
                                         LayoutMaxHeight: =
                                         LayoutMaxWidth: =
                                         LayoutMinHeight: =32
                                         LayoutMinWidth: =96
-                                        Size: =
+                                        Size: =12
                                         TabIndex: =0
                                         Text: =ThisItem.'Team Position'.'Shift Team'.Name
                                         Tooltip: =""
                                         VerticalAlign: =""
                                         Visible: =true
                                         Weight: ='TextCanvas.Weight'.Semibold
-                                        Width: =Parent.Width
+                                        Width: =Parent.Width-10
                                         Wrap: =true
                                         X: =40
                                         Y: =40
@@ -1961,12 +1943,12 @@
                                         FontItalic: =false
                                         FontStrikethrough: =false
                                         FontUnderline: =false
-                                        Height: =
+                                        Height: =15
                                         LayoutMaxHeight: =
                                         LayoutMaxWidth: =
                                         LayoutMinHeight: =32
                                         LayoutMinWidth: =96
-                                        Size: =
+                                        Size: =12
                                         TabIndex: =0
                                         Text: =ThisItem.'Team Position'.Role.Name
                                         Tooltip: =""
@@ -1981,7 +1963,7 @@
 
                                     conAssignActions_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
                                         FillPortions: =0
-                                        Height: =30
+                                        Height: =20
                                         LayoutAlignItems: =LayoutAlignItems.Center
                                         LayoutGap: =10
                                         LayoutJustifyContent: =LayoutJustifyContent.End
@@ -1998,8 +1980,9 @@
                                             BorderColor: =
                                             DisplayMode: =DisplayMode.Edit
                                             FontColor: =
+                                            FontSize: =12
                                             FontWeight: =FontWeight.Normal
-                                            Height: =22
+                                            Height: =18
                                             Icon: ="PeopleAdd"
                                             IconStyle: ='ButtonCanvas.IconStyle'.Outline
                                             LayoutMaxHeight: =0
@@ -2009,7 +1992,7 @@
                                             OnSelect: |-
                                                 =Navigate('Staff Planning - Reassign',Transition.Pop,{varBookingToReassign : ThisItem, varSelectedUserDay : varSelectedUserDay});
                                             Text: ="Reassign"
-                                            Width: =90
+                                            Width: =80
                                             X: =40
                                             Y: =40
                                             ZIndex: =1
@@ -2020,8 +2003,9 @@
                                             BorderColor: =
                                             DisplayMode: =DisplayMode.Edit
                                             FontColor: =
+                                            FontSize: =12
                                             FontWeight: =FontWeight.Normal
-                                            Height: =22
+                                            Height: =18
                                             Icon: ="DismissCircle"
                                             LayoutMaxHeight: =0
                                             LayoutMaxWidth: =0
@@ -2034,7 +2018,7 @@
                                                     Refresh(shiftplanner_shiftbookings)
                                                 )
                                             Text: ="Remove"
-                                            Width: =90
+                                            Width: =80
                                             X: =0
                                             Y: =0
                                             ZIndex: =2
@@ -2053,7 +2037,7 @@
                                 FontItalic: =false
                                 FontStrikethrough: =false
                                 FontUnderline: =false
-                                Height: =32
+                                Height: =22
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0
                                 LayoutMinHeight: =16
@@ -2096,7 +2080,10 @@
                                 '#CopilotOverlayLabel': ="Filtered"
                                 BorderColor: =App.Theme.Colors.Darker40
                                 DelayItemLoading: =true
-                                Items: =Filter(shiftplanner_shiftbookings, IsBlank(Resource) && Date = varSelectedUserDay.ShiftDate)
+                                Items: |-
+                                    =//Filter(shiftplanner_shiftbookings, IsBlank(Resource) And Date = varSelectedUserDay.ShiftDate)
+                                    
+                                    Sort(colAvailableBookings, 'Planned Start Time', SortOrder.Ascending)
                                 Layout: =Layout.Vertical
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0
@@ -2113,22 +2100,22 @@
                                     Height: =Parent.TemplateHeight-10
                                     LayoutDirection: =LayoutDirection.Vertical
                                     LayoutMode: =LayoutMode.Auto
-                                    PaddingBottom: =5
+                                    PaddingBottom: =2
                                     PaddingLeft: =10
                                     PaddingRight: =10
-                                    PaddingTop: =5
+                                    PaddingTop: =2
                                     RadiusBottomLeft: =4
                                     RadiusBottomRight: =4
                                     RadiusTopLeft: =4
                                     RadiusTopRight: =4
-                                    Width: =Parent.Width-Self.X-1
+                                    Width: =Parent.Width-Self.X-14
                                     X: =1
                                     Y: =1
                                     ZIndex: =1
 
                                     txtAssignedTeam_StaffPlanScreen_1 As Text:
                                         Align: ='TextCanvas.Align'.Start
-                                        AutoHeight: =true
+                                        AutoHeight: =false
                                         BorderColor: =
                                         BorderStyle: =""
                                         ContentLanguage: =""
@@ -2139,19 +2126,19 @@
                                         FontItalic: =false
                                         FontStrikethrough: =false
                                         FontUnderline: =false
-                                        Height: =32
+                                        Height: =34
                                         LayoutMaxHeight: =
                                         LayoutMaxWidth: =
                                         LayoutMinHeight: =32
                                         LayoutMinWidth: =96
-                                        Size: =
+                                        Size: =12
                                         TabIndex: =0
                                         Text: =ThisItem.'Team Position'.'Shift Team'.Name
                                         Tooltip: =""
                                         VerticalAlign: =""
                                         Visible: =true
                                         Weight: ='TextCanvas.Weight'.Semibold
-                                        Width: =Parent.Width
+                                        Width: =Parent.Width-10
                                         Wrap: =true
                                         X: =40
                                         Y: =40
@@ -2175,14 +2162,14 @@
                                         LayoutMaxWidth: =
                                         LayoutMinHeight: =32
                                         LayoutMinWidth: =96
-                                        Size: =
+                                        Size: =12
                                         TabIndex: =0
                                         Text: =ThisItem.'Team Position'.Role.Name
                                         Tooltip: =""
                                         VerticalAlign: =VerticalAlign.Middle
                                         Visible: =true
                                         Weight: =varThemeFont.H1.weight
-                                        Width: =Parent.Width
+                                        Width: =Parent.Width-Self.X-14
                                         Wrap: =true
                                         X: =0
                                         Y: =0
@@ -2190,7 +2177,7 @@
 
                                     conAssignActions_StaffPlanScreen_1 As groupContainer.horizontalAutoLayoutContainer:
                                         FillPortions: =0
-                                        Height: =30
+                                        Height: =20
                                         LayoutAlignItems: =LayoutAlignItems.Center
                                         LayoutGap: =10
                                         LayoutJustifyContent: =LayoutJustifyContent.End
@@ -2214,11 +2201,11 @@
                                             Font: =""
                                             FontColor: =
                                             FontItalic: =false
-                                            FontSize: =0
+                                            FontSize: =12
                                             FontStrikethrough: =false
                                             FontUnderline: =false
                                             FontWeight: =FontWeight.Normal
-                                            Height: =22
+                                            Height: =18
                                             Icon: ="PeopleAdd"
                                             IconRotation: =0
                                             IconStyle: ='ButtonCanvas.IconStyle'.Outline
@@ -2238,7 +2225,7 @@
                                             Tooltip: =""
                                             VerticalAlign: =""
                                             Visible: =true
-                                            Width: =90
+                                            Width: =80
                                             X: =40
                                             Y: =40
                                             ZIndex: =1
@@ -2247,7 +2234,7 @@
                             DropShadow: =DropShadow.Light
                             Fill: =ColorValue(varTheme.neutralBackground1)
                             FillPortions: =0
-                            Height: =120
+                            Height: =84
                             LayoutAlignItems: =LayoutAlignItems.Center
                             LayoutDirection: =LayoutDirection.Vertical
                             LayoutMaxHeight: =0
@@ -2255,10 +2242,10 @@
                             LayoutMinHeight: =16
                             LayoutMinWidth: =16
                             LayoutMode: =LayoutMode.Auto
-                            PaddingBottom: =8
+                            PaddingBottom: =2
                             PaddingLeft: =8
                             PaddingRight: =8
-                            PaddingTop: =8
+                            PaddingTop: =2
                             RadiusBottomLeft: =4
                             RadiusBottomRight: =4
                             RadiusTopLeft: =4
@@ -2279,12 +2266,12 @@
                                 FontItalic: =false
                                 FontStrikethrough: =false
                                 FontUnderline: =false
-                                Height: =32
+                                Height: =22
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0
                                 LayoutMinHeight: =16
                                 LayoutMinWidth: =16
-                                Size: =varThemeFont.H4.size
+                                Size: =varThemeFont.H4.size-2  
                                 TabIndex: =0
                                 Text: ="Legend"
                                 Tooltip: =""
@@ -2318,7 +2305,7 @@
 
                                     conAvailable_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
                                         FillPortions: =0
-                                        Height: =25
+                                        Height: =18
                                         LayoutAlignItems: =LayoutAlignItems.Center
                                         LayoutGap: =10
                                         LayoutMaxHeight: =0
@@ -2326,10 +2313,10 @@
                                         LayoutMinHeight: =16
                                         LayoutMinWidth: =16
                                         LayoutMode: =LayoutMode.Auto
-                                        PaddingBottom: =8
+                                        PaddingBottom: =2
                                         PaddingLeft: =8
                                         PaddingRight: =8
-                                        PaddingTop: =8
+                                        PaddingTop: =2
                                         X: =40
                                         Y: =40
                                         ZIndex: =1
@@ -2338,12 +2325,12 @@
                                             BorderColor: =ColorValue(varTheme.neutralStroke2)
                                             BorderThickness: =1
                                             Fill: =RGBA(0,0,0,0)
-                                            Height: =20
+                                            Height: =16
                                             LayoutMaxHeight: =0
                                             LayoutMaxWidth: =0
                                             LayoutMinHeight: =16
                                             LayoutMinWidth: =16
-                                            Width: =20
+                                            Width: =16
                                             ZIndex: =1
 
                                         txtAvailable_StaffPlanScreen As Text:
@@ -2364,7 +2351,7 @@
                                             LayoutMaxWidth: =
                                             LayoutMinHeight: =32
                                             LayoutMinWidth: =96
-                                            Size: =
+                                            Size: =11
                                             TabIndex: =0
                                             Text: ="Available"
                                             Tooltip: =""
@@ -2379,7 +2366,7 @@
 
                                     conBooked_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
                                         FillPortions: =0
-                                        Height: =25
+                                        Height: =18
                                         LayoutAlignItems: =LayoutAlignItems.Center
                                         LayoutGap: =10
                                         LayoutMaxHeight: =0
@@ -2387,10 +2374,10 @@
                                         LayoutMinHeight: =16
                                         LayoutMinWidth: =16
                                         LayoutMode: =LayoutMode.Auto
-                                        PaddingBottom: =8
+                                        PaddingBottom: =2
                                         PaddingLeft: =8
                                         PaddingRight: =8
-                                        PaddingTop: =8
+                                        PaddingTop: =2
                                         X: =40
                                         Y: =40
                                         ZIndex: =2
@@ -2401,12 +2388,12 @@
                                             Fill: |-
                                                 =
                                                 Color.MediumPurple
-                                            Height: =20
+                                            Height: =16
                                             LayoutMaxHeight: =0
                                             LayoutMaxWidth: =0
                                             LayoutMinHeight: =16
                                             LayoutMinWidth: =16
-                                            Width: =20
+                                            Width: =16
                                             ZIndex: =1
 
                                         txtBooked_StaffPlanScreen As Text:
@@ -2427,7 +2414,7 @@
                                             LayoutMaxWidth: =
                                             LayoutMinHeight: =32
                                             LayoutMinWidth: =96
-                                            Size: =
+                                            Size: =11
                                             TabIndex: =0
                                             Text: ="Booked"
                                             Tooltip: =""
@@ -2442,7 +2429,7 @@
 
                                     conSelected_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
                                         FillPortions: =0
-                                        Height: =25
+                                        Height: =18
                                         LayoutAlignItems: =LayoutAlignItems.Center
                                         LayoutGap: =10
                                         LayoutMaxHeight: =0
@@ -2450,10 +2437,10 @@
                                         LayoutMinHeight: =16
                                         LayoutMinWidth: =16
                                         LayoutMode: =LayoutMode.Auto
-                                        PaddingBottom: =8
+                                        PaddingBottom: =2
                                         PaddingLeft: =8
                                         PaddingRight: =8
-                                        PaddingTop: =8
+                                        PaddingTop: =2
                                         X: =40
                                         Y: =40
                                         ZIndex: =3
@@ -2462,12 +2449,12 @@
                                             BorderColor: =ColorValue(varTheme.neutralStroke2)
                                             BorderThickness: =1
                                             Fill: =App.Theme.Colors.Primary
-                                            Height: =20
+                                            Height: =16
                                             LayoutMaxHeight: =0
                                             LayoutMaxWidth: =0
                                             LayoutMinHeight: =16
                                             LayoutMinWidth: =16
-                                            Width: =20
+                                            Width: =16
                                             ZIndex: =1
 
                                         txtSelected_StaffPlanScreen As Text:
@@ -2483,12 +2470,12 @@
                                             FontItalic: =false
                                             FontStrikethrough: =false
                                             FontUnderline: =false
-                                            Height: =20
+                                            Height: =16
                                             LayoutMaxHeight: =
                                             LayoutMaxWidth: =
                                             LayoutMinHeight: =32
                                             LayoutMinWidth: =96
-                                            Size: =
+                                            Size: =11
                                             TabIndex: =0
                                             Text: ="Selected Day"
                                             Tooltip: =""
@@ -2513,7 +2500,7 @@
 
                                     conOnLeave_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
                                         FillPortions: =0
-                                        Height: =25
+                                        Height: =18
                                         LayoutAlignItems: =LayoutAlignItems.Center
                                         LayoutGap: =10
                                         LayoutMaxHeight: =0
@@ -2521,22 +2508,22 @@
                                         LayoutMinHeight: =16
                                         LayoutMinWidth: =16
                                         LayoutMode: =LayoutMode.Auto
-                                        PaddingBottom: =8
+                                        PaddingBottom: =2
                                         PaddingLeft: =8
                                         PaddingRight: =8
-                                        PaddingTop: =8
+                                        PaddingTop: =2
                                         ZIndex: =15
 
                                         rectOnLeave_StaffPlanScreen As rectangle:
                                             BorderColor: =ColorValue(varTheme.neutralStroke2)
                                             BorderThickness: =1
                                             Fill: =ColorValue(varTheme.neutralBackgroundDisabled)
-                                            Height: =20
+                                            Height: =16
                                             LayoutMaxHeight: =0
                                             LayoutMaxWidth: =0
                                             LayoutMinHeight: =16
                                             LayoutMinWidth: =16
-                                            Width: =20
+                                            Width: =16
                                             ZIndex: =1
 
                                         txtOnLeave_StaffPlanScreen As Text:
@@ -2552,12 +2539,12 @@
                                             FontItalic: =false
                                             FontStrikethrough: =false
                                             FontUnderline: =false
-                                            Height: =20
+                                            Height: =12
                                             LayoutMaxHeight: =
                                             LayoutMaxWidth: =
                                             LayoutMinHeight: =32
                                             LayoutMinWidth: =96
-                                            Size: =
+                                            Size: =11
                                             TabIndex: =0
                                             Text: ="On Leave"
                                             Tooltip: =""
@@ -2572,7 +2559,7 @@
 
                                     conDoubleBooked_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
                                         FillPortions: =0
-                                        Height: =25
+                                        Height: =18
                                         LayoutAlignItems: =LayoutAlignItems.Center
                                         LayoutGap: =10
                                         LayoutMaxHeight: =0
@@ -2580,22 +2567,22 @@
                                         LayoutMinHeight: =16
                                         LayoutMinWidth: =16
                                         LayoutMode: =LayoutMode.Auto
-                                        PaddingBottom: =8
+                                        PaddingBottom: =2
                                         PaddingLeft: =8
                                         PaddingRight: =8
-                                        PaddingTop: =8
+                                        PaddingTop: =2
                                         ZIndex: =16
 
                                         rectDoubleBooked_StaffPlanScreen As rectangle:
                                             BorderColor: =ColorValue(varTheme.neutralStroke2)
                                             BorderThickness: =1
                                             Fill: =Color.DarkRed
-                                            Height: =20
+                                            Height: =16
                                             LayoutMaxHeight: =0
                                             LayoutMaxWidth: =0
                                             LayoutMinHeight: =16
                                             LayoutMinWidth: =16
-                                            Width: =20
+                                            Width: =16
                                             ZIndex: =1
 
                                         txtDoubleBooked_StaffPlanScreen As Text:
@@ -2611,12 +2598,12 @@
                                             FontItalic: =false
                                             FontStrikethrough: =false
                                             FontUnderline: =false
-                                            Height: =20
+                                            Height: =16
                                             LayoutMaxHeight: =
                                             LayoutMaxWidth: =
                                             LayoutMinHeight: =32
                                             LayoutMinWidth: =96
-                                            Size: =
+                                            Size: =11
                                             TabIndex: =0
                                             Text: ="Double Booked"
                                             Tooltip: =""

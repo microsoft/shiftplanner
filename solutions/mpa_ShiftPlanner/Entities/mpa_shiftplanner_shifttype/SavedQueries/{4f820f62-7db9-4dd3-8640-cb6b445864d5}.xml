@@ -12,8 +12,9 @@
         <row name="result" id="mpa_shiftplanner_shifttypeid">
           <cell name="mpa_name" width="300" />
           <cell name="mpa_startdate" width="171" />
+          <cell name="mpa_duration" width="100" />
           <cell name="mpa_enddate" width="193" />
-          <cell name="createdon" width="105" />
+          <cell name="mpa_daysincluded" width="122" />
         </row>
       </grid>
     </layoutxml>
@@ -29,7 +30,8 @@
           <attribute name="mpa_startdate" />
           <attribute name="mpa_enddate" />
           <attribute name="mpa_shiftplanner_shifttypeid" />
-          <attribute name="createdon" />
+          <attribute name="mpa_daysincluded" />
+          <attribute name="mpa_duration" />
         </entity>
       </fetch>
     </fetchxml>

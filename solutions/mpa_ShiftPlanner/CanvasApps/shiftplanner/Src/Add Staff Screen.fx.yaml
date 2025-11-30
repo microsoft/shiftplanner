@@ -1,7 +1,7 @@
 "'Add Staff Screen' As screen":
     Fill: =Color.White
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnVisible: =
+    OnVisible: =Select(btnRefresh_AddStaff)
 
     conMainContent_AddStaff As groupContainer.verticalAutoLayoutContainer:
         Fill: =ColorValue(varTheme.neutralBackground2)
@@ -123,6 +123,7 @@
                     LayoutMinHeight: =32
                     LayoutMinWidth: =320
                     Mode: ='TextInputCanvas.Mode'.SingleLine
+                    OnChange: =Select(btnRefresh_AddStaff)
                     Placeholder: ="Search"
                     TriggerOutput: ="FocusOut"
                     Type: ='TextInputCanvas.Type'.Search
@@ -131,6 +132,50 @@
                     Y: =0
                     ZIndex: =1
 
+                btnRefresh_AddStaff As Button:
+                    BasePaletteColor: =
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    Height: =32
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    OnSelect: |-
+                        =UpdateContext({
+                            tmpStaffToAdd : 
+                                Search(
+                                    Filter(
+                                        AddColumns(
+                                            shiftplanner_userroles As Staff,
+                                            StaffName,
+                                            Staff.Resource.'Full Name',
+                                            StaffRole,
+                                            Staff.Role.Name,
+                                            StaffFacility,
+                                            LookUp(
+                                                shiftplanner_useraffiliations,
+                                                Resource.'Primary Email' = Staff.Resource.'Primary Email' And Facility.Name = varSelectedZone.Facility.Name And Zone.Name = varSelectedZone.Name
+                                            ),
+                                            StaffAvailability,
+                                            LookUp(
+                                                shiftplanner_useravailabilities,
+                                                User.'Primary Email' = Staff.Resource.'Primary Email' And (StartDate <= varDateSelected && Enddate >= varDateSelected)
+                                            )
+                                        ),
+                                        StaffRole = varAddStaff.Position And StaffFacility.Facility.Name = varSelectedZone.Facility.Name And StaffFacility.Zone.Name = varSelectedZone.Name And !(StaffAvailability.StartDate <= varDateSelected && StaffAvailability.Enddate >= varDateSelected)
+                                    ),
+                                    Text(txiSearh_AddStaff.Value),
+                                    StaffName
+                                )
+                        });
+                    Text: ="Refresh"
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
         galStaff_AddStaff As gallery.galleryVertical:
             AccessibleLabel: ="Staff Gallery"
             BorderColor: =App.Theme.Colors.Darker40
@@ -138,31 +183,7 @@
             FocusedBorderThickness: =0
             Items: |-
                 =// TODO: Check there are no bookings
-                
-                Search(
-                    Filter(
-                        AddColumns(
-                            shiftplanner_userroles As Staff,
-                            StaffName,
-                            Staff.Resource.'Full Name',
-                            StaffRole,
-                            Staff.Role.Name,
-                            StaffFacility,
-                            LookUp(
-                                shiftplanner_useraffiliations,
-                                Resource.'Primary Email' = Staff.Resource.'Primary Email' And Facility.Name = varSelectedZone.Facility.Name And Zone.Name = varSelectedZone.Name
-                            ),
-                            StaffAvailability,
-                            LookUp(
-                                shiftplanner_useravailabilities,
-                                User.'Primary Email' = Staff.Resource.'Primary Email' And (StartDate <= varDateSelected && Enddate >= varDateSelected)
-                            )
-                        ),
-                        StaffRole = varAddStaff.Position And StaffFacility.Facility.Name = varSelectedZone.Facility.Name And StaffFacility.Zone.Name = varSelectedZone.Name And !(StaffAvailability.StartDate <= varDateSelected && StaffAvailability.Enddate >= varDateSelected)
-                    ),
-                    Text(txiSearh_AddStaff.Value),
-                    StaffName
-                )
+                tmpStaffToAdd
             Layout: =Layout.Vertical
             LayoutMaxHeight: =
             LayoutMaxWidth: =

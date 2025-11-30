@@ -36,7 +36,19 @@ Screens:
         UpdateContext(
             {
                 SaveAndClose: false,
-                SaveInProgress: false
+                SaveInProgress: false,
+                tmpPositionsToModify : Filter(
+                    AddColumns(
+                        shiftplanner_shifttypes As ShiftType,
+                        ShiftZone,
+                        LookUp(
+                            shiftplanner_shiftteams,
+                            'Shift Type'.shiftplanner_shifttype = ShiftType.shiftplanner_shifttype And Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone,
+                            Zone
+                        )
+                    ),
+                    ShiftZone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                )
             }
         )
     Children:
@@ -179,6 +191,7 @@ Screens:
                         - spnSaveInProgress_Modify:
                             Control: Spinner@1.4.6
                             Properties:
+                              AccessibleLabel: ="Save in progress"
                               AlignInContainer: =AlignInContainer.Stretch
                               Label: ="Saving"
                               LayoutMaxHeight: =0
@@ -281,6 +294,7 @@ Screens:
                               - btnRefresh_Modify:
                                   Control: Button@0.0.45
                                   Properties:
+                                    AccessibleLabel: ="Refresh"
                                     LayoutMaxHeight: =0
                                     LayoutMaxWidth: =0
                                     LayoutMinHeight: =16
@@ -374,7 +388,7 @@ Screens:
                   FocusedBorderThickness: =0
                   Height: =Parent.Height - Parent.PaddingTop - conHeader_Modify.Height - Parent.PaddingBottom
                   Items: |-
-                    =Filter(
+                    =/*Filter(
                         AddColumns(
                             shiftplanner_shifttypes As ShiftType,
                             ShiftZone,
@@ -385,7 +399,8 @@ Screens:
                             )
                         ),
                         ShiftZone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
-                    )
+                    )*/
+                    tmpPositionsToModify
                   TabIndex: =0
                   TemplatePadding: =4
                   TemplateSize: =btnAddPosition_Modify.Height + txtPositionCount_Modify.Height + conTeam_Modify.Height + conButtonSeparator_Modify.Height + 16
@@ -516,19 +531,19 @@ Screens:
                                         Control: Text@0.0.51
                                         Properties:
                                           Align: ='TextCanvas.Align'.Start
-                                          AutoHeight: =true
+                                          Height: =17
                                           Size: =
                                           Text: =ThisItem.Team
                                           Weight: ='TextCanvas.Weight'.Semibold
                                           Width: =Parent.Width
+                                          Wrap: =false
                                           X: =40
                                           Y: =40
                                     - txtPosition_Modify:
                                         Control: Text@0.0.51
                                         Properties:
-                                          AutoHeight: =true
                                           FontColor: =App.Theme.Colors.Primary
-                                          Height: =
+                                          Height: =17
                                           Size: =
                                           Text: =ThisItem.Position
                                           VerticalAlign: =VerticalAlign.Middle
@@ -538,7 +553,6 @@ Screens:
                                         Control: Text@0.0.51
                                         Properties:
                                           Align: ='TextCanvas.Align'.Start
-                                          AutoHeight: =true
                                           FontColor: =RGBA(0, 0, 0, 1)
                                           Size: =
                                           Text: |-

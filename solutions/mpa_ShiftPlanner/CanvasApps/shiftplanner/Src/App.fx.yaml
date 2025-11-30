@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =true
-    Formulas: |+
+    Formulas: |-
         =///// Non-Behaviour Functions
         nf_GetOptionForWorkday(parWorkday:Number): Text 
             = Switch(parWorkday, 
@@ -18,6 +18,7 @@ App As appinfo:
         ///// Variables
         DataverseUrl = LookUp('Environment Variable Values', 'Schema Name' = "mpa_environmenturl", Value);
         
+        varZoneWrapCount = 4;
         
         varDesktopFonts =
             { 
@@ -101,6 +102,39 @@ App As appinfo:
                 popupBackground: RGBA(0, 0, 0, 0.38)
             };
         
+        AvailableUserViews = 
+            Filter(
+                Choices('Users (Views)'),
+                Not( 
+                    ThisRecord in [
+                    'Users (Views)'.'Activity Sender Users Lookup View',
+                    'Users (Views)'.'Administrative Access Users',
+                    'Users (Views)'.'Application Users',
+                    'Users (Views)'.'Associated Record Team Members',
+                    'Users (Views)'.'Disabled Users',
+                    'Users (Views)'.'Disabled users consuming licenses',
+                    'Users (Views)'.'Full Access Users',
+                    'Users (Views)'.'Local Business Users',
+                    'Users (Views)'.'My Connections',
+                    'Users (Views)'.'Power Pages Users',
+                    'Users (Views)'.'Read-Only Access Users',
+                    'Users (Views)'.'Salespeople Lookup View',
+                    'Users (Views)'.'Salesperson Associated View - By Territories',
+                    'Users (Views)'.'Soft deleted Users',
+                    'Users (Views)'.'Stub Users',
+                    'Users (Views)'.'Team members',
+                    'Users (Views)'.'Unassigned Salespeople',
+                    'Users (Views)'.'User Advanced Find View',
+                    'Users (Views)'.'User Associated View',
+                    'Users (Views)'.'User Lookup View',
+                    'Users (Views)'.'Users Assigned to Mobile Offline Profile',
+                    'Users (Views)'.'Users deleted in tenant but exist in the environment',
+                    'Users (Views)'.'Users in this position',
+                    'Users (Views)'.'Users: Influenced Deals That We Won',
+                    'Users (Views)'.'Users: Primary Email (Pending Approval)'
+                    ]
+                )
+            );
     OnStart: |
         =// desktop fonts hybrid
         
@@ -109,17 +143,16 @@ App As appinfo:
             varDesktopFonts
         );
         
-        
-        
+        Set(varAllFacilitiesValue, "All Facilities");
         
         //Set collection for landing screen filter
         If(!IsBlank(colFilter), Clear(colFilter));
-        Set(varAllFacilitiesValue, "All Facilities");
         ClearCollect(colFilter,{Name: varAllFacilitiesValue});
         Collect(colFilter, RenameColumns(ShowColumns(shiftplanner_facilities, Name),mpa_name,Name));
         
-        //Set zone gallery wrap count
-        Set(varZoneWrapCount,4);
+        /*
+        ClearCollect(colAllShiftTeams,shiftplanner_shiftteams);
+        
         ClearCollect(colShiftZone,
         
             AddColumns(
@@ -127,12 +160,12 @@ App As appinfo:
         
                 ShiftTeam,
                 LookUp(
-                    shiftplanner_shiftteams,
+                    colAllShiftTeams,
                     'Shift Type'.shiftplanner_shifttype = Shift.shiftplanner_shifttype
                 )
             )
         
-        );
+        );*/
         
         ClearCollect(
             colDropDownNav,
@@ -165,7 +198,7 @@ App As appinfo:
         //Setting up Collection for Calendar
         ClearCollect(colCalendarValues, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41]);
         
-        Set(varDuration_Patch, 0);
+        //Set(varDuration_Patch, 0);
     SizeBreakpoints: =[600, 900, 1200, 1600]
     StartScreen: =
     Theme: =PowerAppsTheme

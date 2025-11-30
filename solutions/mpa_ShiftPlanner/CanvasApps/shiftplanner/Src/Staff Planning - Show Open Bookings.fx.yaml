@@ -77,12 +77,16 @@
                 '#CopilotOverlayLabel': ="Filtered"
                 BorderColor: =App.Theme.Colors.Darker40
                 DelayItemLoading: =true
-                Items: |
-                    =Filter(
+                Items: |+
+                    =Sort(
+                        Filter(
                         shiftplanner_shiftbookings,
                         Date = varViewOpenBookingsPopupDate And
-                        IsBlank(Resource) 
+                        IsResourced = false
+                        ),
+                        Name
                     )
+                    
                 Layout: =Layout.Vertical
                 LayoutMaxHeight: =0
                 LayoutMaxWidth: =0

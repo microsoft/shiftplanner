@@ -102,16 +102,20 @@
                     Height: =70
                     Required: =false
                     Update: =User_DataCardValue_AddLeave.Selected
-                    Visible: =false
+                    Visible: =true
                     Width: =1150
                     X: =0
                     Y: =3
                     ZIndex: =1
 
                     User_DataCardKey_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =22
                         Text: =Parent.DisplayName
+                        Visible: =false
                         Weight: ='TextCanvas.Weight'.Semibold
                         Width: =Parent.Width - 48
                         Wrap: =false
@@ -127,6 +131,7 @@
                         Items: =Choices([@shiftplanner_useravailabilities].'mpa_SystemUser')
                         Required: =Parent.Required
                         ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                        Visible: =false
                         Width: =Parent.Width - 48
                         X: =24
                         Y: =User_DataCardKey_AddLeave.Y + User_DataCardKey_AddLeave.Height + 4
@@ -173,7 +178,10 @@
                             ZIndex: =5
 
                     User_ErrorMessage_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: =Parent.Error
                         Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
@@ -185,7 +193,10 @@
 
                     User_StarVisible_AddLeave As Text:
                         Align: ='TextCanvas.Align'.Center
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =20
                         Text: ="*"
                         Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -212,7 +223,10 @@
                     ZIndex: =1
 
                     IsAvailable_DataCardKey_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =22
                         Text: =Parent.DisplayName
                         Weight: ='TextCanvas.Weight'.Semibold
@@ -236,7 +250,10 @@
                         ZIndex: =2
 
                     IsAvailable_ErrorMessage_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: =Parent.Error
                         Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
@@ -248,7 +265,10 @@
 
                     IsAvailable_StarVisible_AddLeave As Text:
                         Align: ='TextCanvas.Align'.Center
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =20
                         Text: ="*"
                         Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -274,7 +294,10 @@
                     ZIndex: =12
 
                     StartDate_DataCardKey_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =22
                         Text: ="First Day of Leave"
                         Weight: ='TextCanvas.Weight'.Semibold
@@ -286,8 +309,12 @@
 
                     "StartDate_DataCardValue_AddLeave As 'Date picker'":
                         AccessibleLabel: =Parent.DisplayName
+                        BasePaletteColor: =
+                        BorderColor: =
                         DisplayMode: =Parent.DisplayMode
                         EndDate: =Date(Year(Today())+100, 12, 31)
+                        Fill: =
+                        FontColor: =
                         Height: =32
                         Required: =Parent.Required
                         SelectedDate: =Parent.Default
@@ -299,7 +326,10 @@
                         ZIndex: =2
 
                     StartDate_ErrorMessage_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: =Parent.Error
                         Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
@@ -311,7 +341,10 @@
 
                     StartDate_StarVisible_AddLeave As Text:
                         Align: ='TextCanvas.Align'.Center
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: ="*"
                         Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -337,7 +370,10 @@
                     ZIndex: =12
 
                     Enddate_DataCardKey_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =22
                         Text: ="Last Day of Leave"
                         Weight: ='TextCanvas.Weight'.Semibold
@@ -349,8 +385,12 @@
 
                     "Enddate_DataCardValue_AddLeave As 'Date picker'":
                         AccessibleLabel: =Parent.DisplayName
+                        BasePaletteColor: =
+                        BorderColor: =
                         DisplayMode: =Parent.DisplayMode
                         EndDate: =Date(Year(Today())+100, 12, 31)
+                        Fill: =
+                        FontColor: =
                         Height: =32
                         Required: =Parent.Required
                         SelectedDate: =Parent.Default
@@ -362,7 +402,10 @@
                         ZIndex: =2
 
                     Enddate_ErrorMessage_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: =Parent.Error
                         Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
@@ -374,7 +417,10 @@
 
                     Enddate_StarVisible_AddLeave As Text:
                         Align: ='TextCanvas.Align'.Center
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: ="*"
                         Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -400,7 +446,10 @@
                     ZIndex: =12
 
                     Reason_DataCardKey_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =22
                         Text: =Parent.DisplayName
                         Weight: ='TextCanvas.Weight'.Semibold
@@ -412,7 +461,11 @@
 
                     "Reason_DataCardValue_AddLeave As 'Text input'":
                         AccessibleLabel: =Parent.DisplayName
+                        BasePaletteColor: =
+                        BorderColor: =
                         DisplayMode: =Parent.DisplayMode
+                        Fill: =
+                        FontColor: =
                         Height: =144
                         Mode: ='TextInputCanvas.Mode'.Multiline
                         Required: =Parent.Required
@@ -424,7 +477,10 @@
                         ZIndex: =2
 
                     Reason_ErrorMessage_AddLeave As Text:
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: =Parent.Error
                         Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
@@ -436,7 +492,10 @@
 
                     Reason_StarVisible_AddLeave As Text:
                         Align: ='TextCanvas.Align'.Center
+                        BorderColor: =
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =30
                         Text: ="*"
                         Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)

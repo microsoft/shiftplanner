@@ -10,7 +10,7 @@ Screens:
   Main Calendar Screen:
     Properties:
       Fill: =ColorValue(varTheme.neutralBackground2)
-      OnVisible: "=If(IsBlank(varFirstDayOfMonth),\n    \n    // If no day is selected, then select today and this month\n    Set(\n        varDateSelected,\n        Today()\n    );\n    Set(\n        varFirstDayOfMonth,\n        DateAdd(\n            Today(),\n            1 - Day(Today()),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varFirstDayInView,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varLastDayOfMonth,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                1,\n                TimeUnit.Months\n            ),\n            -1,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMinDate,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMaxDate,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                -(Weekday(varFirstDayOfMonth) - 2 + 1),\n                TimeUnit.Days\n            ),\n            40,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varPublishButtonDisplayMode,\n        DisplayMode.Edit\n    );\n);\n\n// Reset the screen selector\nSet(varCurrentScreen, First(colDropDownNav));"
+      OnVisible: "=// Cache the teams for this zone\nUpdateContext({\n    tmpTeamsForThisZone : Filter(shiftplanner_shiftteams, Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone)\n});\n\n// \nIf(IsBlank(varFirstDayOfMonth),\n    \n    // If no day is selected, then select today and this month\n    Set(\n        varDateSelected,\n        Today()\n    );\n    Set(\n        varFirstDayOfMonth,\n        DateAdd(\n            Today(),\n            1 - Day(Today()),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varFirstDayInView,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varLastDayOfMonth,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                1,\n                TimeUnit.Months\n            ),\n            -1,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMinDate,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMaxDate,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                -(Weekday(varFirstDayOfMonth) - 2 + 1),\n                TimeUnit.Days\n            ),\n            40,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varPublishButtonDisplayMode,\n        DisplayMode.Edit\n    );\n);\n\n// Reset the screen selector\nSet(varCurrentScreen, First(colDropDownNav));"
     Children:
       - conMainContent_MainCalendar:
           Control: GroupContainer@1.3.0
@@ -68,7 +68,6 @@ Screens:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         DropShadow: =DropShadow.None
                         Fill: =ColorValue(varTheme.neutralBackground2)
-                        FillPortions: =0
                         Height: =txtFacility_MainCalendar.Height + txtZoneTitle_MainCalendar.Height + Self.LayoutGap
                         LayoutDirection: =LayoutDirection.Vertical
                       Children:
@@ -86,6 +85,7 @@ Screens:
                             Properties:
                               AutoHeight: =true
                               FontColor: =ColorValue(varTheme.neutralForeground1)
+                              Height: =60
                               Size: =varThemeFont.H1.size
                               Text: |-
                                 =//To do: Duration added for performance testing. Will remove on final version. 
@@ -156,8 +156,10 @@ Screens:
                   Height: =Parent.Height - conTitleHeader_MainCalendar.Height
                   LayoutDirection: =LayoutDirection.Horizontal
                   LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  PaddingBottom: =2
                   PaddingLeft: =20
                   PaddingRight: =20
+                  PaddingTop: =1
                 Children:
                   - conCalendar_MainCalendar:
                       Control: GroupContainer@1.3.0
@@ -468,8 +470,8 @@ Screens:
                                     FillPortions: =0
                                     FocusedBorderThickness: =0
                                     Height: =Parent.Height
-                                    Items: |-
-                                      =Filter(
+                                    Items: |+
+                                      =/*Filter(
                                           AddColumns(
                                               shiftplanner_shifttypes As ShiftType,
                                               ShiftZone,
@@ -480,7 +482,9 @@ Screens:
                                               )
                                           ),
                                           ShiftZone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
-                                      )
+                                      )*/
+
+                                      varSelectedZone.'Shift Teams'
                                     TabIndex: =0
                                     TemplatePadding: =10
                                     TemplateSize: =If(Self.Layout = Layout.Vertical, Min(150, Self.Width - 60), Min(150, Self.Height - 60))
@@ -676,7 +680,8 @@ Screens:
                                                       Height: =txtShiftType_MainCalendar.Height
                                                       Size: =varThemeFont.B2.size
                                                       Text: |+
-                                                        =Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
+                                                        =Concatenate(Text(ThisItem.'Shift Type'.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(DateAdd( ThisItem.'Shift Type'.'Start Date Time', ThisItem.'Shift Type'.Duration,TimeUnit.Minutes), DateTimeFormat.ShortTime))
+                                                        //Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
                                                       VerticalAlign: =VerticalAlign.Middle
                                                       Width: =140
                                                 - hdnShiftTypeShiftTime_MainCalendar:
@@ -686,7 +691,7 @@ Screens:
                                                       FontColor: =ColorValue(varTheme.neutralForeground3)
                                                       Height: =txtShiftType_MainCalendar.Height
                                                       Size: =varThemeFont.B2.size
-                                                      Text: =ThisItem.shiftplanner_shifttype
+                                                      Text: =ThisItem.'Shift Type'.shiftplanner_shifttype
                                                       VerticalAlign: =VerticalAlign.Middle
                                                       Visible: =false
                                                       Width: =140

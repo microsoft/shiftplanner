@@ -267,7 +267,6 @@ Screens:
                               DisplayName: =DataSourceInfo([@shiftplanner_useravailabilities],DataSourceInfo.DisplayName,'mpa_SystemUser')
                               Required: =false
                               Update: =User_DataCardValue_AddLeave.Selected
-                              Visible: =false
                               Width: =1150
                               X: =0
                               Y: =3
@@ -278,6 +277,7 @@ Screens:
                                   Properties:
                                     Height: =22
                                     Text: =Parent.DisplayName
+                                    Visible: =false
                                     Weight: ='TextCanvas.Weight'.Semibold
                                     Width: =Parent.Width - 48
                                     Wrap: =false
@@ -293,6 +293,7 @@ Screens:
                                     Items: =Choices([@shiftplanner_useravailabilities].'mpa_SystemUser')
                                     Required: =Parent.Required
                                     ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                    Visible: =false
                                     Width: =Parent.Width - 48
                                     X: =24
                                     Y: =User_DataCardKey_AddLeave.Y + User_DataCardKey_AddLeave.Height + 4

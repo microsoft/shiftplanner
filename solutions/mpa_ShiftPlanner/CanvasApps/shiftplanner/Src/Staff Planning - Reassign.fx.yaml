@@ -1,9 +1,70 @@
 "'Staff Planning - Reassign' As screen":
     Fill: =ColorValue(varTheme.neutralBackground1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnVisible: |-
-        =
-        UpdateContext({varAssignMode : "Available"})
+    OnVisible: |+
+        =UpdateContext({
+            varAssignMode : "Available",
+        
+            // Determing who is eligible
+            tmpAffiliatedUsers : 
+                ShowColumns(
+                    AddColumns(
+                        Filter(shiftplanner_useraffiliations, Zone.shiftplanner_zone = varBookingToReassign.Zone.shiftplanner_zone),
+                        ResourceId, 
+                        Resource.User,
+                        ResourceFullName,
+                        Resource.'Full Name',
+                        ResourceRecord,
+                        Resource
+                    ),
+                    ResourceId,
+                    ResourceFullName,
+                    ResourceRecord
+                )
+                ,
+        
+            // Filter the eligible down to those that are available
+            tmpAvailableUsers : Filter(
+                tmpAffiliatedUsers,
+        
+                !IsBlank(
+                    LookUp(
+                        shiftplanner_userroles As uro, 
+                        uro.Resource.User = ResourceId 
+                        And uro.Role.shiftplanner_role = varBookingToReassign.'Team Position'.Role.shiftplanner_role
+                    )
+                ) 
+                
+                // Exclude the unavailable
+                And Not (
+                    ResourceId in ShowColumns(
+                        AddColumns(
+                            Filter(shiftplanner_useravailabilities, StartDate <= varBookingToReassign.Date And  Enddate >= varBookingToReassign.Date ),
+                            UserGuid,
+                            User.User
+                        ), 
+                        UserGuid
+                    )
+                )
+        
+                // Exclude the booked    
+                And Not( 
+                    ResourceId in
+                    ShowColumns(
+                        AddColumns(
+                            Filter(
+                                shiftplanner_shiftbookings,
+                                Date = varSelectedUserDay.ShiftDate
+                            ),
+                            UserId,
+                            Resource.User                    
+                        ),
+                        UserId
+                    )
+                )
+            )
+        });
+        
 
     conReassignPopup_StaffPlanScreen As groupContainer.verticalAutoLayoutContainer:
         Fill: =varTheme.popupBackground
@@ -162,7 +223,8 @@
                 LayoutMinWidth: =14
                 Size: =14
                 TabIndex: =0
-                Text: =varBookingToReassign.Zone.Facility.Name
+                Text: |-
+                    =varBookingToReassign.Zone.Facility.Name & ": " & varBookingToReassign.Zone.Name
                 Tooltip: =""
                 VerticalAlign: =""
                 Visible: =true
@@ -359,8 +421,13 @@
                 "galAvailableResources_StaffPlanScreen As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
                     BorderColor: =App.Theme.Colors.Darker40
                     DelayItemLoading: =true
-                    Items: |
-                        =Filter(
+                    Items: |-
+                        =// Optimised
+                        tmpAvailableUsers
+                        
+                        /*
+                        Original
+                        Filter(
                             shiftplanner_userroles,
                             
                             // Only get those with the right role
@@ -394,6 +461,7 @@
                                 )
                             )
                         )
+                        */
                     Layout: =Layout.Vertical
                     LayoutMaxHeight: =0
                     LayoutMaxWidth: =0
@@ -421,7 +489,7 @@
                         Height: =26
                         Size: =14
                         TabIndex: =0
-                        Text: =ThisItem.Resource.'Full Name'
+                        Text: =ThisItem.ResourceFullName
                         Tooltip: =""
                         VerticalAlign: =VerticalAlign.Middle
                         Visible: =true
@@ -444,9 +512,9 @@
                         Layout: ='ButtonCanvas.Layout'.IconOnly
                         OnSelect: |-
                             =IfError(
-                                Patch(shiftplanner_shiftbookings, varBookingToReassign, { Resource: ThisItem.Resource}),
+                                Patch(shiftplanner_shiftbookings, varBookingToReassign, { Resource: ThisItem.ResourceRecord}),
                             
-                                Notify("Error publishing.",NotificationType.Error, varTheme.toastTimeout),
+                                Notify("Error assigning: " & FirstError.Message ,NotificationType.Error, varTheme.toastTimeout),
                             
                                 Refresh(shiftplanner_shiftbookings);
                                 Navigate('Staff Planning Screen');
@@ -473,14 +541,22 @@
                     '#CopilotOverlayLabel': ="Filtered"
                     BorderColor: =App.Theme.Colors.Darker40
                     DelayItemLoading: =true
-                    Items: |+
+                    Items: |-
                         =With(
                             {
                                 // 1) Normalize Source A (e.g., shiftplanner_shiftbookings)
                                 normA:
                                     ShowColumns(
                                         AddColumns(
-                                            Filter(shiftplanner_useravailabilities, StartDate <= varBookingToReassign.Date And  Enddate >= varBookingToReassign.Date ),
+                                            Filter(
+                                                shiftplanner_useravailabilities, 
+                                                StartDate <= varBookingToReassign.Date 
+                                                And Enddate >= varBookingToReassign.Date 
+                                                And User.User in ShowColumns(
+                                                        tmpAffiliatedUsers,
+                                                        ResourceId
+                                                )
+                                            ),
                                             UserGuid,
                                             User.User,
                                             UserName,
@@ -498,8 +574,11 @@
                                     ShowColumns(
                                         AddColumns(
                                             Filter(
-                                                shiftplanner_shiftbookings,
-                                                Date = varBookingToReassign.Date
+                                                shiftplanner_shiftbookings, 
+                                                Date = varBookingToReassign.Date And Resource.User in ShowColumns(
+                                                        tmpAffiliatedUsers,
+                                                        ResourceId
+                                                )
                                             ),
                                             UserGuid,
                                             Resource.User,                    
@@ -523,7 +602,6 @@
                                 Rows
                             )
                         )
-                        
                     Layout: =Layout.Vertical
                     LayoutMaxHeight: =0
                     LayoutMaxWidth: =0
@@ -557,7 +635,7 @@
                         Visible: =true
                         Weight: ='TextCanvas.Weight'.Regular
                         Width: =Parent.Width-txtUnavailableName_StaffPlanScreen.Width
-                        Wrap: =true
+                        Wrap: =false
                         X: =txtUnavailableName_StaffPlanScreen.Width
                         Y: =0
                         ZIndex: =1

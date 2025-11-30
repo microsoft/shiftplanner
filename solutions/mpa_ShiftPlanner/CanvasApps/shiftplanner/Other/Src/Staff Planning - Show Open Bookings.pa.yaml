@@ -72,11 +72,15 @@ Screens:
                       Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
                       Properties:
                         Items: |+
-                          =Filter(
+                          =Sort(
+                              Filter(
                               shiftplanner_shiftbookings,
                               Date = varViewOpenBookingsPopupDate And
-                              IsBlank(Resource) 
+                              IsResourced = false
+                              ),
+                              Name
                           )
+
                         LayoutMaxHeight: =0
                         LayoutMaxWidth: =0
                         LayoutMinHeight: =16
