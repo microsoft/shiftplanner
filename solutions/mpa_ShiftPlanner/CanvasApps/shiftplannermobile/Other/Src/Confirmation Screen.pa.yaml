@@ -1,0 +1,162 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Confirmation Screen:
+    Children:
+      - conMainContent_Confirmation:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =Parent.Height - compHeaderMobile_Confirmation.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingRight: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingTop: =20
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =compHeaderMobile_Confirmation.Y + compHeaderMobile_Confirmation.Height
+          Children:
+            - conBodyContent_Confirmation:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  Fill: =ColorValue(varTheme.neutralBackground1)
+                  FillPortions: =0
+                  Height: =180
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =24
+                  LayoutOverflowY: =LayoutOverflow.Scroll
+                  PaddingBottom: =24
+                  PaddingLeft: =24
+                  PaddingRight: =24
+                  PaddingTop: =24
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conCancel_Confirmation:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        FillPortions: =0
+                        Height: =txtCancel_Confirmation.Height + txtCancelDetails_Confirmation.Height + Self.LayoutGap
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =8
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - txtCancel_Confirmation:
+                            Control: Text@0.0.51
+                            Properties:
+                              FontColor: =ColorValue(varTheme.neutralForeground1)
+                              Height: =Self.Size * 1.5
+                              Size: =varThemeFont.H3.size
+                              Text: ="Cancel Request?"
+                              VerticalAlign: =VerticalAlign.Top
+                              Weight: =varThemeFont.H3.weightBold
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        - txtCancelDetails_Confirmation:
+                            Control: Text@0.0.51
+                            Properties:
+                              AutoHeight: =true
+                              FontColor: =ColorValue(varTheme.neutralForeground1)
+                              Text: ="You will not be able to undo this action once you proceed to cancel."
+                              Weight: ='TextCanvas.Weight'.Regular
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                  - conButtons_Confirmation:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        FillPortions: =0
+                        Height: =32
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =12
+                        LayoutJustifyContent: =LayoutJustifyContent.End
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - btnBack_Confirmation:
+                            Control: Button@0.0.45
+                            Properties:
+                              AccessibleLabel: ="Secondary"
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              FontItalic: =
+                              OnSelect: =Navigate('Request Details Screen')
+                              Text: ="Back"
+                              Width: =54
+                        - btnProceed_Confirmation:
+                            Control: Button@0.0.45
+                            Properties:
+                              AccessibleLabel: ="Primary"
+                              FontItalic: =
+                              OnSelect: |-
+                                =Patch(
+                                    'Change Requests',
+                                    LookUp(
+                                        'Change Requests',
+                                        shiftplanner_changerequest = varSelectedRequest.shiftplanner_changerequest
+                                    ),
+                                    {'Status Reason': 'Status Reason (Change Requests)'.Canceled}
+                                );
+
+                                Set(varSelectedStaus, 'Status Reason (Change Requests)'.Canceled);
+
+                                Navigate('Request Details Screen');
+                                Notify(
+                                    "Request has been canceled",
+                                    NotificationType.Success
+                                )
+                              Text: ="Proceed"
+                              Width: =76
+      - compHeaderMobile_Confirmation:
+          Control: CanvasComponent
+          ComponentName: compHeaderMobile
+          Properties:
+            AllShiftsScreen: ='All Shifts Screen'
+            BackScreen: ='Home Screen'
+            HeaderTitle: ="Confirmation"
+            Height: =104
+            HomeScreen: ='Home Screen'
+            MyRequestsScreen: ='Request Screen'
+            NavigationScreen: ='Navigation Screen'
+            ProfileImage: =varCurrentUser.Image
+            ProfileScreen: ='Profile Screen'
+            TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
+            Width: =App.Width

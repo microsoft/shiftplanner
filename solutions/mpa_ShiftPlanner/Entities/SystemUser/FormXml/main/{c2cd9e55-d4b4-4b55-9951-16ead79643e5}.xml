@@ -110,6 +110,14 @@
                         <control id="positionid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="positionid" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{d8349201-07d0-41d3-8db4-651134510172}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10003">
+                        <labels>
+                          <label description="Employee Id" languagecode="1033" />
+                        </labels>
+                        <control id="employeeid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="employeeid" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -441,7 +449,7 @@
         <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" solutionaction="Added" />
       </DisplayConditions>
       <header id="{a96a84ef-fbc4-4e47-b735-f7d16d98fcfe}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left" solutionaction="Added">
-        <rows></rows>
+        <rows />
       </header>
     </form>
     <LocalizedNames>

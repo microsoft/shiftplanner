@@ -1,0 +1,444 @@
+"'Request Details Screen' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    conMainContent_RequestDetails As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderMobile_RequestDetails.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =2
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingLeft: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        Width: =Parent.Width
+        Y: =compHeaderMobile_RequestDetails.Y + compHeaderMobile_RequestDetails.Height
+        ZIndex: =1
+
+        conBodyContent_RequestDetails As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =ColorValue(varTheme.neutralBackground1)
+            FillPortions: =0
+            Height: =Parent.Height - Parent.PaddingTop - conButtons_RequestDetails.Height - Parent.LayoutGap
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =16
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =20
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =2
+
+            conDetails_RequestDetails As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                Fill: =ColorValue(varTheme.neutralBackground1)
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =24
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                ZIndex: =3
+
+                conStatus_RequestDetails As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtStatus_RequestDetails.Height + Self.LayoutGap + bdgStatus_RequestDetails.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =8
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                    txtStatus_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Status"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    bdgStatus_RequestDetails As Badge:
+                        AccessibleLabel: ="Request status"
+                        Align: =""
+                        Appearance: ='BadgeCanvas.Appearance'.Tint
+                        BasePaletteColor: =
+                        Content: =varSelectedStaus
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =32
+                        Shape: ='BadgeCanvas.Shape'.Rounded
+                        ThemeColor: |-
+                            =If(varSelectedStaus = 'Status Reason (Change Requests)'.Approved,
+                            'BadgeCanvas.ThemeColor'.Success,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Approval',
+                            'BadgeCanvas.ThemeColor'.Warning,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Final Approval',
+                            'BadgeCanvas.ThemeColor'.Warning,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.Declined,
+                            'BadgeCanvas.ThemeColor'.Danger,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.Canceled,
+                            'BadgeCanvas.ThemeColor'.Informative
+                            )
+                        VerticalAlign: =""
+                        Width: |-
+                            =If(varSelectedStaus = 'Status Reason (Change Requests)'.Approved,
+                            70,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Approval',
+                            114,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.Declined,
+                            60,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.Canceled,
+                            66,
+                            varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Final Approval',
+                            135
+                            )
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conSchedule_RequestDetails As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtSchedule_RequestDetails.Height +  txtDate_RequestDetails.Height +  txtShiftType_RequestDetails.Height + txtTime_RequestDetails.Height + (Self.LayoutGap * 3)
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =2
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =3
+
+                    txtSchedule_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Schedule"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtDate_RequestDetails As Text:
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.primary)
+                        Height: =Self.Size * 1.5
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =varThemeFont.H3.size
+                        Text: =Text(varSelectedRequest.'Shift Booking'.Date,"mmmm dd, yyyy")
+                        VerticalAlign: =VerticalAlign.Top
+                        Weight: =varThemeFont.H3.weightBold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                    txtShiftType_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =varSelectedRequest.'Shift Booking'.'Team Position'.'Shift Team'.'Shift Type'.Name
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =3
+
+                    txtTime_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground3)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =Concatenate(Text(varSelectedRequest.'Shift Booking'.'Planned Start Time', DateTimeFormat.ShortTime) & " - " & Text(varSelectedRequest.'Shift Booking'.'Planned End Time', DateTimeFormat.ShortTime))
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =4
+
+                conSwap_RequestDetails As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtSwap_RequestDetails.Height + Self.LayoutGap + txtStaff_RequestDetails.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: =If(varSelectedRequest.'Change Type' = 'Change type'.'Time off', false, true)
+                    Width: =Parent.Width
+                    ZIndex: =4
+
+                    txtSwap_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Swap to"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtStaff_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =varSelectedRequest.'New Resource'.'Full Name'
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conReason_RequestDetails As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtReason_RequestDetails.Height + Self.LayoutGap + txtReasonContent_RequestDetails.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =5
+
+                    txtReason_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Reason"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtReasonContent_RequestDetails As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =varSelectedRequest.Reason
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+        conButtons_RequestDetails As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            FillPortions: =0
+            Height: =56
+            LayoutGap: =12
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =12
+            PaddingTop: =12
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =3
+
+            btnBack_RequestDetails As Button:
+                AccessibleLabel: ="Secondary"
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Navigate('Request Screen')
+                Text: ="Back"
+                VerticalAlign: =""
+                Width: |-
+                    =If(
+                        varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Approval',
+                        170,
+                        varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Final Approval',
+                        170,
+                        Parent.Width
+                    )
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            btnCancel_RequestDetails As Button:
+                AccessibleLabel: ="Secondary"
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Navigate('Confirmation Screen')
+                Text: ="Cancel request"
+                VerticalAlign: =""
+                Visible: |-
+                    =If(
+                        varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Approval',
+                        true,
+                        varSelectedStaus = 'Status Reason (Change Requests)'.'Pending Final Approval',
+                        true,
+                        false
+                    )
+                Width: =170
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+    compHeaderMobile_RequestDetails As compHeaderMobile:
+        BackScreen: ='Home Screen'
+        HeaderTitle: ="Request Details"
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
+        ZIndex: =2
+

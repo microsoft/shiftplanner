@@ -1,0 +1,491 @@
+"'Profile Screen' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    conMainContent_Profile As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height - compHeaderMobile_Profile.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =24
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =15
+        PaddingLeft: |
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 15
+            )
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 17
+            )
+        PaddingTop: =24
+        Width: =Parent.Width
+        Y: =compHeaderMobile_Profile.Height 
+        ZIndex: =1
+
+        conProfileNameRole_Profile As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =conProfileNameContent_Profile.Height
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: |
+                =Parent.Width - conMainContent_Profile.PaddingLeft - conMainContent_Profile.PaddingRight
+            ZIndex: =2
+
+            conProfileImage_Profile As groupContainer.manualLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                FillPortions: =0
+                Height: =64
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =Parent.Height
+                LayoutMinWidth: =50
+                Width: =64
+                ZIndex: =1
+
+                avaUserProfile_Profile As Avatar:
+                    AccessibleLabel: ="Current user profile picture"
+                    Badge: ='Avatar.Badge'.None
+                    BasePaletteColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    Height: =Parent.Height
+                    Image: |-
+                        =//User().Image
+                        If(
+                            !IsBlank(varCurrentUser.Email) && Office365Users.UserPhotoMetadata(varCurrentUser.Email).HasPhoto,
+                            Office365Users.UserPhotoV2(varCurrentUser.Email)
+                        )
+                    Name: =User().FullName
+                    Width: =Parent.Width
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+            conProfileNameContent_Profile As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                Height: |-
+                    =With(
+                        {wBaseHeight: txtFullname_Profile.Height + txtRoles_Profile.Height},
+                        If(
+                            conProfileImage_Profile.Height > wBaseHeight,
+                            conProfileImage_Profile.Height,
+                            wBaseHeight
+                        )
+                    )
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =16
+                ZIndex: =2
+
+                txtFullname_Profile As Text:
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =22
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H3.size
+                    Text: =User().FullName
+                    VerticalAlign: =VerticalAlign.Top
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                txtRoles_Profile As Text:
+                    AutoHeight: =true
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =ColorValue( varTheme.neutralForeground3)
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: |-
+                        =With(
+                            {withUserRoles: Distinct( Filter(
+                                'User Roles',
+                                Resource.'Primary Email' = varCurrentUser.Email
+                            ),Role.Name) },
+                             Coalesce(If(!IsEmpty(withUserRoles),
+                                Left( 
+                                    Concat(withUserRoles,Value & ", "),
+                                        Len(Concat(withUserRoles, Value  & ", ")
+                                    )-2
+                                ), "-"
+                            ), " ")
+                        )
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+        conDetails_Profile As groupContainer.verticalAutoLayoutContainer:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =32
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =3
+
+            conPersonalDetails_Profile As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =txtPersonalDetails_Profile.Height + conEmail_Profile.Height + conContact_Profile.Height + 25
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =12
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =1
+
+                txtPersonalDetails_Profile As Text:
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H3.size
+                    Text: ="Personal Details"
+                    VerticalAlign: =VerticalAlign.Top
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                conEmail_Profile As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =txtEmailAdd_Profile.Height +txtEmailAddValue_Profile.Height+5
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =4
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    txtEmailAdd_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: ="Email Address"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtEmailAddValue_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: |-
+                            =With(
+                                {wEmail: varCurrentUser.Email},
+                                If(
+                                    IsBlank(wEmail),
+                                    "-",
+                                    wEmail
+                                )
+                            )
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conContact_Profile As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =txtContact_Profile.Height + txtContactValue_Profile.Height +5
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =4
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =3
+
+                    txtContact_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: ="Contact Number"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtContactValue_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: |-
+                            =With(
+                                {
+                                    wContact:Office365Users.UserProfileV2(User().Email).mobilePhone,
+                                    wContactFromUserTable: LookUp(
+                                        Users,
+                                        'Primary Email' = varCurrentUser.Email
+                                    ).'Mobile Phone'
+                                },
+                                If(
+                                    IsBlank(wContact),
+                                    If(IsBlank(wContactFromUserTable),"-",wContactFromUserTable),
+                                    wContact
+                                )
+                            )
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+            conWorkDetails_Profile As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =txtWorkDetails_Profile.Height + conTeamAffilliation_Profile.Height + conFacility_Profile.Height + 25
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =12
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =2
+
+                txtWorkDetails_Profile As Text:
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H3.size
+                    Text: ="Work Details"
+                    VerticalAlign: =VerticalAlign.Top
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                conTeamAffilliation_Profile As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =txtTeamAffilliation_Profile.Height +txtTeamAffiliationValue_Profile.Height+5
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =4
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    txtTeamAffilliation_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: ="Team Affiliation"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtTeamAffiliationValue_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: |-
+                            =With(
+                                {withUserAffiliate: Sort( Distinct(
+                                            Filter(
+                                                AddColumns('Shift Bookings' As SB,ShiftName, SB.'Team Position'.'Shift Team'.Name),
+                                                Resource.'Primary Email' =  varCurrentUser.Email
+                                                And !IsBlank(ShiftName)
+                                            ),
+                                            ShiftName
+                                        ),Value) },
+                                 Coalesce(If(!IsEmpty(withUserAffiliate),
+                                    Left( 
+                                        Concat(withUserAffiliate,Value & ", "),
+                                            Len(Concat(withUserAffiliate, Value  & ", ")
+                                        )-2
+                                    ), "-"
+                                ), " ")
+                            )
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conFacility_Profile As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =txtFacility_Profile.Height + txtFacilityValue_Profile.Height +5
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =4
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =3
+
+                    txtFacility_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: ="Facility"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtFacilityValue_Profile As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =14
+                        Text: |-
+                            =With(
+                                {withUserRoles: Distinct( Filter(
+                                            'User Affiliations',
+                                            Resource.'Primary Email' = varCurrentUser.Email
+                                        ),Facility.Name) },
+                                 Coalesce(If(!IsEmpty(withUserRoles),
+                                    Left( 
+                                        Concat(withUserRoles,Value & ", "),
+                                            Len(Concat(withUserRoles, Value  & ", ")
+                                        )-2
+                                    ), "-"
+                                ), " ")
+                            )
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+    compHeaderMobile_Profile As compHeaderMobile:
+        BackScreen: ='Home Screen'
+        HeaderTitle: ="Profile"
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
+        ZIndex: =2
+

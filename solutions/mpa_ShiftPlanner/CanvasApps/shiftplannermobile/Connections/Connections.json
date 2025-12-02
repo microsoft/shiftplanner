@@ -1,0 +1,24 @@
+{
+  "36392293-2796-440b-b8d7-53b7ed00b1d9": {
+    "appActions": [
+      "UserPhotoMetadata",
+      "UserPhoto_V2",
+      "UserProfile_V2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1777/1.0.1777.4410/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "36392293-2796-440b-b8d7-53b7ed00b1d9"
+  }
+}

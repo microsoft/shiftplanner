@@ -1,0 +1,401 @@
+"'Add Staff Screen' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: =Select(btnRefresh_AddStaff)
+
+    conMainContent_AddStaff As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderCompound_AddStaff.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =20
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =20
+        PaddingLeft: =119
+        PaddingRight: =119
+        PaddingTop: =12
+        Width: =Parent.Width
+        Y: =compHeaderCompound_AddStaff.Height
+        ZIndex: =1
+
+        conTitlesButtons_AddStaff As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            FillPortions: =0
+            Height: =conTitles_AddStaff.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =1
+
+            conTitles_AddStaff As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Fill: =ColorValue(varTheme.neutralBackground2)
+                FillPortions: =0
+                Height: =txtBreadCrumbs_AddStaff.Height + txtDepartment_AddStaff.Height + Self.LayoutGap
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =4
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width - conSeacrh_AddStaff.Width
+                ZIndex: =1
+
+                txtBreadCrumbs_AddStaff As Text:
+                    AutoHeight: =true
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: |-
+                        =//RGBA(122, 138, 143, 1)
+                        ColorValue(varTheme.neutralForeground3)
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =
+                    Text: =varSelectedZone.Facility.Name & " / " & varSelectedZone.Name
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                txtDepartment_AddStaff As Text:
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H2.size
+                    Text: ="Add Staff to " & varAddStaff.Position &  " Position"
+                    VerticalAlign: =VerticalAlign.Middle
+                    Weight: =varThemeFont.H2.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+            conSeacrh_AddStaff As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Fill: =ColorValue(varTheme.neutralBackground2)
+                FillPortions: =0
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.End
+                LayoutJustifyContent: =LayoutJustifyContent.End
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingRight: =20
+                Width: =Parent.Width / 2
+                ZIndex: =2
+
+                "txiSearh_AddStaff As 'Text input'":
+                    AccessibleLabel: ="Search"
+                    Appearance: ="FilledDarker"
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =
+                    FontSize: =0
+                    FontWeight: =""
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =320
+                    Mode: ='TextInputCanvas.Mode'.SingleLine
+                    OnChange: =Select(btnRefresh_AddStaff)
+                    Placeholder: ="Search"
+                    TriggerOutput: ="FocusOut"
+                    Type: ='TextInputCanvas.Type'.Search
+                    Width: =300
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                btnRefresh_AddStaff As Button:
+                    BasePaletteColor: =
+                    BorderColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    Height: =32
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    OnSelect: |-
+                        =UpdateContext({
+                            tmpStaffToAdd : 
+                                Search(
+                                    Filter(
+                                        AddColumns(
+                                            shiftplanner_userroles As Staff,
+                                            StaffName,
+                                            Staff.Resource.'Full Name',
+                                            StaffRole,
+                                            Staff.Role.Name,
+                                            StaffFacility,
+                                            LookUp(
+                                                shiftplanner_useraffiliations,
+                                                Resource.'Primary Email' = Staff.Resource.'Primary Email' And Facility.Name = varSelectedZone.Facility.Name And Zone.Name = varSelectedZone.Name
+                                            ),
+                                            StaffAvailability,
+                                            LookUp(
+                                                shiftplanner_useravailabilities,
+                                                User.'Primary Email' = Staff.Resource.'Primary Email' And (StartDate <= varDateSelected && Enddate >= varDateSelected)
+                                            )
+                                        ),
+                                        StaffRole = varAddStaff.Position And StaffFacility.Facility.Name = varSelectedZone.Facility.Name And StaffFacility.Zone.Name = varSelectedZone.Name And !(StaffAvailability.StartDate <= varDateSelected && StaffAvailability.Enddate >= varDateSelected)
+                                    ),
+                                    Text(txiSearh_AddStaff.Value),
+                                    StaffName
+                                )
+                        });
+                    Text: ="Refresh"
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+        galStaff_AddStaff As gallery.galleryVertical:
+            AccessibleLabel: ="Staff Gallery"
+            BorderColor: =App.Theme.Colors.Darker40
+            DelayItemLoading: =true
+            FocusedBorderThickness: =0
+            Items: |-
+                =// TODO: Check there are no bookings
+                tmpStaffToAdd
+            Layout: =Layout.Vertical
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =287
+            LayoutMinWidth: =320
+            LoadingSpinner: =LoadingSpinner.Data
+            TabIndex: =0
+            TemplateSize: =100
+            WrapCount: =4
+            ZIndex: =1
+
+            conStaff_AddStaff As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.Light
+                Fill: =ColorValue(varTheme.neutralBackground1)
+                Height: =86
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =5
+                PaddingLeft: =15
+                PaddingRight: =10
+                PaddingTop: =10
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =267
+                ZIndex: =1
+
+                conNamePosition_AddStaff As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =Parent.Height - Parent.PaddingTop - Parent.PaddingBottom
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width - Parent.PaddingLeft - shpSelected_AddStaff.Width - Parent.PaddingRight
+                    ZIndex: =1
+
+                    txtName_AddStaff As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =App.Theme.Colors.Primary
+                        Height: =
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =
+                        Text: =ThisItem.Resource.'Full Name'
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtPostion_AddStaff As Text:
+                        Align: ='TextCanvas.Align'.Start
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =RGBA(122, 138, 143, 1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =
+                        Text: =ThisItem.Role.Name
+                        VerticalAlign: =VerticalAlign.Top
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width
+                        X: =40
+                        Y: =40
+                        ZIndex: =2
+
+                conSelected_AddStaff As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =shpSelected_AddStaff.Height + 10
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =5
+                    PaddingTop: =5
+                    Width: =shpSelected_AddStaff.Width + 10
+                    ZIndex: =3
+
+                    shpSelected_AddStaff As circle:
+                        BorderColor: =App.Theme.Colors.Darker40
+                        BorderThickness: =1
+                        DisabledFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                        Fill: =If(ThisItem.IsSelected, App.Theme.Colors.Primary, Color.Transparent)
+                        Height: =15
+                        HoverFill: =App.Theme.Colors.Darker20
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        PressedFill: =App.Theme.Colors.Primary
+                        Width: =15
+                        ZIndex: =1
+
+        conButtons_AddStaff As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            FillPortions: =0
+            Height: =32
+            LayoutGap: =10
+            LayoutJustifyContent: =LayoutJustifyContent.End
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =3
+
+            btnCancel_AddStaff As Button:
+                AccessibleLabel: ="Secondary"
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Navigate('Modify Screen')
+                Text: ="Cancel"
+                VerticalAlign: =""
+                Width: =200
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            btnFinish_AddStaff As Button:
+                AccessibleLabel: ="Primary"
+                Align: =""
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: |-
+                    =If(
+                        CountRows(galStaff_AddStaff.AllItems) = 0,
+                        DisplayMode.Disabled,
+                        DisplayMode.Edit
+                    )
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |-
+                    =Patch(
+                        colModify,
+                        LookUp(
+                            colModify,
+                            BookingId = varAddStaff.BookingId
+                        ),
+                        {
+                            Resource: galStaff_AddStaff.Selected.txtName_AddStaff.Text,
+                            ResourceId: galStaff_AddStaff.Selected.Resource.User,
+                            Status: "New"
+                        }
+                    );
+                    
+                    Navigate('Modify Screen');
+                Text: ="Finish"
+                VerticalAlign: =""
+                Width: =200
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+    compHeaderCompound_AddStaff As compHeaderCompound:
+        Height: |-
+            =compHeaderCompound_AddStaff.HeaderHeight
+            //varHeaderHeight
+        NavigateScreen: ='Modify Screen'
+        Width: =compHeaderCompound_AddStaff.HeaderWidth
+        ZIndex: =2
+

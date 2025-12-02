@@ -1,0 +1,346 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Request Screen:
+    Properties:
+      OnVisible: |-
+        =ClearCollect(
+            colStatus,
+            [
+                "All Status",
+                "Approved",
+                "Pending Approval",
+                "Denied",
+                "Canceled"
+            ]
+        );
+        ClearCollect(
+            colRequest,
+            {
+                Type: "Time Off Request",
+                Staff: "",
+                Date: "May 24, 2024",
+                Status: "Approved"
+            },
+            {
+                Type: "Swap Shift",
+                Staff: "Munger, Allan L.",
+                Date: "May 23, 2024",
+                Status: "Pending Approval"
+            },
+            {
+                Type: "Swap Shift",
+                Staff: "Munger, Allan L.",
+                Date: "May 22, 2024",
+                Status: "Denied"
+            },
+            {
+                Type: "Time Off Request",
+                Staff: "",
+                Date: "May 21, 2024",
+                Status: "Canceled"
+            },
+            {
+                Type: "Swap Shift",
+                Staff: "Munger, Allan L",
+                Date: "May 21, 2024",
+                Status: "Approved"
+            },
+            {
+                Type: "Swap Shift",
+                Staff: "Munger, Allan L",
+                Date: "May 20, 2024",
+                Status: "Canceled"
+            }
+        )
+    Children:
+      - conMainContent_Request:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =Parent.Height - compHeaderMobile_Request.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: =
+            PaddingRight: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =compHeaderMobile_Request.Y + compHeaderMobile_Request.Height
+          Children:
+            - conBodyContent_Request:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  DropShadow: =DropShadow.None
+                  Fill: =ColorValue(varTheme.neutralBackground2)
+                  FillPortions: =0
+                  Height: =conStatus_Request.Height + txtItemCount_Request.Height + (Self.LayoutGap * 2)
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =12
+                  LayoutOverflowY: =LayoutOverflow.Scroll
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conStatus_Request:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        DropShadow: =DropShadow.None
+                        Fill: =ColorValue(varTheme.neutralBackground2)
+                        FillPortions: =0
+                        Height: =txtStatus_Request.Height + Self.LayoutGap + cmbStatus_Request.Height
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =8
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                      Children:
+                        - txtStatus_Request:
+                            Control: Text@0.0.51
+                            Properties:
+                              AutoHeight: =true
+                              FontColor: =ColorValue(varTheme.neutralForeground1)
+                              Text: ="Status"
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        - cmbStatus_Request:
+                            Control: ComboBox@0.0.51
+                            Properties:
+                              AccessibleLabel: ="Combobox control"
+                              FontItalic: =
+                              InputTextPlaceholder: ="Filter status"
+                              Items: =Distinct(Filter('Change Requests', 'Status Reason' <> 'Status Reason (Change Requests)'.Inactive),'Status Reason')
+                              SelectMultiple: =true
+                              Width: =Parent.Width
+                            Children:
+                              - Value2:
+                                  Control: ComboBoxDataField@1.5.0
+                                  Variant: textualColumn
+                                  IsLocked: true
+                                  Properties:
+                                    FieldDisplayName: ="Value"
+                                    FieldName: ="Value"
+                                    FieldType: ="l"
+                                    Order: =1
+                  - txtItemCount_Request:
+                      Control: Text@0.0.51
+                      Properties:
+                        AutoHeight: =true
+                        Text: ="Showing " & CountRows(galRequest_Request.AllItems) &" items"
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            - conGallery_Request:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  DropShadow: =DropShadow.None
+                  Fill: =ColorValue(varTheme.neutralBackground2)
+                  FillPortions: =0
+                  Height: =Parent.Height - conBodyContent_Request.Height - Parent.PaddingTop - Parent.PaddingBottom
+                  LayoutDirection: =LayoutDirection.Vertical
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: =Parent.Width
+                Children:
+                  - galRequest_Request:
+                      Control: Gallery@2.15.0
+                      Variant: VariableHeight
+                      Properties:
+                        AccessibleLabel: ="List of my requests"
+                        AlignInContainer: =AlignInContainer.Start
+                        BorderStyle: =BorderStyle.None
+                        FillPortions: =0
+                        FocusedBorderThickness: =0
+                        Height: =Parent.Height
+                        Items: |-
+                          =Filter(
+                              Sort('Change Requests','Created On',SortOrder.Descending),
+                              Resource.'Primary Email' = User().Email And Or(
+                                  IsBlank(cmbStatus_Request.SelectedItems),
+                                  IsEmpty(cmbStatus_Request.SelectedItems),
+                                  'Status Reason' in cmbStatus_Request.SelectedItems
+                              )
+                          )
+                        TabIndex: =0
+                        TemplatePadding: =20
+                        TemplateSize: =120
+                        Width: =Parent.Width
+                      Children:
+                        - conGalleryItems_Request:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =ColorValue(varTheme.neutralBackground1)
+                              Height: =If(ThisItem.'Change Type' = 'Change type'.'Time off', 98, 120)
+                              LayoutAlignItems: =LayoutAlignItems.End
+                              LayoutDirection: =LayoutDirection.Vertical
+                              PaddingBottom: =12
+                              PaddingLeft: =16
+                              PaddingRight: =16
+                              PaddingTop: =12
+                              Width: =Parent.TemplateWidth
+                            Children:
+                              - conItem_Request:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.SetByContainer
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0
+                                    Height: =conLabels_Request.Height
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    RadiusBottomLeft: =0
+                                    RadiusBottomRight: =0
+                                    RadiusTopLeft: =0
+                                    RadiusTopRight: =0
+                                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                                  Children:
+                                    - conLabels_Request:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.SetByContainer
+                                          DropShadow: =DropShadow.None
+                                          FillPortions: =0
+                                          Height: =txtType_Request.Height + txtStaff_Request.Height + txtDate_Request.Height + (Self.LayoutGap*2)
+                                          LayoutDirection: =LayoutDirection.Vertical
+                                          LayoutGap: =2
+                                          RadiusBottomLeft: =0
+                                          RadiusBottomRight: =0
+                                          RadiusTopLeft: =0
+                                          RadiusTopRight: =0
+                                          Width: =Parent.Width - bdgStatus_Request.Width
+                                        Children:
+                                          - txtType_Request:
+                                              Control: Text@0.0.51
+                                              Properties:
+                                                AutoHeight: =true
+                                                FontColor: =ColorValue(varTheme.primary)
+                                                Text: |-
+                                                  =//ThisItem.'Change Type'
+                                                  If(ThisItem.'Change Type' = 'Change type'.Swap, ThisItem.'Change Type' & " Shift", ThisItem.'Change Type' & " Request")
+                                                Weight: =varThemeFont.H3.weightBold
+                                                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                                          - txtStaff_Request:
+                                              Control: Text@0.0.51
+                                              Properties:
+                                                AutoHeight: =true
+                                                FontColor: =ColorValue(varTheme.neutralForeground1)
+                                                Text: =ThisItem.'New Resource'.'Full Name'
+                                                Visible: =If(ThisItem.'Change Type' = 'Change type'.'Time off', false, true)
+                                                Weight: ='TextCanvas.Weight'.Semibold
+                                                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                                          - txtDate_Request:
+                                              Control: Text@0.0.51
+                                              Properties:
+                                                AutoHeight: =true
+                                                FontColor: =ColorValue(varTheme.neutralForeground1)
+                                                Text: =Text(ThisItem.'Shift Booking'.Date,"mmmm dd, yyyy")
+                                                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                                    - bdgStatus_Request:
+                                        Control: Badge@0.0.24
+                                        Properties:
+                                          AccessibleLabel: ="Request details"
+                                          Appearance: ='BadgeCanvas.Appearance'.Tint
+                                          Content: =ThisItem.'Status Reason'
+                                          Shape: ='BadgeCanvas.Shape'.Rounded
+                                          ThemeColor: |-
+                                            =If(ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.Approved,
+                                            'BadgeCanvas.ThemeColor'.Success,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.'Pending Approval',
+                                            'BadgeCanvas.ThemeColor'.Warning,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.'Pending Final Approval',
+                                            'BadgeCanvas.ThemeColor'.Warning,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.Declined,
+                                            'BadgeCanvas.ThemeColor'.Danger,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.Canceled,
+                                            'BadgeCanvas.ThemeColor'.Informative
+                                            )
+                                          Width: |-
+                                            =If(ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.Approved,
+                                            70,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.'Pending Approval',
+                                            114,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.Declined,
+                                            60,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.Canceled,
+                                            66,
+                                            ThisItem.'Status Reason' = 'Status Reason (Change Requests)'.'Pending Final Approval',
+                                            135
+                                            )
+                              - conDetails_Request:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: ManualLayout
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.SetByContainer
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0
+                                    Height: =btnTransparent_Request.Height
+                                    RadiusBottomLeft: =0
+                                    RadiusBottomRight: =0
+                                    RadiusTopLeft: =0
+                                    RadiusTopRight: =0
+                                    Width: =btnTransparent_Request.Width
+                                  Children:
+                                    - txtViewDetails_Request:
+                                        Control: Text@0.0.51
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.End
+                                          AutoHeight: =true
+                                          FontColor: =ColorValue(varTheme.primary)
+                                          Text: ="View details"
+                                          Weight: =varThemeFont.H3.weightBold
+                                    - btnTransparent_Request:
+                                        Control: Button@0.0.45
+                                        Properties:
+                                          AccessibleLabel: ="Transparent"
+                                          Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                          Height: =txtViewDetails_Request.Height
+                                          Icon: =
+                                          Layout: ='ButtonCanvas.Layout'.TextOnly
+                                          OnSelect: |-
+                                            =Set(varSelectedRequest, ThisItem);
+                                            Set(varSelectedStaus,ThisItem.'Status Reason');
+                                            ClearCollect(colSelectedRequest,  ThisItem);
+                                            Navigate('Request Details Screen')
+                                          Text: =""
+                                          Width: =txtViewDetails_Request.Width
+      - compHeaderMobile_Request:
+          Control: CanvasComponent
+          ComponentName: compHeaderMobile
+          Properties:
+            AllShiftsScreen: ='All Shifts Screen'
+            BackScreen: ='Home Screen'
+            HeaderTitle: ="My Requests"
+            Height: =104
+            HomeScreen: ='Home Screen'
+            MyRequestsScreen: ='Request Screen'
+            NavigationScreen: ='Home Screen'
+            ProfileImage: =varCurrentUser.Image
+            ProfileScreen: ='Profile Screen'
+            TeamsEmbeddedMode: =varIsTeamsEmbedded
+            TimeTrackScreen: ='Time Sheet View Screen'
+            Width: =App.Width

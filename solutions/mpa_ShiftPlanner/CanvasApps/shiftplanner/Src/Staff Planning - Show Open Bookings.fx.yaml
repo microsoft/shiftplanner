@@ -1,0 +1,280 @@
+"'Staff Planning - Show Open Bookings' As screen":
+    Fill: =ColorValue(varTheme.neutralBackground1)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    conViewOpenBookingsPopup_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
+        Fill: =varTheme.popupBackground
+        Height: =Parent.Height - Self.Y
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =40
+        PaddingLeft: =40
+        PaddingRight: =40
+        PaddingTop: =40
+        Width: =Parent.Width
+        Y: =51
+        ZIndex: =2
+
+        conViewOpenBookings_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            DropShadow: =DropShadow.Bold
+            Fill: =ColorValue(varTheme.neutralBackground1)
+            Height: =120
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+            txtViewOpenBookingsTitle_StaffPlanScreen As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =32
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                Size: =varThemeFont.H3.size
+                TabIndex: =0
+                Text: ="Open Bookings for " & Text(varViewOpenBookingsPopupDate, "dd mmm")
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: =varThemeFont.H3.weightBold
+                Width: =96
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+            "galOpenBookings_StaffPlanScreen As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                '#CopilotOverlayLabel': ="Filtered"
+                BorderColor: =App.Theme.Colors.Darker40
+                DelayItemLoading: =true
+                Items: |+
+                    =Sort(
+                        Filter(
+                        shiftplanner_shiftbookings,
+                        Date = varViewOpenBookingsPopupDate And
+                        IsResourced = false
+                        ),
+                        Name
+                    )
+                    
+                Layout: =Layout.Vertical
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplatePadding: =0
+                TemplateSize: =70
+                X: =40
+                Y: =40
+                ZIndex: =2
+
+                txtOpenBookingRole_StaffPlanScreen As Text:
+                    Align: ="Start"
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =App.Theme.Colors.Primary
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =22
+                    Size: =14
+                    TabIndex: =0
+                    Text: =ThisItem.'Team Position'.Role.Name
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =true
+                    Weight: ='TextCanvas.Weight'.Regular
+                    Width: =Parent.Width
+                    Wrap: =true
+                    X: =0
+                    Y: =txtOpenBookingZone_StaffPlanScreen.Height + txtOpenBookingZone_StaffPlanScreen.Y
+                    ZIndex: =2
+
+                txtOpenBookingZone_StaffPlanScreen As Text:
+                    Align: ="Start"
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =22
+                    Size: =14
+                    TabIndex: =0
+                    Text: =ThisItem.Zone.Name
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =true
+                    Weight: ='TextCanvas.Weight'.Regular
+                    Width: =Parent.Width
+                    Wrap: =true
+                    X: =0
+                    Y: =txtOpenBookingFacility_StaffPlanScreen.Height
+                    ZIndex: =3
+
+                txtOpenBookingFacility_StaffPlanScreen As Text:
+                    Align: ="Start"
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =24
+                    Size: =14
+                    TabIndex: =0
+                    Text: =ThisItem.Zone.Facility.Name
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =true
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+                btnViewZone_StaffPlanScreen As Button:
+                    AcceptsFocus: =true
+                    AccessibleLabel: =""
+                    Align: =""
+                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontSize: =0
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    FontWeight: =""
+                    Height: =Parent.TemplateHeight
+                    Icon: ="Open"
+                    IconRotation: =0
+                    IconStyle: ="Outline"
+                    Layout: ='ButtonCanvas.Layout'.IconOnly
+                    OnSelect: |-
+                        =Set(varSelectedZone, ThisItem.Zone);
+                        // ToDo: Add a date range
+                        ClearCollect(colFilteredBookings, 
+                            Filter(
+                                shiftplanner_shiftbookings, 
+                                Zone.shiftplanner_zone = ThisItem.Zone.shiftplanner_zone
+                                //&& Status = 'Status (shiftplanner_shiftbookings)'.Active
+                            )
+                        );
+                        Navigate('Main Calendar Screen',ScreenTransition.Fade);
+                    TabIndex: =0
+                    Text: ="Button"
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =true
+                    Width: =30
+                    X: =Parent.TemplateWidth - Self.Width - 12
+                    Y: =0
+                    ZIndex: =5
+
+                rectOpenBookings_StaffPlanScreen As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    BorderStyle: =BorderStyle.None
+                    Fill: =ColorValue(varTheme.neutralStroke2)
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.Width
+                    Y: =69
+                    ZIndex: =6
+
+            btnOpenBookingsClose_StaffPlanScreen As Button:
+                AcceptsFocus: =true
+                AccessibleLabel: =""
+                Align: =""
+                Appearance: ="Primary"
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontSize: =0
+                FontStrikethrough: =false
+                FontUnderline: =false
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: =Navigate('Staff Planning Screen')
+                TabIndex: =0
+                Text: ="Close"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Width: =96
+                X: =0
+                Y: =0
+                ZIndex: =9
+
+    compHeader_StaffPlanScreen_SOB As compHeaderCompound:
+        Height: |-
+            =compHeader_StaffPlanScreen_SOB.HeaderHeight
+            //varHeaderHeight
+        NavigateScreen: ='Staff Planning Screen'
+        Width: =compHeader_StaffPlanScreen_SOB.HeaderWidth
+        ZIndex: =3
+

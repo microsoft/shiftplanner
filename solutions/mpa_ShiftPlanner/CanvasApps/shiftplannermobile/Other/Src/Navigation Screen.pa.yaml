@@ -1,0 +1,147 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Navigation Screen:
+    Properties:
+      Fill: =ColorValue(varTheme.neutralBackground2)
+    Children:
+      - conMainContent_Navigation:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =5.18
+            PaddingLeft: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingRight: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 5.18
+              )
+            PaddingTop: =10
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+          Children:
+            - icoCancel_Navigation:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  AccessibleLabel: ="Menu"
+                  AlignInContainer: =AlignInContainer.End
+                  Color: =App.Theme.Colors.Darker70
+                  FocusedBorderThickness: =0
+                  Height: =19.5
+                  Icon: =Icon.Cancel
+                  OnSelect: =Back()
+                  TabIndex: =0
+                  Width: =19.5
+            - galMenu_Navigation:
+                Control: Gallery@2.15.0
+                Variant: Vertical
+                Properties:
+                  AccessibleLabel: ="Navigation Menu"
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  FocusedBorderThickness: =0
+                  Height: =Parent.Height - icoCancel_Navigation.Height
+                  Items: =leftNavItems
+                  TabIndex: =0
+                  TemplatePadding: =
+                  TemplateSize: =Min(48, 116)
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - conTab_Navigation:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Height: =Parent.TemplateHeight
+                        LayoutDirection: =LayoutDirection.Vertical
+                        Width: =Parent.Width - 20
+                      Children:
+                        - conScreenLabel_Navigation:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =Parent.Height
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =10
+                              PaddingBottom: =5
+                              PaddingRight: =10
+                              PaddingTop: =5
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Width: =200
+                            Children:
+                              - ico_ScreenIcon_Navigation:
+                                  Control: Classic/Icon@2.5.0
+                                  Properties:
+                                    Color: |-
+                                      =If(
+                                          varSelectedScreen = ThisItem.Screen,
+                                          ColorValue(varTheme.primary)
+                                      )
+                                    FocusedBorderThickness: =0
+                                    Height: =Self.Width
+                                    Icon: =ThisItem.Icon
+                                    Width: =28
+                              - txtScreenName_Navigation:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Start
+                                    FontColor: =ico_ScreenIcon_Navigation.Color
+                                    LayoutMinWidth: =200
+                                    Size: =varThemeFont.H2.size
+                                    Text: =ThisItem.Label
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: |-
+                                      =If(
+                                          varSelectedScreen = ThisItem.Screen,
+                                          varThemeFont.H2.weightBold
+                                      )
+                                    Width: =200
+                  - btnClickZone_Navigation:
+                      Control: Button@0.0.45
+                      Properties:
+                        AccessibleLabel: ="Navigate to " & ThisItem.Label
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        Height: =galMenu_Navigation.TemplateHeight
+                        OnSelect: |-
+                          =Set(varSelectedScreen, ThisItem.Screen);
+                          Navigate(ThisItem.Screen)
+                        Text: =""
+                        Width: =galMenu_Navigation.TemplateWidth
+                        Y: =(galMenu_Navigation.TemplateHeight - Self.Height) / 2
+      - Image2:
+          Control: Image@2.2.3
+          Properties:
+            FocusedBorderThickness: =0
+            Image: =
+            X: =40
+            Y: =40

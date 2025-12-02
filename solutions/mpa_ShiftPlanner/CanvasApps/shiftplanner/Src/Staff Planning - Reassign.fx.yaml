@@ -1,0 +1,704 @@
+"'Staff Planning - Reassign' As screen":
+    Fill: =ColorValue(varTheme.neutralBackground1)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: |+
+        =UpdateContext({
+            varAssignMode : "Available",
+        
+            // Determing who is eligible
+            tmpAffiliatedUsers : 
+                ShowColumns(
+                    AddColumns(
+                        Filter(shiftplanner_useraffiliations, Zone.shiftplanner_zone = varBookingToReassign.Zone.shiftplanner_zone),
+                        ResourceId, 
+                        Resource.User,
+                        ResourceFullName,
+                        Resource.'Full Name',
+                        ResourceRecord,
+                        Resource
+                    ),
+                    ResourceId,
+                    ResourceFullName,
+                    ResourceRecord
+                )
+                ,
+        
+            // Filter the eligible down to those that are available
+            tmpAvailableUsers : Filter(
+                tmpAffiliatedUsers,
+        
+                !IsBlank(
+                    LookUp(
+                        shiftplanner_userroles As uro, 
+                        uro.Resource.User = ResourceId 
+                        And uro.Role.shiftplanner_role = varBookingToReassign.'Team Position'.Role.shiftplanner_role
+                    )
+                ) 
+                
+                // Exclude the unavailable
+                And Not (
+                    ResourceId in ShowColumns(
+                        AddColumns(
+                            Filter(shiftplanner_useravailabilities, StartDate <= varBookingToReassign.Date And  Enddate >= varBookingToReassign.Date ),
+                            UserGuid,
+                            User.User
+                        ), 
+                        UserGuid
+                    )
+                )
+        
+                // Exclude the booked    
+                And Not( 
+                    ResourceId in
+                    ShowColumns(
+                        AddColumns(
+                            Filter(
+                                shiftplanner_shiftbookings,
+                                Date = varSelectedUserDay.ShiftDate
+                            ),
+                            UserId,
+                            Resource.User                    
+                        ),
+                        UserId
+                    )
+                )
+            )
+        });
+        
+
+    conReassignPopup_StaffPlanScreen As groupContainer.verticalAutoLayoutContainer:
+        Fill: =varTheme.popupBackground
+        Height: =Parent.Height - Self.Y
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =40
+        PaddingLeft: =40
+        PaddingRight: =40
+        PaddingTop: =40
+        Width: =Parent.Width
+        Y: =51
+        ZIndex: =1
+
+        conReassign_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            DropShadow: =DropShadow.Bold
+            Fill: =ColorValue(varTheme.neutralBackground1)
+            Height: =120
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =4
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+            txtReassignHeading_StaffPlanScreen As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =32
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                Size: =varThemeFont.H3.size
+                TabIndex: =0
+                Text: ="Reassign Booking"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: =varThemeFont.H3.weightBold
+                Width: =96
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+            txtReassignDate_StaffPlanScreen As Text:
+                Align: ="Start"
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =22
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =14
+                Size: =14
+                TabIndex: =0
+                Text: =varBookingToReassign.Date
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: ='TextCanvas.Weight'.Semibold
+                Width: =96
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =2
+
+            txtReassignTime_StaffPlanScreen As Text:
+                Align: ="Start"
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =App.Theme.Colors.Primary
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =22
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =14
+                Size: =14
+                TabIndex: =0
+                Text: |-
+                    =Text(varBookingToReassign.'Planned Start Time', "hh:mm AM/PM") & " - " & Text(varBookingToReassign.'Planned End Time', "hh:mm AM/PM")
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: ='TextCanvas.Weight'.Regular
+                Width: =96
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =3
+
+            txtReassignFacility_StaffPlanScreen As Text:
+                Align: ="Start"
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =22
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =14
+                Size: =14
+                TabIndex: =0
+                Text: |-
+                    =varBookingToReassign.Zone.Facility.Name & ": " & varBookingToReassign.Zone.Name
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: ='TextCanvas.Weight'.Semibold
+                Width: =96
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =4
+
+            txtReassignRole_StaffPlanScreen As Text:
+                Align: ="Start"
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =App.Theme.Colors.Primary
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =22
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =14
+                Size: =14
+                TabIndex: =0
+                Text: =varBookingToReassign.'Team Position'.Role.Name
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: ='TextCanvas.Weight'.Regular
+                Width: =96
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =5
+
+            txtReassignResourceHeader_StaffPlanScreen As Text:
+                Align: ="Start"
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =22
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =14
+                Size: =14
+                TabIndex: =0
+                Text: ="Select resource"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: ='TextCanvas.Weight'.Semibold
+                Width: =96
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =6
+
+            conResourcesAvailable_StaffPlanScreen As groupContainer.verticalAutoLayoutContainer:
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =8
+                PaddingLeft: =8
+                PaddingRight: =8
+                PaddingTop: =8
+                ZIndex: =7
+
+                conResourcesTab_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =30
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =1
+
+                    btnActive_StaffPlanScreen As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        BorderColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontWeight: =If(Self.Text = varAssignMode, FontWeight.Bold, FontWeight.Normal)
+                        Height: =20
+                        IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: |-
+                            =UpdateContext({varAssignMode : Self.Text})
+                        Text: ="Available"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    btnInActive_StaffPlanScreen As Button:
+                        AcceptsFocus: =true
+                        AccessibleLabel: =""
+                        Align: =""
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =false
+                        FontSize: =0
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        FontWeight: =If(Self.Text = varAssignMode, FontWeight.Bold, FontWeight.Normal)
+                        Height: =20
+                        Icon: =""
+                        IconRotation: =0
+                        IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                        Layout: ="Icon before"
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: |-
+                            =UpdateContext({varAssignMode : Self.Text})
+                        TabIndex: =0
+                        Text: ="Unavailable"
+                        Tooltip: =""
+                        VerticalAlign: =""
+                        Visible: =true
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conResourcesTabHL_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =10
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =8
+                    ZIndex: =2
+
+                    btnActiveHL_StaffPlanScreen As rectangle:
+                        BorderColor: =App.Theme.Colors.Darker40
+                        Fill: =If(btnActive_StaffPlanScreen.Text = varAssignMode, App.Theme.Colors.Primary, RGBA(0,0,0,0))
+                        Height: =2
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Width: =btnActive_StaffPlanScreen.Width
+                        ZIndex: =1
+
+                    btnInactiveHL_StaffPlanScreen As rectangle:
+                        BorderColor: =App.Theme.Colors.Darker40
+                        Fill: =If(btnInActive_StaffPlanScreen.Text = varAssignMode, App.Theme.Colors.Primary, RGBA(0,0,0,0))
+                        Height: =2
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =btnInActive_StaffPlanScreen.Text=varAssignMode
+                        Width: =btnActive_StaffPlanScreen.Width
+                        ZIndex: =19
+
+                "galAvailableResources_StaffPlanScreen As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                    BorderColor: =App.Theme.Colors.Darker40
+                    DelayItemLoading: =true
+                    Items: |-
+                        =// Optimised
+                        tmpAvailableUsers
+                        
+                        /*
+                        Original
+                        Filter(
+                            shiftplanner_userroles,
+                            
+                            // Only get those with the right role
+                            Role.shiftplanner_role = varBookingToReassign.'Team Position'.Role.shiftplanner_role
+                        
+                            // Exclude the unavailable
+                            And Not (
+                                Resource.User in ShowColumns(
+                                    AddColumns(
+                                        Filter(shiftplanner_useravailabilities, StartDate <= varBookingToReassign.Date And  Enddate >= varBookingToReassign.Date ),
+                                        UserGuid,
+                                        User.User
+                                    ), 
+                                    UserGuid
+                                )
+                            )
+                        
+                            // Exclude the booked    
+                            And Not( 
+                                Resource.User in
+                                ShowColumns(
+                                    AddColumns(
+                                        Filter(
+                                            shiftplanner_shiftbookings,
+                                            Date = varSelectedUserDay.ShiftDate
+                                        ),
+                                        UserId,
+                                        Resource.User                    
+                                    ),
+                                    UserId
+                                )
+                            )
+                        )
+                        */
+                    Layout: =Layout.Vertical
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: =30
+                    Visible: =Not(galUnavailableResources_StaffPlanScreen.Visible)
+                    ZIndex: =3
+
+                    txtReassignPerson_StaffPlanScreen As Text:
+                        Align: ="Start"
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =false
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        Height: =26
+                        Size: =14
+                        TabIndex: =0
+                        Text: =ThisItem.ResourceFullName
+                        Tooltip: =""
+                        VerticalAlign: =VerticalAlign.Middle
+                        Visible: =true
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width
+                        Wrap: =true
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    btnCommitReassign_StaffPlanScreen As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        BorderColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontWeight: =""
+                        Height: =26
+                        Icon: ="PeopleAdd"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: |-
+                            =IfError(
+                                Patch(shiftplanner_shiftbookings, varBookingToReassign, { Resource: ThisItem.ResourceRecord}),
+                            
+                                Notify("Error assigning: " & FirstError.Message ,NotificationType.Error, varTheme.toastTimeout),
+                            
+                                Refresh(shiftplanner_shiftbookings);
+                                Navigate('Staff Planning Screen');
+                                
+                            )
+                        Text: ="Button"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Width: =26
+                        X: =Parent.TemplateWidth - Self.Width - 12
+                        Y: =0
+                        ZIndex: =2
+
+                    rectAvailableResource_StaffPlanScreen As rectangle:
+                        BorderColor: =App.Theme.Colors.Darker40
+                        BorderStyle: =BorderStyle.None
+                        Fill: =ColorValue(varTheme.neutralStroke2)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.Width
+                        Y: =28
+                        ZIndex: =3
+
+                "galUnavailableResources_StaffPlanScreen As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                    '#CopilotOverlayLabel': ="Filtered"
+                    BorderColor: =App.Theme.Colors.Darker40
+                    DelayItemLoading: =true
+                    Items: |-
+                        =With(
+                            {
+                                // 1) Normalize Source A (e.g., shiftplanner_shiftbookings)
+                                normA:
+                                    ShowColumns(
+                                        AddColumns(
+                                            Filter(
+                                                shiftplanner_useravailabilities, 
+                                                StartDate <= varBookingToReassign.Date 
+                                                And Enddate >= varBookingToReassign.Date 
+                                                And User.User in ShowColumns(
+                                                        tmpAffiliatedUsers,
+                                                        ResourceId
+                                                )
+                                            ),
+                                            UserGuid,
+                                            User.User,
+                                            UserName,
+                                            User.'Full Name',
+                                            BlockReason, 
+                                            Text("Unavailable")
+                                        ), 
+                                        UserGuid,
+                                        UserName,
+                                        BlockReason
+                                    ),
+                        
+                                // 2) Normalize Source B (e.g., Time Sheet Entries)
+                                normB:
+                                    ShowColumns(
+                                        AddColumns(
+                                            Filter(
+                                                shiftplanner_shiftbookings, 
+                                                Date = varBookingToReassign.Date And Resource.User in ShowColumns(
+                                                        tmpAffiliatedUsers,
+                                                        ResourceId
+                                                )
+                                            ),
+                                            UserGuid,
+                                            Resource.User,                    
+                                            UserName,
+                                            Resource.'Full Name',
+                                            BlockReason, 
+                                            Text("Booked: " & Zone.Facility.Name &  "-"  & Zone.Name)              
+                                        ), 
+                                        UserGuid,
+                                        UserName,
+                                        BlockReason
+                                    )
+                            },
+                        
+                            // 3) Append A + B into a single table without collections
+                            Ungroup(
+                                Table(
+                                    { Rows: normA },
+                                    { Rows: normB }
+                                ),
+                                Rows
+                            )
+                        )
+                    Layout: =Layout.Vertical
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: =30
+                    Visible: =btnInActive_StaffPlanScreen.Text = varAssignMode
+                    ZIndex: =20
+
+                    txtUnavailableReason_StaffPlanScreen As Text:
+                        Align: ='TextCanvas.Align'.Start
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =false
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        Height: =26
+                        Size: =12
+                        TabIndex: =0
+                        Text: =ThisItem.BlockReason
+                        Tooltip: =""
+                        VerticalAlign: =VerticalAlign.Middle
+                        Visible: =true
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width-txtUnavailableName_StaffPlanScreen.Width
+                        Wrap: =false
+                        X: =txtUnavailableName_StaffPlanScreen.Width
+                        Y: =0
+                        ZIndex: =1
+
+                    rectUnavailable_StaffPlanScreen As rectangle:
+                        BorderColor: =App.Theme.Colors.Darker40
+                        BorderStyle: =BorderStyle.None
+                        Fill: =ColorValue(varTheme.neutralStroke2)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.Width
+                        Y: =28
+                        ZIndex: =3
+
+                    txtUnavailableName_StaffPlanScreen As Text:
+                        Align: ='TextCanvas.Align'.Start
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =false
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        Height: =26
+                        Size: =14
+                        TabIndex: =0
+                        Text: =ThisItem.UserName
+                        Tooltip: =""
+                        VerticalAlign: =VerticalAlign.Middle
+                        Visible: =true
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width * 0.3
+                        Wrap: =true
+                        X: =0
+                        Y: =0
+                        ZIndex: =4
+
+            ButtonCanvas1 As Button:
+                BasePaletteColor: =
+                BorderColor: =
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =32
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: =Navigate('Staff Planning Screen', Transition.None)
+                Text: ="Cancel"
+                Width: =96
+                X: =0
+                Y: =0
+                ZIndex: =8
+
+    compHeader_StaffPlanScreen_Reassign As compHeaderCompound:
+        Height: |-
+            =compHeader_StaffPlanScreen_Reassign.HeaderHeight
+            //varHeaderHeight
+        NavigateScreen: ='Staff Planning Screen'
+        Width: =compHeader_StaffPlanScreen_Reassign.HeaderWidth
+        ZIndex: =2
+

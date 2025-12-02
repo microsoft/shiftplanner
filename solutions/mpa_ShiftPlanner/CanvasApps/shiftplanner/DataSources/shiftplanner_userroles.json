@@ -1,0 +1,98 @@
+[
+  {
+    "DisplayName": "shiftplanner_userroles (Views)",
+    "Name": "_mpa_shiftplanner_userrole_views",
+    "RelatedEntityName": "shiftplanner_userroles",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "114dee3a-905d-4fb1-98a3-257eee55bbf0": "User Role Lookup View",
+      "15ef8b12-ad53-4f94-829c-9bd93e12bee1": "User Role Associated View",
+      "17d5b12a-a68a-462b-8731-31252d2b13fd": "Inactive User Roles",
+      "33b524c3-e91c-45fa-90cc-2c06d44d7c65": "User Role Advanced Find View",
+      "512d74a5-1ae9-493c-aca1-c17fb2652dc6": "Active User Roles"
+    }
+  },
+  {
+    "DisplayName": "Status (shiftplanner_userroles)",
+    "Name": "mpa_shiftplanner_userrole_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "shiftplanner_userroles"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "shiftplanner_userroles",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (shiftplanner_userroles)",
+    "Name": "mpa_shiftplanner_userrole_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "shiftplanner_userroles"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "shiftplanner_userroles",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_userroles",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_userrole",
+    "MaxGetRowsCount": 1500,
+    "Name": "shiftplanner_userroles",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_name": "Name",
+      "mpa_resource": "Resource",
+      "mpa_role": "Role",
+      "mpa_shiftplanner_teamposition": "shiftplanner_teamposition",
+      "mpa_shiftplanner_userrole_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_userrole_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_userrole_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_userrole_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_userrole_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_userrole_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_userroleid": "shiftplanner_userrole",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "shiftplanner_userroles",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

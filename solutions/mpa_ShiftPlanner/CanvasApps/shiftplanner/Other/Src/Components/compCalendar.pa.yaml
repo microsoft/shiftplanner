@@ -1,0 +1,672 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+ComponentDefinitions:
+  compCalendar:
+    DefinitionType: CanvasComponent
+    AccessAppScope: true
+    CustomProperties:
+      CalendarHeight:
+        PropertyKind: Input
+        DisplayName: Calendar Height
+        Description: A custom property
+        DataType: Number
+        Default: =768
+      CalendarWidth:
+        PropertyKind: Input
+        DisplayName: Calendar Width
+        Description: A custom property
+        DataType: Number
+        Default: =1366
+      ConfirmationScreen:
+        PropertyKind: Input
+        DisplayName: Confirmation Screen
+        Description: Confirmation screen to navigate to
+        DataType: Screen
+        Default: =App.ActiveScreen
+      TodayDate:
+        PropertyKind: Input
+        DisplayName: TodayDate
+        Description: Today's date to show in upper left label
+        DataType: Text
+        Default: =Text(Today(), DateTimeFormat.LongDate)
+    Properties:
+      Height: =compCalendar.CalendarHeight
+      Width: =compCalendar.CalendarWidth
+    Children:
+      - conCalendar_CalendarComp:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: =20
+            PaddingRight: =20
+            PaddingTop: =20
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+          Children:
+            - conMonthHeader_CalendarComp:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =50
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =10
+                  LayoutWrap: =true
+                  Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Children:
+                  - lblTodayHeader_CalendarComp:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Start
+                        FillPortions: =0.3
+                        FontColor: =ColorValue(varTheme.neutralForeground3)
+                        Height: =conCalendarHeader_CalendarComp.Height
+                        Size: =
+                        Text: =Concatenate("Today is " & compCalendar.TodayDate)
+                        VerticalAlign: =VerticalAlign.Top
+                        Weight: =varThemeFont.H3.weight
+                        Width: =400
+                  - conCalendarHeader_CalendarComp:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0.9
+                        Height: =Parent.Height - Parent.PaddingBottom - Parent.PaddingTop
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutMinWidth: =100
+                      Children:
+                        - icoPrevMonth_CalendarComp:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              AccessibleLabel: ="Previous Month Left Arrow Icon"
+                              BorderColor: =RGBA(166, 166, 166, 1)
+                              Color: =//App.Theme.Colors.Primary
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =Self.Color
+                              DisabledFill: =RGBA(0, 0, 0, 0)
+                              FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                              FocusedBorderThickness: =4
+                              Height: =30
+                              HoverBorderColor: =RGBA(0, 0, 0, 0)
+                              HoverColor: =Self.Color
+                              HoverFill: =RGBA(0, 0, 0, 0)
+                              Icon: =Icon.ChevronLeft
+                              OnSelect: |-
+                                =/*changes month view to previous month*/
+                                Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, -1, TimeUnit.Months));
+                                Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                /*collects calendar events for all days in current month view. Updates varMinDate to prevent duplicate data collection if user returns to this month view*/
+                                If(varMinDate > varFirstDayOfMonth, Set(varMinDate, varFirstDayOfMonth));
+                                //Resets the date selected to today if it's this month, and blank if it isn't this month
+                                Set(
+                                    varDateSelected,
+                                    If(Text(varFirstDayOfMonth, "mmmm yyyy") = Text(Today(), "mmmm yyyy"), Today(), 
+                                        If(IsBlank(varDateSelected), Today(), varDateSelected)
+                                    )
+                                );
+                              PaddingBottom: =7
+                              PaddingLeft: =7
+                              PaddingRight: =7
+                              PaddingTop: =7
+                              PressedBorderColor: =RGBA(0, 0, 0, 0)
+                              PressedColor: =Self.Color
+                              PressedFill: =RGBA(0, 0, 0, 0)
+                              TabIndex: =0
+                              Tooltip: ="View previous month"
+                              Width: =59
+                              X: =20
+                              Y: =80
+                        - lblMonthHeader_CalendarComp:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =28
+                              Size: =varThemeFont.H3.size
+                              Text: =Text(varFirstDayOfMonth , "mmmm yyyy")
+                              Weight: =varThemeFont.H3.weightBold
+                              Width: =200
+                        - icoNextMonth_CalendarComp:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              AccessibleLabel: ="Next Month Right Arrow Icon"
+                              BorderColor: =RGBA(166, 166, 166, 1)
+                              Color: =//App.Theme.Colors.Primary
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =Self.Color
+                              DisabledFill: =RGBA(0, 0, 0, 0)
+                              FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                              FocusedBorderThickness: =4
+                              Height: =30
+                              HoverBorderColor: =RGBA(0, 0, 0, 0)
+                              HoverColor: =Self.Color
+                              HoverFill: =RGBA(0, 0, 0, 0)
+                              Icon: =Icon.ChevronRight
+                              OnSelect: |-
+                                =/*changes month view to next month*/
+                                Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months));
+                                Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                /*collects calendar events for all days in current month view. Updates varMaxDate to prevent duplicate data collection if user returns to this month view*/
+                                Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                If(varLastDayOfMonth > varMaxDate, Set(varMaxDate, varLastDayOfMonth));
+                                //Resets the date selected to today if it's this month, and blank if it isn't this month
+                                Set(
+                                    varDateSelected,
+                                    If(Text(varFirstDayOfMonth, "mmmm yyyy") = Text(Today(), "mmmm yyyy"), Today(), 
+                                        If(IsBlank(varDateSelected), Today(), varDateSelected)
+                                    )
+                                );
+                              PaddingBottom: =7
+                              PaddingLeft: =7
+                              PaddingRight: =7
+                              PaddingTop: =7
+                              PressedBorderColor: =RGBA(0, 0, 0, 0)
+                              PressedColor: =Self.Color
+                              PressedFill: =RGBA(0, 0, 0, 0)
+                              TabIndex: =0
+                              Tooltip: ="View next month"
+                              Width: =59
+                              X: =360
+                              Y: =80
+            - conShiftCalendar_CalendarComp:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  FillPortions: =0
+                  Height: =Parent.Height - conMonthHeader_CalendarComp.Height - Parent.PaddingTop - Parent.PaddingBottom
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutOverflowY: =LayoutOverflow.Scroll
+                Children:
+                  - conCalendarMain_CalendarComp:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0.9
+                        Height: |-
+                          =//Parent.Height
+                          galCalendar_CalendarComp.Height + galWeekday_CalendarComp.Height
+                        LayoutDirection: =LayoutDirection.Vertical
+                      Children:
+                        - galWeekday_CalendarComp:
+                            Control: Gallery@2.15.0
+                            Variant: WeekdayGallery
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              BorderColor: =RGBA(166, 166, 166, 1)
+                              FillPortions: =0
+                              FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                              Height: =45
+                              Items: =Calendar.WeekdaysShort()
+                              OnSelect: =
+                              TabIndex: =0
+                              TemplatePadding: =0
+                              TemplateSize: =galWeekday_CalendarComp.Width/7
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                              X: =46
+                              Y: =139
+                            Children:
+                              - shpWeekdaySeparator_CalendarComp:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AccessibleLabel: ="Calendar line divider for weekdays and days"
+                                    Height: =2
+                                    OnSelect: =
+                                    Width: =Parent.Width
+                                    X: =10
+                                    Y: =Parent.Height - Self.Height
+                              - lblWeekdayHeader_CalendarComp:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    AutoHeight: =true
+                                    FontColor: =ColorValue(varTheme.neutralForeground3)
+                                    Height: =
+                                    Size: =
+                                    Text: =ThisItem.Value
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =galWeekday_CalendarComp.TemplateWidth
+                                    Y: =(galWeekday_CalendarComp.TemplateHeight - Self.Height) / 2
+                        - galCalendar_CalendarComp:
+                            Control: Gallery@2.15.0
+                            Variant: Vertical
+                            Properties:
+                              AccessibleLabel: ="A calendar showing dates for the selected month"
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              BorderColor: =RGBA(166, 166, 166, 1)
+                              FillPortions: =0
+                              FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                              Height: =430
+                              Items: =colCalendarValues
+                              LayoutMinHeight: =100
+                              OnSelect: |+
+                                =
+                                Set(varDateSelected, DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days));
+                                //If the date is outside of this month
+                                //If(//If date is in next month
+                                //    varDateSelected > varLastDayOfMonth, /*changes month view to next month*/
+                                Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months));
+                                Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                /*collects calendar events for all days in current month view. Updates varMaxDate to prevent duplicate data collection if user returns to this month view*/
+                                Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                //If(varLastDayOfMonth > varMaxDate, Set(varMaxDate, varLastDayOfMonth); ClearCollect(colMyCalendarEvents, Filter(colAllMyCalendarEvents, 'Reservation Date' < varMaxDate, 'Reservation Date' > varMinDate)));, 
+                                //If date is in previous month
+                                //varDateSelected < varFirstDayOfMonth, 
+                                /*changes month view to previous month*/
+                                Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, -1, TimeUnit.Months));
+                                Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                /*collects calendar events for all days in current month view. Updates varMinDate to prevent duplicate data collection if user returns to this month view*/
+                                //If(varMinDate > varFirstDayOfMonth, Set(varMinDate, varFirstDayOfMonth);ClearCollect(colMyCalendarEvents, Filter(colAllMyCalendarEvents, 'Reservation Date' < varMaxDate, 'Reservation Date' > varMinDate))););
+
+                              ShowScrollbar: =false
+                              TabIndex: =0
+                              TemplateFill: |-
+                                =If(
+                                    IsNumeric(btnDate_CalendarComp.Text),
+                                    If(
+                                        /*The day is outside the range of the currently selected month*/
+                                        Abs(btnDate_CalendarComp.Text - ThisItem.Value) > 10, ColorValue(varTheme.neutralBackgroundDisabled), RGBA(0, 0, 0, 0)
+                                    )
+                                )
+                              TemplateSize: =65
+                              Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                              WrapCount: =7
+                              X: =46
+                              Y: =45
+                            Children:
+                              - shpCircle_CalendarComp:
+                                  Control: Circle@2.3.0
+                                  Properties:
+                                    BorderColor: |-
+                                      =//RGBA(166, 166, 166, 1)
+                                      App.Theme.Colors.Primary
+                                    BorderThickness: |-
+                                      =If(
+                                          /*Date selected is this date*/
+                                          DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, 1, 0)
+                                    Fill: |-
+                                      =If(DateAdd(varFirstDayInView, ThisItem.Value) = Today(),
+                                          App.Theme.Colors.Primary,
+                                          ColorValue(varTheme.neutralBackground2))
+                                    FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                                    Height: =Self.Width
+                                    OnSelect: =Select(Parent)
+                                    Visible: |-
+                                      =/*Visible if calendar events are found on this day*/               
+                                      If(
+                                          /*Date selected is this date*/
+                                          DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected || DateAdd(varFirstDayInView, ThisItem.Value) = Today(), true, false)
+                                    Width: =33
+                                    X: |-
+                                      =//(Parent.TemplateWidth/2) - (Self.Width/2)
+                                      (galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
+                                    Y: |-
+                                      =//galCalendar_CalendarComp.TemplateHeight * (0.75)
+                                      4
+                              - btnDate_CalendarComp:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    AccessibleLabel: ="Selected Date Button"
+                                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                    DisplayMode: |-
+                                      =If(
+                                          //All days before the start of current week should be disabled
+                                          (Today() - Weekday(
+                                              Today(),
+                                              StartOfWeek.Sunday
+                                          ) + 1) > DateAdd(
+                                              varFirstDayInView,
+                                              ThisItem.Value,
+                                              TimeUnit.Days
+                                          ) || //All days after 8 weeks from current week should be disabled
+                                          (DateAdd(
+                                              (Today() - Weekday(
+                                                  Today(),
+                                                  StartOfWeek.Sunday
+                                              )),
+                                              56,
+                                              TimeUnit.Days
+                                          )) < DateAdd(
+                                              varFirstDayInView,
+                                              ThisItem.Value,
+                                              TimeUnit.Days
+                                          ),
+                                          DisplayMode.Disabled,
+                                          DisplayMode.Edit
+                                      )
+                                    FontColor: |-
+                                      =If(
+                                          IsNumeric(Self.Text) And IsNumeric(Self.Text),
+                                          If(
+                                              /*Today when it is not selected*/
+                                              DateAdd(varFirstDayInView, ThisItem.Value) = Today(), App.Theme.Colors.Lighter80,
+                                              /*Date selected is this date*/
+                                              DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, 
+                                              /*The day is outside the range of the currently selected month*/
+                                              Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)
+                                      )
+                                    Height: =galCalendar_CalendarComp.TemplateHeight - 25
+                                    OnSelect: |+
+                                      =Set(varDateSelected, DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days));
+                                      //If the date is outside of this month
+                                      If(//If date is in next month
+                                          varDateSelected > varLastDayOfMonth, /*changes month view to next month*/
+                                      Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months));
+                                      Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                      /*collects calendar events for all days in current month view. Updates varMaxDate to prevent duplicate data collection if user returns to this month view*/
+                                      Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                      If(varLastDayOfMonth > varMaxDate, Set(varMaxDate, varLastDayOfMonth););, 
+                                      //If date is in previous month
+                                      varDateSelected < varFirstDayOfMonth, 
+                                      /*changes month view to previous month*/
+                                      Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, -1, TimeUnit.Months));
+                                      Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                      Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                      /*collects calendar events for all days in current month view. Updates varMinDate to prevent duplicate data collection if user returns to this month view*/
+                                      If(varMinDate > varFirstDayOfMonth, Set(varMinDate, varFirstDayOfMonth);););
+
+                                    Text: =Day(DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days))
+                                    Width: =Self.Height
+                                    X: =(galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
+                              - conStatusCount_CalendarComp:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Height: =galCalendar_CalendarComp.TemplateHeight - 40
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =5
+                                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                                    PaddingLeft: =10
+                                    PaddingRight: =5
+                                    Width: =galCalendar_CalendarComp.TemplateWidth
+                                    X: =(galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
+                                    Y: =40
+                                  Children:
+                                    - shpCircleDayStatus_CalendarComp:
+                                        Control: Circle@2.3.0
+                                        Properties:
+                                          AccessibleLabel: ="Published/Unpublished Status"
+                                          BorderColor: =RGBA(166, 166, 166, 1)
+                                          Fill: =ColorValue(varTheme.statusSuccess)
+                                          FocusedBorderColor: =ColorValue(varTheme.statusSuccess)
+                                          Height: =Self.Width
+                                          OnSelect: =
+                                          Visible: |-
+                                            =With(
+                                                {
+                                                    DayDate: DateAdd(
+                                                        varFirstDayInView,
+                                                        ThisItem.Value,
+                                                        TimeUnit.Days
+                                                    )
+                                                },
+                                                If(
+                                                    First(
+                                                        Filter(
+                                                            AddColumns(
+                                                                colFilteredBookings As Booking,
+                                                                BookingDate,
+                                                                Booking.Date
+                                                            ),
+                                                            DateValue(BookingDate) = DayDate And Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                                        )
+                                                    ).'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Published && lblCount_CalendarComp.Text <> "",
+                                                    true,
+                                                    false
+                                                )
+                                            )
+                                          Width: =5
+                                          X: =
+                                          Y: =
+                                    - lblCount_CalendarComp:
+                                        Control: Text@0.0.51
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.Start
+                                          Height: =Parent.Height
+                                          LayoutMinWidth: =60
+                                          Text: |-
+                                            =With(
+                                                {
+                                                    TodaysBookings : Filter(
+                                                              AddColumns(
+                                                                colFilteredBookings As Booking,
+                                                                ResourceName,
+                                                                Booking.Resource
+                                                              ),
+                                                              DateValue(Date) = DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days) && Status  = 'Status (shiftplanner_shiftbookings)'.Active
+                                                    )
+                                                },
+                                                    Concatenate(
+                                                        // Find the count of the bookings
+                                                        CountRows(
+                                                           Filter(
+                                                              TodaysBookings,
+                                                              !IsBlank(Resource)
+                                                           )
+                                                        ), 
+                                                        " of "
+                                                        ,
+                                                        // Find all the rows that need bookings
+                                                        CountRows(TodaysBookings)
+                                                    )
+                                            )
+                                          VerticalAlign: =VerticalAlign.Middle
+                                          Visible: =!EndsWith(lblCount_CalendarComp.Text, "of 0")
+                                          Width: =65
+                                          X: =(galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
+                  - conWeekStatusColumn_CalendarComp:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0.1
+                        Height: =lblWeekStatusLabel_CalendarComp.Height + galWeekStatus_CalendarComp.Height
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinWidth: =150
+                      Children:
+                        - lblWeekStatusLabel_CalendarComp:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              AlignInContainer: =AlignInContainer.Start
+                              Height: =galWeekday_CalendarComp.Height - 2
+                              Size: =
+                              Text: ="Week Status"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: =varThemeFont.H3.weightBold
+                              Width: =Parent.Width
+                        - shpWeekStatusSeparator_CalendarComp:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              AccessibleLabel: ="Right pane header divider"
+                              Height: =2
+                              OnSelect: =
+                              Width: =Parent.Width - 10
+                              Y: =Parent.Height - Self.Height
+                        - galWeekStatus_CalendarComp:
+                            Control: Gallery@2.15.0
+                            Variant: BrowseLayout_Vertical_OneTextVariant_ver5.0
+                            Properties:
+                              AccessibleLabel: ="A calendar showing dates for the selected month"
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              FillPortions: =0
+                              FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                              Height: =galCalendar_CalendarComp.Height
+                              Items: =[1,2,3,4,5,6]
+                              LayoutMinHeight: =200
+                              LayoutMinWidth: =100
+                              OnSelect: |+
+                                =Set(varDateSelected, DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days));
+                                //If the date is outside of this month
+                                //If(//If date is in next month
+                                //    varDateSelected > varLastDayOfMonth, /*changes month view to next month*/
+                                Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months));
+                                Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                /*collects calendar events for all days in current month view. Updates varMaxDate to prevent duplicate data collection if user returns to this month view*/
+                                Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                //If(varLastDayOfMonth > varMaxDate, Set(varMaxDate, varLastDayOfMonth); ClearCollect(colMyCalendarEvents, Filter(colAllMyCalendarEvents, 'Reservation Date' < varMaxDate, 'Reservation Date' > varMinDate)));, 
+                                //If date is in previous month
+                                //varDateSelected < varFirstDayOfMonth, 
+                                /*changes month view to previous month*/
+                                Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, -1, TimeUnit.Months));
+                                Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                                Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                                /*collects calendar events for all days in current month view. Updates varMinDate to prevent duplicate data collection if user returns to this month view*/
+                                //If(varMinDate > varFirstDayOfMonth, Set(varMinDate, varFirstDayOfMonth);ClearCollect(colMyCalendarEvents, Filter(colAllMyCalendarEvents, 'Reservation Date' < varMaxDate, 'Reservation Date' > varMinDate))););
+                              ShowScrollbar: =false
+                              TabIndex: =0
+                              TemplateFill: |-
+                                =//If(
+                                    /*Date selected is this date*/
+                                    //DateAdd(varFirstDayInView, ThisItem.Value) = varDateSelected, App.Theme.Colors.Primary, 
+                                    /*The day is outside the range of the currently selected month*/
+                                 //   Abs(btnDate_Calendar_1.Text - ThisItem.Value) > 10, ColorValue(varTheme.backgroundFillDisabled), RGBA(0, 0, 0, 0))
+                              TemplatePadding: =5
+                              TemplateSize: =65
+                              Width: '=Parent.Width '
+                              X: =46
+                              Y: =45
+                            Children:
+                              - shpSeparator_CalendarComp:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AccessibleLabel: ="Week divider"
+                                    Fill: =RGBA(214, 221, 224, 1)
+                                    Height: =1
+                                    OnSelect: =
+                                    Width: =Parent.TemplateWidth - 5
+                                    Y: =Parent.TemplateHeight - Self.Height
+                              - btnPublishButton_CalendarComp:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    AccessibleLabel: ="Published/Unpublished Button"
+                                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                                    Height: =24
+                                    OnSelect: |-
+                                      =Set(varPublishStatus, lblPublishedStatusLabel_CalendarComp.Text);
+                                      Set(varSelectedWeek, DateAdd(varFirstDayOfMonth, (7 * (ThisItem.Value - 1)), TimeUnit.Days));
+                                      Navigate(compCalendar.ConfirmationScreen, ScreenTransition.Fade);
+                                    Text: |-
+                                      =With(
+                                          {
+                                              PublishText: "Publish",
+                                              UnpublishText: "Unpublish"
+                                          },
+                                          If(lblPublishedStatusLabel_CalendarComp.Text = "Published",
+                                              UnpublishText,
+                                              PublishText
+                                          )
+                                      )
+                                    Width: =shpCircleStatus_CalendarComp.Width + lblPublishedStatusLabel_CalendarComp.Width + conPublishedStatus_CalendarComp.LayoutGap
+                                    X: |-
+                                      =//(galWeekStatus_CalendarComp.TemplateWidth - Self.Width) / 2
+                                      shpCircleStatus_CalendarComp.X - conPublishedStatus_CalendarComp.LayoutGap
+                                    Y: =30
+                              - conPublishedStatus_CalendarComp:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Height: =lblPublishedStatusLabel_CalendarComp.Height
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =5
+                                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                                    Width: =Parent.Width
+                                    X: =(galWeekStatus_CalendarComp.TemplateWidth - Self.Width) / 2
+                                  Children:
+                                    - shpCircleStatus_CalendarComp:
+                                        Control: Circle@2.3.0
+                                        Properties:
+                                          AccessibleLabel: ="Published/Unpublished Status"
+                                          AlignInContainer: =AlignInContainer.Center
+                                          BorderColor: =RGBA(166, 166, 166, 1)
+                                          Fill: |-
+                                            =If(lblPublishedStatusLabel_CalendarComp.Text = "Published",
+                                                ColorValue(varTheme.statusSuccess),
+                                                Color.Gray
+                                            )
+                                          FocusedBorderColor: =ColorValue(varTheme.statusInformative)
+                                          Height: =Self.Width
+                                          OnSelect: =
+                                          Width: =14
+                                          X: |-
+                                            =//(Parent.TemplateWidth/2) - (Self.Width/2)
+                                            //(galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
+                                          Y: |-
+                                            =//galCalendar_CalendarComp.TemplateHeight * (0.75)
+                                            4
+                                    - lblPublishedStatusLabel_CalendarComp:
+                                        Control: Text@0.0.51
+                                        Properties:
+                                          FontColor: =ColorValue(varTheme.neutralForeground1)
+                                          Height: =20
+                                          Size: =
+                                          Text: |+
+                                            =With(
+                                                {
+                                                    //Get the day after adding the number of weeks the current row is to the first day of the month
+                                                    WeekAfterFirstDay: DateAdd(
+                                                        varFirstDayOfMonth,
+                                                        (7 * (ThisItem.Value - 1)),
+                                                        TimeUnit.Days
+                                                    )
+                                                },
+                                                If(
+                                                    //Check first if there are any active bookings for this zone on that Day, if none, display Unpublished, otherwise check status
+                                                    IsEmpty(
+                                                        Filter(
+                                                            AddColumns(
+                                                                colFilteredBookings As Booking,
+                                                                BookingDate,
+                                                                Booking.Date
+                                                            ),
+                                                            DateValue(BookingDate) > (WeekAfterFirstDay - Weekday(WeekAfterFirstDay)) && DateValue(Date) <= ((WeekAfterFirstDay - Weekday(WeekAfterFirstDay)) + 7)
+                                                        )
+                                                    ),
+                                                    'Status Reason (shiftplanner_shiftbookings)'.Unpublished,
+                                                    //Check if there are any records with Unpublished Status; if none, week status is Published, if yes, week status is Unpublished
+                                                    If (
+                                                        IsEmpty(
+                                                            Filter(
+                                                                AddColumns(
+                                                                    colFilteredBookings As Booking,
+                                                                    BookingDate,
+                                                                    Booking.Date
+                                                                ),
+                                                                DateValue(BookingDate) > (WeekAfterFirstDay - Weekday(WeekAfterFirstDay)) && DateValue(Date) <= ((WeekAfterFirstDay - Weekday(WeekAfterFirstDay)) + 7) && 'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished
+                                                            )
+                                                        ),
+                                                        'Status Reason (shiftplanner_shiftbookings)'.Published,
+                                                        'Status Reason (shiftplanner_shiftbookings)'.Unpublished
+                                                    )
+                                                )
+                                            )
+
+                                          VerticalAlign: =VerticalAlign.Top
+                                          Weight: =varThemeFont.H3.weightBold
+                                          Wrap: =false

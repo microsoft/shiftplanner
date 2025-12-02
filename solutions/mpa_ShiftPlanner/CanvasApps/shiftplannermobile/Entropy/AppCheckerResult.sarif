@@ -1,0 +1,2026 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.4.json",
+  "runs": [
+    {
+      "columnKind": "utf16CodeUnits",
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "results": [
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conHomeTab.btnHeaderHome.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conHomeTab.btnHeaderHome.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conHomeTab.btnHeaderHome"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conAllShiftsTab.btnHeaderAllShifts.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conAllShiftsTab.btnHeaderAllShifts.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conAllShiftsTab.btnHeaderAllShifts"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conAllMyRequestsTab.btnHeaderAllMyRequests.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conAllMyRequestsTab.btnHeaderAllMyRequests.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conAllMyRequestsTab.btnHeaderAllMyRequests"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.icoHeaderHighlightTimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.icoHeaderHighlightTimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.icoHeaderHighlightTimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.icoHeaderHighlightTimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.icoHeaderHighlightTimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.icoHeaderHighlightTimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.btnHeaderTimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.btnHeaderTimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.btnHeaderTimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.imgHeaderTimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.imgHeaderTimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.imgHeaderTimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.imgHeaderTimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.imgHeaderTimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.imgHeaderTimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.rectHeaderUnderlineTimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.rectHeaderUnderlineTimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.rectHeaderUnderlineTimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.rectHeaderUnderlineTimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.rectHeaderUnderlineTimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conTimeTrackTab.rectHeaderUnderlineTimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conProfileTab.btnProfile.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.conHeader.conTitleBar.conProfileTab.btnProfile.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile.conHeader.conTitleBar.conProfileTab.btnProfile"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Home Screen",
+                "type": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.conMainCalendarCard_Home.conCardActions_Home.rectSpacer_EditTimeSheet_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.conMainCalendarCard_Home.conCardActions_Home.rectSpacer_EditTimeSheet_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Home Screen",
+                "type": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.conMainCalendarCard_Home.conCardActions_Home.rectSpacer_EditTimeSheet_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.conMainCalendarCard_Home.conCardActions_Home.rectSpacer_EditTimeSheet_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.conMainCalendarCard_Home.conCardActions_Home.rectSpacer_EditTimeSheet_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Home Screen",
+                "type": "'Home Screen'.conMainContent_Home.conBodyContent_Home.galMainCalendar_Home.conMainCalendarCard_Home.conCardActions_Home.rectSpacer_EditTimeSheet_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Navigation Screen'.conMainContent_Navigation.icoCancel_Navigation.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Navigation Screen'.conMainContent_Navigation.icoCancel_Navigation.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Navigation Screen",
+                "type": "'Navigation Screen'.conMainContent_Navigation.icoCancel_Navigation"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Navigation Screen'.conMainContent_Navigation.galMenu_Navigation.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Navigation Screen'.conMainContent_Navigation.galMenu_Navigation.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Navigation Screen",
+                "type": "'Navigation Screen'.conMainContent_Navigation.galMenu_Navigation"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Request Screen'.conMainContent_Request.conGallery_Request.galRequest_Request.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Request Screen'.conMainContent_Request.conGallery_Request.galRequest_Request.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Request Screen",
+                "type": "'Request Screen'.conMainContent_Request.conGallery_Request.galRequest_Request"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Swap Shift Screen'.conMainContent_SwapShift.conGaleries_SwapShift.galTeam_SwapShift.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Swap Shift Screen'.conMainContent_SwapShift.conGaleries_SwapShift.galTeam_SwapShift.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Swap Shift Screen",
+                "type": "'Swap Shift Screen'.conMainContent_SwapShift.conGaleries_SwapShift.galTeam_SwapShift"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Swap Shift Screen'.conMainContent_SwapShift.conGaleries_SwapShift.galTeam_SwapShift.galTeamPosition_SwapShift.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Swap Shift Screen'.conMainContent_SwapShift.conGaleries_SwapShift.galTeam_SwapShift.galTeamPosition_SwapShift.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Swap Shift Screen",
+                "type": "'Swap Shift Screen'.conMainContent_SwapShift.conGaleries_SwapShift.galTeam_SwapShift.galTeamPosition_SwapShift"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Shift Details Screen'.conMainContent_ShiftDetails.conBodyContent_ShiftDetails.conTeam_ShiftDetails.galTeamMembers_ShiftDetails.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Shift Details Screen'.conMainContent_ShiftDetails.conBodyContent_ShiftDetails.conTeam_ShiftDetails.galTeamMembers_ShiftDetails.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Shift Details Screen",
+                "type": "'Shift Details Screen'.conMainContent_ShiftDetails.conBodyContent_ShiftDetails.conTeam_ShiftDetails.galTeamMembers_ShiftDetails"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'All Shifts Screen'.conMainContent_AllShifts.conGalleries_AllShifts.galTeam_AllShifts.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'All Shifts Screen'.conMainContent_AllShifts.conGalleries_AllShifts.galTeam_AllShifts.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "All Shifts Screen",
+                "type": "'All Shifts Screen'.conMainContent_AllShifts.conGalleries_AllShifts.galTeam_AllShifts"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'All Shifts Screen'.conMainContent_AllShifts.conGalleries_AllShifts.galTeam_AllShifts.galTeamPosition_AllShifts.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'All Shifts Screen'.conMainContent_AllShifts.conGalleries_AllShifts.galTeam_AllShifts.galTeamPosition_AllShifts.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "All Shifts Screen",
+                "type": "'All Shifts Screen'.conMainContent_AllShifts.conGalleries_AllShifts.galTeam_AllShifts.galTeamPosition_AllShifts"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.btnOnShiftTitle_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.btnOnShiftTitle_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.btnOnShiftTitle_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPlay_TimeTrack.btnOnShiftPlay_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPlay_TimeTrack.btnOnShiftPlay_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPlay_TimeTrack.btnOnShiftPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.btnOnShiftPause_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.btnOnShiftPause_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.btnOnShiftPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.shpOnShiftPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.conOnShiftPause_TimeTrack.imgOnShiftPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.btnOnBreakTitle_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.btnOnBreakTitle_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.btnOnBreakTitle_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.btnOnBreakPlay_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.btnOnBreakPlay_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.btnOnBreakPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.shpOnBreakPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPlay_TimeTrack.imgOnBreakPlay_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.btnOnBreakPause_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.btnOnBreakPause_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.btnOnBreakPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.shpOnBreakPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnBreak_TimeTrack.conOnBreakPause_TimeTrack.imgOnBreakPause_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conConfirmPopup_TimeSheetView.conConfirmPopupContent_TimeSheetView.conCancel_TimeSheetView.ctlConfirmInProgress.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conConfirmPopup_TimeSheetView.conConfirmPopupContent_TimeSheetView.conCancel_TimeSheetView.ctlConfirmInProgress.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet View Screen",
+                "type": "'Time Sheet View Screen'.conConfirmPopup_TimeSheetView.conConfirmPopupContent_TimeSheetView.conCancel_TimeSheetView.ctlConfirmInProgress"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.btnRefresh_TimeSheetView.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.btnRefresh_TimeSheetView.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet View Screen",
+                "type": "'Time Sheet View Screen'.conMainContent_TimeSheetView.btnRefresh_TimeSheetView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet View Screen",
+                "type": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Sheet View Screen",
+                "type": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Sheet View Screen",
+                "type": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.conTimeSheetActions_TimeSheetView.btnEditTimeSheet_TimeSheetView.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.conTimeSheetActions_TimeSheetView.btnEditTimeSheet_TimeSheetView.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet View Screen",
+                "type": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.conTimeSheetActions_TimeSheetView.btnEditTimeSheet_TimeSheetView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.conTimeSheetActions_TimeSheetView.btnConfirmTimeSheet_TimeSheetView.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.conTimeSheetActions_TimeSheetView.btnConfirmTimeSheet_TimeSheetView.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet View Screen",
+                "type": "'Time Sheet View Screen'.conMainContent_TimeSheetView.galTimeSheets_TimeSheetView.conTimeSheetActions_TimeSheetView.btnConfirmTimeSheet_TimeSheetView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.btnHiddenSaveShiftDetails_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.btnHiddenSaveShiftDetails_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.btnHiddenSaveShiftDetails_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.btnHiddenRefreshBreaks_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.btnHiddenRefreshBreaks_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.btnHiddenRefreshBreaks_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.conStartTime_EditTimeSheet.cmbBreakStartDate_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.conStartTime_EditTimeSheet.cmbBreakStartDate_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.conStartTime_EditTimeSheet.cmbBreakStartDate_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.conEndTime_EditTimeSheet.cmbBreakEndDate_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.conEndTime_EditTimeSheet.cmbBreakEndDate_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.conEndTime_EditTimeSheet.cmbBreakEndDate_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.btnDeleteBreak_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.btnDeleteBreak_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.conBreakForm_EditTimeSheet.btnDeleteBreak_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.btnHiddenSaveBreak_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.btnHiddenSaveBreak_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.galBreaks_EditTimeSheet.btnHiddenSaveBreak_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.conAddBreak_EditTimeSheet.btnAddBreak_EditTimeSheet.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.conAddBreak_EditTimeSheet.btnAddBreak_EditTimeSheet.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Sheet Edit Screen",
+                "type": "'Time Sheet Edit Screen'.conMainContent_EditTimeSheet.conAddBreak_EditTimeSheet.btnAddBreak_EditTimeSheet"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        }
+      ],
+      "tool": {
+        "driver": {
+          "fullName": "PowerApps app checker",
+          "name": "PowerApps app checker",
+          "rules": [
+            {
+              "id": "acc-AccessibleLabelNeeded",
+              "messageStrings": {
+                "issue": {
+                  "text": "Missing accessible label"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Edit the accessible label property to describe the item."
+                ],
+                "level": "Medium",
+                "primaryCategory": "accessibility",
+                "whyFix": "If there's no accessible text, people who can’t see the screen won't understand what’s in images and controls."
+              }
+            },
+            {
+              "id": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+              "messageStrings": {
+                "issue": {
+                  "text": "Missing tab stop"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Set TabIndex to 0 or greater to ensure that interactive elements have a tab stop."
+                ],
+                "level": "Medium",
+                "primaryCategory": "accessibility",
+                "whyFix": "People who use the keyboard with your app will not be able to access this element without a tab stop."
+              }
+            },
+            {
+              "id": "acc-FocusBorderShouldBeVisible",
+              "messageStrings": {
+                "issue": {
+                  "text": "Focus isn't showing"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Change the FocusedBorderThickness property to be more than 0."
+                ],
+                "level": "Medium",
+                "primaryCategory": "accessibility",
+                "whyFix": "If the focus isn't visible, people who don't use a mouse won't be able to see it when they're interacting with the app."
+              }
+            }
+          ],
+          "version": "1.346"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

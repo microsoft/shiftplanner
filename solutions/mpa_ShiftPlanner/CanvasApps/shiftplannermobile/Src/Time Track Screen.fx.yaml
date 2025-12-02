@@ -1,0 +1,1027 @@
+"'Time Track Screen' As screen":
+    ContentLanguage: =""
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: |
+        =// Get the time sheet records for this booking
+        ClearCollect(colBreakPeriods, Filter('Time Sheet Entries','Shift Booking'.shiftplanner_shiftbooking=varSelectedShift.shiftplanner_shiftbooking));
+        
+        UpdateContext(
+            {
+                varActiveBreakPeriod : LookUp('Time Sheet Entries', 'Shift Booking'.shiftplanner_shiftbooking=varSelectedShift.shiftplanner_shiftbooking && IsBlank('End Time')),
+                varShowCloseTimeTrackDialog : false
+            }
+        );
+
+    conMainContent_TimeTrack As groupContainer.horizontalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderMobile_TimeTrack.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingLeft: =
+        PaddingRight: =
+        Width: =Parent.Width
+        Y: =compHeaderMobile_TimeTrack.Y + compHeaderMobile_TimeTrack.Height
+        ZIndex: =1
+
+        conBodyContent_TimeTrack As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =80
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =12
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: =20
+            PaddingRight: =20
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =1
+
+            txtStatus_Request_TimeTrack As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =true
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                FillPortions: =1
+                Font: =""
+                FontColor: =ColorValue(varTheme.neutralForeground1)
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =60
+                LayoutMaxHeight: =160
+                LayoutMaxWidth: =
+                LayoutMinHeight: =70
+                LayoutMinWidth: =96
+                PaddingBottom: =0
+                PaddingTop: =0
+                Size: =48
+                TabIndex: =0
+                Text: |-
+                    =Text(Now(), "h:mm AM/PM")
+                Tooltip: =""
+                VerticalAlign: =VerticalAlign.Middle
+                Visible: =true
+                Weight: ='TextCanvas.Weight'.Semibold
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+            txtItemCount_Request_TimeTrack As Text:
+                Align: ='TextCanvas.Align'.Center
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =40
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                PaddingBottom: =10
+                PaddingTop: =10
+                Size: =14
+                TabIndex: =0
+                Text: |-
+                    =
+                    // Is there an active session
+                    If(IsBlank(varSelectedShift.'Actual Start Time'), 
+                    
+                        // There isn't so we're off the clock
+                        "You're off the clock", 
+                    
+                        // There is so find out if we are on the clock or a break
+                        If(IsBlank(varActiveBreakPeriod),
+                    
+                        // No break, so we're on the clock
+                        "You're on the clock",
+                    
+                        // On a break
+                        "You're on a break"    
+                        )
+                    )
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: ="Regular"
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                Wrap: =true
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+            rectSpacer_TimeTrack As rectangle:
+                AlignInContainer: =AlignInContainer.Stretch
+                BorderColor: =App.Theme.Colors.Darker40
+                BorderStyle: =BorderStyle.None
+                Fill: =ColorValue(varTheme.neutralStroke1)
+                Height: =1
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                ZIndex: =3
+
+            conTrackingActions_TimeTrack As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =250
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =8
+                PaddingLeft: =8
+                PaddingRight: =8
+                PaddingTop: =8
+                ZIndex: =4
+
+                conOnShift_TimeTrack As groupContainer.verticalAutoLayoutContainer:
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =8
+                    PaddingLeft: =8
+                    PaddingRight: =8
+                    PaddingTop: =8
+                    Visible: =IsBlank(varActiveBreakPeriod)
+                    ZIndex: =1
+
+                    btnOnShiftTitle_TimeTrack As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        BorderColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =32
+                        Icon: ="Clock"
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: ="On Shift"
+                        Width: =110
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    conOnShiftPlay_TimeTrack As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =160
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Visible: =IsBlank(varSelectedShift.'Actual Start Time')
+                        ZIndex: =2
+
+                        shpOnShiftPlay_TimeTrack As circle:
+                            BorderColor: =App.Theme.Colors.Primary
+                            BorderThickness: =4
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Height: =150
+                            Width: =150
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =4
+                            ZIndex: =1
+
+                        imgOnShiftPlay_TimeTrack As image:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            FocusedBorderThickness: =0
+                            Height: =50
+                            Image: =playIcon
+                            Width: =50
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =54
+                            ZIndex: =2
+
+                        btnOnShiftPlay_TimeTrack As button:
+                            BorderColor: =App.Theme.Colors.Primary
+                            BorderStyle: =BorderStyle.None
+                            Color: =App.Theme.Colors.PrimaryForeground
+                            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Font: =App.Theme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.Height
+                            HoverBorderColor: =RGBA(0,0,0,0)
+                            HoverColor: =App.Theme.Colors.PrimaryForeground
+                            HoverFill: =RGBA(0,0,0,0)
+                            OnSelect: |
+                                =If(
+                                    IsBlank(varSelectedShift.'Actual Start Time'),
+                                    Patch('Shift Bookings',varSelectedShift, {'Actual Start Time':Now(), 'Team Position': varSelectedShift.'Team Position'});
+                                
+                                    Set(varSelectedShift, LookUp('Shift Bookings', shiftplanner_shiftbooking = varSelectedShift.shiftplanner_shiftbooking));
+                                );
+                            PressedBorderColor: =RGBA(0,0,0,0)
+                            PressedColor: =Self.Color
+                            PressedFill: =RGBA(0,0,0,0)
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =15
+                            Text: =
+                            Width: =Parent.Width
+                            ZIndex: =3
+
+                    conOnShiftPause_TimeTrack As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =160
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Visible: =Not(conOnShiftPlay_TimeTrack.Visible)
+                        X: =40
+                        Y: =40
+                        ZIndex: =3
+
+                        shpOnShiftPause_TimeTrack As circle:
+                            BorderColor: |-
+                                =ColorValue("#c5314a")
+                            BorderThickness: =4
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Height: =150
+                            Width: =150
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =4
+                            ZIndex: =1
+
+                        imgOnShiftPause_TimeTrack As image:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            FocusedBorderThickness: =0
+                            Height: =50
+                            Image: =stopIcon
+                            Width: =50
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =54
+                            ZIndex: =2
+
+                        btnOnShiftPause_TimeTrack As button:
+                            BorderColor: =App.Theme.Colors.Primary
+                            BorderStyle: =BorderStyle.None
+                            Color: =App.Theme.Colors.PrimaryForeground
+                            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Font: =App.Theme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.Height
+                            HoverBorderColor: =RGBA(0,0,0,0)
+                            HoverColor: =App.Theme.Colors.PrimaryForeground
+                            HoverFill: =RGBA(0,0,0,0)
+                            OnSelect: |-
+                                =UpdateContext(
+                                    {
+                                        varShowCloseTimeTrackDialog : true
+                                    }
+                                );
+                            PressedBorderColor: =RGBA(0,0,0,0)
+                            PressedColor: =Self.Color
+                            PressedFill: =RGBA(0,0,0,0)
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =15
+                            Text: =
+                            Width: =Parent.Width
+                            ZIndex: =3
+
+                    txtOnShiftDuration_TimeTrack As Text:
+                        Align: ='TextCanvas.Align'.Center
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        Font: =""
+                        FontColor: |-
+                            =If(
+                                IsBlank(varActiveBreakPeriod), 
+                                ColorValue(varTheme.neutralForeground1),
+                                ColorValue(varTheme.neutralForeground3)    
+                            )
+                        FontItalic: =false
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        Height: =12
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        PaddingBottom: =0
+                        PaddingTop: =5
+                        Size: =varThemeFont.H3.size
+                        TabIndex: =0
+                        Text: =nf_SimpleHourMinSecondTimeFormat(varOnClockDuration)
+                        Tooltip: =""
+                        VerticalAlign: =""
+                        Visible: =true
+                        Weight: ='TextCanvas.Weight'.Bold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        Wrap: =true
+                        X: =0
+                        Y: =0
+                        ZIndex: =4
+
+                conOnBreak_TimeTrack As groupContainer.verticalAutoLayoutContainer:
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =8
+                    PaddingLeft: =8
+                    PaddingRight: =8
+                    PaddingTop: =8
+                    Visible: =Not(IsBlank(varSelectedShift.'Actual Start Time'))
+                    ZIndex: =2
+
+                    btnOnBreakTitle_TimeTrack As Button:
+                        AcceptsFocus: =true
+                        AccessibleLabel: =""
+                        Align: =""
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =false
+                        FontSize: =0
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        FontWeight: =""
+                        Height: =32
+                        Icon: ="ServiceBell"
+                        IconRotation: =0
+                        IconStyle: ="Outline"
+                        Layout: ="Icon before"
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =false
+                        TabIndex: =0
+                        Text: ="Break"
+                        Tooltip: =""
+                        VerticalAlign: =""
+                        Visible: =true
+                        Width: =110
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                    conOnBreakPlay_TimeTrack As groupContainer.manualLayoutContainer:
+                        FillPortions: =0
+                        Height: =160
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Visible: =IsBlank(varActiveBreakPeriod)
+                        ZIndex: =7
+
+                        shpOnBreakPlay_TimeTrack As circle:
+                            BorderColor: =App.Theme.Colors.Primary
+                            BorderThickness: =4
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Height: =150
+                            Width: =150
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =4
+                            ZIndex: =1
+
+                        imgOnBreakPlay_TimeTrack As image:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            FocusedBorderThickness: =0
+                            Height: =50
+                            Image: =playIcon
+                            Width: =50
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =54
+                            ZIndex: =2
+
+                        btnOnBreakPlay_TimeTrack As button:
+                            BorderColor: =App.Theme.Colors.Primary
+                            BorderStyle: =BorderStyle.None
+                            Color: =App.Theme.Colors.PrimaryForeground
+                            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Font: =App.Theme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.Height
+                            HoverBorderColor: =RGBA(0,0,0,0)
+                            HoverColor: =App.Theme.Colors.PrimaryForeground
+                            HoverFill: =RGBA(0,0,0,0)
+                            OnSelect: |-
+                                =// See if there is an active break period
+                                If(IsBlank(varActiveBreakPeriod), 
+                                    
+                                    // There isn't, so create one
+                                    UpdateContext({
+                                        varActiveBreakPeriod : Patch(
+                                            'Time Sheet Entries', 
+                                            Defaults('Time Sheet Entries'),
+                                            {
+                                                Name : "Break " & Text(CountRows(colBreakPeriods) + 1),
+                                                'Shift Booking': varSelectedShift,
+                                                'Start Time': Now(),
+                                                'Time Entry Type': 'Time Entry Type (Time Sheet Entries)'.Break
+                                            }
+                                        )
+                                    });
+                                
+                                    Collect(colBreakPeriods, varActiveBreakPeriod);
+                                
+                                
+                                )
+                            PressedBorderColor: =RGBA(0,0,0,0)
+                            PressedColor: =Self.Color
+                            PressedFill: =RGBA(0,0,0,0)
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =15
+                            Text: =
+                            Width: =Parent.Width
+                            ZIndex: =3
+
+                    conOnBreakPause_TimeTrack As groupContainer.manualLayoutContainer:
+                        FillPortions: =0
+                        Height: =160
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Visible: =Not(conOnBreakPlay_TimeTrack.Visible)
+                        X: =40
+                        Y: =40
+                        ZIndex: =8
+
+                        shpOnBreakPause_TimeTrack As circle:
+                            BorderColor: |-
+                                =ColorValue("#c5314a")
+                            BorderThickness: =4
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Height: =150
+                            Width: =150
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =4
+                            ZIndex: =1
+
+                        imgOnBreakPause_TimeTrack As image:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            FocusedBorderThickness: =0
+                            Height: =50
+                            Image: =stopIcon
+                            Width: =50
+                            X: =(Parent.Width-Self.Width)/2
+                            Y: =54
+                            ZIndex: =2
+
+                        btnOnBreakPause_TimeTrack As button:
+                            BorderColor: =App.Theme.Colors.Primary
+                            BorderStyle: =BorderStyle.None
+                            Color: =App.Theme.Colors.PrimaryForeground
+                            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            Fill: =RGBA(0,0,0,0)
+                            FocusedBorderThickness: =0
+                            Font: =App.Theme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =Parent.Height
+                            HoverBorderColor: =RGBA(0,0,0,0)
+                            HoverColor: =App.Theme.Colors.PrimaryForeground
+                            HoverFill: =RGBA(0,0,0,0)
+                            OnSelect: |
+                                =// Save the end time
+                                IfError(
+                                
+                                    // Save In Dataverse
+                                    Patch('Time Sheet Entries', varActiveBreakPeriod,{'End Time':Now()}),
+                                
+                                    // Handle Errors
+                                    Notify("Server update failed: " & FirstError.Message, NotificationType.Error),
+                                
+                                    // Then mirror the change locally in colBreakPeriods
+                                    Patch(
+                                        colBreakPeriods,
+                                        varActiveBreakPeriod,
+                                        {'End Time':Now()}
+                                    );
+                                    // Clear the active break (as we're no longer on a break)
+                                    // Save In Dataverse
+                                    UpdateContext({
+                                        varActiveBreakPeriod : Blank()
+                                    });
+                                
+                                );
+                            PressedBorderColor: =RGBA(0,0,0,0)
+                            PressedColor: =Self.Color
+                            PressedFill: =RGBA(0,0,0,0)
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =15
+                            Text: =
+                            Width: =Parent.Width
+                            ZIndex: =3
+
+                    txtOnBreakTime_TimeTrack As Text:
+                        Align: ='TextCanvas.Align'.Center
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FillPortions: =1
+                        Font: =""
+                        FontColor: |-
+                            =If(
+                                IsBlank(varActiveBreakPeriod), 
+                                ColorValue(varTheme.neutralForeground3),
+                                ColorValue(varTheme.neutralForeground1)    
+                            )
+                        FontItalic: =false
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        Height: =40
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        PaddingBottom: =0
+                        PaddingTop: =5
+                        Size: =varThemeFont.H3.size
+                        TabIndex: =0
+                        Text: =nf_SimpleHourMinSecondTimeFormat(varOffClockDuration)
+                        Tooltip: =""
+                        VerticalAlign: =""
+                        Visible: =true
+                        Weight: ='TextCanvas.Weight'.Bold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        Wrap: =true
+                        X: =0
+                        Y: =0
+                        ZIndex: =9
+
+            btnOpenTimeSheets_TimeTrack As Button:
+                AlignInContainer: =AlignInContainer.Stretch
+                BasePaletteColor: =
+                BorderColor: =
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =32
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: =Navigate('Time Sheet View Screen')
+                Text: ="Manage Timesheets"
+                Visible: =false
+                Width: =96
+                X: =0
+                Y: =0
+                ZIndex: =5
+
+            timOnShiftTime_TimeTrack_1 As timer:
+                AutoPause: =false
+                AutoStart: =true
+                BorderColor: =App.Theme.Colors.Primary
+                BorderStyle: =BorderStyle.None
+                Color: =ColorValue(varTheme.neutralForeground1)
+                DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Duration: =1000
+                Fill: =ColorValue(varTheme.neutralBackground2)
+                FocusedBorderThickness: =0
+                Font: =""
+                FontWeight: =FontWeight.Bold
+                HoverBorderColor: =Self.BorderColor
+                HoverFill: =Self.Fill
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnTimerEnd: |
+                    =// Add up the breaks so far
+                    UpdateContext({varOffClockDuration : Sum(colBreakPeriods, ThisRecord.'Duration Minutes') * 60 });
+                    
+                    // Are we in the middle of break
+                    If(Not(IsBlank(varActiveBreakPeriod)),
+                        // We are timing break, so increment counter
+                        UpdateContext({varOffClockDuration : Sum(DateDiff(varActiveBreakPeriod.'Start Time', Now(), TimeUnit.Seconds),varOffClockDuration)});
+                    );
+                    
+                    // Has the session started
+                    If(Not(IsBlank(varSelectedShift.'Actual Start Time')),
+                        // Increment Work Counter
+                        UpdateContext({varOnClockDuration : DateDiff(varSelectedShift.'Actual Start Time', Now(), TimeUnit.Seconds) - varOffClockDuration});    
+                    );
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =App.Theme.Colors.Darker40
+                PressedColor: =Self.Color
+                PressedFill: =Self.Fill
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Repeat: =true
+                Size: =varThemeFont.H3.size-4
+                Text: =Text(Time(0, 0, Self.Value/1000), "h") & "h " & Left(Text(Time(0, 0, Self.Value/1000), "mm ss"),2) & "m " & Text(Time(0, 0, Self.Value/1000), "ss") & "s "
+                Visible: =false
+                ZIndex: =7
+
+        conShiftDetails As groupContainer.verticalAutoLayoutContainer:
+            Fill: =ColorValue(varTheme.neutralBackground3)
+            FillPortions: =0
+            Height: =45
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =10
+            X: =40
+            Y: =40
+            ZIndex: =2
+
+            txtZoneAndRole_TimeTrack As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =20
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                Size: =14
+                TabIndex: =0
+                Text: =varSelectedShift.Zone.Name & " (" & varSelectedShift.'Team Position'.Role.Name & ")"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Weight: =varThemeFont.H3.weightBold
+                Width: =96
+                Wrap: =true
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            txtShiftType_TimeTrack As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =true
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                FillPortions: =1
+                Font: =""
+                FontColor: =ColorValue(varTheme.neutralForeground1)
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =20
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =20
+                LayoutMinWidth: =80
+                Size: =14
+                TabIndex: =0
+                Text: =varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Name & " " & Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time' , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'End Date', DateTimeFormat.ShortTime)) & ""
+                Tooltip: =""
+                VerticalAlign: =VerticalAlign.Middle
+                Visible: =true
+                Weight: =varThemeFont.H3.weight
+                Width: =60
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =3
+
+    conClosePopup_TimeTrack As groupContainer.horizontalAutoLayoutContainer:
+        Fill: =RGBA(0,0,0,0.6)
+        Height: =Parent.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingBottom: =20
+        PaddingLeft: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingTop: =20
+        Visible: =varShowCloseTimeTrackDialog
+        Width: =Parent.Width
+        ZIndex: =2
+
+        conClosePopupContent_TimeTrack As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            DropShadow: =DropShadow.Light
+            Fill: =ColorValue(varTheme.neutralBackground1)
+            FillPortions: =0
+            Height: =180
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =24
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =24
+            PaddingLeft: =24
+            PaddingRight: =24
+            PaddingTop: =24
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =1
+
+            conCancel_TimeTrack As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =ColorValue(varTheme.neutralBackground1)
+                FillPortions: =0
+                Height: =txtCancel_TimeTrack.Height + txtCancelDetails_TimeTrack.Height + Self.LayoutGap
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =8
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =1
+
+                txtCancel_TimeTrack As Text:
+                    Align: ="Start"
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    Font: =""
+                    FontColor: =ColorValue(varTheme.neutralForeground1)
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H3.size
+                    TabIndex: =0
+                    Text: ="Close Timesheet?"
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Top
+                    Visible: =true
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                txtCancelDetails_TimeTrack As Text:
+                    Align: ="Start"
+                    AutoHeight: =true
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FillPortions: =1
+                    Font: =""
+                    FontColor: =ColorValue(varTheme.neutralForeground1)
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =60
+                    LayoutMinWidth: =96
+                    Size: =14
+                    TabIndex: =0
+                    Text: ="If you proceed, you will have to make future timesheet updates manually."
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =true
+                    Weight: ='TextCanvas.Weight'.Regular
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+            conButtons_TimeTrack As groupContainer.horizontalAutoLayoutContainer:
+                Fill: =ColorValue(varTheme.neutralBackground1)
+                FillPortions: =0
+                Height: =32
+                LayoutGap: =12
+                LayoutJustifyContent: =LayoutJustifyContent.End
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =2
+
+                btnBack_TimeTrack As Button:
+                    AcceptsFocus: =true
+                    AccessibleLabel: ="Secondary"
+                    Align: =""
+                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =
+                    FontSize: =0
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    FontWeight: =""
+                    Height: =32
+                    Icon: =""
+                    IconRotation: =0
+                    IconStyle: ="Outline"
+                    Layout: ="Icon before"
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |-
+                        =UpdateContext({varShowCloseTimeTrackDialog : false});
+                    TabIndex: =0
+                    Text: ="Back"
+                    Tooltip: =""
+                    VerticalAlign: =""
+                    Visible: =true
+                    Width: =54
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                btnProceed_TimeTrack As Button:
+                    AcceptsFocus: =true
+                    AccessibleLabel: ="Primary"
+                    Align: =""
+                    Appearance: ="Primary"
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =
+                    FontSize: =0
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    FontWeight: =""
+                    Height: =32
+                    Icon: =""
+                    IconRotation: =0
+                    IconStyle: ="Outline"
+                    Layout: ="Icon before"
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |
+                        =IfError(
+                        
+                            // Save In Dataverse
+                            Patch('Shift Bookings', varSelectedShift,{
+                                'Actual End Time': Now(),
+                                'Actual Worked Duration': Round(varOnClockDuration / 60, 0),
+                                'Break Duration': Round(varOffClockDuration / 60,0) 
+                            }),
+                        
+                            // Handle Errors
+                            Notify("Server update failed: " & FirstError.Message, NotificationType.Error),
+                        
+                            UpdateContext({varShowCloseTimeTrackDialog : false});
+                        
+                            Navigate('Time Sheet View Screen');
+                        );
+                    TabIndex: =0
+                    Text: ="Proceed"
+                    Tooltip: =""
+                    VerticalAlign: =""
+                    Visible: =true
+                    Width: =76
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+    compHeaderMobile_TimeTrack As compHeaderMobile:
+        BackScreen: ='Home Screen'
+        ChildTabPriority: =true
+        ContentLanguage: =""
+        EnableChildFocus: =true
+        HeaderTitle: |-
+            ="Time Track: " & varSelectedShift.Zone.Facility.Name
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
+        Visible: =true
+        ZIndex: =3
+

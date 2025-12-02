@@ -1,0 +1,553 @@
+"'Home Screen' As screen":
+    Fill: =ColorValue(varTheme.neutralBackground2)
+    Height: |-
+        =//Max(App.Height, App.MinScreenHeight)
+        753
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: =
+
+    conMainContent_Home As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderMobile_Home.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingBottom: =20
+        PaddingLeft: =
+        PaddingRight: =
+        PaddingTop: =20
+        Width: =Parent.Width
+        Y: =compHeaderMobile_Home.Height
+        ZIndex: =1
+
+        conBodyContent_Home As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            Height: =368.26
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =5
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+            Y: =compHeaderMobile_Home.Height + compHeaderMobile_Home.Height + 100
+            ZIndex: =3
+
+            conFilterMonthYear_Home As groupContainer.verticalAutoLayoutContainer:
+                Fill: =ColorValue(varTheme.neutralBackground2)
+                FillPortions: =0
+                Height: =cboFilterMain.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =20
+                PaddingRight: =20
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                ZIndex: =1
+
+                cboFilterMain As Combobox.pcfdataset:
+                    AccessibleLabel: =Concatenate("Filtered by " & Self.Selected.Name)
+                    Appearance: ="FilledDarker"
+                    BasePaletteColor: =RGBA(5, 102, 178, 1)
+                    BorderStyle: =""
+                    DefaultSelectedItems: =First(colFilterMonths)
+                    DisplayMode: =DisplayMode.Edit
+                    Font: =""
+                    FontItalic: =
+                    FontSize: =0
+                    FontWeight: =""
+                    Height: =32
+                    InputTextPlaceholder: =First(colFilterMonths).Name
+                    Items: =colFilterMonths
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =320
+                    PaddingLeft: =20
+                    PaddingRight: =
+                    Required: =false
+                    SelectMultiple: =false
+                    TriggerOutput: ="Keypress"
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0.00
+                    ZIndex: =1
+
+                    lblCombobox_1 As PowerApps_CoreControls_ComboboxCanvasTemplate_dataField.textualColumn:
+                        FieldDisplayName: ="Name"
+                        FieldName: ="Name"
+                        FieldType: ="s"
+                        FieldVariantName: ="textualColumn"
+                        Height: =25.89
+                        Order: =1
+                        Y: =0.00
+                        ZIndex: =15
+
+            conFromDateToday_Home As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =con_FromDateTodayToggle_Home.Height
+                LayoutDirection: |-
+                    =Switch(App.ActiveScreen.Size,
+                    5, LayoutDirection.Horizontal,
+                    4, LayoutDirection.Horizontal,
+                    3, LayoutDirection.Vertical,
+                    2, LayoutDirection.Vertical,
+                    1, LayoutDirection.Vertical
+                    )
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =5
+                PaddingLeft: =12
+                PaddingRight: =12
+                PaddingTop: =5
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                ZIndex: =3
+
+                con_FromDateTodayToggle_Home As Toggle:
+                    AccessibleLabel: ="Here is the Toggle Control"
+                    AlignInContainer: =AlignInContainer.Start
+                    BasePaletteColor: =
+                    Checked: =true
+                    DisplayMode: =DisplayMode.Edit
+                    FillPortions: =1
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =
+                    FontSize: =0
+                    FontWeight: =""
+                    Height: =32
+                    Label: ="Show dates from today"
+                    LabelPosition: ='Toggle.LabelPosition'.After
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =35
+                    LayoutMinWidth: =110
+                    OnCheck: =false
+                    OnUncheck: =false
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+            conTodayCount_Home As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =txtTodayis_Home.Height + Self.LayoutGap + txtItemCount_Home.Height + Self.PaddingTop + Self.PaddingBottom
+                LayoutDirection: |-
+                    =Switch(App.ActiveScreen.Size,
+                    5, LayoutDirection.Horizontal,
+                    4, LayoutDirection.Horizontal,
+                    3, LayoutDirection.Vertical,
+                    2, LayoutDirection.Vertical,
+                    1, LayoutDirection.Vertical
+                    )
+                LayoutGap: =5
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =20
+                PaddingRight: =20
+                PaddingTop: =10
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                ZIndex: =4
+
+                txtTodayis_Home As Text:
+                    Align: ='TextCanvas.Align'.Start
+                    AutoHeight: =true
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FillPortions: =0.3
+                    FontColor: =ColorValue(varTheme.primary)
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =20
+                    LayoutMinWidth: =96
+                    Size: =
+                    Text: =Concatenate("Today is " & Text(Today(), "mmmm dd, yyyy"))
+                    VerticalAlign: =VerticalAlign.Top
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                txtItemCount_Home As Text:
+                    AutoHeight: =true
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =20
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: ="Showing " & CountRows(galMainCalendar_Home.AllItems) &" items"
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+            galMainCalendar_Home As gallery.galleryVertical:
+                AccessibleLabel: ="Home Main Calendar"
+                BorderColor: =App.Theme.Colors.Darker40
+                BorderStyle: =BorderStyle.None
+                DelayItemLoading: =true
+                FocusedBorderThickness: =0
+                Height: =Parent.Height - cboFilterMain.Height - conFromDateToday_Home.Height - conTodayCount_Home.Height - Parent.LayoutGap
+                Items: |-
+                    =With(
+                        {
+                            colFilteredBookings :
+                            Filter(
+                                'Shift Bookings', Resource.'Primary Email' = varCurrentUser.Email
+                            )
+                        },
+                    
+                        If(
+                            con_FromDateTodayToggle_Home.Checked,
+                            SortByColumns(
+                                Filter(
+                                    AddColumns(
+                                        colFilteredBookings As Booking,
+                                        BookingDate,
+                                        Booking.Date
+                                    ),
+                                    Month(BookingDate) = cboFilterMain.Selected.Month && 'Status Reason' = 'Status Reason (Shift Bookings)'.Published && Status = 'Status (Shift Bookings)'.Active && DateValue(BookingDate) >= Today()
+                                ),
+                                "mpa_date"
+                            ),
+                            SortByColumns(
+                                Filter(
+                                    colFilteredBookings,
+                                    Month(Date) = cboFilterMain.Selected.Month && 'Status Reason' = 'Status Reason (Shift Bookings)'.Published && Status = 'Status (Shift Bookings)'.Active
+                                ),
+                                "mpa_date"
+                            )
+                        )
+                    )
+                Layout: =Layout.Vertical
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                TabIndex: =0
+                TemplatePadding: =15
+                TemplateSize: =112
+                Width: =Parent.Width
+                ZIndex: =5
+
+                conMainCalendarCard_Home As groupContainer.verticalAutoLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    Height: =Parent.TemplateHeight
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =5
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =12
+                    PaddingLeft: =16
+                    PaddingRight: =16
+                    PaddingTop: =12
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    Width: =Parent.TemplateWidth
+                    Y: =
+                    ZIndex: =1
+
+                    conCardDetails_Home As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =txtDayDate_Home.Height + txtShiftType_Home.Height + txtShiftTime_Home.Height + Self.LayoutGap
+                        LayoutDirection: |-
+                            =Switch(App.ActiveScreen.Size,
+                            5, LayoutDirection.Horizontal,
+                            4, LayoutDirection.Horizontal,
+                            3, LayoutDirection.Vertical,
+                            2, LayoutDirection.Vertical,
+                            1, LayoutDirection.Vertical
+                            )
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                        ZIndex: =1
+
+                        txtDayDate_Home As Text:
+                            Align: ='TextCanvas.Align'.Start
+                            AutoHeight: =false
+                            BorderColor: =
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =ColorValue(varTheme.primary)
+                            Height: =20
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Size: =
+                            Text: =Text(ThisItem.Date, "mmmm dd, yyyy")
+                            VerticalAlign: =VerticalAlign.Top
+                            Weight: =varThemeFont.H3.weightBold
+                            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                            X: =0
+                            Y: =0
+                            ZIndex: =2
+
+                        txtShiftType_Home As Text:
+                            Align: ='TextCanvas.Align'.Start
+                            AutoHeight: =false
+                            BorderColor: =
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =ColorValue(varTheme.neutralForeground1)
+                            Height: =20
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Size: =
+                            Text: =Concatenate(ThisItem.'Team Position'.'Shift Team'.Name) //, " (",ThisItem.'Team Position'.'Shift Team'.'Shift Type'.Name, ")")
+                            VerticalAlign: =VerticalAlign.Top
+                            Weight: =
+                            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                            X: =0
+                            Y: =0
+                            ZIndex: =3
+
+                        txtShiftTime_Home As Text:
+                            Align: ='TextCanvas.Align'.Start
+                            AutoHeight: =false
+                            BorderColor: =
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =ColorValue(varTheme.neutralForeground3)
+                            Height: =20
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Size: =
+                            Text: |-
+                                =Concatenate(
+                                    Text(ThisItem.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time' , DateTimeFormat.ShortTime),
+                                    " - " ,
+                                    Text(DateAdd(ThisItem.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time', ThisItem.'Team Position'.'Shift Team'.'Shift Type'.Duration, TimeUnit.Minutes), DateTimeFormat.ShortTime)
+                                )
+                            VerticalAlign: =VerticalAlign.Top
+                            Weight: =
+                            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                            X: =0
+                            Y: =0
+                            ZIndex: =4
+
+                    conCardActions_Home As groupContainer.horizontalAutoLayoutContainer:
+                        FillPortions: =0
+                        Height: =24
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =12
+                        LayoutMinWidth: =16
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width -40
+                        ZIndex: =2
+
+                        conRecordTimeButton_Home As groupContainer.manualLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            Height: =btnRecordTime_Home.Height
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            Width: =btnRecordTime_Home.Width
+                            ZIndex: =1
+
+                            txtRecordTime_Home As Text:
+                                Align: ='TextCanvas.Align'.Start
+                                AutoHeight: =true
+                                BorderColor: =
+                                BorderStyle: =""
+                                ContentLanguage: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                Font: =""
+                                FontColor: =ColorValue(varTheme.primary)
+                                FontItalic: =false
+                                FontStrikethrough: =false
+                                FontUnderline: =false
+                                Height: =32
+                                Size: =14
+                                TabIndex: =0
+                                Text: ="Record time"
+                                Tooltip: =""
+                                VerticalAlign: =""
+                                Visible: =btnRecordTime_Home.Visible
+                                Weight: ="Regular"
+                                Width: =88
+                                Wrap: =true
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            btnRecordTime_Home As Button:
+                                AcceptsFocus: =true
+                                AccessibleLabel: ="Transparent"
+                                Align: =Align.Center
+                                Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                BasePaletteColor: =
+                                BorderColor: =
+                                BorderStyle: =""
+                                ContentLanguage: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Font: =""
+                                FontColor: =
+                                FontItalic: =false
+                                FontSize: =0
+                                FontStrikethrough: =false
+                                FontUnderline: =false
+                                FontWeight: =""
+                                Height: =txtRecordTime_Home.Height
+                                Icon: =
+                                IconRotation: =0
+                                IconStyle: ="Outline"
+                                Layout: ='ButtonCanvas.Layout'.TextOnly
+                                OnSelect: |-
+                                    =Set(varSelectedShift, ThisItem);
+                                    Navigate('Time Track Screen', ScreenTransition.Fade)
+                                TabIndex: =0
+                                Text: =""
+                                Tooltip: =""
+                                VerticalAlign: =""
+                                Visible: =IsBlank(ThisItem.'Actual End Time')
+                                Width: =txtRecordTime_Home.Width
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
+
+                        rectSpacer_EditTimeSheet_1 As rectangle:
+                            AlignInContainer: =AlignInContainer.Stretch
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Fill: =RGBA(0,0,0,0)
+                            Height: =5
+                            LayoutMaxHeight: =0
+                            LayoutMaxWidth: =0
+                            LayoutMinHeight: =16
+                            LayoutMinWidth: =16
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                        conDetailsButton_Home As groupContainer.manualLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            Height: =btnTransparent_Home.Height
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            Width: =btnTransparent_Home.Width
+                            ZIndex: =3
+
+                            txtViewDetails_Home As Text:
+                                Align: ='TextCanvas.Align'.End
+                                AutoHeight: =true
+                                BorderColor: =
+                                BorderStyle: =""
+                                ContentLanguage: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                Font: =""
+                                FontColor: =ColorValue(varTheme.primary)
+                                FontItalic: =false
+                                FontStrikethrough: =false
+                                FontUnderline: =false
+                                Height: =32
+                                Size: =14
+                                TabIndex: =0
+                                Text: ="View details"
+                                Tooltip: =""
+                                VerticalAlign: =""
+                                Visible: =true
+                                Weight: ="Regular"
+                                Width: =88
+                                Wrap: =true
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            btnTransparent_Home As Button:
+                                AcceptsFocus: =true
+                                AccessibleLabel: ="Transparent"
+                                Align: =""
+                                Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                BasePaletteColor: =
+                                BorderColor: =
+                                BorderStyle: =""
+                                ContentLanguage: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Font: =""
+                                FontColor: =
+                                FontItalic: =false
+                                FontSize: =0
+                                FontStrikethrough: =false
+                                FontUnderline: =false
+                                FontWeight: =""
+                                Height: =txtViewDetails_Home.Height
+                                Icon: =
+                                IconRotation: =0
+                                IconStyle: ="Outline"
+                                Layout: ='ButtonCanvas.Layout'.TextOnly
+                                OnSelect: |-
+                                    =Set(varSelectedShift, ThisItem);
+                                    Navigate('Shift Details Screen', ScreenTransition.Fade)
+                                TabIndex: =0
+                                Text: =""
+                                Tooltip: =""
+                                VerticalAlign: =""
+                                Visible: =true
+                                Width: =txtViewDetails_Home.Width
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
+
+    compHeaderMobile_Home As compHeaderMobile:
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
+        Width: =Parent.Width
+        ZIndex: =2
+

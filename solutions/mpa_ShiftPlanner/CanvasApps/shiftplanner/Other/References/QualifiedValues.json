@@ -1,0 +1,129 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_mpa_shiftplanner_facility_forms",
+      "Namespace": "shiftplanner_facilities (Forms)",
+      "Values": {
+        "Information": "0485adce-8378-47e9-9986-7179d448992d"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_zone_forms",
+      "Namespace": "shiftplanner_zones (Forms)",
+      "Values": {
+        "Information": "2e339313-2141-4f59-8432-4d57d4e97ec5",
+        "Zone": "7affd6a6-a618-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_useraffiliation_forms",
+      "Namespace": "shiftplanner_useraffiliations (Forms)",
+      "Values": {
+        "Information": "e9a37581-53a3-46f9-9326-850337820eac",
+        "Shiftplanner_useraffiliation quick create form": "fb254c41-ea18-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_teamposition_forms",
+      "Namespace": "shiftplanner_teampositions (Forms)",
+      "Values": {
+        "Information": "5de59861-1ec1-465b-bbfd-58a306c2c94a",
+        "Team Position quick create form": "ad7b8e23-5b22-ef11-840b-7c1e5200e675"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_shiftteam_forms",
+      "Namespace": "shiftplanner_shiftteams (Forms)",
+      "Values": {
+        "Information": "0aea8d0d-9df1-4791-9dbb-ec9245de4974",
+        "Shiftplanner_shiftteam quick create form": "d90e37a4-ea18-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_shifttype_forms",
+      "Namespace": "shiftplanner_shifttypes (Forms)",
+      "Values": {
+        "Information": "83070746-4e4f-41ea-9611-ca9df5be5a62",
+        "Shiftplanner_shifttype quick create form": "b19e3d48-6819-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_role_forms",
+      "Namespace": "shiftplanner_roles (Forms)",
+      "Values": {
+        "Information": "35b2d024-ca6d-4d94-b439-ae3d83d27c01"
+      }
+    },
+    {
+      "Kind": "default.cds_systemuser_forms",
+      "Namespace": "Users (Forms)",
+      "Values": {
+        "Application User": "d26924ef-4d80-46f7-ab1d-e6ae80a54ce8",
+        "Information": "094fb08a-77bb-49e0-b7ea-8dbddfd01294",
+        "User": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
+        "User form – Business": "c2413504-7eb2-4c59-a087-95d819866114",
+        "User Hierarchy Tile Form": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_userrole_forms",
+      "Namespace": "shiftplanner_userroles (Forms)",
+      "Values": {
+        "Information": "9d4490f6-81f4-427a-8271-a9d4131a8535",
+        "Shiftplanner_userrole quick create form": "4903c485-0119-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_useravailability_forms",
+      "Namespace": "shiftplanner_useravailabilities (Forms)",
+      "Values": {
+        "Information": "d9bff331-2ffc-408a-ba0a-ddde7340b9d9",
+        "Shiftplanner_useravailability quick create form": "49d7bfb7-6919-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_shiftbooking_forms",
+      "Namespace": "shiftplanner_shiftbookings (Forms)",
+      "Values": {
+        "Information": "a5ecc5dc-4fb9-41fe-aac0-f6f783d3d93f",
+        "Shift Booking": "c221c842-6719-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_emaillog_forms",
+      "Namespace": "Email Logs (Forms)",
+      "Values": {
+        "Information": "38812586-2714-4638-a0e6-f2e1381d5264"
+      }
+    },
+    {
+      "Kind": "default.cds_environmentvariablevalue_forms",
+      "Namespace": "Environment Variable Values (Forms)",
+      "Values": {
+        "Information": "f574a3ab-1060-43ee-a95f-9aa922b497db"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_changerequest_forms",
+      "Namespace": "Change Requests (Forms)",
+      "Values": {
+        "Information": "ccd6a42e-a098-4820-a0cf-9dd78c7c6dd9",
+        "Shiftplanner_changerequest quick create form": "73d02a71-6319-ef11-9f89-000d3a9d8d48"
+      }
+    },
+    {
+      "Kind": "default.cds_environmentvariabledefinition_forms",
+      "Namespace": "Environment Variable Definitions (Forms)",
+      "Values": {
+        "Information": "3853733b-a351-455d-b686-d2d05027ba4d"
+      }
+    },
+    {
+      "Kind": "default.cds_mpa_shiftplanner_shift_forms",
+      "Namespace": "shiftplanner_shifts (Forms)",
+      "Values": {
+        "Information": "9eb1a43e-ba84-4c61-bf13-fe19e78a647f"
+      }
+    }
+  ]
+}

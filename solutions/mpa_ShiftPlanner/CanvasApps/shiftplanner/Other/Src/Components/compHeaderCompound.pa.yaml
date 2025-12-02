@@ -1,0 +1,89 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+ComponentDefinitions:
+  compHeaderCompound:
+    DefinitionType: CanvasComponent
+    AccessAppScope: true
+    CustomProperties:
+      HeaderHeight:
+        PropertyKind: Input
+        DisplayName: Header Height
+        Description: A custom property
+        DataType: Number
+        Default: =51
+      HeaderWidth:
+        PropertyKind: Input
+        DisplayName: Header Width
+        Description: A custom property
+        DataType: Number
+        Default: =1366
+      IsMenuScreen:
+        PropertyKind: Input
+        DisplayName: Is Menu Screen
+        Description: A custom property
+        DataType: Boolean
+        Default: =false
+      NavigateMenu:
+        PropertyKind: Input
+        DisplayName: Navigate Menu
+        Description: A custom property
+        DataType: Screen
+        Default: =
+      NavigateScreen:
+        PropertyKind: Input
+        DisplayName: Navigate Screen
+        Description: A custom property
+        DataType: Screen
+        Default: =App.ActiveScreen
+    Properties:
+      Fill: =App.Theme.Colors.Primary
+      Height: |-
+        =compHeaderCompound.HeaderHeight
+        //varHeaderHeight
+      Width: =compHeaderCompound.HeaderWidth
+    Children:
+      - ContainerMain:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            Height: =compHeaderCompound.HeaderHeight
+            LayoutDirection: =LayoutDirection.Horizontal
+            Width: =compHeaderCompound.HeaderWidth
+          Children:
+            - iconBackButton:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  AccessibleLabel: ="Go back"
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =ColorValue(varTheme.neutralBackground2)
+                  Fill: =RGBA(0,0,0,0)
+                  FillPortions: =1
+                  Height: =Self.Width
+                  Icon: =Icon.ChevronLeft
+                  LayoutMinWidth: =40
+                  OnSelect: =Navigate(compHeaderCompound.NavigateScreen)
+                  PaddingLeft: =15
+                  PaddingTop: =5
+                  TabIndex: =0
+                  Visible: =If(App.ActiveScreen = compHeaderCompound.NavigateScreen, false, true)
+                  Width: =35
+                  X: =Parent.X
+                  Y: =(Parent.Height - Self.Height) / 2
+            - comp_Header:
+                Control: Header@0.0.44
+                Properties:
+                  Height: =51
+                  IsTitleVisible: =If(App.ActiveScreen.Size = 1 , false, true)
+                  LayoutMinHeight: =50
+                  Logo: ='LogoColored Resized'
+                  LogoTooltip: ="Logo"
+                  Style: ='Header.Style'.Primary
+                  Title: ="Shift Planner"
+                  Width: =If(iconBackButton.Visible, (ContainerMain.Width - iconBackButton.Width), ContainerMain.Width)
+                  X: =10

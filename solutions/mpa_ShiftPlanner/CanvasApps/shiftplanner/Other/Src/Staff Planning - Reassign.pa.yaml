@@ -1,0 +1,409 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Staff Planning - Reassign:
+    Properties:
+      Fill: =ColorValue(varTheme.neutralBackground1)
+      OnVisible: "=UpdateContext({\r\n    varAssignMode : \"Available\",\r\n\r\n    // Determing who is eligible\r\n    tmpAffiliatedUsers : \r\n        ShowColumns(\r\n            AddColumns(\r\n                Filter(shiftplanner_useraffiliations, Zone.shiftplanner_zone = varBookingToReassign.Zone.shiftplanner_zone),\r\n                ResourceId, \r\n                Resource.User,\r\n                ResourceFullName,\r\n                Resource.'Full Name',\r\n                ResourceRecord,\r\n                Resource\r\n            ),\r\n            ResourceId,\r\n            ResourceFullName,\r\n            ResourceRecord\r\n        )\r\n        ,\r\n\r\n    // Filter the eligible down to those that are available\r\n    tmpAvailableUsers : Filter(\r\n        tmpAffiliatedUsers,\r\n\r\n        !IsBlank(\r\n            LookUp(\r\n                shiftplanner_userroles As uro, \r\n                uro.Resource.User = ResourceId \r\n                And uro.Role.shiftplanner_role = varBookingToReassign.'Team Position'.Role.shiftplanner_role\r\n            )\r\n        ) \r\n        \r\n        // Exclude the unavailable\r\n        And Not (\r\n            ResourceId in ShowColumns(\r\n                AddColumns(\r\n                    Filter(shiftplanner_useravailabilities, StartDate <= varBookingToReassign.Date And  Enddate >= varBookingToReassign.Date ),\r\n                    UserGuid,\r\n                    User.User\r\n                ), \r\n                UserGuid\r\n            )\r\n        )\r\n\r\n        // Exclude the booked    \r\n        And Not( \r\n            ResourceId in\r\n            ShowColumns(\r\n                AddColumns(\r\n                    Filter(\r\n                        shiftplanner_shiftbookings,\r\n                        Date = varSelectedUserDay.ShiftDate\r\n                    ),\r\n                    UserId,\r\n                    Resource.User                    \r\n                ),\r\n                UserId\r\n            )\r\n        )\r\n    )\r\n});\r\n\r\n"
+    Children:
+      - conReassignPopup_StaffPlanScreen:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =varTheme.popupBackground
+            Height: =Parent.Height - Self.Y
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            PaddingBottom: =40
+            PaddingLeft: =40
+            PaddingRight: =40
+            PaddingTop: =40
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =51
+          Children:
+            - conReassign_StaffPlanScreen:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Center
+                  DropShadow: =DropShadow.Bold
+                  Fill: =ColorValue(varTheme.neutralBackground1)
+                  Height: =120
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =4
+                  LayoutMaxHeight: =0
+                  LayoutMaxWidth: =0
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  X: =40
+                  Y: =40
+                Children:
+                  - txtReassignHeading_StaffPlanScreen:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        AlignInContainer: =AlignInContainer.Stretch
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Size: =varThemeFont.H3.size
+                        Text: ="Reassign Booking"
+                        Weight: =varThemeFont.H3.weightBold
+                        X: =40
+                        Y: =40
+                  - txtReassignDate_StaffPlanScreen:
+                      Control: Text@0.0.51
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Height: =22
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =14
+                        Text: =varBookingToReassign.Date
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        X: =40
+                        Y: =40
+                  - txtReassignTime_StaffPlanScreen:
+                      Control: Text@0.0.51
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FontColor: =App.Theme.Colors.Primary
+                        Height: =22
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =14
+                        Text: =Text(varBookingToReassign.'Planned Start Time', "hh:mm AM/PM") & " - " & Text(varBookingToReassign.'Planned End Time', "hh:mm AM/PM")
+                        Weight: ='TextCanvas.Weight'.Regular
+                        X: =40
+                        Y: =40
+                  - txtReassignFacility_StaffPlanScreen:
+                      Control: Text@0.0.51
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Height: =22
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =14
+                        Text: |-
+                          =varBookingToReassign.Zone.Facility.Name & ": " & varBookingToReassign.Zone.Name
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        X: =40
+                        Y: =40
+                  - txtReassignRole_StaffPlanScreen:
+                      Control: Text@0.0.51
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FontColor: =App.Theme.Colors.Primary
+                        Height: =22
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =14
+                        Text: =varBookingToReassign.'Team Position'.Role.Name
+                        Weight: ='TextCanvas.Weight'.Regular
+                        X: =40
+                        Y: =40
+                  - txtReassignResourceHeader_StaffPlanScreen:
+                      Control: Text@0.0.51
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Height: =22
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =14
+                        Text: ="Select resource"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        X: =40
+                        Y: =40
+                  - conResourcesAvailable_StaffPlanScreen:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                      Children:
+                        - conResourcesTab_StaffPlanScreen:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =30
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                            Children:
+                              - btnActive_StaffPlanScreen:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                    FontWeight: =If(Self.Text = varAssignMode, FontWeight.Bold, FontWeight.Normal)
+                                    Height: =20
+                                    IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: |-
+                                      =UpdateContext({varAssignMode : Self.Text})
+                                    Text: ="Available"
+                              - btnInActive_StaffPlanScreen:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                    FontWeight: =If(Self.Text = varAssignMode, FontWeight.Bold, FontWeight.Normal)
+                                    Height: =20
+                                    IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: |-
+                                      =UpdateContext({varAssignMode : Self.Text})
+                                    Text: ="Unavailable"
+                        - conResourcesTabHL_StaffPlanScreen:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              FillPortions: =0
+                              Height: =10
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              PaddingBottom: =8
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                            Children:
+                              - btnActiveHL_StaffPlanScreen:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    Fill: =If(btnActive_StaffPlanScreen.Text = varAssignMode, App.Theme.Colors.Primary, RGBA(0,0,0,0))
+                                    Height: =2
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Width: =btnActive_StaffPlanScreen.Width
+                              - btnInactiveHL_StaffPlanScreen:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    Fill: =If(btnInActive_StaffPlanScreen.Text = varAssignMode, App.Theme.Colors.Primary, RGBA(0,0,0,0))
+                                    Height: =2
+                                    LayoutMaxHeight: =0
+                                    LayoutMaxWidth: =0
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    OnSelect: =btnInActive_StaffPlanScreen.Text=varAssignMode
+                                    Width: =btnActive_StaffPlanScreen.Width
+                        - galAvailableResources_StaffPlanScreen:
+                            Control: Gallery@2.15.0
+                            Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                            Properties:
+                              Items: "=// Optimised\r\ntmpAvailableUsers\r\n\r\n/*\r\nOriginal\r\nFilter(\r\n    shiftplanner_userroles,\r\n    \r\n    // Only get those with the right role\r\n    Role.shiftplanner_role = varBookingToReassign.'Team Position'.Role.shiftplanner_role\r\n\r\n    // Exclude the unavailable\r\n    And Not (\r\n        Resource.User in ShowColumns(\r\n            AddColumns(\r\n                Filter(shiftplanner_useravailabilities, StartDate <= varBookingToReassign.Date And  Enddate >= varBookingToReassign.Date ),\r\n                UserGuid,\r\n                User.User\r\n            ), \r\n            UserGuid\r\n        )\r\n    )\r\n\r\n    // Exclude the booked    \r\n    And Not( \r\n        Resource.User in\r\n        ShowColumns(\r\n            AddColumns(\r\n                Filter(\r\n                    shiftplanner_shiftbookings,\r\n                    Date = varSelectedUserDay.ShiftDate\r\n                ),\r\n                UserId,\r\n                Resource.User                    \r\n            ),\r\n            UserId\r\n        )\r\n    )\r\n)\r\n*/"
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              TemplateSize: =30
+                              Visible: =Not(galUnavailableResources_StaffPlanScreen.Visible)
+                            Children:
+                              - txtReassignPerson_StaffPlanScreen:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Height: =26
+                                    Text: =ThisItem.ResourceFullName
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Regular
+                                    Width: =Parent.Width
+                              - btnCommitReassign_StaffPlanScreen:
+                                  Control: Button@0.0.45
+                                  Properties:
+                                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                                    Height: =26
+                                    Icon: ="PeopleAdd"
+                                    Layout: ='ButtonCanvas.Layout'.IconOnly
+                                    OnSelect: "=IfError(\r\n    Patch(shiftplanner_shiftbookings, varBookingToReassign, { Resource: ThisItem.ResourceRecord}),\r\n\r\n    Notify(\"Error assigning: \" & FirstError.Message ,NotificationType.Error, varTheme.toastTimeout),\r\n\r\n    Refresh(shiftplanner_shiftbookings);\r\n    Navigate('Staff Planning Screen');\r\n    \r\n)"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =26
+                                    X: =Parent.TemplateWidth - Self.Width - 12
+                              - rectAvailableResource_StaffPlanScreen:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderStyle: =BorderStyle.None
+                                    Fill: =ColorValue(varTheme.neutralStroke2)
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Width: =Parent.Width
+                                    Y: =28
+                        - galUnavailableResources_StaffPlanScreen:
+                            Control: Gallery@2.15.0
+                            Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                            Properties:
+                              Items: |-
+                                =With(
+                                    {
+                                        // 1) Normalize Source A (e.g., shiftplanner_shiftbookings)
+                                        normA:
+                                            ShowColumns(
+                                                AddColumns(
+                                                    Filter(
+                                                        shiftplanner_useravailabilities, 
+                                                        StartDate <= varBookingToReassign.Date 
+                                                        And Enddate >= varBookingToReassign.Date 
+                                                        And User.User in ShowColumns(
+                                                                tmpAffiliatedUsers,
+                                                                ResourceId
+                                                        )
+                                                    ),
+                                                    UserGuid,
+                                                    User.User,
+                                                    UserName,
+                                                    User.'Full Name',
+                                                    BlockReason, 
+                                                    Text("Unavailable")
+                                                ), 
+                                                UserGuid,
+                                                UserName,
+                                                BlockReason
+                                            ),
+
+                                        // 2) Normalize Source B (e.g., Time Sheet Entries)
+                                        normB:
+                                            ShowColumns(
+                                                AddColumns(
+                                                    Filter(
+                                                        shiftplanner_shiftbookings, 
+                                                        Date = varBookingToReassign.Date And Resource.User in ShowColumns(
+                                                                tmpAffiliatedUsers,
+                                                                ResourceId
+                                                        )
+                                                    ),
+                                                    UserGuid,
+                                                    Resource.User,                    
+                                                    UserName,
+                                                    Resource.'Full Name',
+                                                    BlockReason, 
+                                                    Text("Booked: " & Zone.Facility.Name &  "-"  & Zone.Name)              
+                                                ), 
+                                                UserGuid,
+                                                UserName,
+                                                BlockReason
+                                            )
+                                    },
+
+                                    // 3) Append A + B into a single table without collections
+                                    Ungroup(
+                                        Table(
+                                            { Rows: normA },
+                                            { Rows: normB }
+                                        ),
+                                        Rows
+                                    )
+                                )
+                              LayoutMaxHeight: =0
+                              LayoutMaxWidth: =0
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              TemplateSize: =30
+                              Visible: =btnInActive_StaffPlanScreen.Text = varAssignMode
+                            Children:
+                              - txtUnavailableReason_StaffPlanScreen:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Start
+                                    Height: =26
+                                    Size: =12
+                                    Text: =ThisItem.BlockReason
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Regular
+                                    Width: =Parent.Width-txtUnavailableName_StaffPlanScreen.Width
+                                    Wrap: =false
+                                    X: =txtUnavailableName_StaffPlanScreen.Width
+                              - rectUnavailable_StaffPlanScreen:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderStyle: =BorderStyle.None
+                                    Fill: =ColorValue(varTheme.neutralStroke2)
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Width: =Parent.Width
+                                    Y: =28
+                              - txtUnavailableName_StaffPlanScreen:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Start
+                                    Height: =26
+                                    Text: =ThisItem.UserName
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Regular
+                                    Width: =Parent.Width * 0.3
+                  - ButtonCanvas1:
+                      Control: Button@0.0.45
+                      Properties:
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Navigate('Staff Planning Screen', Transition.None)
+                        Text: ="Cancel"
+      - compHeader_StaffPlanScreen_Reassign:
+          Control: CanvasComponent
+          ComponentName: compHeaderCompound
+          Properties:
+            Fill: =App.Theme.Colors.Primary
+            HeaderHeight: =51
+            HeaderWidth: =1366
+            Height: |-
+              =compHeader_StaffPlanScreen_Reassign.HeaderHeight
+              //varHeaderHeight
+            IsMenuScreen: =false
+            NavigateMenu: =
+            NavigateScreen: ='Staff Planning Screen'
+            Width: =compHeader_StaffPlanScreen_Reassign.HeaderWidth

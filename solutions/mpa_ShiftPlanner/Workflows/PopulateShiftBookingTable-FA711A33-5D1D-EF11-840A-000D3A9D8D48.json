@@ -57,12 +57,12 @@
             "operationMetadataId": "1cf8c1b6-6878-41ce-b47c-dab8c64df62b"
           },
           "type": "Compose",
-          "inputs": "@div(sub(ticks(formatDateTime(triggerOutputs()?['body/mpa_effectiveto'],'yyyy-MM-dd')),ticks(triggerOutputs()?['body/mpa_effectivefrom'])),864000000000)",
+          "inputs": "@div(sub(ticks(formatDateTime(triggerOutputs()?['body/mpa_effectiveto'],'yyyy-MM-dd')),ticks(variables('varStartDate'))),864000000000)",
           "description": "Get the number of days when the Team Position is effective"
         },
         "Initialize_varNumberOfDays": {
           "runAfter": {
-            "Compose": [
+            "Is_effective_date_in_the_past": [
               "Succeeded"
             ]
           },
@@ -197,15 +197,6 @@
           },
           "type": "Foreach"
         },
-        "Compose": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "69b97ebe-8c24-462e-be13-8f0f4deb45ab"
-          },
-          "type": "Compose",
-          "inputs": "@if(\r\n\tnot(empty(triggerOutputs()?['body/_mpa_resource_value'])), \r\n'Not empty', \r\n'empty')",
-          "description": "Check if team position resource is empty or not"
-        },
         "Insert_shift_Booking_records": {
           "actions": {
             "Increment_variable": {
@@ -239,11 +230,13 @@
                     },
                     "parameters": {
                       "entityName": "mpa_shiftplanner_shiftbookings",
-                      "item/mpa_date": "@addDays(triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))",
+                      "item/mpa_date": "@addDays(variables('varStartDate'), variables('varDayCount'))",
                       "item/mpa_name": "@{triggerOutputs()?['body/mpa_name']} - @{formatDateTime( adddays(triggerOutputs()?['body/mpa_effectivefrom'],variables('varDayCount')), 'yyyy-MM-dd')}",
                       "item/mpa_resource@odata.bind": "@if(equals(triggerOutputs()?['body/_mpa_resource_value'], null), triggerOutputs()?['body/_mpa_resource_value'], concat('/systemusers/',triggerOutputs()?['body/_mpa_resource_value']))",
-                      "item/statuscode": 865420002,
+                      "item/statuscode": 865420001,
                       "item/mpa_teamposition@odata.bind": "/mpa_shiftplanner_teampositions/@{triggerOutputs()?['body/mpa_shiftplanner_teampositionid']}",
+                      "item/mpa_plannedendtime": "@addMinutes(\r\n  concat(\r\n    formatDateTime(addDays(variables('varStartDate'), variables('varDayCount')), 'yyyy-MM-dd'),\r\n    'T',\r\n    formatDateTime(outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_startdate'], 'HH:mm:ss')\r\n  ),\r\n  outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_duration']\r\n)",
+                      "item/mpa_plannedstarttime": "@concat(\r\n  formatDateTime(addDays(variables('varStartDate'), variables('varDayCount')), 'yyyy-MM-dd'),\r\n  'T',\r\n  formatDateTime(outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_startdate'], 'HH:mm:ss')\r\n)",
                       "item/timezoneruleversionnumber": "@triggerOutputs()?['body/timezoneruleversionnumber']",
                       "item/utcconversiontimezonecode": "@triggerOutputs()?['body/utcconversiontimezonecode']",
                       "item/mpa_zone@odata.bind": "/mpa_shiftplanner_zones/@{outputs('Get_Shift_Team_by_ID')?['body/_mpa_zone_value']}"
@@ -253,17 +246,13 @@
                   "description": "Add new shift booking items as per the updated team position"
                 }
               },
-              "runAfter": {
-                "Compose_1": [
-                  "Succeeded"
-                ]
-              },
+              "runAfter": {},
               "expression": {
                 "and": [
                   {
                     "contains": [
                       "@outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_daysincluded']",
-                      "@string(add(dayOfWeek(addDays( triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))),1))"
+                      "@string(add(dayOfWeek(addDays(variables('varStartDate'), variables('varDayCount'))),1))"
                     ]
                   }
                 ]
@@ -272,14 +261,6 @@
                 "operationMetadataId": "f2c3bbdd-032c-4133-bdf9-cd24acf5fd46"
               },
               "type": "If"
-            },
-            "Compose_1": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "ea7054f1-ca2d-4dd9-931e-de61ab47545f"
-              },
-              "type": "Compose",
-              "inputs": "Shift Days [@{outputs('Get_Shift_Team_by_ID')?['body/mpa_shifttype/mpa_daysincluded']}] \nRecord Day [@{string(add(dayOfWeek(addDays( triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))),1))}]\nRecord Date [@{addDays( triggerOutputs()?['body/mpa_effectivefrom'], variables('varDayCount'))}]"
             }
           },
           "runAfter": {
@@ -289,13 +270,63 @@
           },
           "expression": "@equals(variables('varDayCount'), variables('varNumberOfDays'))",
           "limit": {
-            "count": 60,
+            "count": 400,
             "timeout": "PT1H"
           },
           "metadata": {
             "operationMetadataId": "748bfcaa-78e7-4717-9fe4-4bcc9bb4ba26"
           },
           "type": "Until"
+        },
+        "Initialize_varStartDate": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "b0f016ec-8855-47c9-ab91-a9b324533db7"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varStartDate",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/mpa_effectivefrom']"
+              }
+            ]
+          }
+        },
+        "Is_effective_date_in_the_past": {
+          "actions": {
+            "Set_varStartDate_to_now": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "5198285d-f4cb-4041-88a1-e9ffe6d81c43"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varStartDate",
+                "value": "@formatDateTime(utcNow(), 'yyyy-MM-dd')"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_varStartDate": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "lessOrEquals": [
+                  "@ticks(coalesce(triggerOutputs()?['body/mpa_effectivefrom'], utcNow()))",
+                  "@ticks(utcNow())"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "866a88f5-2b8b-4265-9d56-0fba5a96e0e6"
+          },
+          "type": "If"
         }
       }
     },

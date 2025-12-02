@@ -1,0 +1,120 @@
+[
+  {
+    "DisplayName": "shiftplanner_useravailabilities (Views)",
+    "Name": "_mpa_shiftplanner_useravailability_views",
+    "RelatedEntityName": "shiftplanner_useravailabilities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "074c40ad-e916-457e-9078-21431320d7e0": "Inactive User Availabilities",
+      "72ce27ee-1844-45bb-8c67-cea6635bc260": "User Availability Associated View",
+      "9006b4b2-311a-4eed-9520-ab429018981b": "User Availability Advanced Find View",
+      "b7486082-03f1-491c-8c87-f0a804d1bf56": "User Availability Lookup View",
+      "de40d76e-6b19-46ff-a36d-4abddc96b5d1": "Active User Availabilities"
+    }
+  },
+  {
+    "DisplayName": "Is Available (shiftplanner_useravailabilities)",
+    "Name": "mpa_shiftplanner_useravailability_mpa_isavailable",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_isavailable",
+        "OptionSetReferenceEntityName": "shiftplanner_useravailabilities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "mpa_isavailable",
+    "RelatedEntityName": "shiftplanner_useravailabilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (shiftplanner_useravailabilities)",
+    "Name": "mpa_shiftplanner_useravailability_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "shiftplanner_useravailabilities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "shiftplanner_useravailabilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (shiftplanner_useravailabilities)",
+    "Name": "mpa_shiftplanner_useravailability_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "shiftplanner_useravailabilities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "shiftplanner_useravailabilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_useravailabilities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_useravailability",
+    "MaxGetRowsCount": 1500,
+    "Name": "shiftplanner_useravailabilities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_enddate": "Enddate",
+      "mpa_isavailable": "Is Available",
+      "mpa_name": "Name",
+      "mpa_reason": "Reason",
+      "mpa_shiftplanner_useravailability_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_useravailability_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_useravailability_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_useravailability_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_useravailability_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_useravailability_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_useravailabilityid": "shiftplanner_useravailability",
+      "mpa_startdate": "StartDate",
+      "mpa_SystemUser": "User",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "shiftplanner_useravailabilities",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

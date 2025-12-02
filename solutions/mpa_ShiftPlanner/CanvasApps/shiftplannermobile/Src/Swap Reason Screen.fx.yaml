@@ -1,0 +1,414 @@
+"'Swap Reason Screen' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: =Reset(txIReason_SwapReason);
+
+    conMainContent_SwapReason As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderMobile_SwapReason.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =2
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingLeft: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingTop: =2
+        Width: =Parent.Width
+        Y: =compHeaderMobile_SwapReason.Y + compHeaderMobile_SwapReason.Height
+        ZIndex: =1
+
+        conBodyContent_SwapReason As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =ColorValue(varTheme.neutralBackground1)
+            FillPortions: =0
+            Height: =Parent.Height - Parent.PaddingTop - conButtons_SwapReason.Height - Parent.LayoutGap
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =16
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =20
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =2
+
+            conDetails_SwapReason As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                Fill: =ColorValue(varTheme.neutralBackground1)
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =24
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                ZIndex: =2
+
+                conInitialDate_SwapReason As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtInitialDate_SwapReason.Height + Self.LayoutGap + txtInitialDateValue_SwapReason.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =8
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    txtInitialDate_SwapReason As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Initial Date"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtInitialDateValue_SwapReason As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =Text(varSelectedShift.Date, "mmmm dd, yyyy")
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conRequestSwapShiftDate_SwapReason As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtRequestSwapShiftDate_SwapReason.Height + Self.LayoutGap + txtRequestSwapShiftDateValue_SwapReason.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =8
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                    txtRequestSwapShiftDate_SwapReason As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Request swap shift date"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtRequestSwapShiftDateValue_SwapReason As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =Text(varSelectedDate, "mmmm dd, yyyy")
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conSwapTo_SwapReason As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtSwapTo_SwapReason.Height + Self.LayoutGap + txtSwapToValue_SwapReason.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =8
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =3
+
+                    txtSwapTo_SwapReason As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Swap To"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtSwapToValue_SwapReason As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =varSelectedTeamPosition.Resource.'Full Name'
+                        Weight: ='TextCanvas.Weight'.Regular
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                conReason_SwapReason As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    Fill: =ColorValue(varTheme.neutralBackground1)
+                    FillPortions: =0
+                    Height: =txtReason_SwapReason.Height + Self.LayoutGap + txIReason_SwapReason.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =8
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width
+                    ZIndex: =4
+
+                    txtReason_SwapReason As Text:
+                        AutoHeight: =true
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Reason"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    "txIReason_SwapReason As 'Text input'":
+                        AccessibleLabel: ="Text Input"
+                        Appearance: ='TextInputCanvas.Appearance'.Outline
+                        BasePaletteColor: =
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        Font: =""
+                        FontColor: =
+                        FontItalic: =
+                        FontSize: =0
+                        FontWeight: =""
+                        Height: =200
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        Mode: ='TextInputCanvas.Mode'.Multiline
+                        Placeholder: =
+                        TriggerOutput: ="FocusOut"
+                        Type: ='TextInputCanvas.Type'.Text
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =0
+                        ZIndex: =3
+
+        conButtons_SwapReason As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Start
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            FillPortions: =0
+            Height: =56
+            LayoutGap: =12
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =12
+            PaddingTop: =12
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =3
+
+            btnBack_SwapReason As Button:
+                AccessibleLabel: ="Secondary"
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Secondary
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Back()
+                Text: ="Back"
+                VerticalAlign: =""
+                Width: =170
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            btnSubmit_SwapReason As Button:
+                AccessibleLabel: ="Primary"
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Primary
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: =If(IsBlank(txIReason_SwapReason.Value) || Len(Trim(txIReason_SwapReason.Value))<=0, DisplayMode.Disabled,DisplayMode.Edit)
+                Font: =""
+                FontColor: =
+                FontItalic: =
+                FontSize: =0
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |
+                    =IfError(
+                        //Insert new record to change request
+                        Patch(
+                            'Change Requests',
+                            Defaults('Change Requests'),
+                            {
+                                Resource: LookUp(
+                                    Users,
+                                    'Primary Email' = varCurrentUser.Email
+                                ),
+                                'New Resource': varSelectedTeamPosition.Resource,
+                                Reason: txIReason_SwapReason.Value,
+                                'Shift Booking': varSelectedShift,
+                                'Swap With': varSelectedTeamPosition,
+                                'Change Type': 'Change type'.Swap
+                            }
+                        );
+                        //Update Shift Booking Workflow Status
+                        Patch(
+                            'Shift Bookings',
+                            LookUp(
+                                'Shift Bookings',
+                                shiftplanner_shiftbooking = varSelectedTeamPosition.shiftplanner_shiftbooking
+                            ),
+                            {'Workflow Status': 'Workflow Status (Shift Bookings)'.Yes}
+                        );
+                        Navigate('Shift Details Screen');
+                        ,
+                        Notify(
+                            "Error inserting record.",
+                            NotificationType.Error
+                        ),
+                        Notify(
+                            "Request has been submitted",
+                            NotificationType.Success
+                        )
+                    );
+                Text: ="Submit"
+                VerticalAlign: =""
+                Width: =170
+                X: =0
+                Y: =0
+                ZIndex: =3
+
+    compHeaderMobile_SwapReason As compHeaderMobile:
+        BackScreen: ='Home Screen'
+        HeaderTitle: ="Swap Reason"
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
+        ZIndex: =2
+

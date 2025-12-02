@@ -1,0 +1,129 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+App:
+  Properties:
+    ConfirmExit: =true
+    ConfirmExitMessage: ="Are you sure you want to close this application?"
+    Formulas: |-
+      =nf_SimpleHourMinSecondTimeFormat(parSeconds:Number): Text 
+          = nf_SimpleHourMinTimeFormat(parSeconds) & " " & Text(Mod(parSeconds, 60), "00") & "s";
+
+      nf_SimpleHourMinTimeFormat(parSeconds:Number): Text 
+          = RoundDown(parSeconds/60/60,0) & "h " & Text(Mod(RoundDown(parSeconds/60,0),60), "00") & "m";
+
+
+
+      // desktop fonts
+      varDesktopFonts = {
+          H1: {
+              size: 28,
+              weight: 'TextCanvas.Weight'.Regular,
+              weightBold: 'TextCanvas.Weight'.Semibold,
+              italic: false
+          },
+          H2: {
+              size: 22,
+              weight: 'TextCanvas.Weight'.Regular,
+              weightBold: 'TextCanvas.Weight'.Semibold,
+              italic: false
+          },
+          H3: {
+              size: 16,
+              weight: 'TextCanvas.Weight'.Regular,
+              weightBold: 'TextCanvas.Weight'.Semibold,
+              italic: false
+          }
+      };
+
+      varTheme = {
+          neutralBackground1: "#FFFFFF",
+          neutralBackground2: "#FAFAFA",
+          neutralBackground3: "#F5F5F5",
+          neutralBackgroundDisabled: "#F0F0F0",
+          neutralForeground1: "#242424",
+          neutralForeground2: "#424242",
+          neutralForeground3: "#616161",
+          neutralForegroundOnBrand: "#FFFFFF",
+          neutralForegroundPlaceholder: "#707070",
+          neutralForegroundDisabled: "#BDBDBD",
+          neutralStroke1: "#D1D1D1",
+          neutralStroke2: "#E0E0E0",
+          neutralStrokeAccessible: "#616161",
+          neutralStrokeDisabled: "#E0E0E0",
+          statusDanger: "#C50F1F",
+          statusSuccess: "#107C10",
+          statusWarning1: "#FDE300",
+          statusWarning2: "#817400",
+          statusInformative: "#EBEBEB",
+          primary: "#0F6CBD"
+      };
+
+      varCurrentUser = User();
+
+      // Determine if the app is being launched by teams
+      varIsTeamsEmbedded = Not(IsBlank(Param("hostClientType")));
+    MinScreenHeight: '=640 '
+    OnStart: |-
+      =// left nav menu items
+      ClearCollect(
+          leftNavItems,
+          {
+              Label: "Home",
+              Icon: Icon.Home,
+              Screen: 'Home Screen'
+          },
+          {
+              Label: "All Shifts",
+              Icon: Icon.People,
+              Screen: 'All Shifts Screen'
+          },
+          {
+              Label: "My Requests",
+              Icon: Icon.DocumentWithContent,
+              Screen: 'Request Screen'
+          },
+          {
+              Label: "Time Sheets",
+              Icon: Icon.Clock,
+              Screen: 'Time Sheet View Screen'
+          },
+          {
+              Label: "Profile",
+              Icon: Icon.Person,
+              Screen: 'Profile Screen'
+          }
+      );
+      Set(
+          varThemeFont,
+          varDesktopFonts
+      );
+
+      //Create collection of 3 months from this month to 3 months forward
+      ClearCollect(colFilterMonths,
+          {
+              Name: Text(Today(), "mmmm yyyy"), 
+              Month: Month(Today())
+          },
+          {
+              Name: Text(DateAdd(Today(), 1, TimeUnit.Months), "mmmm yyyy"),
+              Month: Month(DateAdd(Today(), 1, TimeUnit.Months))
+          },
+          {
+              Name: Text(DateAdd(Today(), 2, TimeUnit.Months), "mmmm yyyy"),
+              Month: Month(DateAdd(Today(), 2, TimeUnit.Months))
+          }
+      );
+
+
+      //Set current selected screen
+      Set(varSelectedScreen, 'Home Screen');
+    SizeBreakpoints: |-
+      =//[600, 900, 1200, 1600]
+      [600]
+    Theme: =PowerAppsTheme

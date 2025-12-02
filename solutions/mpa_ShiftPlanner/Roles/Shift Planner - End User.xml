@@ -22,6 +22,7 @@
     <RolePrivilege name="prvAppendTompa_shiftplanner_zone" level="Global" />
     <RolePrivilege name="prvAppendToNewProcess" level="Global" />
     <RolePrivilege name="prvAppendToTranslationProcess" level="Global" />
+    <RolePrivilege name="prvAppendToUser" level="Global" />
     <RolePrivilege name="prvAppendToWorkflow" level="Global" />
     <RolePrivilege name="prvAppendToWorkflowSession" level="Basic" />
     <RolePrivilege name="prvAppendTranslationProcess" level="Global" />

@@ -1,0 +1,164 @@
+[
+  {
+    "DisplayName": "shiftplanner_shifttypes (Views)",
+    "Name": "_mpa_shiftplanner_shifttype_views",
+    "RelatedEntityName": "shiftplanner_shifttypes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "204e85f1-fb73-4254-b9e1-62edeba6e102": "Inactive Shift Types",
+      "4f820f62-7db9-4dd3-8640-cb6b445864d5": "Active Shift Types",
+      "5cac6cfa-eec1-4688-9eb0-80e0e32e3ab8": "Lookup View",
+      "a9d10787-242e-42df-8cc8-e58626baf842": "Associated View",
+      "e9e97cf6-f459-4a65-865a-5b945a3011ec": "Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Days Included (shiftplanner_shifttypes)",
+    "Name": "mpa_shiftplanner_shifttype_mpa_daysincluded",
+    "OptionSetInfoNameMapping": {
+      "1": "Sunday",
+      "100000000": "Monday;Friday (100000000)",
+      "100000001": "Monday;Friday (100000001)",
+      "100000002": "Monday;Thursday (100000002)",
+      "100000003": "Monday;Friday (100000003)",
+      "100000004": "Monday;Tuesday;Thursday (100000004)",
+      "100000005": "Monday;Thursday (100000005)",
+      "100000006": "Monday;Tuesday;Thursday;Friday (100000006)",
+      "100000007": "Monday;Tuesday;Thursday (100000007)",
+      "100000008": "Monday;Tuesday;Wednesday;Friday (100000008)",
+      "100000009": "Monday;Tuesday;Thursday;Friday (100000009)",
+      "100000010": "Monday;Tuesday;Wednesday;Thursday (100000010)",
+      "100000011": "Monday;Tuesday;Wednesday;Friday (100000011)",
+      "100000012": "Monday;Tuesday;Wednesday;Thursday;Friday (100000012)",
+      "100000013": "Monday;Tuesday;Wednesday;Thursday (100000013)",
+      "100000014": "Monday;Wednesday (100000014)",
+      "100000015": "Monday;Tuesday;Wednesday;Thursday;Friday (100000015)",
+      "100000016": "Monday;Wednesday;Friday (100000016)",
+      "100000017": "Monday;Wednesday (100000017)",
+      "100000018": "Monday;Wednesday;Thursday (100000018)",
+      "100000019": "Monday;Wednesday;Friday (100000019)",
+      "100000020": "Monday;Wednesday;Thursday;Friday (100000020)",
+      "100000021": "Monday;Wednesday;Thursday (100000021)",
+      "100000022": "Saturday;Sunday (100000022)",
+      "100000023": "Monday;Wednesday;Thursday;Friday (100000023)",
+      "100000024": "Tuesday;Friday (100000024)",
+      "100000025": "Saturday;Sunday (100000025)",
+      "100000026": "Tuesday;Thursday (100000026)",
+      "100000027": "Tuesday;Friday (100000027)",
+      "100000028": "Tuesday;Wednesday;Friday (100000028)",
+      "100000029": "Tuesday;Thursday (100000029)",
+      "100000030": "Tuesday;Wednesday;Thursday;Friday (100000030)",
+      "100000031": "Tuesday;Wednesday;Friday (100000031)",
+      "100000032": "Wednesday;Friday (100000032)",
+      "100000033": "Tuesday;Wednesday;Thursday;Friday (100000033)",
+      "100000034": "Wednesday;Thursday;Friday (100000034)",
+      "100000035": "Wednesday;Friday (100000035)",
+      "100000036": "Wednesday;Thursday;Friday (100000036)",
+      "2": "Monday",
+      "3": "Tuesday",
+      "4": "Wednesday",
+      "5": "Thursday",
+      "6": "Friday",
+      "7": "Saturday"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_daysincluded",
+        "OptionSetReferenceEntityName": "shiftplanner_shifttypes"
+      }
+    },
+    "OptionSetTypeKey": "MultiSelectPicklistType",
+    "RelatedColumnInvariantName": "mpa_daysincluded",
+    "RelatedEntityName": "shiftplanner_shifttypes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (shiftplanner_shifttypes)",
+    "Name": "mpa_shiftplanner_shifttype_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "shiftplanner_shifttypes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "shiftplanner_shifttypes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (shiftplanner_shifttypes)",
+    "Name": "mpa_shiftplanner_shifttype_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "shiftplanner_shifttypes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "shiftplanner_shifttypes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "mpa_shiftplanner_shifttypes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "mpa_shiftplanner_shifttype",
+    "MaxGetRowsCount": 1500,
+    "Name": "shiftplanner_shifttypes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mpa_daysincluded": "Days Included",
+      "mpa_duration": "Duration",
+      "mpa_enddate": "End Date",
+      "mpa_name": "Name",
+      "mpa_shiftplanner_shiftteam_shifttype": "Shift Teams",
+      "mpa_shiftplanner_shifttype_AsyncOperations": "System Jobs",
+      "mpa_shiftplanner_shifttype_BulkDeleteFailures": "Bulk Delete Failures",
+      "mpa_shiftplanner_shifttype_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "mpa_shiftplanner_shifttype_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "mpa_shiftplanner_shifttype_ProcessSession": "Process Sessions",
+      "mpa_shiftplanner_shifttype_SyncErrors": "Sync Errors",
+      "mpa_shiftplanner_shifttypeid": "shiftplanner_shifttype",
+      "mpa_shifttypeicon": "Shift Type Icon",
+      "mpa_shifttypeiconid": "mpa_shifttypeiconId",
+      "mpa_startdate": "Start Date Time",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "shiftplanner_shifttypes",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

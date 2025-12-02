@@ -1,0 +1,173 @@
+"'Navigation Screen' As screen":
+    Fill: =ColorValue(varTheme.neutralBackground2)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    conMainContent_Navigation As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingBottom: =5.18
+        PaddingLeft: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 5.18
+            )
+        PaddingTop: =10
+        Width: =Parent.Width
+        ZIndex: =1
+
+        icoCancel_Navigation As icon.Cancel:
+            AccessibleLabel: ="Menu"
+            AlignInContainer: =AlignInContainer.End
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =App.Theme.Colors.Darker70
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =0
+            Height: =19.5
+            Icon: =Icon.Cancel
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            OnSelect: =Back()
+            TabIndex: =0
+            Width: =19.5
+            ZIndex: =1
+
+        galMenu_Navigation As gallery.galleryVertical:
+            AccessibleLabel: ="Navigation Menu"
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =App.Theme.Colors.Darker40
+            DelayItemLoading: =true
+            FocusedBorderThickness: =0
+            Height: =Parent.Height - icoCancel_Navigation.Height
+            Items: =leftNavItems
+            Layout: =Layout.Vertical
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =287
+            LayoutMinWidth: =320
+            LoadingSpinner: =LoadingSpinner.Data
+            TabIndex: =0
+            TemplatePadding: =
+            TemplateSize: =Min(48, 116)
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+            ZIndex: =2
+
+            conTab_Navigation As groupContainer.verticalAutoLayoutContainer:
+                Height: =Parent.TemplateHeight
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width - 20
+                ZIndex: =1
+
+                conScreenLabel_Navigation As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutGap: =10
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =5
+                    PaddingRight: =10
+                    PaddingTop: =5
+                    Width: =200
+                    ZIndex: =1
+
+                    ico_ScreenIcon_Navigation As icon.Add:
+                        BorderColor: =App.Theme.Colors.Darker40
+                        Color: |-
+                            =If(
+                                varSelectedScreen = ThisItem.Screen,
+                                ColorValue(varTheme.primary)
+                            )
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        FocusedBorderThickness: =0
+                        Height: =Self.Width
+                        Icon: =ThisItem.Icon
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        Width: =28
+                        ZIndex: =2
+
+                    txtScreenName_Navigation As Text:
+                        Align: ='TextCanvas.Align'.Start
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =ico_ScreenIcon_Navigation.Color
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =200
+                        Size: =varThemeFont.H2.size
+                        Text: =ThisItem.Label
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: |-
+                            =If(
+                                varSelectedScreen = ThisItem.Screen,
+                                varThemeFont.H2.weightBold
+                            )
+                        Width: =200
+                        X: =0
+                        Y: =0
+                        ZIndex: =3
+
+            btnClickZone_Navigation As Button:
+                AccessibleLabel: ="Navigate to " & ThisItem.Label
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Transparent
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =galMenu_Navigation.TemplateHeight
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                OnSelect: |-
+                    =Set(varSelectedScreen, ThisItem.Screen);
+                    Navigate(ThisItem.Screen)
+                Text: =""
+                VerticalAlign: =""
+                Width: =galMenu_Navigation.TemplateWidth
+                X: =0
+                Y: =(galMenu_Navigation.TemplateHeight - Self.Height) / 2
+                ZIndex: =2
+
+    Image2 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =0
+        Image: =
+        X: =40
+        Y: =40
+        ZIndex: =2
+

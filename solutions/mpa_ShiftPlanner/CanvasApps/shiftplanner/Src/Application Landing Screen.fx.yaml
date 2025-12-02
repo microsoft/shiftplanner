@@ -1,0 +1,482 @@
+"'Application Landing Screen' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: |-
+        =With(
+            {
+                // Build a summary table: one row per Zone with its count
+                uaByZone:
+                    AddColumns(
+                        GroupBy(
+                            AddColumns(shiftplanner_useraffiliations, ZoneId,Zone.shiftplanner_zone),
+                            ZoneId,      // group key: the lookup column to Zone
+                            ua         // subgroup table name
+                        ),
+                        AffiliationCount,
+                        CountRows(ua)  // count affiliations in each group
+                    )
+            },
+        
+            UpdateContext({
+                colZoneSummary:
+                    AddColumns(
+                        shiftplanner_zones As z,
+                        AffiliationCount,
+                        Coalesce(
+                            LookUp(uaByZone, ZoneId = z.shiftplanner_zone).AffiliationCount,
+                            0
+                        )
+                    )
+            });
+        )
+
+    conMainContent_Body_LandingScreen As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderCompound_LandingScreen.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingBottom: =20
+        PaddingLeft: =62
+        PaddingRight: =82
+        PaddingTop: =20
+        Width: =Parent.Width
+        Y: =compHeaderCompound_LandingScreen.Y + compHeaderCompound_LandingScreen.Height
+        ZIndex: =1
+
+        conPageContent_LandingScreen As groupContainer.verticalAutoLayoutContainer:
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =1204
+            ZIndex: =1
+
+            conFilter_landingScreen As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =cmbFilter_LandingScreen.Height
+                LayoutGap: =16
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =1
+
+                conPlanningMode_LandingScreen As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutMaxHeight: =0
+                    LayoutMaxWidth: =0
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =22
+                    Width: =250
+                    ZIndex: =1
+
+                    btnPlanningModeFacility_LandingScreen As button:
+                        BorderColor: =App.Theme.Colors.Primary
+                        BorderStyle: =BorderStyle.None
+                        Color: =App.Theme.Colors.PrimaryForeground
+                        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                        DisabledColor: =App.Theme.Colors.PrimaryForeground
+                        DisabledFill: =App.Theme.Colors.Primary
+                        DisplayMode: =DisplayMode.Disabled
+                        Fill: =App.Theme.Colors.Primary
+                        Font: =App.Theme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Height: =32
+                        HoverBorderColor: =App.Theme.Colors.Darker10
+                        HoverColor: =App.Theme.Colors.PrimaryForeground
+                        HoverFill: =App.Theme.Colors.Darker10
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        PressedBorderColor: =App.Theme.Colors.Darker40
+                        PressedColor: =Self.Color
+                        PressedFill: =App.Theme.Colors.Darker40
+                        RadiusBottomLeft: =15
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =15
+                        RadiusTopRight: =0
+                        Size: =11
+                        Text: ="Facility Plan"
+                        Width: =100
+                        ZIndex: =1
+
+                    btnPlanningModeStaff_LandingScreen As button:
+                        BorderColor: =App.Theme.Colors.Primary
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =0
+                        Color: =ColorValue(varTheme.neutralForegroundDisabled)
+                        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(244, 244, 244, 1)
+                        Fill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                        Font: =App.Theme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Height: =32
+                        HoverBorderColor: =ColorValue(varTheme.neutralBackground2)
+                        HoverColor: =App.Theme.Colors.Primary
+                        HoverFill: =ColorValue(varTheme.neutralBackgroundDisabled)
+                        LayoutMaxHeight: =0
+                        LayoutMaxWidth: =0
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: =Navigate('Staff Planning Screen')
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        PressedBorderColor: =App.Theme.Colors.Darker40
+                        PressedColor: =App.Theme.Colors.PrimaryForeground
+                        PressedFill: =Self.HoverFill
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =15
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =15
+                        Size: =11
+                        Text: ="Staff Plan"
+                        Width: =100
+                        ZIndex: =2
+
+                txtHeaderSpacer_LandingScreen As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    AlignInContainer: =AlignInContainer.Center
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FillPortions: =1
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =10
+                    Size: =14
+                    TabIndex: =0
+                    Text: =
+                    Tooltip: =""
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =true
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =20
+                    Wrap: =false
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+                txtFilter_LandingScreen As Text:
+                    Align: ='TextCanvas.Align'.End
+                    AlignInContainer: =AlignInContainer.Center
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =Self.Size * 1.5
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =14
+                    Text: |-
+                        ="Filter:"
+                    VerticalAlign: =VerticalAlign.Middle
+                    Weight: =varThemeFont.H3.weightBold
+                    Width: =80  
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+                cmbFilter_LandingScreen As Combobox.pcfdataset:
+                    AccessibleLabel: ="Select Hospital"
+                    Appearance: ="FilledDarker"
+                    BasePaletteColor: =
+                    BorderStyle: =""
+                    DefaultSelectedItems: =First(colFilter)
+                    DisplayMode: =DisplayMode.Edit
+                    Font: =""
+                    FontItalic: =
+                    FontSize: =0
+                    FontWeight: =""
+                    Height: =32
+                    Items: =colFilter
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =320
+                    Required: =false
+                    SelectMultiple: =false
+                    TriggerOutput: ="Keypress"
+                    Width: =280
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+                    Name1 As PowerApps_CoreControls_ComboboxCanvasTemplate_dataField.textualColumn:
+                        FieldDisplayName: ="Name"
+                        FieldName: ="Name"
+                        FieldType: ="s"
+                        FieldVariantName: ="textualColumn"
+                        Order: =2
+                        ZIndex: =16
+
+            galFacility_LandingScreen As gallery.variableTemplateHeightGallery:
+                AccessibleLabel: ="Facility Gallery"
+                BorderColor: =App.Theme.Colors.Darker40
+                DelayItemLoading: =true
+                FocusedBorderThickness: =0
+                Items: |-
+                    =If(
+                        IsBlank(cmbFilter_LandingScreen.Selected.Name) || cmbFilter_LandingScreen.Selected.Name = varAllFacilitiesValue,
+                        Sort(shiftplanner_facilities, Name),
+                        Sort(Filter(shiftplanner_facilities, Name = cmbFilter_LandingScreen.Selected.Name), Name)
+                    )
+                Layout: =Layout.Vertical
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                TabIndex: =0
+                TemplateSize: =conFacility_LandingScreen.Height + conZone_LandingScreen.Height
+                ZIndex: =2
+
+                conZone_LandingScreen As groupContainer.verticalAutoLayoutContainer:
+                    Fill: =ColorValue(varTheme.neutralBackground2)
+                    Height: |-
+                        =//Parent.TemplateHeight
+                          galZone_LandingScreen.Height+conIcoFacilitySeparator_LandingScreen.Height + 40
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.TemplateWidth
+                    Y: =conFacility_LandingScreen.Height
+                    ZIndex: =1
+
+                    "galZone_LandingScreen As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+                        AccessibleLabel: ="Zone Gallery"
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        BorderColor: =App.Theme.Colors.Darker40
+                        DelayItemLoading: =true
+                        FillPortions: =0
+                        FocusedBorderThickness: =0
+                        Height: |-
+                            =//(RoundUp(galZone_LandingScreen.AllItemsCount/4,0)*conGalZone_LandingScreen.Height)+(Self.TemplatePadding*RoundUp(galZone_LandingScreen.AllItemsCount/4,0)) +20
+                            With(
+                                {
+                                    Rows: RoundUp(
+                                        galZone_LandingScreen.AllItemsCount / If(varZoneWrapCount=0 Or galZone_LandingScreen.AllItemsCount=0,1,varZoneWrapCount),
+                                        0
+                                    )
+                                },
+                                ((Rows * conGalZone_LandingScreen.Height) + (Rows * Self.TemplatePadding)) + 48//bottom Padding
+                            )
+                        Items: |-
+                            =//Sort(Filter(shiftplanner_zones,ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
+                            Sort(Filter(colZoneSummary, ThisItem.shiftplanner_facility = Facility.shiftplanner_facility),Name)
+                        Layout: =Layout.Vertical
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        TabIndex: =0
+                        TemplatePadding: =20
+                        TemplateSize: =conGalZone_LandingScreen.Height
+                        Width: =Parent.Width
+                        WrapCount: =varZoneWrapCount
+                        Y: =
+                        ZIndex: =2
+
+                        conGalZone_LandingScreen As groupContainer.verticalAutoLayoutContainer:
+                            DropShadow: =DropShadow.Light
+                            Fill: =ColorValue(varTheme.neutralBackground1)
+                            Height: =100
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutGap: =4
+                            LayoutMode: =LayoutMode.Auto
+                            PaddingBottom: =16
+                            PaddingLeft: =20
+                            PaddingRight: =20
+                            PaddingTop: =16
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            Width: =278
+                            ZIndex: =3
+
+                            txtZone_LandingScreen As Text:
+                                AutoHeight: =false
+                                BorderColor: =
+                                BorderStyle: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =App.Theme.Colors.Primary
+                                Height: =46
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Size: =varThemeFont.B2.size + 2
+                                Text: =ThisItem.Name
+                                VerticalAlign: =VerticalAlign.Top
+                                Weight: =varThemeFont.H3.weightBold
+                                Width: =Parent.Width - Parent.PaddingRight-Parent.PaddingLeft
+                                Wrap: =true
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            txtNoOfStaff_LandingScreen As Text:
+                                Align: ='TextCanvas.Align'.Start
+                                AutoHeight: =false
+                                BorderColor: =
+                                BorderStyle: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =ColorValue(varTheme.neutralForeground1)
+                                Height: =20
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Size: =//varThemeFont.H3.size
+                                Text: =ThisItem.AffiliationCount &" Staff"
+                                VerticalAlign: =VerticalAlign.Top
+                                Weight: =varThemeFont.H3.weight
+                                Width: =Parent.Width - Parent.PaddingRight-Parent.PaddingLeft
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
+
+                        btnTransparent_LandingScreen As Button:
+                            AccessibleLabel: ="Button for viewing the full details"
+                            Align: =""
+                            Appearance: ='ButtonCanvas.Appearance'.Transparent
+                            BasePaletteColor: =
+                            BorderColor: =
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Font: =""
+                            FontColor: =
+                            FontSize: =varThemeFont.H2.size
+                            FontWeight: =varThemeFont.H2.weight
+                            Height: =galZone_LandingScreen.TemplateHeight
+                            Icon: =""
+                            IconRotation: =0
+                            IconStyle: ="Outline"
+                            Layout: ="Icon before"
+                            OnSelect: |-
+                                =Set(varSelectedZone, ThisItem);
+                                
+                                // ToDo: Add a date range
+                                ClearCollect(colFilteredBookings, 
+                                    Filter(
+                                        shiftplanner_shiftbookings, 
+                                        Zone.shiftplanner_zone = ThisItem.shiftplanner_zone 
+                                        //&& Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                    )
+                                );
+                                Navigate('Main Calendar Screen',ScreenTransition.Fade);
+                            Text: =""
+                            VerticalAlign: =""
+                            Width: =galZone_LandingScreen.TemplateWidth
+                            X: =0
+                            Y: =0
+                            ZIndex: =5
+
+                    conIcoFacilitySeparator_LandingScreen As groupContainer.verticalAutoLayoutContainer:
+                        FillPortions: =0
+                        Height: =icoFacilitySeparator_LandingScreen.Height
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        ZIndex: =4
+
+                        "icoFacilitySeparator_LandingScreen As icon.'3DPrinting'":
+                            AccessibleLabel: =//customize the accesible label based in the icon
+                            BorderColor: =ColorValue(varTheme.neutralBackground3)
+                            Color: =ColorValue(varTheme.neutralBackground3)
+                            DisabledBorderColor: =ColorValue(varTheme.neutralStrokeDisabled)
+                            DisabledColor: =ColorValue(varTheme.neutralBackgroundDisabled)
+                            DisabledFill: =RGBA(0,0,0,0)
+                            DisplayMode: =DisplayMode.View
+                            Fill: =ColorValue(varTheme.neutralStroke2)
+                            FocusedBorderColor: =ColorValue(varTheme.neutralBackground3)
+                            Height: =2
+                            HoverBorderColor: =ColorValue(varTheme.neutralBackground3)
+                            HoverColor: =ColorValue(varTheme.neutralBackground3)
+                            HoverFill: =RGBA(0,0,0,0)
+                            Icon: =Icon.HorizontalLine
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            PressedBorderColor: =App.Theme.Colors.Primary
+                            PressedColor: =App.Theme.Colors.Primary
+                            PressedFill: =RGBA(0,0,0,0)
+                            Width: =1200
+                            X: =20
+                            Y: =445
+                            ZIndex: =1
+
+                conFacility_LandingScreen As groupContainer.verticalAutoLayoutContainer:
+                    Height: =txtFacility_LandingScreen.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =20
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                    txtFacility_LandingScreen As Text:
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =Self.Size * 1.5
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =varThemeFont.H1.size
+                        Text: =ThisItem.Name
+                        VerticalAlign: =VerticalAlign.Top
+                        Weight: =varThemeFont.H1.weightBold
+                        Width: =Parent.Width - conFacility_LandingScreen.PaddingLeft
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+    compHeaderCompound_LandingScreen As compHeaderCompound:
+        Height: |-
+            =compHeaderCompound_LandingScreen.HeaderHeight
+            //varHeaderHeight
+        Width: =compHeaderCompound_LandingScreen.HeaderWidth
+        ZIndex: =2
+

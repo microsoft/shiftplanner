@@ -1,0 +1,270 @@
+compConfirmation As CanvasComponent:
+    BackButtonMessage: ="Cancel"
+    ExternalLinkButtonMessage: ="Proceed"
+    ExternalLinkTarget: ="URL"
+    Fill: =RGBA(0, 0, 0, 0)
+    Headline: ="Headline"
+    Height: =compConfirmation.MaxHeight
+    MaxHeight: |-
+        =If(App.ActiveScreen.Size = 1,
+            220,
+            180
+        )
+    MaxWidth: |-
+        =If(App.ActiveScreen.Size = 1,
+            552,
+            600
+        )
+    Message: ="Message"
+    Width: =compConfirmation.MaxWidth
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    conBody_ConfirmationComp As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =5
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =2
+
+        lblHeader_ConfirmationComp As Text:
+            Align: ='TextCanvas.Align'.Start
+            AutoHeight: =false
+            BorderColor: =
+            BorderStyle: =""
+            DisplayMode: =DisplayMode.Edit
+            Fill: =
+            FontColor: =
+            Height: =Self.Size * 1.5
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            Size: =varThemeFont.H3.size
+            Text: =compConfirmation.Headline
+            VerticalAlign: =VerticalAlign.Top
+            Weight: =varThemeFont.H3.weightBold
+            Width: =Parent.Width - 40
+            X: =0
+            Y: =20
+            ZIndex: =1
+
+        lblSubtitle_ConfirmationComp As Text:
+            AutoHeight: =true
+            BorderColor: =
+            BorderStyle: =""
+            DisplayMode: =DisplayMode.Edit
+            Fill: =
+            FontColor: =
+            Height: =32
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            Text: =compConfirmation.Message
+            Width: =Parent.Width - 40
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+        conButtons_ConfirmationComp As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: |-
+                =If(App.ActiveScreen.Size = 1,
+                    71,
+                    44
+                )
+            LayoutAlignItems: |-
+                =If(App.ActiveScreen.Size = 1,
+                    LayoutAlignItems.Center,
+                    LayoutAlignItems.End
+                )
+            LayoutDirection: |-
+                =If(App.ActiveScreen.Size = 1,
+                    LayoutDirection.Vertical,
+                    LayoutDirection.Horizontal
+                )
+            LayoutGap: |-
+                =If(App.ActiveScreen.Size = 1,
+                    5,
+                    8
+                )
+            LayoutJustifyContent: |-
+                =If(App.ActiveScreen.Size = 1,
+                    LayoutJustifyContent.Center,
+                    LayoutJustifyContent.End
+                )
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =1
+            PaddingRight: =1
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width - 40
+            ZIndex: =4
+
+            btnBackButton_ConfirmationComp As Button:
+                AccessibleLabel: =Self.Text
+                Align: =""
+                Appearance: ="Secondary"
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Navigate(compConfirmation.BackTarget)
+                Text: =compConfirmation.BackButtonMessage
+                VerticalAlign: =""
+                Width: |-
+                    =If(App.ActiveScreen.Size = 1,
+                        Parent.Width - Parent.PaddingLeft - Parent.PaddingRight,
+                        75
+                    )
+                X: =(Parent.Width - Self.Width) / 2
+                Y: =Parent.Height - Self.Height - 1
+                ZIndex: =1
+
+            btnActionButton_ConfirmationComp As Button:
+                AccessibleLabel: =Self.Text
+                Align: =""
+                BasePaletteColor: =
+                BorderColor: =
+                BorderStyle: =""
+                DisplayMode: |-
+                    =//DisplayMode.Edit
+                    varPublishButtonDisplayMode
+                FontColor: =
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |-
+                    =Set(
+                        varPublishButtonDisplayMode,
+                        DisplayMode.Disabled
+                    );
+                    
+                    //Collect affected Records
+                    ClearCollect(
+                        colforpatching,
+                        Filter(
+                            colFilteredBookings,
+                            DateValue(Date) > (varSelectedWeek - Weekday(varSelectedWeek)) && DateValue(Date) <= ((varSelectedWeek - Weekday(varSelectedWeek)) + 7)
+                        )
+                    );
+                    // store the start time
+                    Set(
+                        varStartTime_Patch,
+                        Now()
+                    );
+                    
+                    //Update Collection
+                    If(
+                        Self.Text = "Publish",
+                        UpdateIf(
+                            colforpatching,
+                            'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished,
+                            {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Published}
+                        );
+                        ,
+                        UpdateIf(
+                            colforpatching,
+                            'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Published,
+                            {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Unpublished}
+                        );
+                        
+                    );
+                    //Patch Dataverse
+                    Patch(
+                        shiftplanner_shiftbookings,
+                        ShowColumns(
+                            colforpatching,
+                            shiftplanner_shiftbooking,
+                            'Status Reason'
+                        )
+                    );
+                    
+                    //Run both Week Status Email Notification and Week Status Calendar Invite flow with parameters: First Day of Selected Week, Last Day of Selected Week, Zone, Action (Publish/Unpublish)
+                    
+                    
+                    WeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text, "");
+                    WeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text,"");
+                    
+                    
+                    // calculate the difference between start time and end time
+                    Set(
+                        varDuration_Patch,
+                        DateDiff(
+                            varStartTime_Patch,
+                            Now(),
+                            TimeUnit.Milliseconds
+                        )
+                    );
+                    ClearCollect(
+                        colFilteredBookings,
+                        Filter(
+                            shiftplanner_shiftbookings,
+                            Zone.Name = varSelectedZone.Name && Status = 'Status (shiftplanner_shiftbookings)'.Active
+                        )
+                    );
+                    //Clear(colforpatching);
+                    Navigate(compConfirmation.BackTarget);
+                    With(
+                        {
+                            PublishNotification: "Selected week has been published.",
+                            UnpublishNotification: "Selected week has been unpublished."
+                        },
+                        If(
+                            Self.Text = "Publish",
+                            Notify(
+                                PublishNotification,
+                                NotificationType.Success,
+                                varTheme.toastTimeout
+                            ),
+                            Notify(
+                                UnpublishNotification,
+                                NotificationType.Success,
+                                varTheme.toastTimeout
+                            )
+                        )
+                    );
+                    
+                    Set(
+                        varPublishButtonDisplayMode,
+                        DisplayMode.Edit
+                    );
+                Text: =compConfirmation.ExternalLinkButtonMessage
+                VerticalAlign: =""
+                Width: |-
+                    =If(App.ActiveScreen.Size = 1,
+                        Parent.Width - Parent.PaddingLeft - Parent.PaddingRight,
+                        75
+                    )
+                X: =(Parent.Width - Self.Width) / 2
+                Y: =Parent.Height - Self.Height - 1
+                ZIndex: =2
+

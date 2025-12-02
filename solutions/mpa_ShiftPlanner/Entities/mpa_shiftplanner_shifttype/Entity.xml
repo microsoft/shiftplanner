@@ -387,6 +387,302 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </option>
+              <option value="100000000" IsHidden="0">
+                <labels>
+                  <label description="Monday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000001" IsHidden="0">
+                <labels>
+                  <label description="Monday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000002" IsHidden="0">
+                <labels>
+                  <label description="Monday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000003" IsHidden="0">
+                <labels>
+                  <label description="Monday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000004" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000005" IsHidden="0">
+                <labels>
+                  <label description="Monday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000006" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000007" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000008" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000009" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000010" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Wednesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Wednesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000011" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000012" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000013" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Wednesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Wednesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000014" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000015" IsHidden="0">
+                <labels>
+                  <label description="Monday;Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000016" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000017" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000018" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000019" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000020" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000021" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000022" IsHidden="0">
+                <labels>
+                  <label description="Saturday;Sunday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Saturday;Sunday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000023" IsHidden="0">
+                <labels>
+                  <label description="Monday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Monday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000024" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000025" IsHidden="0">
+                <labels>
+                  <label description="Saturday;Sunday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Saturday;Sunday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000026" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000027" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000028" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000029" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Thursday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Thursday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000030" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000031" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000032" IsHidden="0">
+                <labels>
+                  <label description="Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000033" IsHidden="0">
+                <labels>
+                  <label description="Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Tuesday;Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000034" IsHidden="0">
+                <labels>
+                  <label description="Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000035" IsHidden="0">
+                <labels>
+                  <label description="Wednesday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Wednesday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="100000036" IsHidden="0">
+                <labels>
+                  <label description="Wednesday;Thursday;Friday" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="Wednesday;Thursday;Friday" languagecode="1033" />
+                </Descriptions>
+              </option>
             </options>
           </optionset>
           <displaynames>

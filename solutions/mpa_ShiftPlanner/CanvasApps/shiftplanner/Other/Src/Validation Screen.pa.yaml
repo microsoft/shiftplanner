@@ -1,0 +1,112 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Validation Screen:
+    Properties:
+      Fill: =ColorValue(varTheme.neutralBackground1)
+    Children:
+      - conMainContent_Validation:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =varTheme.popupBackground
+            Height: =Parent.Height - compHeaderCompound_Validation.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =20
+            PaddingLeft: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingRight: |-
+              =Switch(App.ActiveScreen.Size,
+              5, (App.Width - 1580)/2,
+              4, 20,
+              3, 20,
+              2, 20,
+              1, 20
+              )
+            PaddingTop: =20
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =compHeaderCompound_Validation.Y + compHeaderCompound_Validation.Height
+          Children:
+            - conCenterBodyShadow_Validation:
+                Control: GroupContainer@1.3.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.Semibold
+                  Fill: =ColorValue(varTheme.neutralBackground1)
+                  FillPortions: =0
+                  Height: =compConfirmation_Validation.Height
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  Width: =compConfirmation_Validation.Width
+                Children:
+                  - compConfirmation_Validation:
+                      Control: CanvasComponent
+                      ComponentName: compConfirmation
+                      Properties:
+                        BackButtonMessage: ="Cancel"
+                        BackTarget: ='Main Calendar Screen'
+                        ExternalLinkButtonMessage: =If(varPublishStatus = "Published", "Unpublish", "Publish")
+                        ExternalLinkTarget: =
+                        Fill: =ColorValue(varTheme.neutralBackground1)
+                        Headline: |-
+                          =With(
+                              {
+                                  PublishHeader: "Publish selected week's shift plan?",
+                                  UnpublishHeader: "Unpublish selected week's shift plan?"
+                              },
+                              If(varPublishStatus = "Published", UnpublishHeader, PublishHeader)
+                          )
+                        Height: =compConfirmation_Validation.MaxHeight
+                        MaxHeight: |-
+                          =If(App.ActiveScreen.Size = 1,
+                              220,
+                              156
+                          )
+                        MaxWidth: =If(App.ActiveScreen.Size = 1, (App.Width - 100), 600)
+                        Message: |-
+                          =With(
+                              {
+                                  PublishMessage: "To publish the selected week's shift plan, click the 'Publish' button.",
+                                  UnpublishMessage: "To unpublish the selected week's shift plan, click the 'Unpublish' button."
+                              },
+                              If(varPublishStatus = "Published", UnpublishMessage, PublishMessage)
+                          )
+                        Width: =compConfirmation_Validation.MaxWidth
+      - compHeaderCompound_Validation:
+          Control: CanvasComponent
+          ComponentName: compHeaderCompound
+          Properties:
+            Fill: =App.Theme.Colors.Primary
+            HeaderHeight: =51
+            HeaderWidth: =1366
+            Height: |-
+              =compHeaderCompound_Validation.HeaderHeight
+              //varHeaderHeight
+            IsMenuScreen: =false
+            NavigateMenu: =
+            NavigateScreen: ='Main Calendar Screen'
+            Width: =compHeaderCompound_Validation.HeaderWidth

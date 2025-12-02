@@ -1,0 +1,36 @@
+{
+  "Name": "PowerApps_CoreControls_Avatar",
+  "PcfConversions": [
+    {
+      "Action": [
+        {
+          "Name": "ActiveAppearance",
+          "Type": "remove"
+        }
+      ],
+      "From": "1.0.32",
+      "To": "1.0.33"
+    },
+    {
+      "Action": [
+        {
+          "Name": "Active",
+          "Type": "remove"
+        },
+        {
+          "Name": "Status",
+          "NewName": "Badge",
+          "Type": "rename"
+        },
+        {
+          "Name": "ThemeColor",
+          "NewName": "Appearance",
+          "Type": "rename"
+        }
+      ],
+      "From": "1.0.33",
+      "To": "1.0.38"
+    }
+  ],
+  "Version": "1.0.40"
+}

@@ -1,0 +1,505 @@
+"'Shift Details Screen' As screen":
+    Fill: =ColorValue(varTheme.neutralBackground2)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    conMainContent_ShiftDetails As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ColorValue(varTheme.neutralBackground2)
+        Height: =Parent.Height - compHeaderMobile_ShiftDetails.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        PaddingBottom: =12
+        PaddingLeft: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingRight: |-
+            =Switch(App.ActiveScreen.Size,
+            5, (App.Width - 1580)/2,
+            4, 20,
+            3, 20,
+            2, 20,
+            1, 20
+            )
+        PaddingTop: =20
+        Width: =Parent.Width
+        Y: =compHeaderMobile_ShiftDetails.Height
+        ZIndex: =1
+
+        conBodyContent_ShiftDetails As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Fill: =ColorValue(varTheme.neutralBackground2)
+            FillPortions: =0
+            Height: =Parent.Height - Parent.PaddingTop - Parent.PaddingBottom
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+            Y: =compHeaderMobile_ShiftDetails.Height + compHeaderMobile_ShiftDetails.Height + 100
+            ZIndex: =3
+
+            conHeaderDetails_ShiftDetails As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =txtDateHeader_ShiftDetails.Height + txtDateHeader_ShiftDetails.Height + Self.LayoutGap + txtShiftTime_ShiftDetails.Height + txtPositionLabel_ShiftDetails.Height + Self.PaddingTop + Self.PaddingBottom
+                LayoutDirection: |-
+                    =Switch(App.ActiveScreen.Size,
+                    5, LayoutDirection.Horizontal,
+                    4, LayoutDirection.Horizontal,
+                    3, LayoutDirection.Vertical,
+                    2, LayoutDirection.Vertical,
+                    1, LayoutDirection.Vertical
+                    )
+                LayoutGap: =
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                ZIndex: =1
+
+                txtDateHeader_ShiftDetails As Text:
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =ColorValue(varTheme.neutralForeground1)
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H2.size
+                    Text: =Text(varSelectedShift.Date, "mmmm dd, yyyy")
+                    VerticalAlign: =VerticalAlign.Top
+                    Weight: =varThemeFont.H2.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =5
+                    Y: =0
+                    ZIndex: =1
+
+                txtShiftType_ShiftDetails As Text:
+                    Align: ='TextCanvas.Align'.Start
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FillPortions: =0.3
+                    FontColor: =ColorValue(varTheme.neutralForeground1)
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =20
+                    LayoutMinWidth: =96
+                    Size: =
+                    Text: =varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.Name
+                    VerticalAlign: =VerticalAlign.Top
+                    Weight: =varThemeFont.H3.weight
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+                txtShiftTime_ShiftDetails As Text:
+                    AutoHeight: =true
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =Concatenate(Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'Start Date Time' , DateTimeFormat.ShortTime) & " - " & Text(varSelectedShift.'Team Position'.'Shift Team'.'Shift Type'.'End Date', DateTimeFormat.ShortTime))
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+                conShiftPosition_ShiftDetails As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    FillPortions: =0
+                    Height: =txtPositionLabel_ShiftDetails.Height
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    Width: =Parent.Width
+                    ZIndex: =4
+
+                    txtPositionLabel_ShiftDetails As Text:
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =20
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: |-
+                            ="Team Position:"
+                        Weight: =varThemeFont.H3.weightBold
+                        Width: =100
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txtTeamPosition_ShiftDetails As Text:
+                        AutoHeight: =false
+                        BorderColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
+                        Height: =20
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =varSelectedShift.'Team Position'.Role.Name
+                        Width: =Parent.Width - txtPositionLabel_ShiftDetails.Width - Parent.PaddingLeft - Parent.PaddingRight - Parent.LayoutGap
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+            conTeam_ShiftDetails As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =Parent.Height - conHeaderDetails_ShiftDetails.Height - conButtons_ShiftDetails.Height - (Parent.LayoutGap * 3)
+                LayoutDirection: |-
+                    =Switch(App.ActiveScreen.Size,
+                    5, LayoutDirection.Horizontal,
+                    4, LayoutDirection.Horizontal,
+                    3, LayoutDirection.Vertical,
+                    2, LayoutDirection.Vertical,
+                    1, LayoutDirection.Vertical
+                    )
+                LayoutGap: =5
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =5
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                ZIndex: =2
+
+                txtTeamName_ShiftDetails As Text:
+                    AutoHeight: =false
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =
+                    FontColor: =App.Theme.Colors.Primary
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =varThemeFont.H2.size
+                    Text: =varSelectedShift.'Team Position'.'Shift Team'.Name
+                    VerticalAlign: =VerticalAlign.Middle
+                    Weight: =varThemeFont.H2.weightBold
+                    Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
+                    X: =5
+                    Y: =0
+                    ZIndex: =1
+
+                galTeamMembers_ShiftDetails As gallery.galleryVertical:
+                    AccessibleLabel: ="Shift Details"
+                    BorderColor: =App.Theme.Colors.Darker40
+                    BorderStyle: =BorderStyle.None
+                    DelayItemLoading: =true
+                    FocusedBorderThickness: =0
+                    Height: =Parent.Height - txtTeamName_ShiftDetails.Height - Parent.LayoutGap
+                    Items: |-
+                        =Filter(
+                            'Shift Bookings', 
+                            Date = varSelectedShift.Date And 'Team Position'.'Shift Team'.shiftplanner_shiftteam = varSelectedShift.'Team Position'.'Shift Team'.shiftplanner_shiftteam And Status = 'Status (Shift Bookings)'.Active
+                        )
+                        /*
+                        Old Model
+                        
+                        AddColumns(
+                            Filter(
+                                'Team Positions',
+                                ('Effective From' <= varSelectedShift.Date And 'Effective To' >= varSelectedShift.Date) And 'Shift Team'.shiftplanner_shiftteam = varSelectedShift.'Team Position'.'Shift Team'.shiftplanner_shiftteam And Status = 'Status (Team Positions)'.Active
+                            ) As Positions,
+                            ShiftBookingID,
+                                LookUp(
+                                    'Shift Bookings',
+                                    'Team Position'.shiftplanner_teamposition = Positions.shiftplanner_teamposition And Date = varSelectedShift.Date And Status = 'Status (Shift Bookings)'.Active,
+                                    shiftplanner_shiftbooking
+                                ),
+                            ShiftBookingResource,
+                                LookUp(
+                                    'Shift Bookings',
+                                    'Team Position'.shiftplanner_teamposition = Positions.shiftplanner_teamposition And Date = varSelectedShift.Date And Status = 'Status (Shift Bookings)'.Active,
+                                    Resource
+                                )
+                        )
+                        */
+                    Layout: =Layout.Vertical
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =287
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TabIndex: =0
+                    TemplateSize: =40
+                    Width: =Parent.Width
+                    ZIndex: =2
+
+                    conMemberImageDetails_ShiftDetails As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =40
+                        LayoutGap: =16
+                        LayoutMode: =LayoutMode.Auto
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Width: =Parent.Width - Self.LayoutGap
+                        X: =1
+                        ZIndex: =2
+
+                        bdgMemberImage_ShiftDetails As Avatar:
+                            AccessibleLabel: =Concatenate(txtMemberName_ShiftDetails.Text & "'s user image")
+                            Appearance: ='Avatar.Appearance'.Brand
+                            Badge: ='Avatar.Badge'.None
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =Self.Width
+                            Image: |-
+                                =With(
+                                    {
+                                        MemberEmail: LookUp(
+                                            'Shift Bookings',
+                                            Resource.'Full Name' = txtMemberName_ShiftDetails.Text
+                                        ).Resource.'Primary Email'
+                                    },
+                                    If(
+                                        !IsBlank(MemberEmail) && Office365Users.UserPhotoMetadata(MemberEmail).HasPhoto,
+                                        Office365Users.UserPhotoV2(MemberEmail)
+                                    )
+                                )
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =64
+                            LayoutMinWidth: =64
+                            Name: =txtMemberName_ShiftDetails.Text
+                            Width: =32
+                            X: =0
+                            Y: =0
+                            ZIndex: =1
+
+                        conMemberDetails_ShiftDetails As groupContainer.horizontalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            Height: =txtMemberName_ShiftDetails.Height + txtMemberPosition_ShiftDetails.Height + Self.LayoutGap
+                            LayoutDirection: |-
+                                =Switch(App.ActiveScreen.Size,
+                                5, LayoutDirection.Horizontal,
+                                4, LayoutDirection.Horizontal,
+                                3, LayoutDirection.Vertical,
+                                2, LayoutDirection.Vertical,
+                                1, LayoutDirection.Vertical
+                                )
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            Width: =Parent.Width - bdgMemberImage_ShiftDetails.Width - Parent.PaddingLeft - Parent.PaddingRight - Parent.LayoutGap
+                            ZIndex: =3
+
+                            txtMemberName_ShiftDetails As Text:
+                                Align: ='TextCanvas.Align'.Start
+                                AutoHeight: =false
+                                BorderColor: =
+                                BorderStyle: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =ColorValue(varTheme.neutralForeground1)
+                                Height: =20
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Size: =
+                                Text: |-
+                                    =If(
+                                        IsBlank(
+                                            ThisItem.Resource.'Primary Email'
+                                        ),
+                                        "(Not filled)",
+                                        ThisItem.Resource.'Full Name' 
+                                    )
+                                VerticalAlign: =VerticalAlign.Top
+                                Weight: =varThemeFont.H3.weightBold
+                                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
+
+                            txtMemberPosition_ShiftDetails As Text:
+                                Align: ='TextCanvas.Align'.Start
+                                AutoHeight: =false
+                                BorderColor: =
+                                BorderStyle: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =ColorValue(varTheme.neutralForeground3)
+                                Height: =20
+                                LayoutMaxHeight: =
+                                LayoutMaxWidth: =
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Size: =14
+                                Text: =ThisItem.'Team Position'.Role.Name
+                                VerticalAlign: =VerticalAlign.Top
+                                Weight: =
+                                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                                X: =0
+                                Y: =0
+                                ZIndex: =3
+
+            conButtons_ShiftDetails As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =32
+                LayoutGap: =5
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight 
+                ZIndex: =3
+
+                btnRequestTimeOff_ShiftDetails As Button:
+                    AccessibleLabel: ="Shift Team Details"
+                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: |
+                        =With(
+                            {wHasRow: CountRows(Filter('Change Requests' As CR, 
+                             CR.Resource.'Primary Email' = varSelectedShift.Resource.'Primary Email' &&  
+                             CR.'Change Type' = 'Change type'.'Time off' &&
+                             CR.'Shift Booking'.Date = varSelectedShift.Date &&
+                             CR.'Status Reason' = 'Status Reason (Change Requests)'.'Pending Approval')) },
+                             If(wHasRow,DisplayMode.Disabled,DisplayMode.Edit)
+                        )
+                    FillPortions: =1
+                    FontColor: =
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: =Navigate('Request Time Off Screen',ScreenTransition.None);
+                    Text: ="Request time off"
+                    Visible: =If(varSelectedShift.Date < Today(), false, true) // Temporary hidden for midsprint demo
+                    Width: =172
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                btnSwapShift_ShiftDetails As Button:
+                    AccessibleLabel: ="Swap Shift"
+                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    FillPortions: =1
+                    FontColor: =
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: =Navigate('Swap Shift Screen')
+                    Text: ="Swap shift"
+                    Visible: =If(varSelectedShift.Date < Today(), false, true)
+                    Width: =172
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+                btnBack_ShiftDetails As Button:
+                    AccessibleLabel: ="Back Button"
+                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    DisplayMode: =DisplayMode.Edit
+                    FillPortions: =1
+                    FontColor: =
+                    Height: =32
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: =Navigate('Home Screen', ScreenTransition.Fade)
+                    Text: ="Back"
+                    Visible: =If(varSelectedShift.Date < Today(), true, false)
+                    Width: =172
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+            TextCanvas1 As Text:
+                BorderColor: =
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                FontColor: =
+                Height: =32
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                Size: =varThemeFont.H2.size
+                Text: ="Text"
+                Weight: =varThemeFont.H2.weightBold
+                Width: =96
+                X: =0
+                Y: =0
+                ZIndex: =4
+
+    compHeaderMobile_ShiftDetails As compHeaderMobile:
+        BackScreen: ='Home Screen'
+        HeaderTitle: ="Shift Details"
+        HomeScreen: ='Home Screen'
+        NavigationScreen: ='Navigation Screen'
+        TeamsEmbeddedMode: =varIsTeamsEmbedded
+        TimeTrackScreen: ='Time Sheet View Screen'
+        ZIndex: =2
+
