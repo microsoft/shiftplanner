@@ -526,7 +526,7 @@
       "MetaDataIDKey": "",
       "Name": "btnEditViews",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -712,7 +712,7 @@
       "MetaDataIDKey": "",
       "Name": "btnLeaveBadgeRemove_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1064,7 +1064,7 @@
       "MetaDataIDKey": "",
       "Name": "btnLeaveBadgeRemove_StaffPlanScreen_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3657,7 +3657,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "cmbSelectedUserView": {
+    "cmbSelectedUserView_StaffMode": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         {
@@ -3756,9 +3756,9 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "cmbSelectedUserView",
+      "Name": "cmbSelectedUserView_StaffMode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15790,7 +15790,7 @@
       "MetaDataIDKey": "",
       "Name": "galLeaveBadge_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17507,7 +17507,7 @@
       "MetaDataIDKey": "",
       "Name": "icoLeaveBadge_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -23407,7 +23407,7 @@
       "MetaDataIDKey": "",
       "Name": "txtHeaderSpacer_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -23926,7 +23926,7 @@
       "MetaDataIDKey": "",
       "Name": "txtLeaveBadge_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -24675,7 +24675,7 @@
       "MetaDataIDKey": "",
       "Name": "txtNothingSelected",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -25285,7 +25285,7 @@
       "MetaDataIDKey": "",
       "Name": "txtOpenBookingHeader_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 7,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -26238,7 +26238,7 @@
       "MetaDataIDKey": "",
       "Name": "txtStaffId_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -26473,7 +26473,7 @@
       "MetaDataIDKey": "",
       "Name": "txtStaffName_StaffPlanScreen",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

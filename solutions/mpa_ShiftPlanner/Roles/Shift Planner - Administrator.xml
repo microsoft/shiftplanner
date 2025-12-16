@@ -38,6 +38,8 @@
     <RolePrivilege name="prvAssignAsyncOperation" level="Basic" />
     <RolePrivilege name="prvAssignWorkflow" level="Basic" />
     <RolePrivilege name="prvAssignWorkflowSession" level="Basic" />
+    <RolePrivilege name="prvBulkDelete" level="Global" />
+    <RolePrivilege name="prvBulkEdit" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_appsetting" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_emaillog" level="Global" />
     <RolePrivilege name="prvCreatempa_shiftplanner_emailtemplate" level="Global" />
@@ -68,18 +70,21 @@
     <RolePrivilege name="prvDeleteUserEntityUISettings" level="Basic" />
     <RolePrivilege name="prvDeleteWorkflow" level="Basic" />
     <RolePrivilege name="prvDeleteWorkflowSession" level="Basic" />
+    <RolePrivilege name="prvExportToExcel" level="Global" />
     <RolePrivilege name="prvFlow" level="Global" />
     <RolePrivilege name="prvReadAppConfigMaster" level="Global" />
     <RolePrivilege name="prvReadAppModule" level="Global" />
     <RolePrivilege name="prvReadAsyncOperation" level="Basic" />
     <RolePrivilege name="prvReadAttribute" level="Global" />
     <RolePrivilege name="prvReadAttributeMap" level="Global" />
+    <RolePrivilege name="prvReadAuditSummary" level="Global" />
     <RolePrivilege name="prvReadBusinessUnit" level="Global" />
     <RolePrivilege name="prvReadComplexControl" level="Global" />
     <RolePrivilege name="prvReadCustomization" level="Global" />
     <RolePrivilege name="prvReadEntity" level="Global" />
     <RolePrivilege name="prvReadEntityKey" level="Global" />
     <RolePrivilege name="prvReadEntityMap" level="Global" />
+    <RolePrivilege name="prvReadEnvironmentVariableDefinition" level="Global" />
     <RolePrivilege name="prvReadHierarchyRule" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_appsetting" level="Global" />
     <RolePrivilege name="prvReadmpa_shiftplanner_changerequest" level="Global" />
@@ -103,6 +108,7 @@
     <RolePrivilege name="prvReadPluginTraceLog" level="Global" />
     <RolePrivilege name="prvReadPluginType" level="Global" />
     <RolePrivilege name="prvReadQuery" level="Global" />
+    <RolePrivilege name="prvReadRecordAuditHistory" level="Global" />
     <RolePrivilege name="prvReadRelationship" level="Global" />
     <RolePrivilege name="prvReadReport" level="Basic" />
     <RolePrivilege name="prvReadRole" level="Global" />

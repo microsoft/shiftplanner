@@ -110,7 +110,7 @@ ComponentDefinitions:
                               HoverColor: =Self.Color
                               HoverFill: =RGBA(0, 0, 0, 0)
                               Icon: =Icon.ChevronLeft
-                              OnSelect: |-
+                              OnSelect: |+
                                 =/*changes month view to previous month*/
                                 Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, -1, TimeUnit.Months));
                                 Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
@@ -161,7 +161,7 @@ ComponentDefinitions:
                               HoverColor: =Self.Color
                               HoverFill: =RGBA(0, 0, 0, 0)
                               Icon: =Icon.ChevronRight
-                              OnSelect: |-
+                              OnSelect: |+
                                 =/*changes month view to next month*/
                                 Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months));
                                 Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
@@ -296,6 +296,40 @@ ComponentDefinitions:
                               X: =46
                               Y: =45
                             Children:
+                              - hdnDateMetrics_CalendarComp:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Text: |-
+                                      =If(btnDate_CalendarComp.DisplayMode = DisplayMode.Disabled,
+                                      "||",
+                                      With(
+                                          {
+                                              TodaysBookings : Filter(
+                                                        AddColumns(
+                                                          colFilteredBookings As Booking,
+                                                          ResourceName,
+                                                          Booking.Resource
+                                                        ),
+                                                        DateValue(Date) = DateAdd(varFirstDayInView,ThisItem.Value, TimeUnit.Days) && Status  = 'Status (shiftplanner_shiftbookings)'.Active
+                                              )
+                                          },
+                                              Concatenate(
+                                                  // Find the count of the bookings
+                                                  CountRows(
+                                                     Filter(
+                                                        TodaysBookings,
+                                                        !IsBlank(Resource)
+                                                     )
+                                                  ), 
+                                                  "|"
+                                                  ,
+                                                  // Find all the rows that need bookings
+                                                  CountRows(TodaysBookings), "|", First(TodaysBookings).'Status Reason' 
+                                              )
+                                      )
+                                      )
+                                    Visible: =false
+                                    Y: =33
                               - shpCircle_CalendarComp:
                                   Control: Circle@2.3.0
                                   Properties:
@@ -346,7 +380,7 @@ ComponentDefinitions:
                                                   Today(),
                                                   StartOfWeek.Sunday
                                               )),
-                                              56,
+                                              ActiveBookingWindowDays,
                                               TimeUnit.Days
                                           )) < DateAdd(
                                               varFirstDayInView,
@@ -368,25 +402,7 @@ ComponentDefinitions:
                                               Abs(Self.Text - ThisItem.Value) > 10, App.Theme.Colors.Darker70, App.Theme.Colors.Darker70)
                                       )
                                     Height: =galCalendar_CalendarComp.TemplateHeight - 25
-                                    OnSelect: |+
-                                      =Set(varDateSelected, DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days));
-                                      //If the date is outside of this month
-                                      If(//If date is in next month
-                                          varDateSelected > varLastDayOfMonth, /*changes month view to next month*/
-                                      Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months));
-                                      Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
-                                      /*collects calendar events for all days in current month view. Updates varMaxDate to prevent duplicate data collection if user returns to this month view*/
-                                      Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
-                                      If(varLastDayOfMonth > varMaxDate, Set(varMaxDate, varLastDayOfMonth););, 
-                                      //If date is in previous month
-                                      varDateSelected < varFirstDayOfMonth, 
-                                      /*changes month view to previous month*/
-                                      Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, -1, TimeUnit.Months));
-                                      Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));
-                                      Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
-                                      /*collects calendar events for all days in current month view. Updates varMinDate to prevent duplicate data collection if user returns to this month view*/
-                                      If(varMinDate > varFirstDayOfMonth, Set(varMinDate, varFirstDayOfMonth);););
-
+                                    OnSelect: "=Set(varDateSelected, DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days));\r\n\r\n//If the date is outside of this month\r\nIf(//If date is in next month\r\n    varDateSelected > varLastDayOfMonth, \r\n    \r\n    /*changes month view to next month*/\r\n    Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months));\r\n    Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));\r\n    /*collects calendar events for all days in current month view. Updates varMaxDate to prevent duplicate data collection if user returns to this month view*/\r\n    Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));\r\n    If(varLastDayOfMonth > varMaxDate, Set(varMaxDate, varLastDayOfMonth));\r\n    ,\r\n\r\n    //If date is in previous month\r\n    varDateSelected < varFirstDayOfMonth, \r\n    /*changes month view to previous month*/\r\n    Set(varFirstDayOfMonth, DateAdd(varFirstDayOfMonth, -1, TimeUnit.Months));\r\n    Set(varFirstDayInView, DateAdd(varFirstDayOfMonth, -(Weekday(varFirstDayOfMonth) - 2 + 1), TimeUnit.Days));\r\n    Set(varLastDayOfMonth, DateAdd(DateAdd(varFirstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));\r\n    \r\n    /*collects calendar events for all days in current month view. Updates varMinDate to prevent duplicate data collection if user returns to this month view*/\r\n    If(varMinDate > varFirstDayOfMonth, Set(varMinDate, varFirstDayOfMonth));\r\n);\r\n"
                                     Text: =Day(DateAdd(varFirstDayInView, ThisItem.Value, TimeUnit.Days))
                                     Width: =Self.Height
                                     X: =(galCalendar_CalendarComp.TemplateWidth - Self.Width) / 2
@@ -416,7 +432,9 @@ ComponentDefinitions:
                                           Height: =Self.Width
                                           OnSelect: =
                                           Visible: |-
-                                            =With(
+                                            =Last(Split(hdnDateMetrics_CalendarComp.Text, "|")).Value = "Published"
+                                            /*
+                                            With(
                                                 {
                                                     DayDate: DateAdd(
                                                         varFirstDayInView,
@@ -438,7 +456,7 @@ ComponentDefinitions:
                                                     true,
                                                     false
                                                 )
-                                            )
+                                            )*/
                                           Width: =5
                                           X: =
                                           Y: =
@@ -449,7 +467,18 @@ ComponentDefinitions:
                                           Height: =Parent.Height
                                           LayoutMinWidth: =60
                                           Text: |-
-                                            =With(
+                                            =If(
+                                                !IsBlank(First(Split(hdnDateMetrics_CalendarComp.Text, "|")).Value),
+                                                Concatenate(
+                                                    First(Split(hdnDateMetrics_CalendarComp.Text, "|")).Value,
+                                                    " of ",
+                                                    Last(FirstN(Split(hdnDateMetrics_CalendarComp.Text, "|"), 2)).Value
+                                                )
+                                            )
+
+
+                                            /*
+                                            With(
                                                 {
                                                     TodaysBookings : Filter(
                                                               AddColumns(
@@ -473,7 +502,7 @@ ComponentDefinitions:
                                                         // Find all the rows that need bookings
                                                         CountRows(TodaysBookings)
                                                     )
-                                            )
+                                            )*/
                                           VerticalAlign: =VerticalAlign.Middle
                                           Visible: =!EndsWith(lblCount_CalendarComp.Text, "of 0")
                                           Width: =65

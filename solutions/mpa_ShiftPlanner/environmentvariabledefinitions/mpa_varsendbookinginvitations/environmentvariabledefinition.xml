@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="mpa_varsendbookinginvitations">
+  <defaultvalue>yes</defaultvalue>
+  <description default="Whether or not to send calendar invitations upon publishing bookings">
+    <label description="Whether or not to send calendar invitations upon publishing bookings" languagecode="1033" />
+  </description>
+  <displayname default="Send Booking Invitations">
+    <label description="Send Booking Invitations" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.4.4</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000002</type>
+</environmentvariabledefinition>

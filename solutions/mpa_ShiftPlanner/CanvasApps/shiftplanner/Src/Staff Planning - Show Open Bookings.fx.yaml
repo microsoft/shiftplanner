@@ -204,15 +204,18 @@
                     Layout: ='ButtonCanvas.Layout'.IconOnly
                     OnSelect: |-
                         =Set(varSelectedZone, ThisItem.Zone);
-                        // ToDo: Add a date range
-                        ClearCollect(colFilteredBookings, 
+                        
+                        // Get the bookings between now and 8 weeks time
+                        ClearCollect(colFilteredBookings,
                             Filter(
                                 shiftplanner_shiftbookings, 
-                                Zone.shiftplanner_zone = ThisItem.Zone.shiftplanner_zone
-                                //&& Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone 
+                                And Date >= Date(Year(Today()),Month(Today()),Day(Today()))
+                                And Date < DateAdd(Today(),ActiveBookingWindowDays,TimeUnit.Days)
                             )
                         );
-                        Navigate('Main Calendar Screen',ScreenTransition.Fade);
+                        
+                        nf_NavigateToZonesCalendar(ThisItem.Date, 'Staff Planning - Show Open Bookings'.Name); 
                     TabIndex: =0
                     Text: ="Button"
                     Tooltip: =""

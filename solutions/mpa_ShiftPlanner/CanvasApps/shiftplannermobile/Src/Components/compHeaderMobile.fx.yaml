@@ -9,6 +9,8 @@ compHeaderMobile As CanvasComponent:
     NavigationScreen: =App.ActiveScreen
     ProfileImage: =varCurrentUser.Image
     ProfileScreen: ='Profile Screen'
+    SelectedBooking: |-
+        ={SampleStringField: "SampleText", SampleNumberField: 10, SampleBooleanField: true}
     TeamsEmbeddedMode: =true
     TimeTrackScreen: =App.ActiveScreen
     Width: =App.Width
@@ -329,7 +331,10 @@ compHeaderMobile As CanvasComponent:
                     IconRotation: =0
                     IconStyle: ="Outline"
                     Layout: ="Icon before"
-                    OnSelect: =Navigate(compHeaderMobile.TimeTrackScreen)
+                    OnSelect: |-
+                        =
+                        Set(varTimeSheetToView, {});
+                        Navigate(compHeaderMobile.TimeTrackScreen);
                     TabIndex: =0
                     Text: =""
                     Tooltip: =""

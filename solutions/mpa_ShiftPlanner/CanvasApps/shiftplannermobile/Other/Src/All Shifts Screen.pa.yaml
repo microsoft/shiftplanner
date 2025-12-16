@@ -426,6 +426,8 @@ Screens:
             NavigationScreen: ='Navigation Screen'
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
+            SelectedBooking: |-
+              ={SampleStringField: "SampleText", SampleNumberField: 10, SampleBooleanField: true}
             TeamsEmbeddedMode: =varIsTeamsEmbedded
             TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

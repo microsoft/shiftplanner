@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Name LocalizedName="Facility" OriginalName="Facility">mpa_shiftplanner_facility</Name>
+  <Name LocalizedName="Area" OriginalName="Facility">mpa_shiftplanner_facility</Name>
   <EntityInfo>
     <entity Name="mpa_shiftplanner_facility">
       <LocalizedNames>
-        <LocalizedName description="Facility" languagecode="1033" />
+        <LocalizedName description="Area" languagecode="1033" />
       </LocalizedNames>
       <LocalizedCollectionNames>
-        <LocalizedCollectionName description="Facilities" languagecode="1033" />
+        <LocalizedCollectionName description="Areas" languagecode="1033" />
       </LocalizedCollectionNames>
       <Descriptions>
         <Description description="Contains facility information" languagecode="1033" />
