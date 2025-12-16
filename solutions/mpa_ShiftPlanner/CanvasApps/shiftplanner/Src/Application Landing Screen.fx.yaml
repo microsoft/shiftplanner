@@ -25,7 +25,9 @@
                         Coalesce(
                             LookUp(uaByZone, ZoneId = z.shiftplanner_zone).AffiliationCount,
                             0
-                        )
+                        ),
+                        BaseZone,
+                        z
                     )
             });
         )
@@ -391,15 +393,17 @@
                             OnSelect: |-
                                 =Set(varSelectedZone, ThisItem);
                                 
-                                // ToDo: Add a date range
-                                ClearCollect(colFilteredBookings, 
+                                // Get the bookings between now and 8 weeks time
+                                ClearCollect(colFilteredBookings,
                                     Filter(
                                         shiftplanner_shiftbookings, 
-                                        Zone.shiftplanner_zone = ThisItem.shiftplanner_zone 
-                                        //&& Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                        Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone 
+                                        And Date >= Date(Year(Today()),Month(Today()),Day(Today()))
+                                        And Date < DateAdd(Today(),ActiveBookingWindowDays,TimeUnit.Days)
                                     )
                                 );
-                                Navigate('Main Calendar Screen',ScreenTransition.Fade);
+                                
+                                nf_NavigateToZonesCalendar(Today(), 'Application Landing Screen'.Name);
                             Text: =""
                             VerticalAlign: =""
                             Width: =galZone_LandingScreen.TemplateWidth

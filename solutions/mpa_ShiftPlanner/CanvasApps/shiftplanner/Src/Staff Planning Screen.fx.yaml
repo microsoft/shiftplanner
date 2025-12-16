@@ -7,145 +7,147 @@
         
             // If no day is selected, then select today and this month
             Set(
-            varDateSelected,
-            Today()
-        );
-        Set(
-            varDateToday,
-            Today()
-        );
-        Set(
-            varFirstDateOfWeek,
-            Switch(
-                Weekday(varDateToday),
-                7,
+                varDateSelected,
+                Today()
+            );
+            Set(
+                varDateToday,
+                Today()
+            );
+            Set(
+                varFirstDateOfWeek,
+                Switch(
+                    Weekday(varDateToday),
+                    7,
+                    DateAdd(
+                        varDateToday,
+                        -6,
+                        TimeUnit.Days
+                    ),
+                    6,
+                    DateAdd(
+                        varDateToday,
+                        -5,
+                        TimeUnit.Days
+                    ),
+                    5,
+                    DateAdd(
+                        varDateToday,
+                        -4,
+                        TimeUnit.Days
+                    ),
+                    4,
+                    DateAdd(
+                        varDateToday,
+                        -3,
+                        TimeUnit.Days
+                    ),
+                    3,
+                    DateAdd(
+                        varDateToday,
+                        -2,
+                        TimeUnit.Days
+                    ),
+                    2,
+                    DateAdd(
+                        varDateToday,
+                        -1,
+                        TimeUnit.Days
+                    ),
+                    DateAdd(
+                        varDateToday,
+                        0,
+                        TimeUnit.Days
+                    )
+                )
+            );
+            Set(
+                varFirstDayOfMonth,
                 DateAdd(
-                    varDateToday,
-                    -6,
-                    TimeUnit.Days
-                ),
-                6,
-                DateAdd(
-                    varDateToday,
-                    -5,
-                    TimeUnit.Days
-                ),
-                5,
-                DateAdd(
-                    varDateToday,
-                    -4,
-                    TimeUnit.Days
-                ),
-                4,
-                DateAdd(
-                    varDateToday,
-                    -3,
-                    TimeUnit.Days
-                ),
-                3,
-                DateAdd(
-                    varDateToday,
-                    -2,
-                    TimeUnit.Days
-                ),
-                2,
-                DateAdd(
-                    varDateToday,
-                    -1,
-                    TimeUnit.Days
-                ),
-                DateAdd(
-                    varDateToday,
-                    0,
+                    Today(),
+                    1 - Day(Today()),
                     TimeUnit.Days
                 )
-            )
-        );
-        Set(
-            varFirstDayOfMonth,
-            DateAdd(
-                Today(),
-                1 - Day(Today()),
-                TimeUnit.Days
-            )
-        );
-        Set(
-            varFirstDayInView,
-            DateAdd(
-                varFirstDayOfMonth,
-                -(Weekday(varFirstDayOfMonth) - 2 + 1),
-                TimeUnit.Days
-            )
-        );
-        Set(
-            varLastDayOfMonth,
-            DateAdd(
-                DateAdd(
-                    varFirstDayOfMonth,
-                    1,
-                    TimeUnit.Months
-                ),
-                -1,
-                TimeUnit.Days
-            )
-        );
-        Set(
-            varMinDate,
-            DateAdd(
-                varFirstDayOfMonth,
-                -(Weekday(varFirstDayOfMonth) - 2 + 1),
-                TimeUnit.Days
-            )
-        );
-        Set(
-            varMaxDate,
-            DateAdd(
+            );
+            Set(
+                varFirstDayInView,
                 DateAdd(
                     varFirstDayOfMonth,
                     -(Weekday(varFirstDayOfMonth) - 2 + 1),
                     TimeUnit.Days
-                ),
-                40,
-                TimeUnit.Days
-            )
-        );
-        ClearCollect(
-            colWeeklyCalendarHeader,
-            {
-                Value: 0,
-                WeekDay: "Sun"
-            },
-            {
-                Value: 1,
-                WeekDay: "Mon"
-            },
-            {
-                Value: 2,
-                WeekDay: "Tue"
-            },
-            {
-                Value: 3,
-                WeekDay: "Wed"
-            },
-            {
-                Value: 4,
-                WeekDay: "Thu"
-            },
-            {
-                Value: 5,
-                WeekDay: "Fri"
-            },
-            {
-                Value: 6,
-                WeekDay: "Sat"
-            }
-        );
+                )
+            );
+            Set(
+                varLastDayOfMonth,
+                DateAdd(
+                    DateAdd(
+                        varFirstDayOfMonth,
+                        1,
+                        TimeUnit.Months
+                    ),
+                    -1,
+                    TimeUnit.Days
+                )
+            );
+            Set(
+                varMinDate,
+                DateAdd(
+                    varFirstDayOfMonth,
+                    -(Weekday(varFirstDayOfMonth) - 2 + 1),
+                    TimeUnit.Days
+                )
+            );
+            Set(
+                varMaxDate,
+                DateAdd(
+                    DateAdd(
+                        varFirstDayOfMonth,
+                        -(Weekday(varFirstDayOfMonth) - 2 + 1),
+                        TimeUnit.Days
+                    ),
+                    40,
+                    TimeUnit.Days
+                )
+            );
+            ClearCollect(
+                colWeeklyCalendarHeader,
+                {
+                    Value: 0,
+                    WeekDay: "Sun"
+                },
+                {
+                    Value: 1,
+                    WeekDay: "Mon"
+                },
+                {
+                    Value: 2,
+                    WeekDay: "Tue"
+                },
+                {
+                    Value: 3,
+                    WeekDay: "Wed"
+                },
+                {
+                    Value: 4,
+                    WeekDay: "Thu"
+                },
+                {
+                    Value: 5,
+                    WeekDay: "Fri"
+                },
+                {
+                    Value: 6,
+                    WeekDay: "Sat"
+                }
+            );
            
         );
         
-        
-        // Refresh the Data
-        Select(btnRefresh_StaffPlanScreen)
+        If(
+            IsBlank(cmbSelectedUserView_StaffMode.Selected.Value),
+            UpdateContext({varStaffPlanTable : Filter(Users, 'Users (Views)'.'My Direct Reports')}),
+            Select(btnRefresh_StaffPlanScreen)
+        );
 
     conPageContent_StaffPlanScreen As groupContainer.horizontalAutoLayoutContainer:
         Height: =Parent.Height - Self.Y
@@ -299,7 +301,7 @@
                     Y: =40
                     ZIndex: =1
 
-                cmbSelectedUserView As Combobox.pcfdataset:
+                cmbSelectedUserView_StaffMode As Combobox.pcfdataset:
                     DefaultSelectedItems: =['Users (Views)'.'My Direct Reports']
                     DisplayMode: =DisplayMode.Edit
                     Height: =32
@@ -365,7 +367,7 @@
                     SpinnerColor: =
                     TrackColor: =
                     Visible: =tempPublishInProgress
-                    Width: =150
+                    Width: =250
                     X: =0
                     Y: =0
                     ZIndex: =1
@@ -396,9 +398,50 @@
                     LayoutMaxWidth: =
                     LayoutMinHeight: =32
                     LayoutMinWidth: =96
-                    OnSelect: |
+                    OnSelect: |+
                         =// Refresh with a direct Dataverse call
-                        UpdateContext({varStaffPlanTable : Filter(Users, cmbSelectedUserView.Selected.Value)});
+                        UpdateContext({varStaffPlanTable : Filter(Users, cmbSelectedUserView_StaffMode.Selected.Value)});
+                        
+                        // Precache Relevant Bookings for this week
+                        Clear(colBookingCache);
+                        
+                        ForAll(varStaffPlanTable As sme,
+                            Collect(
+                                colBookingCache, 
+                                Filter(
+                                    shiftplanner_shiftbookings, 
+                                    ThisRecord.Resource.User = sme.User 
+                                    And ThisRecord.Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                    And ThisRecord.Date >= varFirstDateOfWeek
+                                    And ThisRecord.Date <= DateAdd(
+                                            varFirstDateOfWeek,
+                                            6,
+                                            TimeUnit.Days
+                                    ) 
+                                )
+                            );
+                        );
+                        
+                        // Precache Leave Requests for this week
+                        Clear(colAvailabilityCache);
+                        
+                        ForAll(varStaffPlanTable As sme,
+                            Collect(
+                                colAvailabilityCache, 
+                                Filter(
+                                    shiftplanner_useravailabilities, 
+                                    ThisRecord.User.User = sme.User 
+                                    And 'Is Available' = 'Is Available (shiftplanner_useravailabilities)'.No
+                                    And ThisRecord.Enddate >= varFirstDateOfWeek
+                                    And ThisRecord.StartDate <= DateAdd(
+                                        varFirstDateOfWeek,
+                                        6,
+                                        TimeUnit.Days
+                                    ) 
+                                )
+                            );
+                        );
+                        
                     TabIndex: =0
                     Text: ="Refresh"
                     Tooltip: =""
@@ -438,34 +481,23 @@
                     LayoutMinWidth: =16
                     OnSelect: |-
                         =UpdateContext({tempPublishInProgress: true});
-                        UpdateContext({tempPublishAction: Self.Text & "ing"});
+                        UpdateContext({tempPublishAction: Self.Text & "ing, please wait"});
+                        UpdateContext({tempUpdateStatus : If(Self.Text = "Publish", 'Status Reason (shiftplanner_shiftbookings)'.Published,'Status Reason (shiftplanner_shiftbookings)'.Unpublished)});
                         
                         // Update Bookings in dataverse to be published/unpublished
                         IfError(
+                        
+                            // Reflect locally
                             UpdateIf(
-                                shiftplanner_shiftbookings, 
-                                Date >= varFirstDateOfWeek And 
-                                Date <= DateAdd(varFirstDateOfWeek,7,TimeUnit.Days) And 
-                                'Status Reason' = If(
-                                    Self.Text = "Publish",        
-                                    'Status Reason (shiftplanner_shiftbookings)'.Unpublished, // Only select the unpublished results
-                                    'Status Reason (shiftplanner_shiftbookings)'.Published // Only select the published results
-                                )  And
-                                Resource.User in 
-                                ShowColumns(
-                                    AddColumns(
-                                            varStaffPlanTable,
-                                            UserId,
-                                            Resource.User                    
-                                    ),
-                                    UserId
-                                ),
-                                {'Status Reason': If(
-                                    Self.Text = "Publish",        
-                                    'Status Reason (shiftplanner_shiftbookings)'.Published, // We're in publish mode, so unpublish
-                                    'Status Reason (shiftplanner_shiftbookings)'.Unpublished // Otherwise set to unpublish
-                                )}
-                            ),
+                                colBookingCache,
+                                true, // update all rows in the collection
+                                {
+                                    'Status Reason': tempUpdateStatus
+                                }
+                            );
+                        
+                            Patch(shiftplanner_shiftbookings, colBookingCache);    
+                            ,
                         
                             // Handle Errors
                             Notify("Error publishing.",NotificationType.Error, varTheme.toastTimeout);
@@ -477,11 +509,12 @@
                             ForAll(
                                 varStaffPlanTable,
                                 Concurrent(
-                                    WeekStatusEmailNotification.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User),
-                                    WeekStatusCalendarInvite.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User)
-                                );
+                                    If(SendBookingEmails, WeekStatusEmailNotification.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User)),
+                                    If(SendBookingInvitations, WeekStatusCalendarInvite.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User))
+                                )
                             );
-                            Select(btnRefresh_StaffPlanScreen);
+                        
+                            //Select(btnRefresh_StaffPlanScreen);
                         );
                         
                         UpdateContext({tempPublishInProgress:false});
@@ -516,23 +549,11 @@
                     Size: =12
                     TabIndex: =0
                     Text: |-
-                        =//varFirstDateOfWeek
-                        If( 
+                        =If( 
                             CountRows(
                                 Filter(
-                                    shiftplanner_shiftbookings, 
-                                    Date >= varFirstDateOfWeek And 
-                                    Date <= DateAdd(varFirstDateOfWeek,7,TimeUnit.Days) And 
-                                    'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished And
-                                    Resource.User in 
-                                    ShowColumns(
-                                            AddColumns(
-                                                varStaffPlanTable,
-                                                UserId,
-                                                Resource.User                    
-                                            ),
-                                            UserId
-                                        )
+                                    colBookingCache,
+                                    'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished
                                 )
                             ) = 0,
                             "🟢Published",
@@ -1160,7 +1181,7 @@
                                                 Fill: |-
                                                     =With ( {
                                                             TodaysBookings : Filter(
-                                                                shiftplanner_shiftbookings, 
+                                                                colBookingCache, 
                                                                 ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && 
                                                                 ThisRecord.Date = DateAdd(
                                                                         varFirstDateOfWeek,
@@ -1203,7 +1224,7 @@
                                                             If(
                                                                 First(
                                                                     Filter(
-                                                                        shiftplanner_useravailabilities,
+                                                                        colAvailabilityCache,
                                                                         User.'Primary Email' = txtStaffId_StaffPlanScreen.Text
                                                                         && StartDate <= (DateAdd(
                                                                                     varFirstDateOfWeek,
@@ -1311,7 +1332,7 @@
                                                 Text: |
                                                     =With ( {
                                                             TodaysBookings : Filter(
-                                                                shiftplanner_shiftbookings, 
+                                                                colBookingCache, 
                                                                 ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && 
                                                                 ThisRecord.Date = DateAdd(
                                                                         varFirstDateOfWeek,
@@ -1869,7 +1890,7 @@
                                 DelayItemLoading: =true
                                 FillPortions: =0
                                 Height: =If(galAssignedBooking_StaffPlanScreen.AllItemsCount=1, 85,175)
-                                Items: =Sort(Filter(shiftplanner_shiftbookings, Resource.User = varSelectedUserDay.User.User && Date = varSelectedUserDay.ShiftDate && Status = 'Status (shiftplanner_shiftbookings)'.Active), 'Planned Start Time', SortOrder.Ascending)
+                                Items: =Sort(Filter(colBookingCache, Resource.User = varSelectedUserDay.User.User && Date = varSelectedUserDay.ShiftDate && Status = 'Status (shiftplanner_shiftbookings)'.Active), 'Planned Start Time', SortOrder.Ascending)
                                 Layout: =Layout.Vertical
                                 LayoutMaxHeight: =0
                                 LayoutMaxWidth: =0

@@ -674,66 +674,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Time Track Screen",
-                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1.FocusedBorderThickness"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1.FocusedBorderThickness",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "FocusedBorderThickness",
-                "module": "Time Track Screen",
-                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.conTrackingActions_TimeTrack.conOnShift_TimeTrack.btnOnShiftTitle_TimeTrack.AccessibleLabel"
                 }
               ],
@@ -1454,6 +1394,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.btnOpenTimeSheets_TimeTrack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Time Track Screen",
+                "type": "'Time Track Screen'.conMainContent_TimeTrack.conBodyContent_TimeTrack.timOnShiftTime_TimeTrack_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Time Sheet View Screen'.conConfirmPopup_TimeSheetView.conConfirmPopupContent_TimeSheetView.conCancel_TimeSheetView.ctlConfirmInProgress.AccessibleLabel"
                 }
               ],
@@ -1958,6 +1958,36 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "compHeaderMobile.varTimeSheetToView"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "compHeaderMobile.varTimeSheetToView",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varTimeSheetToView",
+                "module": "compHeaderMobile",
+                "type": "compHeaderMobile"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 3
         }
       ],
       "tool": {
@@ -2014,6 +2044,23 @@
                 "level": "Medium",
                 "primaryCategory": "accessibility",
                 "whyFix": "If the focus isn't visible, people who don't use a mouse won't be able to see it when they're interacting with the app."
+              }
+            },
+            {
+              "id": "app-UnusedVariables",
+              "messageStrings": {
+                "issue": {
+                  "text": "Unused variable"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Remove the unused variable."
+                ],
+                "level": "Medium",
+                "primaryCategory": "performance",
+                "whyFix": "This variable is declared but is not referenced by any control, so it is not needed."
               }
             }
           ],

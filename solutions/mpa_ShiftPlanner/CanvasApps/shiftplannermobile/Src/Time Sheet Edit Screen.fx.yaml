@@ -159,7 +159,7 @@
         conShiftDetails_EditTimeSheet As groupContainer.horizontalAutoLayoutContainer:
             Fill: =ColorValue(varTheme.neutralBackground3)
             FillPortions: =0
-            Height: =45
+            Height: =65
             LayoutAlignItems: =LayoutAlignItems.Center
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMaxHeight: =0
@@ -172,7 +172,7 @@
             Y: =40
             ZIndex: =3
 
-            txtZoneAndRole_TimeTrack_1 As Text:
+            txtZoneAndRole_EditTimeSheet As Text:
                 Align: ='TextCanvas.Align'.Center
                 AlignInContainer: =AlignInContainer.Stretch
                 AutoHeight: =false
@@ -204,7 +204,40 @@
                 Y: =0
                 ZIndex: =1
 
-            txtShiftType_TimeTrack_1 As Text:
+            txtDate_EditTimeSheet As Text:
+                Align: ='TextCanvas.Align'.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =true
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                FillPortions: =1
+                Font: =""
+                FontColor: =ColorValue(varTheme.neutralForeground1)
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =20
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =20
+                LayoutMinWidth: =80
+                Size: =14
+                TabIndex: =0
+                Text: =Text(varTimeSheetToEdit.Date, "dddd, d mmmm yyyy")
+                Tooltip: =""
+                VerticalAlign: =VerticalAlign.Middle
+                Visible: =true
+                Weight: =varThemeFont.H3.weight
+                Width: =60
+                Wrap: =true
+                X: =40
+                Y: =40
+                ZIndex: =2
+
+            txtShiftType_EditTimeSheet As Text:
                 Align: ='TextCanvas.Align'.Center
                 AlignInContainer: =AlignInContainer.Stretch
                 AutoHeight: =true
@@ -235,7 +268,7 @@
                 Wrap: =true
                 X: =40
                 Y: =40
-                ZIndex: =2
+                ZIndex: =3
 
         frmShiftBooking_EditTimeSheet As form.PowerApps_CoreControls_Form:
             BorderColor: =App.Theme.Colors.Darker40
@@ -261,7 +294,7 @@
                 DataField: ="mpa_timesheetnotes"
                 Default: =ThisItem.'Timesheet Notes'
                 DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Shift Bookings'],DataSourceInfo.DisplayName,'mpa_timesheetnotes')
+                DisplayName: =DataSourceInfo([@'Shift Bookings'],DataSourceInfo.DisplayName,'Timesheet Notes')
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =90
                 Required: =false

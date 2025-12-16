@@ -109,7 +109,7 @@
       "authenticationType": "Oauth",
       "bypassConsent": true,
       "displayName": "Microsoft Dataverse",
-      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1782/1.0.1782.4447/commondataserviceforapps/icon.png",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1783/1.0.1783.4453/commondataserviceforapps/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_commondataserviceforapps",
       "parameterHints": {},
       "parameterHintsV2": {}
