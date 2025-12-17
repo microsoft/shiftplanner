@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="mpa_varsendbookingemails">
+  <defaultvalue>yes</defaultvalue>
+  <description default="Whether or not to send booking emails when publishing">
+    <label description="Whether or not to send booking emails when publishing" languagecode="1033" />
+  </description>
+  <displayname default="Send Booking Emails">
+    <label description="Send Booking Emails" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.4.4</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000002</type>
+</environmentvariabledefinition>

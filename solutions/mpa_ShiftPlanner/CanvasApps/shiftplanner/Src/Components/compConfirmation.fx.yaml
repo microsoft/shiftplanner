@@ -176,11 +176,6 @@ compConfirmation As CanvasComponent:
                             DateValue(Date) > (varSelectedWeek - Weekday(varSelectedWeek)) && DateValue(Date) <= ((varSelectedWeek - Weekday(varSelectedWeek)) + 7)
                         )
                     );
-                    // store the start time
-                    Set(
-                        varStartTime_Patch,
-                        Now()
-                    );
                     
                     //Update Collection
                     If(
@@ -210,20 +205,11 @@ compConfirmation As CanvasComponent:
                     
                     //Run both Week Status Email Notification and Week Status Calendar Invite flow with parameters: First Day of Selected Week, Last Day of Selected Week, Zone, Action (Publish/Unpublish)
                     
-                    
-                    WeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text, "");
-                    WeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text,"");
-                    
-                    
-                    // calculate the difference between start time and end time
-                    Set(
-                        varDuration_Patch,
-                        DateDiff(
-                            varStartTime_Patch,
-                            Now(),
-                            TimeUnit.Milliseconds
-                        )
+                    Concurrent(
+                        If(SendBookingEmails, WeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text, "")),
+                        If(SendBookingInvitations, WeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, "yyyy-mm-dd"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, "yyyy-mm-dd"), varSelectedZone.shiftplanner_zone, Self.Text,""));
                     );
+                    
                     ClearCollect(
                         colFilteredBookings,
                         Filter(

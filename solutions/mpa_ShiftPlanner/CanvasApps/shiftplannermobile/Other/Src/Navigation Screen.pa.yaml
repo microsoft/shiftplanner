@@ -134,6 +134,7 @@ Screens:
                         Height: =galMenu_Navigation.TemplateHeight
                         OnSelect: |-
                           =Set(varSelectedScreen, ThisItem.Screen);
+                          Set(varTimeSheetToView, {});
                           Navigate(ThisItem.Screen)
                         Text: =""
                         Width: =galMenu_Navigation.TemplateWidth

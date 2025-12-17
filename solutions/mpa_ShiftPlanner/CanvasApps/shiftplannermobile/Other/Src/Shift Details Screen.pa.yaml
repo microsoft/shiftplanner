@@ -343,6 +343,18 @@ Screens:
                               Text: ="Swap shift"
                               Visible: =If(varSelectedShift.Date < Today(), false, true)
                               Width: =172
+                        - btnTimesheet_ShiftDetails:
+                            Control: Button@0.0.45
+                            Properties:
+                              AccessibleLabel: ="Back Button"
+                              Appearance: ='ButtonCanvas.Appearance'.Secondary
+                              FillPortions: =1
+                              OnSelect: |-
+                                =Set(varTimeSheetToView, varSelectedShift);
+                                Navigate('Time Sheet View Screen');
+                              Text: ="Time Sheet"
+                              Visible: =If(varSelectedShift.Date < Today(), true, false)
+                              Width: =172
                         - btnBack_ShiftDetails:
                             Control: Button@0.0.45
                             Properties:
@@ -353,15 +365,6 @@ Screens:
                               Text: ="Back"
                               Visible: =If(varSelectedShift.Date < Today(), true, false)
                               Width: =172
-                  - TextCanvas1:
-                      Control: Text@0.0.51
-                      Properties:
-                        LayoutMaxHeight: =0
-                        LayoutMaxWidth: =0
-                        LayoutMinHeight: =16
-                        LayoutMinWidth: =16
-                        Size: =varThemeFont.H2.size
-                        Weight: =varThemeFont.H2.weightBold
       - compHeaderMobile_ShiftDetails:
           Control: CanvasComponent
           ComponentName: compHeaderMobile
@@ -375,6 +378,8 @@ Screens:
             NavigationScreen: ='Navigation Screen'
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
+            SelectedBooking: |-
+              ={SampleStringField: "SampleText", SampleNumberField: 10, SampleBooleanField: true}
             TeamsEmbeddedMode: =varIsTeamsEmbedded
             TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

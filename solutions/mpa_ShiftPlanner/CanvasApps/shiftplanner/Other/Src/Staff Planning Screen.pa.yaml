@@ -10,7 +10,7 @@ Screens:
   Staff Planning Screen:
     Properties:
       Fill: =ColorValue(varTheme.neutralBackground2)
-      OnVisible: "=If( IsBlank(varFirstDateOfWeek),\n\n    // If no day is selected, then select today and this month\n    Set(\n    varDateSelected,\n    Today()\n);\nSet(\n    varDateToday,\n    Today()\n);\nSet(\n    varFirstDateOfWeek,\n    Switch(\n        Weekday(varDateToday),\n        7,\n        DateAdd(\n            varDateToday,\n            -6,\n            TimeUnit.Days\n        ),\n        6,\n        DateAdd(\n            varDateToday,\n            -5,\n            TimeUnit.Days\n        ),\n        5,\n        DateAdd(\n            varDateToday,\n            -4,\n            TimeUnit.Days\n        ),\n        4,\n        DateAdd(\n            varDateToday,\n            -3,\n            TimeUnit.Days\n        ),\n        3,\n        DateAdd(\n            varDateToday,\n            -2,\n            TimeUnit.Days\n        ),\n        2,\n        DateAdd(\n            varDateToday,\n            -1,\n            TimeUnit.Days\n        ),\n        DateAdd(\n            varDateToday,\n            0,\n            TimeUnit.Days\n        )\n    )\n);\nSet(\n    varFirstDayOfMonth,\n    DateAdd(\n        Today(),\n        1 - Day(Today()),\n        TimeUnit.Days\n    )\n);\nSet(\n    varFirstDayInView,\n    DateAdd(\n        varFirstDayOfMonth,\n        -(Weekday(varFirstDayOfMonth) - 2 + 1),\n        TimeUnit.Days\n    )\n);\nSet(\n    varLastDayOfMonth,\n    DateAdd(\n        DateAdd(\n            varFirstDayOfMonth,\n            1,\n            TimeUnit.Months\n        ),\n        -1,\n        TimeUnit.Days\n    )\n);\nSet(\n    varMinDate,\n    DateAdd(\n        varFirstDayOfMonth,\n        -(Weekday(varFirstDayOfMonth) - 2 + 1),\n        TimeUnit.Days\n    )\n);\nSet(\n    varMaxDate,\n    DateAdd(\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        ),\n        40,\n        TimeUnit.Days\n    )\n);\nClearCollect(\n    colWeeklyCalendarHeader,\n    {\n        Value: 0,\n        WeekDay: \"Sun\"\n    },\n    {\n        Value: 1,\n        WeekDay: \"Mon\"\n    },\n    {\n        Value: 2,\n        WeekDay: \"Tue\"\n    },\n    {\n        Value: 3,\n        WeekDay: \"Wed\"\n    },\n    {\n        Value: 4,\n        WeekDay: \"Thu\"\n    },\n    {\n        Value: 5,\n        WeekDay: \"Fri\"\n    },\n    {\n        Value: 6,\n        WeekDay: \"Sat\"\n    }\n);\n   \n);\n\n\n// Refresh the Data\nSelect(btnRefresh_StaffPlanScreen)"
+      OnVisible: "=If( IsBlank(varFirstDateOfWeek),\n\n    // If no day is selected, then select today and this month\n    Set(\n        varDateSelected,\n        Today()\n    );\n    Set(\n        varDateToday,\n        Today()\n    );\n    Set(\n        varFirstDateOfWeek,\n        Switch(\n            Weekday(varDateToday),\n            7,\n            DateAdd(\n                varDateToday,\n                -6,\n                TimeUnit.Days\n            ),\n            6,\n            DateAdd(\n                varDateToday,\n                -5,\n                TimeUnit.Days\n            ),\n            5,\n            DateAdd(\n                varDateToday,\n                -4,\n                TimeUnit.Days\n            ),\n            4,\n            DateAdd(\n                varDateToday,\n                -3,\n                TimeUnit.Days\n            ),\n            3,\n            DateAdd(\n                varDateToday,\n                -2,\n                TimeUnit.Days\n            ),\n            2,\n            DateAdd(\n                varDateToday,\n                -1,\n                TimeUnit.Days\n            ),\n            DateAdd(\n                varDateToday,\n                0,\n                TimeUnit.Days\n            )\n        )\n    );\n    Set(\n        varFirstDayOfMonth,\n        DateAdd(\n            Today(),\n            1 - Day(Today()),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varFirstDayInView,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varLastDayOfMonth,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                1,\n                TimeUnit.Months\n            ),\n            -1,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMinDate,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMaxDate,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                -(Weekday(varFirstDayOfMonth) - 2 + 1),\n                TimeUnit.Days\n            ),\n            40,\n            TimeUnit.Days\n        )\n    );\n    ClearCollect(\n        colWeeklyCalendarHeader,\n        {\n            Value: 0,\n            WeekDay: \"Sun\"\n        },\n        {\n            Value: 1,\n            WeekDay: \"Mon\"\n        },\n        {\n            Value: 2,\n            WeekDay: \"Tue\"\n        },\n        {\n            Value: 3,\n            WeekDay: \"Wed\"\n        },\n        {\n            Value: 4,\n            WeekDay: \"Thu\"\n        },\n        {\n            Value: 5,\n            WeekDay: \"Fri\"\n        },\n        {\n            Value: 6,\n            WeekDay: \"Sat\"\n        }\n    );\n   \n);\n\nIf(\n    IsBlank(cmbSelectedUserView_StaffMode.Selected.Value),\n    UpdateContext({varStaffPlanTable : Filter(Users, 'Users (Views)'.'My Direct Reports')}),\n    Select(btnRefresh_StaffPlanScreen)\n);"
     Children:
       - conPageContent_StaffPlanScreen:
           Control: GroupContainer@1.3.0
@@ -150,7 +150,7 @@ Screens:
                               Wrap: =false
                               X: =40
                               Y: =40
-                        - cmbSelectedUserView:
+                        - cmbSelectedUserView_StaffMode:
                             Control: ComboBox@0.0.51
                             Properties:
                               DefaultSelectedItems: =['Users (Views)'.'My Direct Reports']
@@ -207,14 +207,55 @@ Screens:
                               LayoutMinHeight: =16
                               LayoutMinWidth: =16
                               Visible: =tempPublishInProgress
-                              Width: =150
+                              Width: =250
                         - btnRefresh_StaffPlanScreen:
                             Control: Button@0.0.45
                             Properties:
                               FontWeight: =FontWeight.Normal
-                              OnSelect: |
+                              OnSelect: |+
                                 =// Refresh with a direct Dataverse call
-                                UpdateContext({varStaffPlanTable : Filter(Users, cmbSelectedUserView.Selected.Value)});
+                                UpdateContext({varStaffPlanTable : Filter(Users, cmbSelectedUserView_StaffMode.Selected.Value)});
+
+                                // Precache Relevant Bookings for this week
+                                Clear(colBookingCache);
+
+                                ForAll(varStaffPlanTable As sme,
+                                    Collect(
+                                        colBookingCache, 
+                                        Filter(
+                                            shiftplanner_shiftbookings, 
+                                            ThisRecord.Resource.User = sme.User 
+                                            And ThisRecord.Status = 'Status (shiftplanner_shiftbookings)'.Active
+                                            And ThisRecord.Date >= varFirstDateOfWeek
+                                            And ThisRecord.Date <= DateAdd(
+                                                    varFirstDateOfWeek,
+                                                    6,
+                                                    TimeUnit.Days
+                                            ) 
+                                        )
+                                    );
+                                );
+
+                                // Precache Leave Requests for this week
+                                Clear(colAvailabilityCache);
+
+                                ForAll(varStaffPlanTable As sme,
+                                    Collect(
+                                        colAvailabilityCache, 
+                                        Filter(
+                                            shiftplanner_useravailabilities, 
+                                            ThisRecord.User.User = sme.User 
+                                            And 'Is Available' = 'Is Available (shiftplanner_useravailabilities)'.No
+                                            And ThisRecord.Enddate >= varFirstDateOfWeek
+                                            And ThisRecord.StartDate <= DateAdd(
+                                                varFirstDateOfWeek,
+                                                6,
+                                                TimeUnit.Days
+                                            ) 
+                                        )
+                                    );
+                                );
+
                               Text: ="Refresh"
                               Visible: =false
                         - btnPublish_StaffPlanScreen:
@@ -231,34 +272,23 @@ Screens:
                               LayoutMinWidth: =16
                               OnSelect: |-
                                 =UpdateContext({tempPublishInProgress: true});
-                                UpdateContext({tempPublishAction: Self.Text & "ing"});
+                                UpdateContext({tempPublishAction: Self.Text & "ing, please wait"});
+                                UpdateContext({tempUpdateStatus : If(Self.Text = "Publish", 'Status Reason (shiftplanner_shiftbookings)'.Published,'Status Reason (shiftplanner_shiftbookings)'.Unpublished)});
 
                                 // Update Bookings in dataverse to be published/unpublished
                                 IfError(
+
+                                    // Reflect locally
                                     UpdateIf(
-                                        shiftplanner_shiftbookings, 
-                                        Date >= varFirstDateOfWeek And 
-                                        Date <= DateAdd(varFirstDateOfWeek,7,TimeUnit.Days) And 
-                                        'Status Reason' = If(
-                                            Self.Text = "Publish",        
-                                            'Status Reason (shiftplanner_shiftbookings)'.Unpublished, // Only select the unpublished results
-                                            'Status Reason (shiftplanner_shiftbookings)'.Published // Only select the published results
-                                        )  And
-                                        Resource.User in 
-                                        ShowColumns(
-                                            AddColumns(
-                                                    varStaffPlanTable,
-                                                    UserId,
-                                                    Resource.User                    
-                                            ),
-                                            UserId
-                                        ),
-                                        {'Status Reason': If(
-                                            Self.Text = "Publish",        
-                                            'Status Reason (shiftplanner_shiftbookings)'.Published, // We're in publish mode, so unpublish
-                                            'Status Reason (shiftplanner_shiftbookings)'.Unpublished // Otherwise set to unpublish
-                                        )}
-                                    ),
+                                        colBookingCache,
+                                        true, // update all rows in the collection
+                                        {
+                                            'Status Reason': tempUpdateStatus
+                                        }
+                                    );
+
+                                    Patch(shiftplanner_shiftbookings, colBookingCache);    
+                                    ,
 
                                     // Handle Errors
                                     Notify("Error publishing.",NotificationType.Error, varTheme.toastTimeout);
@@ -270,11 +300,12 @@ Screens:
                                     ForAll(
                                         varStaffPlanTable,
                                         Concurrent(
-                                            WeekStatusEmailNotification.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User),
-                                            WeekStatusCalendarInvite.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User)
-                                        );
+                                            If(SendBookingEmails, WeekStatusEmailNotification.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User)),
+                                            If(SendBookingInvitations, WeekStatusCalendarInvite.Run(Text(varFirstDateOfWeek, "yyyy-mm-dd"), Text(varFirstDateOfWeek + 7, "yyyy-mm-dd"), "", Self.Text, ThisRecord.User))
+                                        )
                                     );
-                                    Select(btnRefresh_StaffPlanScreen);
+
+                                    //Select(btnRefresh_StaffPlanScreen);
                                 );
 
                                 UpdateContext({tempPublishInProgress:false});
@@ -289,23 +320,11 @@ Screens:
                               LayoutMinWidth: =40
                               Size: =12
                               Text: |-
-                                =//varFirstDateOfWeek
-                                If( 
+                                =If( 
                                     CountRows(
                                         Filter(
-                                            shiftplanner_shiftbookings, 
-                                            Date >= varFirstDateOfWeek And 
-                                            Date <= DateAdd(varFirstDateOfWeek,7,TimeUnit.Days) And 
-                                            'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished And
-                                            Resource.User in 
-                                            ShowColumns(
-                                                    AddColumns(
-                                                        varStaffPlanTable,
-                                                        UserId,
-                                                        Resource.User                    
-                                                    ),
-                                                    UserId
-                                                )
+                                            colBookingCache,
+                                            'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished
                                         )
                                     ) = 0,
                                     "🟢Published",
@@ -697,7 +716,7 @@ Screens:
                                                                         BorderColor: =ColorValue(varTheme.neutralStroke2)
                                                                         BorderThickness: =1
                                                                         Color: =ColorValue(varTheme.neutralBackground1)
-                                                                        Fill: "=With ( {\r\n        TodaysBookings : Filter(\r\n            shiftplanner_shiftbookings, \r\n            ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && \r\n            ThisRecord.Date = DateAdd(\r\n                    varFirstDateOfWeek,\r\n                    ThisItem.Value,\r\n                    TimeUnit.Days\r\n                ) && \r\n            ThisRecord.Status = 'Status (shiftplanner_shiftbookings)'.Active\r\n        )\r\n    },\r\n\r\n    \r\nIf( \r\n\r\n    //// TEST 1: Is this Cell selected?\r\n\r\n    // If this is the selected cell\r\n    varSelectedUserDay.User.'Primary Email' = txtStaffId_StaffPlanScreen.Text && \r\n    varSelectedUserDay.ShiftDate = DateAdd(\r\n        varFirstDateOfWeek,\r\n        ThisItem.Value,\r\n        TimeUnit.Days\r\n    ),\r\n    // Then highlight it\r\n    rectSelected_StaffPlanScreen.Fill,\r\n\r\n\r\n    //// TEST 2: Is there a double booking here?\r\n\r\n    // If Double Booked\r\n    If (\r\n        First(Split(txtDayCellData_StaffPlanScreen.Text, \"|\")).Value = \"true\",\r\n\r\n        // Make it red\r\n        rectDoubleBooked_StaffPlanScreen.Fill,\r\n\r\n    \r\n        //// TEST 3: Is the person on leave?\r\n        \r\n        // If on leave\r\n        If(\r\n            First(\r\n                Filter(\r\n                    shiftplanner_useravailabilities,\r\n                    User.'Primary Email' = txtStaffId_StaffPlanScreen.Text\r\n                    && StartDate <= (DateAdd(\r\n                                varFirstDateOfWeek,\r\n                                ThisItem.Value,\r\n                                TimeUnit.Days\r\n                            )\r\n                        )\r\n                    && Enddate >= (DateAdd(\r\n                                varFirstDateOfWeek,\r\n                                ThisItem.Value,\r\n                                TimeUnit.Days\r\n                            )\r\n                        )                        \r\n                        \r\n                )\r\n            ).'Is Available' = 'Is Available (shiftplanner_useravailabilities)'.No, \r\n\r\n\r\n            // If we also have a booking, as well as being on leave\r\n            If(\r\n                IsNumeric(Self.Text) And Int(Self.Text)>0,\r\n\r\n                // They are effectively double booked - so make it red\r\n                rectDoubleBooked_StaffPlanScreen.Fill,\r\n                \r\n                //Otherwise make it grey\r\n                rectOnLeave_StaffPlanScreen.Fill\r\n\r\n            )\r\n            ,  \r\n\r\n\r\n            //// TEST 3: Is is booked\r\n            \r\n            If(\r\n                // If Booked\r\n                CountRows(TodaysBookings)>0,\r\n\r\n                // Make it purple\r\n                rectBooked_StaffPlanScreen.Fill,\r\n\r\n                // Otherwise leave it clear\r\n                rectAvailable_StaffPlanScreen.Fill\r\n\r\n            )\r\n        )\r\n    )\r\n)\r\n\r\n)"
+                                                                        Fill: "=With ( {\r\n        TodaysBookings : Filter(\r\n            colBookingCache, \r\n            ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && \r\n            ThisRecord.Date = DateAdd(\r\n                    varFirstDateOfWeek,\r\n                    ThisItem.Value,\r\n                    TimeUnit.Days\r\n                ) && \r\n            ThisRecord.Status = 'Status (shiftplanner_shiftbookings)'.Active\r\n        )\r\n    },\r\n\r\n    \r\nIf( \r\n\r\n    //// TEST 1: Is this Cell selected?\r\n\r\n    // If this is the selected cell\r\n    varSelectedUserDay.User.'Primary Email' = txtStaffId_StaffPlanScreen.Text && \r\n    varSelectedUserDay.ShiftDate = DateAdd(\r\n        varFirstDateOfWeek,\r\n        ThisItem.Value,\r\n        TimeUnit.Days\r\n    ),\r\n    // Then highlight it\r\n    rectSelected_StaffPlanScreen.Fill,\r\n\r\n\r\n    //// TEST 2: Is there a double booking here?\r\n\r\n    // If Double Booked\r\n    If (\r\n        First(Split(txtDayCellData_StaffPlanScreen.Text, \"|\")).Value = \"true\",\r\n\r\n        // Make it red\r\n        rectDoubleBooked_StaffPlanScreen.Fill,\r\n\r\n    \r\n        //// TEST 3: Is the person on leave?\r\n        \r\n        // If on leave\r\n        If(\r\n            First(\r\n                Filter(\r\n                    colAvailabilityCache,\r\n                    User.'Primary Email' = txtStaffId_StaffPlanScreen.Text\r\n                    && StartDate <= (DateAdd(\r\n                                varFirstDateOfWeek,\r\n                                ThisItem.Value,\r\n                                TimeUnit.Days\r\n                            )\r\n                        )\r\n                    && Enddate >= (DateAdd(\r\n                                varFirstDateOfWeek,\r\n                                ThisItem.Value,\r\n                                TimeUnit.Days\r\n                            )\r\n                        )                        \r\n                        \r\n                )\r\n            ).'Is Available' = 'Is Available (shiftplanner_useravailabilities)'.No, \r\n\r\n\r\n            // If we also have a booking, as well as being on leave\r\n            If(\r\n                IsNumeric(Self.Text) And Int(Self.Text)>0,\r\n\r\n                // They are effectively double booked - so make it red\r\n                rectDoubleBooked_StaffPlanScreen.Fill,\r\n                \r\n                //Otherwise make it grey\r\n                rectOnLeave_StaffPlanScreen.Fill\r\n\r\n            )\r\n            ,  \r\n\r\n\r\n            //// TEST 3: Is is booked\r\n            \r\n            If(\r\n                // If Booked\r\n                CountRows(TodaysBookings)>0,\r\n\r\n                // Make it purple\r\n                rectBooked_StaffPlanScreen.Fill,\r\n\r\n                // Otherwise leave it clear\r\n                rectAvailable_StaffPlanScreen.Fill\r\n\r\n            )\r\n        )\r\n    )\r\n)\r\n\r\n)"
                                                                         Height: =30
                                                                         HoverBorderColor: =Self.BorderColor
                                                                         HoverColor: =App.Theme.Colors.Lighter70
@@ -744,7 +763,7 @@ Screens:
                                                                   - txtDayCellData_StaffPlanScreen:
                                                                       Control: Text@0.0.51
                                                                       Properties:
-                                                                        Text: "=With ( {\r\n        TodaysBookings : Filter(\r\n            shiftplanner_shiftbookings, \r\n            ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && \r\n            ThisRecord.Date = DateAdd(\r\n                    varFirstDateOfWeek,\r\n                    ThisItem.Value,\r\n                    TimeUnit.Days\r\n                ) && \r\n            ThisRecord.Status = 'Status (shiftplanner_shiftbookings)'.Active\r\n        )\r\n    },\r\n\r\n    // Calculate if there is a Double Booking\r\n    If (\r\n        Max(\r\n            AddColumns(\r\n                // Add an Overlaps column to count how many bookings overlap this booking\r\n                TodaysBookings As ParentTable, \r\n                'Overlaps', \r\n                CountRows(\r\n                    Filter(\r\n                        TodaysBookings As ChildTable, \r\n                        ChildTable.'Planned Start Time' >= ParentTable.'Planned Start Time' && \r\n                        ChildTable.'Planned Start Time' <= ParentTable.'Planned End Time' \r\n                    )\r\n                )\r\n            ),\r\n            Overlaps\r\n        )>1,\r\n        \r\n        // If there is\r\n        \"true\", \r\n        // Otherwise\r\n        \"false\"\r\n    ) &\r\n    \"|\" & \r\n\r\n    // return the row count    \r\n    CountRows(TodaysBookings)\r\n)\r\n"
+                                                                        Text: "=With ( {\r\n        TodaysBookings : Filter(\r\n            colBookingCache, \r\n            ThisRecord.Resource.'Primary Email'= txtStaffId_StaffPlanScreen.Text && \r\n            ThisRecord.Date = DateAdd(\r\n                    varFirstDateOfWeek,\r\n                    ThisItem.Value,\r\n                    TimeUnit.Days\r\n                ) && \r\n            ThisRecord.Status = 'Status (shiftplanner_shiftbookings)'.Active\r\n        )\r\n    },\r\n\r\n    // Calculate if there is a Double Booking\r\n    If (\r\n        Max(\r\n            AddColumns(\r\n                // Add an Overlaps column to count how many bookings overlap this booking\r\n                TodaysBookings As ParentTable, \r\n                'Overlaps', \r\n                CountRows(\r\n                    Filter(\r\n                        TodaysBookings As ChildTable, \r\n                        ChildTable.'Planned Start Time' >= ParentTable.'Planned Start Time' && \r\n                        ChildTable.'Planned Start Time' <= ParentTable.'Planned End Time' \r\n                    )\r\n                )\r\n            ),\r\n            Overlaps\r\n        )>1,\r\n        \r\n        // If there is\r\n        \"true\", \r\n        // Otherwise\r\n        \"false\"\r\n    ) &\r\n    \"|\" & \r\n\r\n    // return the row count    \r\n    CountRows(TodaysBookings)\r\n)\r\n"
                                                                         Visible: =false
                                                                         X: =23.285714285714292
                                                 - shpSeparator_StaffPlanScreen:
@@ -1055,7 +1074,7 @@ Screens:
                                               Properties:
                                                 FillPortions: =0
                                                 Height: =If(galAssignedBooking_StaffPlanScreen.AllItemsCount=1, 85,175)
-                                                Items: =Sort(Filter(shiftplanner_shiftbookings, Resource.User = varSelectedUserDay.User.User && Date = varSelectedUserDay.ShiftDate && Status = 'Status (shiftplanner_shiftbookings)'.Active), 'Planned Start Time', SortOrder.Ascending)
+                                                Items: =Sort(Filter(colBookingCache, Resource.User = varSelectedUserDay.User.User && Date = varSelectedUserDay.ShiftDate && Status = 'Status (shiftplanner_shiftbookings)'.Active), 'Planned Start Time', SortOrder.Ascending)
                                                 LayoutMaxHeight: =0
                                                 LayoutMaxWidth: =0
                                                 LayoutMinHeight: =16

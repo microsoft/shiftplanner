@@ -1,7 +1,10 @@
 "'Add Position Screen' As screen":
     Fill: =Color.White
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnVisible: =
+    OnVisible: |-
+        =UpdateContext({
+            tmpTargetTeam : Sort( Filter(shiftplanner_shiftteams, Zone.Name = varSelectedZone.Name And 'Shift Type'.shiftplanner_shifttype = varAddPosition.shiftplanner_shifttype), Name)
+        });
 
     conMainContent_AddPosition As groupContainer.verticalAutoLayoutContainer:
         Fill: =ColorValue(varTheme.neutralBackground2)
@@ -127,7 +130,7 @@
                     FocusedBorderColor: =ColorValue(varTheme.focusBorder)
                     FocusedBorderThickness: =2
                     Height: =90
-                    Items: =Sort( Filter(shiftplanner_shiftteams, Zone.Name = varSelectedZone.Name And 'Shift Type'.shiftplanner_shifttype = varAddPosition.shiftplanner_shifttype), Name)
+                    Items: =tmpTargetTeam
                     LayoutMaxHeight: =
                     LayoutMaxWidth: =
                     LayoutMinHeight: =287

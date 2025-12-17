@@ -519,7 +519,7 @@ Screens:
                                   Variant: AutoLayout
                                   Properties:
                                     Fill: =ColorValue(varTheme.neutralBackground1)
-                                    Height: =104
+                                    Height: =112
                                     LayoutDirection: =LayoutDirection.Vertical
                                     PaddingBottom: =8
                                     PaddingLeft: =12
@@ -745,7 +745,7 @@ Screens:
                               FontColor: =ColorValue(varTheme.neutralForeground3)
                               Size: =
                               Text: |+
-                                =Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(ThisItem.'End Date', DateTimeFormat.ShortTime))
+                                =Concatenate(Text(ThisItem.'Start Date Time', DateTimeFormat.ShortTime) & " to " & Text(DateAdd(ThisItem.'Start Date Time', ThisItem.Duration, TimeUnit.Minutes), DateTimeFormat.ShortTime))
                               Width: =135
                         - shpSeparateShift_Modify:
                             Control: Rectangle@2.3.0

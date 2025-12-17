@@ -454,6 +454,46 @@
                     Y: =0
                     ZIndex: =2
 
+                btnTimesheet_ShiftDetails As Button:
+                    AcceptsFocus: =true
+                    AccessibleLabel: ="Back Button"
+                    Align: =""
+                    Appearance: ='ButtonCanvas.Appearance'.Secondary
+                    BasePaletteColor: =
+                    BorderColor: =
+                    BorderStyle: =""
+                    ContentLanguage: =""
+                    DisplayMode: =DisplayMode.Edit
+                    FillPortions: =1
+                    Font: =""
+                    FontColor: =
+                    FontItalic: =false
+                    FontSize: =0
+                    FontStrikethrough: =false
+                    FontUnderline: =false
+                    FontWeight: =""
+                    Height: =32
+                    Icon: =""
+                    IconRotation: =0
+                    IconStyle: ="Outline"
+                    Layout: ="Icon before"
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |-
+                        =Set(varTimeSheetToView, varSelectedShift);
+                        Navigate('Time Sheet View Screen');
+                    TabIndex: =0
+                    Text: ="Time Sheet"
+                    Tooltip: =""
+                    VerticalAlign: =""
+                    Visible: =If(varSelectedShift.Date < Today(), true, false)
+                    Width: =172
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
                 btnBack_ShiftDetails As Button:
                     AccessibleLabel: ="Back Button"
                     Appearance: ='ButtonCanvas.Appearance'.Secondary
@@ -474,25 +514,7 @@
                     Width: =172
                     X: =0
                     Y: =0
-                    ZIndex: =3
-
-            TextCanvas1 As Text:
-                BorderColor: =
-                DisplayMode: =DisplayMode.Edit
-                Fill: =
-                FontColor: =
-                Height: =32
-                LayoutMaxHeight: =0
-                LayoutMaxWidth: =0
-                LayoutMinHeight: =16
-                LayoutMinWidth: =16
-                Size: =varThemeFont.H2.size
-                Text: ="Text"
-                Weight: =varThemeFont.H2.weightBold
-                Width: =96
-                X: =0
-                Y: =0
-                ZIndex: =4
+                    ZIndex: =4
 
     compHeaderMobile_ShiftDetails As compHeaderMobile:
         BackScreen: ='Home Screen'

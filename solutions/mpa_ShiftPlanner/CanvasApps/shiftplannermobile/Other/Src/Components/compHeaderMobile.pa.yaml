@@ -58,6 +58,13 @@ ComponentDefinitions:
         Description: Profile Screen
         DataType: Screen
         Default: ='Profile Screen'
+      SelectedBooking:
+        PropertyKind: Input
+        DisplayName: Selected Booking
+        Description: The Selected Booking
+        DataType: Record
+        Default: |-
+          ={SampleStringField: "SampleText", SampleNumberField: 10, SampleBooleanField: true}
       TeamsEmbeddedMode:
         PropertyKind: Input
         DisplayName: Teams Embedded Mode
@@ -352,7 +359,10 @@ ComponentDefinitions:
                             Properties:
                               Appearance: ='ButtonCanvas.Appearance'.Transparent
                               Height: =Parent.Height
-                              OnSelect: =Navigate(compHeaderMobile.TimeTrackScreen)
+                              OnSelect: |-
+                                =
+                                Set(varTimeSheetToView, {});
+                                Navigate(compHeaderMobile.TimeTrackScreen);
                               Text: =""
                               Width: =Parent.Width
                   - txtTitleBarTitleText:

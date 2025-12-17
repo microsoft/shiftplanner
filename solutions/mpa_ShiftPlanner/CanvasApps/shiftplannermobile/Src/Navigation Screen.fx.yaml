@@ -153,6 +153,7 @@
                 Layout: ="Icon before"
                 OnSelect: |-
                     =Set(varSelectedScreen, ThisItem.Screen);
+                    Set(varTimeSheetToView, {});
                     Navigate(ThisItem.Screen)
                 Text: =""
                 VerticalAlign: =""

@@ -167,7 +167,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conBody_ConfirmationComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 407,
+            "PublishOrderIndex": 408,
             "Rules": [
               {
                 "Category": "Data",
@@ -398,7 +398,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conBody_ConfirmationComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 408,
+            "PublishOrderIndex": 409,
             "Rules": [
               {
                 "Category": "Data",
@@ -658,7 +658,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conButtons_ConfirmationComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 410,
+                "PublishOrderIndex": 411,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -955,7 +955,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "conButtons_ConfirmationComp",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 411,
+                "PublishOrderIndex": 412,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -1067,7 +1067,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\r\n    varPublishButtonDisplayMode,\r\n    DisplayMode.Disabled\r\n);\r\n\r\n//Collect affected Records\r\nClearCollect(\r\n    colforpatching,\r\n    Filter(\r\n        colFilteredBookings,\r\n        DateValue(Date) > (varSelectedWeek - Weekday(varSelectedWeek)) && DateValue(Date) <= ((varSelectedWeek - Weekday(varSelectedWeek)) + 7)\r\n    )\r\n);\r\n// store the start time\r\nSet(\r\n    varStartTime_Patch,\r\n    Now()\r\n);\r\n\r\n//Update Collection\r\nIf(\r\n    Self.Text = \"Publish\",\r\n    UpdateIf(\r\n        colforpatching,\r\n        'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished,\r\n        {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Published}\r\n    );\r\n    ,\r\n    UpdateIf(\r\n        colforpatching,\r\n        'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Published,\r\n        {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Unpublished}\r\n    );\r\n    \r\n);\r\n//Patch Dataverse\r\nPatch(\r\n    shiftplanner_shiftbookings,\r\n    ShowColumns(\r\n        colforpatching,\r\n        shiftplanner_shiftbooking,\r\n        'Status Reason'\r\n    )\r\n);\r\n\r\n//Run both Week Status Email Notification and Week Status Calendar Invite flow with parameters: First Day of Selected Week, Last Day of Selected Week, Zone, Action (Publish/Unpublish)\r\n\r\n\r\nWeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, \"yyyy-mm-dd\"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, \"yyyy-mm-dd\"), varSelectedZone.shiftplanner_zone, Self.Text, \"\");\r\nWeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, \"yyyy-mm-dd\"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, \"yyyy-mm-dd\"), varSelectedZone.shiftplanner_zone, Self.Text,\"\");\r\n\r\n\r\n// calculate the difference between start time and end time\r\nSet(\r\n    varDuration_Patch,\r\n    DateDiff(\r\n        varStartTime_Patch,\r\n        Now(),\r\n        TimeUnit.Milliseconds\r\n    )\r\n);\r\nClearCollect(\r\n    colFilteredBookings,\r\n    Filter(\r\n        shiftplanner_shiftbookings,\r\n        Zone.Name = varSelectedZone.Name && Status = 'Status (shiftplanner_shiftbookings)'.Active\r\n    )\r\n);\r\n//Clear(colforpatching);\r\nNavigate(compConfirmation.BackTarget);\r\nWith(\r\n    {\r\n        PublishNotification: \"Selected week has been published.\",\r\n        UnpublishNotification: \"Selected week has been unpublished.\"\r\n    },\r\n    If(\r\n        Self.Text = \"Publish\",\r\n        Notify(\r\n            PublishNotification,\r\n            NotificationType.Success,\r\n            varTheme.toastTimeout\r\n        ),\r\n        Notify(\r\n            UnpublishNotification,\r\n            NotificationType.Success,\r\n            varTheme.toastTimeout\r\n        )\r\n    )\r\n);\r\n\r\nSet(\r\n    varPublishButtonDisplayMode,\r\n    DisplayMode.Edit\r\n);",
+                    "InvariantScript": "Set(\r\n    varPublishButtonDisplayMode,\r\n    DisplayMode.Disabled\r\n);\r\n\r\n//Collect affected Records\r\nClearCollect(\r\n    colforpatching,\r\n    Filter(\r\n        colFilteredBookings,\r\n        DateValue(Date) > (varSelectedWeek - Weekday(varSelectedWeek)) && DateValue(Date) <= ((varSelectedWeek - Weekday(varSelectedWeek)) + 7)\r\n    )\r\n);\r\n\r\n//Update Collection\r\nIf(\r\n    Self.Text = \"Publish\",\r\n    UpdateIf(\r\n        colforpatching,\r\n        'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Unpublished,\r\n        {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Published}\r\n    );\r\n    ,\r\n    UpdateIf(\r\n        colforpatching,\r\n        'Status Reason' = 'Status Reason (shiftplanner_shiftbookings)'.Published,\r\n        {'Status Reason': 'Status Reason (shiftplanner_shiftbookings)'.Unpublished}\r\n    );\r\n    \r\n);\r\n//Patch Dataverse\r\nPatch(\r\n    shiftplanner_shiftbookings,\r\n    ShowColumns(\r\n        colforpatching,\r\n        shiftplanner_shiftbooking,\r\n        'Status Reason'\r\n    )\r\n);\r\n\r\n//Run both Week Status Email Notification and Week Status Calendar Invite flow with parameters: First Day of Selected Week, Last Day of Selected Week, Zone, Action (Publish/Unpublish)\r\n\r\nConcurrent(\r\n    If(SendBookingEmails, WeekStatusEmailNotification.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, \"yyyy-mm-dd\"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, \"yyyy-mm-dd\"), varSelectedZone.shiftplanner_zone, Self.Text, \"\")),\r\n    If(SendBookingInvitations, WeekStatusCalendarInvite.Run(Text(varSelectedWeek - Weekday(varSelectedWeek) + 1, \"yyyy-mm-dd\"), Text((varSelectedWeek - Weekday(varSelectedWeek)) + 7, \"yyyy-mm-dd\"), varSelectedZone.shiftplanner_zone, Self.Text,\"\"));\r\n);\r\n\r\nClearCollect(\r\n    colFilteredBookings,\r\n    Filter(\r\n        shiftplanner_shiftbookings,\r\n        Zone.Name = varSelectedZone.Name && Status = 'Status (shiftplanner_shiftbookings)'.Active\r\n    )\r\n);\r\n//Clear(colforpatching);\r\nNavigate(compConfirmation.BackTarget);\r\nWith(\r\n    {\r\n        PublishNotification: \"Selected week has been published.\",\r\n        UnpublishNotification: \"Selected week has been unpublished.\"\r\n    },\r\n    If(\r\n        Self.Text = \"Publish\",\r\n        Notify(\r\n            PublishNotification,\r\n            NotificationType.Success,\r\n            varTheme.toastTimeout\r\n        ),\r\n        Notify(\r\n            UnpublishNotification,\r\n            NotificationType.Success,\r\n            varTheme.toastTimeout\r\n        )\r\n    )\r\n);\r\n\r\nSet(\r\n    varPublishButtonDisplayMode,\r\n    DisplayMode.Edit\r\n);",
                     "Property": "OnSelect",
                     "RuleProviderType": "User"
                   }
@@ -1272,7 +1272,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "conBody_ConfirmationComp",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 409,
+            "PublishOrderIndex": 410,
             "Rules": [
               {
                 "Category": "Design",
@@ -1571,7 +1571,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "compConfirmation",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 406,
+        "PublishOrderIndex": 407,
         "Rules": [
           {
             "Category": "Design",
@@ -1807,7 +1807,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "639000931010369664",
+    "LastModifiedTimestamp": "639015231549267325",
     "Name": "compConfirmation",
     "Rules": [
       {
@@ -1907,7 +1907,7 @@
       "Name": "Headline",
       "PropertyDataTypeKey": "String",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
       "Category": 0,
@@ -1916,7 +1916,7 @@
       "Name": "Message",
       "PropertyDataTypeKey": "String",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
       "Category": 0,
@@ -1925,7 +1925,7 @@
       "Name": "MaxWidth",
       "PropertyDataTypeKey": "Number",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
       "Category": 0,
@@ -1934,7 +1934,7 @@
       "Name": "MaxHeight",
       "PropertyDataTypeKey": "Number",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
       "Category": 0,
@@ -1943,7 +1943,7 @@
       "Name": "BackTarget",
       "PropertyDataTypeKey": "Screen",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_LimPrimitive\",\"EnumString\":\"\",\"Template\":{\"TemplateName\":\"screen\",\"IsMetaLoc\":false,\"Intangible\":false,\"ExpandoType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"BackgroundImage\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ContentLanguage\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Height\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ImagePosition\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinner\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinnerColor\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Name\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Orientation\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Printing\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Size\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Width\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"Properties\":[{\"Name\":\"Fill\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Fill\"},{\"Name\":\"BackgroundImage\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Background image\"},{\"Name\":\"ImagePosition\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Image position\"},{\"Name\":\"Height\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Height\"},{\"Name\":\"Width\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Width\"},{\"Name\":\"Size\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Size\"},{\"Name\":\"Orientation\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Orientation\"},{\"Name\":\"LoadingSpinner\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner\"},{\"Name\":\"LoadingSpinnerColor\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner color\"},{\"Name\":\"Name\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Name\"},{\"Name\":\"Printing\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Printing\"},{\"Name\":\"ContentLanguage\",\"InvariantType\":{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Content language\"}]}}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"_LimPrimitive\",\"EnumString\":\"\",\"Template\":{\"TemplateName\":\"screen\",\"IsMetaLoc\":false,\"Intangible\":false,\"ExpandoType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"BackgroundImage\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ContentLanguage\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Height\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"ImagePosition\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinner\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]},{\"Name\":\"LoadingSpinnerColor\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Name\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Orientation\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Printing\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Size\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Width\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"Properties\":[{\"Name\":\"Fill\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Fill\"},{\"Name\":\"BackgroundImage\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Image\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Background image\"},{\"Name\":\"ImagePosition\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%s[Center:\\\"center\\\", Fill:\\\"fill\\\", Fit:\\\"fit\\\", Stretch:\\\"stretch\\\", Tile:\\\"tile\\\"]\",\"Type\":[{\"Name\":\"Center\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fill\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Fit\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Stretch\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Tile\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Image position\"},{\"Name\":\"Height\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Height\"},{\"Name\":\"Width\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Width\"},{\"Name\":\"Size\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Size\"},{\"Name\":\"Orientation\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Orientation\"},{\"Name\":\"LoadingSpinner\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Enum\",\"EnumString\":\"%n[Controls:0, Data:1, None:2]\",\"Type\":[{\"Name\":\"Controls\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Data\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"None\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner\"},{\"Name\":\"LoadingSpinnerColor\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Color\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Loading spinner color\"},{\"Name\":\"Name\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Design\",\"PropertyDisplayName\":\"Name\"},{\"Name\":\"Printing\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Printing\"},{\"Name\":\"ContentLanguage\",\"InvariantType\":{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}},\"PropertyRuleCategory\":\"Data\",\"PropertyDisplayName\":\"Content language\"}]}}}"
     },
     {
       "Category": 0,
@@ -1952,7 +1952,7 @@
       "Name": "ExternalLinkTarget",
       "PropertyDataTypeKey": "String",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
       "Category": 0,
@@ -1961,7 +1961,7 @@
       "Name": "BackButtonMessage",
       "PropertyDataTypeKey": "String",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
       "Category": 0,
@@ -1970,7 +1970,7 @@
       "Name": "ExternalLinkButtonMessage",
       "PropertyDataTypeKey": "String",
       "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.346\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+      "Type": "{\"Version\":\"1.347\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -1981,7 +1981,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "639000931010369664",
+  "LastModifiedTimestamp": "639015231549267325",
   "Name": "52ddb765399f439aaee19cc24bab42b9",
   "OverridableProperties": {},
   "TemplateOriginalName": "1dd50174c273419288a5c747d9ec59a4",

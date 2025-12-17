@@ -162,7 +162,7 @@ Screens:
                   DropShadow: =DropShadow.None
                   Fill: =ColorValue(varTheme.neutralBackground3)
                   FillPortions: =0
-                  Height: =45
+                  Height: =65
                   LayoutAlignItems: =LayoutAlignItems.Center
                   LayoutDirection: =LayoutDirection.Vertical
                   LayoutMaxHeight: =0
@@ -177,7 +177,7 @@ Screens:
                   X: =40
                   Y: =40
                 Children:
-                  - txtZoneAndRole_TimeTrack_1:
+                  - txtZoneAndRole_EditTimeSheet:
                       Control: Text@0.0.51
                       Properties:
                         Align: ='TextCanvas.Align'.Center
@@ -189,7 +189,24 @@ Screens:
                         LayoutMinWidth: =16
                         Text: =varTimeSheetToEdit.Zone.Name & " (" & varTimeSheetToEdit.'Team Position'.Role.Name & ")"
                         Weight: =varThemeFont.H3.weightBold
-                  - txtShiftType_TimeTrack_1:
+                  - txtDate_EditTimeSheet:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        AlignInContainer: =AlignInContainer.Stretch
+                        AutoHeight: =true
+                        FillPortions: =1
+                        FontColor: =ColorValue(varTheme.neutralForeground1)
+                        Height: =20
+                        LayoutMinHeight: =20
+                        LayoutMinWidth: =80
+                        Text: =Text(varTimeSheetToEdit.Date, "dddd, d mmmm yyyy")
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: =varThemeFont.H3.weight
+                        Width: =60
+                        X: =40
+                        Y: =40
+                  - txtShiftType_EditTimeSheet:
                       Control: Text@0.0.51
                       Properties:
                         Align: ='TextCanvas.Align'.Center
@@ -417,7 +434,7 @@ Screens:
                       Properties:
                         DataField: ="mpa_timesheetnotes"
                         Default: =ThisItem.'Timesheet Notes'
-                        DisplayName: =DataSourceInfo([@'Shift Bookings'],DataSourceInfo.DisplayName,'mpa_timesheetnotes')
+                        DisplayName: =DataSourceInfo([@'Shift Bookings'],DataSourceInfo.DisplayName,'Timesheet Notes')
                         Height: =90
                         Required: =false
                         Update: =dcNotesDataCardValue_EditTimeSheet.Value
@@ -754,6 +771,8 @@ Screens:
             NavigationScreen: ='Navigation Screen'
             ProfileImage: =varCurrentUser.Image
             ProfileScreen: ='Profile Screen'
+            SelectedBooking: |-
+              ={SampleStringField: "SampleText", SampleNumberField: 10, SampleBooleanField: true}
             TeamsEmbeddedMode: =varIsTeamsEmbedded
             TimeTrackScreen: ='Time Sheet View Screen'
             Width: =App.Width

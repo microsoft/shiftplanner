@@ -14,246 +14,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 208,
-                  "charOffset": 677,
-                  "snippet": {
-                    "text": "ShowColumns(\r\n            AddColumns(\r\n                    varStaffPlanTable,\r\n                    UserId,\r\n                    Resource.User                    \r\n            ),\r\n            UserId\r\n        )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ShowColumns"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 664,
-                  "snippet": {
-                    "text": "in"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "UpdateIf"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 3,
-                  "charOffset": 637,
-                  "snippet": {
-                    "text": "And"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.btnPublish_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "UpdateIf"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 252,
-                  "charOffset": 353,
-                  "snippet": {
-                    "text": "ShowColumns(\r\n                    AddColumns(\r\n                        varStaffPlanTable,\r\n                        UserId,\r\n                        Resource.User                    \r\n                    ),\r\n                    UserId\r\n                )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ShowColumns"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 336,
-                  "snippet": {
-                    "text": "in"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Filter"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 3,
-                  "charOffset": 305,
-                  "snippet": {
-                    "text": "And"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conPublishButton_StaffPlanScreen.lblPublishStatus_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Filter"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Application Landing Screen'.conMainContent_Body_LandingScreen.conPageContent_LandingScreen.galFacility_LandingScreen.FocusedBorderThickness"
                 }
               ],
@@ -277,7 +37,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -307,7 +67,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -337,7 +97,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -367,7 +127,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -397,7 +157,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -427,7 +187,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -457,7 +217,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -487,7 +247,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -517,7 +277,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -547,7 +307,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -577,7 +337,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -607,7 +367,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -637,26 +397,26 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView.AccessibleLabel"
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView_StaffMode.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView.AccessibleLabel",
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView_StaffMode.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView"
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conToolbar_StaffPlanScreen.conStaffSelector_StaffPlanScreen.cmbSelectedUserView_StaffMode"
               }
             }
           ],
@@ -667,7 +427,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -697,7 +457,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -727,7 +487,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -757,7 +517,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -787,7 +547,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -817,7 +577,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -847,7 +607,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -877,7 +637,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -907,97 +667,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Staff Planning Screen",
-                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1027,7 +697,97 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning Screen",
+                "type": "'Staff Planning Screen'.conPageContent_StaffPlanScreen.conContent_StaffPlanScreen.conCalendar_StaffPlanScreen.conBookingViewer_StaffPlanScreen.conRightPanel_StaffPlanScreen.conBookingDetail_StaffPlanScreen.galLeaveBadge_StaffPlanScreen.conLeaveBadge_StaffPlanScreen.btnLeaveBadgeRemove_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1057,7 +817,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1087,7 +847,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1117,7 +877,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1147,7 +907,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1177,7 +937,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1207,7 +967,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1237,7 +997,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1267,7 +1027,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1297,7 +1057,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1327,7 +1087,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1357,7 +1117,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1387,7 +1147,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1417,7 +1177,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1447,7 +1207,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1477,7 +1237,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1507,7 +1267,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1537,7 +1297,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1567,7 +1327,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1597,7 +1357,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1627,7 +1387,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1657,7 +1417,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1687,7 +1447,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1717,7 +1477,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1747,7 +1507,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1777,7 +1537,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1807,7 +1567,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1837,7 +1597,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1867,7 +1627,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1897,7 +1657,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1927,7 +1687,37 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 3
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen.btnOpenZone_StaffPlanScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen.btnOpenZone_StaffPlanScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Staff Planning - Reassign",
+                "type": "'Staff Planning - Reassign'.conReassignPopup_StaffPlanScreen.conReassign_StaffPlanScreen.conResourcesAvailable_StaffPlanScreen.galUnavailableResources_StaffPlanScreen.btnOpenZone_StaffPlanScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1957,7 +1747,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -1987,7 +1777,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -2017,37 +1807,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.varDuration_Patch"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.varDuration_Patch",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varDuration_Patch",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -2076,37 +1836,7 @@
             "level": "Medium"
           },
           "ruleId": "app-DataSourceDefaultMaxRowsLimit",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Main Calendar Screen'.tmpTeamsForThisZone"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Main Calendar Screen'.tmpTeamsForThisZone",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "tmpTeamsForThisZone",
-                "module": "Main Calendar Screen",
-                "type": "'Main Calendar Screen'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -2135,7 +1865,7 @@
             "level": "Medium"
           },
           "ruleId": "app-ScreenHasManyControls",
-          "ruleIndex": 6
+          "ruleIndex": 4
         }
       ],
       "tool": {
@@ -2143,25 +1873,6 @@
           "fullName": "PowerApps app checker",
           "name": "PowerApps app checker",
           "rules": [
-            {
-              "id": "app-SuggestRemoteExecutionHint",
-              "messageStrings": {
-                "issue": {
-                  "text": "Delegation warning. The \"{0}\" part of this formula might not work correctly on large data sets."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "If your data set exceeds the 500 record limit but contains less than 2,000 records, try resetting the limit.",
-                  "Try simplifying the formula.",
-                  "Try moving your data to a different data source."
-                ],
-                "level": "Medium",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
             {
               "id": "acc-FocusBorderShouldBeVisible",
               "messageStrings": {
@@ -2214,23 +1925,6 @@
               }
             },
             {
-              "id": "app-UnusedVariables",
-              "messageStrings": {
-                "issue": {
-                  "text": "Unused variable"
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Remove the unused variable."
-                ],
-                "level": "Medium",
-                "primaryCategory": "performance",
-                "whyFix": "This variable is declared but is not referenced by any control, so it is not needed."
-              }
-            },
-            {
               "id": "app-DataSourceDefaultMaxRowsLimit",
               "messageStrings": {
                 "issue": {
@@ -2269,7 +1963,7 @@
               }
             }
           ],
-          "version": "1.346"
+          "version": "1.347"
         }
       }
     }

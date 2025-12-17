@@ -240,10 +240,7 @@
                     LayoutMinHeight: =32
                     LayoutMinWidth: =96
                     Size: =varThemeFont.H1.size
-                    Text: |-
-                        =//To do: Duration added for performance testing. Will remove on final version. 
-                        //Concatenate(varSelectedZone.Name, " ", Text(varDuration_Patch, "[$-en-US]0")," ms")
-                        varSelectedZone.Name
+                    Text: =varSelectedZone.Name
                     VerticalAlign: =VerticalAlign.Top
                     Weight: =varThemeFont.H1.weightBold
                     Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight

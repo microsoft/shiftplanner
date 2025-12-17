@@ -634,11 +634,11 @@
                         VerticalAlign: =VerticalAlign.Middle
                         Visible: =true
                         Weight: ='TextCanvas.Weight'.Regular
-                        Width: =Parent.Width-txtUnavailableName_StaffPlanScreen.Width
+                        Width: =Parent.Width-txtUnavailableName_StaffPlanScreen.Width-btnOpenZone_StaffPlanScreen.Width
                         Wrap: =false
                         X: =txtUnavailableName_StaffPlanScreen.Width
                         Y: =0
-                        ZIndex: =1
+                        ZIndex: =2
 
                     rectUnavailable_StaffPlanScreen As rectangle:
                         BorderColor: =App.Theme.Colors.Darker40
@@ -676,6 +676,35 @@
                         X: =0
                         Y: =0
                         ZIndex: =4
+
+                    btnOpenZone_StaffPlanScreen As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        BorderColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =26
+                        Icon: ="Open"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: |-
+                            =Set(varSelectedZone, varBookingToReassign.Zone);
+                            
+                            // Get the bookings between now and 8 weeks time
+                            ClearCollect(colFilteredBookings,
+                                Filter(
+                                    shiftplanner_shiftbookings, 
+                                    Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone 
+                                    And Date >= Date(Year(Today()),Month(Today()),Day(Today()))
+                                    And Date < DateAdd(Today(),ActiveBookingWindowDays,TimeUnit.Days)
+                                )
+                            );
+                            
+                            nf_NavigateToZonesCalendar(varBookingToReassign.Date, 'Staff Planning - Reassign'.Name);
+                        Text: ="View Zone"
+                        Width: =26
+                        X: =Parent.Width-Self.Width
+                        Y: =2
+                        ZIndex: =6
 
             ButtonCanvas1 As Button:
                 BasePaletteColor: =

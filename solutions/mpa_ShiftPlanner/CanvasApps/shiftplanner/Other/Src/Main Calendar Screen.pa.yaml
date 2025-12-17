@@ -10,7 +10,7 @@ Screens:
   Main Calendar Screen:
     Properties:
       Fill: =ColorValue(varTheme.neutralBackground2)
-      OnVisible: "=// Cache the teams for this zone\nUpdateContext({\n    tmpTeamsForThisZone : Filter(shiftplanner_shiftteams, Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone)\n});\n\n// \nIf(IsBlank(varFirstDayOfMonth),\n    \n    // If no day is selected, then select today and this month\n    Set(\n        varDateSelected,\n        Today()\n    );\n    Set(\n        varFirstDayOfMonth,\n        DateAdd(\n            Today(),\n            1 - Day(Today()),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varFirstDayInView,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varLastDayOfMonth,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                1,\n                TimeUnit.Months\n            ),\n            -1,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMinDate,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMaxDate,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                -(Weekday(varFirstDayOfMonth) - 2 + 1),\n                TimeUnit.Days\n            ),\n            40,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varPublishButtonDisplayMode,\n        DisplayMode.Edit\n    );\n);\n\n// Reset the screen selector\nSet(varCurrentScreen, First(colDropDownNav));"
+      OnVisible: "=If(IsBlank(tmpBackScreenName),UpdateContext({tmpBackScreenName : 'Application Landing Screen'.Name}));\n\n\n// Cache the teams for this zone\n/*\nUpdateContext({\n    tmpTeamsForThisZone : Filter(shiftplanner_shiftteams, Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone)\n});\n*/\n\n\n// \nIf(IsBlank(varFirstDayOfMonth),\n    \n    // If no day is selected, then select today and this month\n    Set(\n        varDateSelected,\n        Today()\n    );\n    Set(\n        varFirstDayOfMonth,\n        DateAdd(\n            Today(),\n            1 - Day(Today()),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varFirstDayInView,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varLastDayOfMonth,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                1,\n                TimeUnit.Months\n            ),\n            -1,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMinDate,\n        DateAdd(\n            varFirstDayOfMonth,\n            -(Weekday(varFirstDayOfMonth) - 2 + 1),\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varMaxDate,\n        DateAdd(\n            DateAdd(\n                varFirstDayOfMonth,\n                -(Weekday(varFirstDayOfMonth) - 2 + 1),\n                TimeUnit.Days\n            ),\n            40,\n            TimeUnit.Days\n        )\n    );\n    Set(\n        varPublishButtonDisplayMode,\n        DisplayMode.Edit\n    );\n);\n\n// Reset the screen selector\nSet(varCurrentScreen, First(colDropDownNav));"
     Children:
       - conMainContent_MainCalendar:
           Control: GroupContainer@1.3.0
@@ -87,10 +87,7 @@ Screens:
                               FontColor: =ColorValue(varTheme.neutralForeground1)
                               Height: =60
                               Size: =varThemeFont.H1.size
-                              Text: |-
-                                =//To do: Duration added for performance testing. Will remove on final version. 
-                                //Concatenate(varSelectedZone.Name, " ", Text(varDuration_Patch, "[$-en-US]0")," ms")
-                                varSelectedZone.Name
+                              Text: =varSelectedZone.Name
                               VerticalAlign: =VerticalAlign.Top
                               Weight: =varThemeFont.H1.weightBold
                               Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
@@ -470,7 +467,7 @@ Screens:
                                     FillPortions: =0
                                     FocusedBorderThickness: =0
                                     Height: =Parent.Height
-                                    Items: |+
+                                    Items: |-
                                       =/*Filter(
                                           AddColumns(
                                               shiftplanner_shifttypes As ShiftType,
@@ -503,18 +500,20 @@ Screens:
                                                 (conTeam_MainCalendar.Height + 10)
                                             )
                                           Items: |-
-                                            =SortByColumns(
-                                                AddColumns(
-                                                    Filter(
-                                                        colFilteredBookings,
-                                                        Date = varDateSelected And 
-                                                        Text('Team Position'.'Shift Team'.'Shift Type'.shiftplanner_shifttype) = hdnShiftTypeShiftTime_MainCalendar.Text And
-                                                        Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                                            =If(Not(hdnShiftTypeShiftTime_MainCalendar.Text=""),
+                                                SortByColumns(
+                                                    AddColumns(
+                                                        Filter(
+                                                            colFilteredBookings,
+                                                            Date = varDateSelected And 
+                                                            'Team Position'.'Shift Team'.'Shift Type'.Name = hdnShiftTypeShiftTime_MainCalendar.Text And
+                                                            Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                                                        ),
+                                                        TeamSort, 
+                                                        'Team Position'.'Shift Team'.Name
                                                     ),
-                                                    TeamSort, 
-                                                    'Team Position'.'Shift Team'.Name
-                                                ),
-                                                "TeamSort"
+                                                    "TeamSort"
+                                                )
                                             )
                                             /*
                                             The old model
@@ -691,7 +690,7 @@ Screens:
                                                       FontColor: =ColorValue(varTheme.neutralForeground3)
                                                       Height: =txtShiftType_MainCalendar.Height
                                                       Size: =varThemeFont.B2.size
-                                                      Text: =ThisItem.'Shift Type'.shiftplanner_shifttype
+                                                      Text: =ThisItem.'Shift Type'.Name
                                                       VerticalAlign: =VerticalAlign.Middle
                                                       Visible: =false
                                                       Width: =140
@@ -720,5 +719,10 @@ Screens:
               //varHeaderHeight
             IsMenuScreen: =false
             NavigateMenu: =
-            NavigateScreen: ='Application Landing Screen'
+            NavigateScreen: |-
+              =Switch (tmpBackScreenName,
+                  "Application Landing Screen", 'Application Landing Screen',
+                  "Staff Planning - Reassign", 'Staff Planning - Reassign',
+                  "Staff Planning - Show Open Bookings", 'Staff Planning - Show Open Bookings'
+              )
             Width: =compHeaderCompound_MainCalendar.HeaderWidth

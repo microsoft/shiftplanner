@@ -24,6 +24,7 @@
       "mpa_calendarid": "Calendar ID",
       "mpa_calendaritemid": "Calendar Item ID",
       "mpa_date": "Date",
+      "mpa_isresourced": "IsResourced",
       "mpa_name": "Name",
       "mpa_plannedendtime": "Planned End Time",
       "mpa_plannedstarttime": "Planned Start Time",
@@ -69,6 +70,26 @@
       "a4d21b6d-7bc0-f011-8542-6045bdeffbb3": "Calendar View",
       "dade23a4-73fe-4cb5-a0dc-b740c53f29b6": "Inactive Shift Bookings"
     }
+  },
+  {
+    "DisplayName": "IsResourced (Shift Bookings)",
+    "Name": "mpa_shiftplanner_shiftbooking_mpa_isresourced",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "mpa_isresourced",
+        "OptionSetReferenceEntityName": "Shift Bookings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "mpa_isresourced",
+    "RelatedEntityName": "Shift Bookings",
+    "Type": "OptionSetInfo"
   },
   {
     "DisplayName": "Workflow Status (Shift Bookings)",

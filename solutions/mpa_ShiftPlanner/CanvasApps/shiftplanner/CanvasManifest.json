@@ -5,7 +5,7 @@
       "DataflowAnalysisEnabled": true,
       "DataflowAnalysisFlagStateToggledByUser": false
     },
-    "DocVersion": "1.346",
+    "DocVersion": "1.347",
     "MinVersionToLoad": "1.331",
     "MSAppStructureVersion": "2.4.0"
   },
@@ -95,7 +95,7 @@
       "useexperimentalsqlconnector": true,
       "useguiddatatypes": true,
       "usenonblockingonstartrule": true,
-      "userdefinedtypes": false,
+      "userdefinedtypes": true,
       "webbarcodescanner": false,
       "zeroalltabindexes": true
     },
@@ -114,7 +114,7 @@
     "DocumentType": "App",
     "EnableInstrumentation": false,
     "FileID": "e5a4114e-72aa-40e3-9b87-5bb03c6cb88b",
-    "Id": "e5a4114e-72aa-40e3-9b87-5bb03c6cb88b",
+    "Id": "c8da18d0-0f09-4c34-9c06-bad81cf1112f",
     "ManualOfflineProfileId": "",
     "Name": "Shift Planner",
     "OriginatingVersion": "1.338",

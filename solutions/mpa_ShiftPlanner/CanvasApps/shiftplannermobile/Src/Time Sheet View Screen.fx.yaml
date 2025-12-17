@@ -44,10 +44,32 @@
             LayoutMinHeight: =16
             LayoutMinWidth: =16
             OnSelect: |+
-                =// Load in all the timesheets
-                ClearCollect(colTimesheetRows, Filter('Time Sheet Entries', 'Shift Booking'.Resource.'Primary Email' = varCurrentUser.Email && 'Shift Booking'.Date <= Today()));
+                =UpdateContext({
+                    varStartDate: DateAdd(Today(), -2, TimeUnit.Months), // one month ago
+                    varEndDate:   Today()                                // today
+                });
                 
-                ClearCollect(colShiftBookings, Filter('Shift Bookings', Resource.'Primary Email' = varCurrentUser.Email  && Date <= Today()));
+                // Load in all relevant timesheets
+                ClearCollect(colTimesheetRows, 
+                    Filter(
+                        'Time Sheet Entries', 
+                        'Shift Booking'.Resource.'Primary Email' = varCurrentUser.Email 
+                        And 'Shift Booking'.Date <= varEndDate  
+                        And 'Shift Booking'.Date >= varStartDate
+                    )
+                );
+                
+                ClearCollect(
+                    colShiftBookings, 
+                    Filter(
+                        'Shift Bookings', 
+                        Resource.'Primary Email' = varCurrentUser.Email 
+                        And Date <= varEndDate 
+                        And Date >= varStartDate 
+                        And Not('Status Reason' = 'Status Reason (Shift Bookings)'.Unpublished)
+                        And Not('Status Reason' = 'Status Reason (Shift Bookings)'.Inactive)
+                    )
+                );
                 
                 // append dummy timesheets for those without
                 
@@ -84,7 +106,12 @@
             BorderColor: =App.Theme.Colors.Darker40
             DelayItemLoading: =true
             FocusedBorderThickness: =0
-            Items: =colSortedRows
+            Items: |-
+                =If(
+                    IsBlank(varTimeSheetToView.Name), 
+                    colSortedRows,
+                    Filter(colSortedRows,BookingIdString = Text(varTimeSheetToView.shiftplanner_shiftbooking))
+                )
             Layout: =Layout.Vertical
             LayoutMaxHeight: =
             LayoutMaxWidth: =
@@ -305,7 +332,7 @@
                 Width: =txtShiftDate_TimeSheetView.Width
                 Wrap: =true
                 X: =0
-                Y: =txtShiftDate_TimeSheetView.Height
+                Y: =txtShiftDate_TimeSheetView.Y + txtShiftDate_TimeSheetView.Height
                 ZIndex: =7
 
             txtShiftStartEnd_TimeSheetView As Text:
@@ -333,7 +360,7 @@
                 Width: =txtShiftDate_TimeSheetView.Width - Self.X
                 Wrap: =true
                 X: =24
-                Y: =txtShiftDate_TimeSheetView.Height
+                Y: =txtShiftDate_TimeSheetView.Y + txtShiftDate_TimeSheetView.Height
                 ZIndex: =8
 
             icoShiftDuration_TimeSheetView As Icon:
@@ -344,7 +371,7 @@
                 Visible: =txtShiftDate_TimeSheetView.Visible
                 Width: =20
                 X: =0
-                Y: =txtShiftDate_TimeSheetView.Height+2
+                Y: =txtShiftDate_TimeSheetView.Y + txtShiftDate_TimeSheetView.Height+2
                 ZIndex: =9
 
             txtShiftTotalDuration_TimeSheetView As Text:
@@ -371,7 +398,7 @@
                 Width: =txtShiftDate_TimeSheetView.Width
                 Wrap: =true
                 X: =0
-                Y: =0
+                Y: =txtShiftDate_TimeSheetView.Y
                 ZIndex: =10
 
             txtShiftDate_TimeSheetView As Text:
@@ -398,8 +425,35 @@
                 Width: =Parent.Width-20
                 Wrap: =true
                 X: =0
-                Y: =0
+                Y: =txtShiftLocation_TimeSheetView.Height
                 ZIndex: =11
+
+            txtShiftLocation_TimeSheetView As Text:
+                Align: ="Start"
+                AutoHeight: =false
+                BorderColor: =
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                Font: =""
+                FontColor: =ColorValue(varTheme.neutralForeground1)
+                FontItalic: =false
+                FontStrikethrough: =false
+                FontUnderline: =false
+                Height: =32
+                Size: =18
+                TabIndex: =0
+                Text: =ThisItem.'Shift Booking'.Zone.Name
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =First(Filter(colSortedRows, BookingIdString=ThisItem.BookingIdString)).'Time Sheet Entry' = ThisItem.'Time Sheet Entry'
+                Weight: ='TextCanvas.Weight'.Semibold
+                Width: =Parent.Width-20
+                Wrap: =true
+                X: =0
+                Y: =0
+                ZIndex: =13
 
     conConfirmPopup_TimeSheetView As groupContainer.horizontalAutoLayoutContainer:
         Fill: =RGBA(0,0,0,0.6)

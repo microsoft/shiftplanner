@@ -2,10 +2,16 @@
     Fill: =ColorValue(varTheme.neutralBackground2)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnVisible: |-
-        =// Cache the teams for this zone
+        =If(IsBlank(tmpBackScreenName),UpdateContext({tmpBackScreenName : 'Application Landing Screen'.Name}));
+        
+        
+        // Cache the teams for this zone
+        /*
         UpdateContext({
             tmpTeamsForThisZone : Filter(shiftplanner_shiftteams, Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone)
         });
+        */
+        
         
         // 
         If(IsBlank(varFirstDayOfMonth),
@@ -169,10 +175,7 @@
                     LayoutMinHeight: =32
                     LayoutMinWidth: =96
                     Size: =varThemeFont.H1.size
-                    Text: |-
-                        =//To do: Duration added for performance testing. Will remove on final version. 
-                        //Concatenate(varSelectedZone.Name, " ", Text(varDuration_Patch, "[$-en-US]0")," ms")
-                        varSelectedZone.Name
+                    Text: =varSelectedZone.Name
                     VerticalAlign: =VerticalAlign.Top
                     Weight: =varThemeFont.H1.weightBold
                     Width: =Parent.Width - Parent.PaddingLeft - Parent.PaddingRight
@@ -674,7 +677,7 @@
                         FillPortions: =0
                         FocusedBorderThickness: =0
                         Height: =Parent.Height
-                        Items: |
+                        Items: |-
                             =/*Filter(
                                 AddColumns(
                                     shiftplanner_shifttypes As ShiftType,
@@ -713,18 +716,20 @@
                                     (conTeam_MainCalendar.Height + 10)
                                 )
                             Items: |-
-                                =SortByColumns(
-                                    AddColumns(
-                                        Filter(
-                                            colFilteredBookings,
-                                            Date = varDateSelected And 
-                                            Text('Team Position'.'Shift Team'.'Shift Type'.shiftplanner_shifttype) = hdnShiftTypeShiftTime_MainCalendar.Text And
-                                            Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                                =If(Not(hdnShiftTypeShiftTime_MainCalendar.Text=""),
+                                    SortByColumns(
+                                        AddColumns(
+                                            Filter(
+                                                colFilteredBookings,
+                                                Date = varDateSelected And 
+                                                'Team Position'.'Shift Team'.'Shift Type'.Name = hdnShiftTypeShiftTime_MainCalendar.Text And
+                                                Zone.shiftplanner_zone = varSelectedZone.shiftplanner_zone
+                                            ),
+                                            TeamSort, 
+                                            'Team Position'.'Shift Team'.Name
                                         ),
-                                        TeamSort, 
-                                        'Team Position'.'Shift Team'.Name
-                                    ),
-                                    "TeamSort"
+                                        "TeamSort"
+                                    )
                                 )
                                 /*
                                 The old model
@@ -969,7 +974,7 @@
                                     LayoutMinWidth: =96
                                     Size: =varThemeFont.B2.size
                                     TabIndex: =0
-                                    Text: =ThisItem.'Shift Type'.shiftplanner_shifttype
+                                    Text: =ThisItem.'Shift Type'.Name
                                     Tooltip: =""
                                     VerticalAlign: =VerticalAlign.Middle
                                     Visible: =false
@@ -1009,7 +1014,12 @@
         Height: |-
             =compHeaderCompound_MainCalendar.HeaderHeight
             //varHeaderHeight
-        NavigateScreen: ='Application Landing Screen'
+        NavigateScreen: |-
+            =Switch (tmpBackScreenName,
+                "Application Landing Screen", 'Application Landing Screen',
+                "Staff Planning - Reassign", 'Staff Planning - Reassign',
+                "Staff Planning - Show Open Bookings", 'Staff Planning - Show Open Bookings'
+            )
         Width: =compHeaderCompound_MainCalendar.HeaderWidth
         ZIndex: =2
 
