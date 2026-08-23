@@ -57,25 +57,25 @@ jobs:
       RUNNER_DEBUG: 1
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
       with:
         lfs: true
 
     - name: Install Power Platform Tools
       id: install-power-platform-tools
-      uses: microsoft/powerplatform-actions/actions-install@v1
+      uses: microsoft/powerplatform-actions/actions-install@0e44beb5424af932af47250a2568eba4c259e3d8 # v1.10.0
       with:
         pac-version-override: 1.43.6
 
     - name: Pack solution
-      uses: microsoft/powerplatform-actions/pack-solution@v1
+      uses: microsoft/powerplatform-actions/pack-solution@0e44beb5424af932af47250a2568eba4c259e3d8 # v1.10.0
       with:
         solution-folder: ${{ inputs.solution_source_folder}}/${{ inputs.solution_name }}
         solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}.zip
         solution-type: Unmanaged
 
     - name: Import solution as unmanaged to build env
-      uses: microsoft/powerplatform-actions/import-solution@v1
+      uses: microsoft/powerplatform-actions/import-solution@0e44beb5424af932af47250a2568eba4c259e3d8 # v1.10.0
       with:
         environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
@@ -87,7 +87,7 @@ jobs:
         run-asynchronously: true
 
     - name: Export solution as managed
-      uses: microsoft/powerplatform-actions/export-solution@v1
+      uses: microsoft/powerplatform-actions/export-solution@0e44beb5424af932af47250a2568eba4c259e3d8 # v1.10.0
       with:
         environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
@@ -98,7 +98,7 @@ jobs:
         solution-output-file: ${{ inputs.solution_shipping_folder}}/${{ inputs.solution_name }}_managed.zip
 
     - name: Upload the ready to ship solution to GH artifact store
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
       with:
         name: managedSolutions
         path: ${{ inputs.solution_shipping_folder}}/
@@ -110,24 +110,24 @@ jobs:
       RUNNER_DEBUG: 1
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
       with:
         lfs: true
                 
     - name: Install Power Platform Tools
       id: install-power-platform-tools
-      uses: microsoft/powerplatform-actions/actions-install@v1
+      uses: microsoft/powerplatform-actions/actions-install@0e44beb5424af932af47250a2568eba4c259e3d8 # v1.10.0
       with:
         pac-version-override: 1.43.6
 
     - name: Fetch the ready to ship solution from GH artifact store
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
       with:
         name: managedSolutions
         path: ${{ inputs.solution_release_folder}}
 
     - name: Import solution to prod env
-      uses: microsoft/powerplatform-actions/import-solution@v1
+      uses: microsoft/powerplatform-actions/import-solution@0e44beb5424af932af47250a2568eba4c259e3d8 # v1.10.0
       with:
         environment-url: ${{inputs.PRODUCTION_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
